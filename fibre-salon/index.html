@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- Concept mockup for Fibre Salon — built by Hillside Visuals. Not affiliated with Fibre Salon.
+     Placeholders mark the photography Hillside would shoot. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fibre Salon</title>
+<meta name="description" content="Concept website mockup for Fibre Salon, a clean, conscious hair salon in Henderson, NV — by Hillside Visuals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#22262A;
+    --paper:#E9EBE6;
+    --muted:#6a7178;
+    --accent:#3F5E57;
+    --accent-ink:#ffffff;
+    --line:rgba(34,38,42,.16);
+    --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+    --font-body:"Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.1;margin:0 0 .4em;letter-spacing:.005em;text-wrap:balance}
+  h1{font-size:clamp(2.6rem,6.5vw,4.6rem)}
+  h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+  h3{font-size:1.1rem;letter-spacing:.02em}
+  p{margin:0 0 1rem;max-width:60ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.2rem,5vw,3rem)}
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.9em 1.7em;border-radius:2px;text-decoration:none;font-weight:500;letter-spacing:.03em;transition:transform .15s ease,opacity .15s ease}
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  section{padding:clamp(3.5rem,9vw,7rem) 0;border-top:1px solid var(--line)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+  .shot{position:relative;overflow:hidden;background:repeating-linear-gradient(45deg,rgba(34,38,42,.05) 0 12px,transparent 12px 24px),rgba(34,38,42,.06);border:1px dashed var(--line);border-radius:3px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;padding:1rem;min-height:200px}
+  .shot::after{content:"◈ " attr(data-shot);max-width:min(90%,28ch);line-height:1.35}
+  .shot--mini{min-height:0;aspect-ratio:1/1;padding:.4rem}
+  .shot--mini::after{content:"◈";font-size:1rem;max-width:none}
+  .shot--hero{min-height:min(70vh,600px)}
+  .shot--wide{aspect-ratio:16/9}
+  .shot--square{aspect-ratio:1/1}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(233,235,230,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem}
+  .brandmark{font-family:var(--font-display);font-size:1.5rem;text-decoration:none;letter-spacing:.06em;text-transform:lowercase}
+  .nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0;font-size:.9rem}
+  .nav a{text-decoration:none;color:var(--muted)}
+  .nav a:hover{color:var(--ink)}
+  .nav .btn{padding:.55em 1.1em}
+  @media(max-width:760px){.nav ul{display:none}}
+  .hero{border-top:0;padding-top:clamp(2.5rem,7vw,5rem)}
+  .hero .lead{font-size:1.15rem;color:var(--muted);max-width:46ch}
+  .hero .cta-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+  .hero .shot{margin-top:2.5rem}
+  .grid{display:grid;gap:1.4rem}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:900px){.grid--3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid--3{grid-template-columns:1fr}}
+  .list{list-style:none;padding:0;margin:1.5rem 0 0}
+  .list li{padding:.9rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem}
+  .list .price{font-family:var(--font-display)}
+  .list .desc{color:var(--muted);font-size:.92rem;display:block;margin-top:.2rem}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,4rem);align-items:center}
+  @media(max-width:820px){.split{grid-template-columns:1fr}}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
+  footer{background:var(--ink);color:rgba(233,235,230,.82);padding:3rem 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;font-size:.9rem}
+  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem}
+
+  @media(max-width:920px){
+    .split{grid-template-columns:1fr;gap:1.6rem}
+    .split .shot--wide{aspect-ratio:16/9}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:600px){
+    body{font-size:16px}
+    .nav ul{display:none}
+    .grid,.grid--2,.grid--3{grid-template-columns:1fr!important}
+    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
+    .list li{flex-direction:column;gap:.15rem}
+    footer .wrap{flex-direction:column;gap:.5rem}
+    .shot--hero{min-height:min(56vh,400px)}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Concept mockup for Fibre Salon — built by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#top">fibre</a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">The Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="btn" href="#visit">Book</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Clean · Conscious · Henderson</p>
+      <h1>Conscious haircare.<br>Genuine connection.</h1>
+      <p class="lead">Clean color, healthy hair, and a calmer chair — a Henderson salon for people who
+        care what goes on their hair and how it's cut.</p>
+      <div class="cta-row">
+        <a class="btn" href="#visit">Book an appointment</a>
+        <a class="btn btn--ghost" href="#services">See services</a>
+      </div>
+      <div class="shot shot--hero" data-shot="the room in natural light — chairs, plants, product wall, wide and unhurried"></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="eyebrow">Services</p>
+      <h2>What we do</h2>
+      <ul class="list">
+        <li><span>Cut &amp; finish<span class="desc">consultation, cut, style</span></span><span class="price">from $75</span></li>
+        <li><span>Custom color<span class="desc">gloss, single-process, dimensional</span></span><span class="price">from $130</span></li>
+        <li><span>Extensions<span class="desc">consultation required</span></span><span class="price">quoted</span></li>
+        <li><span>Scalp facial<span class="desc">exfoliation, treatment, massage</span></span><span class="price">from $95</span></li>
+      </ul>
+      <p style="margin-top:1rem;color:var(--muted);font-size:.9rem">Prices shown are placeholders for the mockup.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <p class="eyebrow">The Work</p>
+      <h2>Before, and after</h2>
+      <div class="grid grid--3" style="margin-top:2rem">
+        <div class="shot shot--square" data-shot="before/after color — same lighting, same angle, side by side"></div>
+        <div class="shot shot--square" data-shot="lived-in blonde, styled, back detail"></div>
+        <div class="shot shot--square" data-shot="curly cut shaping, front and profile"></div>
+        <div class="shot shot--square" data-shot="product flatlay on linen — clean/low-tox line"></div>
+        <div class="shot shot--square" data-shot="scalp facial in progress, hands, calm"></div>
+        <div class="shot shot--square" data-shot="extensions close detail, natural blend"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Built by someone who's done this before</h2>
+        <p>Fibre was founded in 2025 by a salon owner with a long history in the industry and several
+          openings behind her. The idea here is simple: clean, ingredient-aware products, balanced
+          practices, and a room that feels calm.</p>
+        <p>We also open the space up as a venue for small events — ask us.</p>
+      </div>
+      <div class="shot shot--wide" data-shot="founder portrait in the space, working, editorial not posed"></div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <p class="eyebrow">The Team</p>
+      <h2>Your stylists</h2>
+      <div class="grid grid--3" style="margin-top:2rem">
+        <div><div class="shot shot--square" data-shot="stylist headshot — soft light, oat background, consistent crop"></div><h3 style="margin-top:.8rem">Stylist name</h3><p style="color:var(--muted)">Color · extensions</p></div>
+        <div><div class="shot shot--square" data-shot="stylist headshot — matching set"></div><h3 style="margin-top:.8rem">Stylist name</h3><p style="color:var(--muted)">Cutting · curly hair</p></div>
+        <div><div class="shot shot--square" data-shot="stylist headshot — matching set"></div><h3 style="margin-top:.8rem">Stylist name</h3><p style="color:var(--muted)">Scalp care</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <p class="eyebrow">Visit</p>
+      <h2>Book your chair</h2>
+      <div class="contact-grid" style="margin-top:1.5rem">
+        <div>
+          <p><strong>10271 S Eastern Ave, Ste 107</strong><br>Henderson, NV 89052</p>
+          <p>Closed Mon–Tue<br>Wed–Fri 9:30a–7:00p<br>Sat 9:30a–6:00p · Sun 9:00a–3:00p</p>
+          <p>(702) 844-8013<br>hello@fibresalon.com</p>
+          <p style="margin-top:1.2rem"><a class="btn" href="#">Book an appointment</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="storefront + signage at Eastern &amp; St. Rose, dusk"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Fibre Salon · Henderson, NV 89052</span>
+    <span>Instagram @fibre.salon</span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HairSalon",
+  "name":"Fibre Salon",
+  "telephone":"(702) 844-8013",
+  "address":{"@type":"PostalAddress","streetAddress":"10271 S Eastern Ave, Ste 107","addressLocality":"Henderson","addressRegion":"NV","postalCode":"89052"}
+}
+</script>
+
+</body>
+</html>

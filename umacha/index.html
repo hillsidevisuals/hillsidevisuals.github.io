@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- Concept: a Las Vegas LOCATION PAGE for ÜMACHA, built by Hillside Visuals in their existing brand.
+     Not a rebrand. It plugs into umachaus.com. Placeholders mark the local photography Hillside would shoot. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ÜMACHA — Las Vegas</title>
+<meta name="description" content="Concept Las Vegas location page for ÜMACHA, a Japanese tea & coffee cafe on Blue Diamond Rd — by Hillside Visuals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2A3A2E; --paper:#F3EFE2; --muted:#6f7a63; --accent:#7BA05B; --accent-ink:#ffffff;
+    --line:rgba(42,58,46,.16);
+    --font-display:"Baloo 2", "Segoe UI", sans-serif;
+    --font-body:"Nunito Sans", -apple-system, "Segoe UI", sans-serif;
+    --maxw:1080px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);line-height:1.05;margin:0 0 .4em;text-wrap:balance}
+  h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:700}
+  h2{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:700}
+  h3{font-size:1.1rem;font-weight:700}
+  p{margin:0 0 1rem;max-width:60ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.2rem,5vw,2.6rem)}
+  .eyebrow{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 1rem}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.85em 1.5em;border-radius:999px;text-decoration:none;font-weight:600;transition:transform .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn--ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+  section{padding:clamp(3rem,8vw,6rem) 0;border-top:1px solid var(--line)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .shot{position:relative;overflow:hidden;background:repeating-linear-gradient(45deg,rgba(42,58,46,.05) 0 12px,transparent 12px 24px),rgba(42,58,46,.06);border:2px dashed var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.04em;text-transform:uppercase;padding:1rem;min-height:200px}
+  .shot::after{content:"◈ " attr(data-shot);max-width:min(90%,28ch);line-height:1.35}
+  .shot--mini{min-height:0;aspect-ratio:1/1;padding:.4rem}
+  .shot--mini::after{content:"◈";font-size:1rem;max-width:none}
+  .shot--hero{min-height:min(64vh,540px);border-radius:20px}
+  .shot--wide{aspect-ratio:16/10}
+  .shot--sq{aspect-ratio:1/1}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(243,239,226,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:.9rem;padding-bottom:.9rem}
+  .brandmark{font-family:var(--font-display);font-weight:700;font-size:1.5rem;text-decoration:none;text-transform:lowercase}
+  .brandmark small{font-family:var(--font-body);font-weight:600;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:inline-block;transform:translateY(-6px);margin-left:4px}
+  .nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0;font-size:.92rem;font-weight:600}
+  .nav a{text-decoration:none;color:var(--muted)}
+  .nav a:hover{color:var(--ink)}
+  @media(max-width:720px){.nav ul{display:none}}
+  .hero{border-top:0;padding-top:clamp(2rem,6vw,4rem)}
+  .hero .lead{font-size:1.15rem;color:var(--muted);max-width:44ch}
+  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
+  .hero .shot{margin-top:2.4rem}
+  .grid{display:grid;gap:1.2rem}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:860px){.grid--3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid--2,.grid--3{grid-template-columns:1fr}}
+  .drink{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.2rem}
+  .drink .p{font-family:var(--font-display);font-weight:700;color:var(--accent);margin-top:.3rem}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,3.5rem);align-items:center}
+  @media(max-width:820px){.split{grid-template-columns:1fr}}
+  .visit dl{display:grid;grid-template-columns:110px 1fr;gap:8px 20px;margin:1rem 0 0;font-size:1rem}
+  .visit dt{font-weight:700;color:var(--accent)}
+  footer{background:var(--ink);color:rgba(243,239,226,.85);padding:2.6rem 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.9rem}
+  footer a{text-decoration:underline}
+  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:.5rem}
+
+  @media(max-width:920px){
+    .split{grid-template-columns:1fr;gap:1.6rem}
+    .split .shot--wide{aspect-ratio:16/9}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:600px){
+    body{font-size:16px}
+    .nav ul{display:none}
+    .grid,.grid--2,.grid--3{grid-template-columns:1fr!important}
+    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
+    .list li{flex-direction:column;gap:.15rem}
+    footer .wrap{flex-direction:column;gap:.5rem}
+    .shot--hero{min-height:min(56vh,400px)}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Concept Las Vegas page for ÜMACHA — built by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#top">ümacha<small>Las Vegas</small></a>
+    <ul>
+      <li><a href="#order">What to order</a></li>
+      <li><a href="#space">The space</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://umachaus.com" style="color:var(--accent)">All locations</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Now open · Southwest Las Vegas</p>
+      <h1>ÜMACHA is in Las Vegas.</h1>
+      <p class="lead">Japanese tea, coffee, and cheese-cream drinks. Now on Blue Diamond Rd, next to
+        Costa Mesa and Edgewater.</p>
+      <div class="cta-row">
+        <a class="btn" href="#visit">Get directions</a>
+        <a class="btn btn--ghost" href="#order">See the menu</a>
+      </div>
+      <div class="shot shot--hero" data-shot="the Vegas room — counter, the mascot wall, matcha bar, warm afternoon light"></div>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="wrap">
+      <p class="eyebrow">What to order here</p>
+      <h2>Start with these.</h2>
+      <div class="grid grid--3" style="margin-top:1.8rem">
+        <div class="drink"><h3>Matcha Milk Tea</h3><p style="color:var(--muted);font-size:.95rem;margin:.3rem 0 0">First-harvest matcha, house milk blend.</p><div class="p">$6.50</div></div>
+        <div class="drink"><h3>Don-chan</h3><p style="color:var(--muted);font-size:.95rem;margin:.3rem 0 0">The signature cheese-cream float.</p><div class="p">$7.00</div></div>
+        <div class="drink"><h3>Golden Feather</h3><p style="color:var(--muted);font-size:.95rem;margin:.3rem 0 0">Roasted oolong, light and toasty.</p><div class="p">$6.00</div></div>
+      </div>
+      <p style="margin-top:1rem;color:var(--muted);font-size:.9rem">Prices shown are placeholders for this mockup.</p>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <p class="eyebrow">The drinks</p>
+      <h2>Made in Vegas.</h2>
+      <div class="grid grid--3" style="margin-top:1.8rem">
+        <div class="shot shot--sq" data-shot="matcha pour, overhead, on the cream counter"></div>
+        <div class="shot shot--sq" data-shot="Don-chan cheese-cream float, side light, condensation"></div>
+        <div class="shot shot--sq" data-shot="two drinks + a mascot plush, flat lay on cream"></div>
+        <div class="shot shot--sq" data-shot="hands whisking matcha at the bar"></div>
+        <div class="shot shot--sq" data-shot="bubble tea lineup, backlit"></div>
+        <div class="shot shot--sq" data-shot="a customer at the window seat, drink in hand"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="space">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">The space</p>
+        <h2>Small, green, and yours.</h2>
+        <p>The Blue Diamond shop seats about 20, with the mascot wall, a window bar, and the matcha
+          station up front. Same ÜMACHA you know, built for a Vegas afternoon.</p>
+      </div>
+      <div class="shot shot--wide" data-shot="wide interior — seating, plants, the mascot wall"></div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap split">
+      <div class="visit">
+        <p class="eyebrow">Visit</p>
+        <h2>Blue Diamond Rd.</h2>
+        <dl>
+          <dt>Address</dt><dd>4860 Blue Diamond Rd, Ste 100<br>Las Vegas, NV 89139</dd>
+          <dt>Hours</dt><dd>Daily 11:00a – 8:00p (TBC)</dd>
+          <dt>Parking</dt><dd>Free lot in front</dd>
+          <dt>Contact</dt><dd>(702) 908-0202 · @umacha_official</dd>
+        </dl>
+        <p style="margin-top:1.2rem"><a class="btn" href="#">Open in Maps</a></p>
+      </div>
+      <div class="shot shot--wide" data-shot="storefront + signage on Blue Diamond Rd, golden hour"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> ÜMACHA · Las Vegas, NV 89139</span>
+    <span>Part of <a href="https://umachaus.com">umachaus.com</a> · Costa Mesa · Edgewater · Las Vegas</span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"CafeOrCoffeeShop",
+  "name":"ÜMACHA",
+  "telephone":"(702) 908-0202",
+  "servesCuisine":"Japanese tea and coffee",
+  "address":{"@type":"PostalAddress","streetAddress":"4860 Blue Diamond Rd, Ste 100","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89139"}
+}
+</script>
+
+</body>
+</html>
