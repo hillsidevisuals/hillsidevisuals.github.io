@@ -1,619 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Durango Massage. An hour that resets the week</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Durango Massage</title>
+<meta name="description" content="West valley massage and day spa in Las Vegas. Full body, deep tissue, reflexology, and hot stone, in a calm private room.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#22302A; --paper:#F0ECE1; --muted:#5C6B62;
+    --accent:#3C6B4F; --accent-ink:#F7F3E8;
+    --line:rgba(34,48,42,.15); --gold:#B07D3A;
+    --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+    --font-body:"Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw:1120px; --pad:clamp(1.15rem, 5vw, 3rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.08;margin:0 0 .4em;
+    text-wrap:balance;overflow-wrap:break-word;}
+  h1{font-size:clamp(2.1rem,6vw,4.2rem);letter-spacing:-.005em}
+  h2{font-size:clamp(1.5rem,4vw,2.6rem)}
+  h3{font-size:1.08rem}
+  p{margin:0 0 1rem;max-width:64ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem;font-weight:600}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.6em;
+    border-radius:2px;text-decoration:none;font-weight:600;letter-spacing:.03em;white-space:nowrap;
+    transition:transform .15s ease,opacity .15s ease}
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .view > .wrap:first-child{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(.4rem,2vw,1.1rem)}
+  .block{padding-top:clamp(1.9rem,5vw,3.4rem);padding-bottom:clamp(1.9rem,5vw,3.4rem);border-top:1px solid var(--line)}
+  .block:first-child{border-top:0}
+  .pagehead + .block{border-top:0;padding-top:0}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
 
-    :root {
-      --ink: #22302A;
-      --paper: #F0ECE1;
-      --accent: #3C6B4F;
-      --accent-ink: #F7F3E8;
-      --brass: #B07D3A;
-      --muted: #5C6B62;
-    }
+  .shot{position:relative;overflow:hidden;background:
+      repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 12px,transparent 12px 24px),
+      color-mix(in srgb,var(--ink) 6%,var(--paper));
+    border:1px dashed var(--line);border-radius:2px;display:flex;align-items:center;
+    justify-content:center;text-align:center;color:var(--muted);
+    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
+    padding:1rem;min-height:200px}
+  .shot::after{content:"\25C8 " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
+  .shot--hero{min-height:min(56vh,500px)}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+  figure.ref{margin:0;position:relative;overflow:hidden;border-radius:2px}
+  figure.ref img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
+  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:2px}
 
-    body {
-      font-family: 'Mulish', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.8rem;padding-bottom:.8rem}
+  .brandmark{font-family:var(--font-display);font-size:clamp(1.05rem,3.4vw,1.32rem);font-weight:400;
+    text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
+  .brandmark img{height:1.6em;width:auto}
+  .nav ul{display:flex;gap:1rem 1.4rem;list-style:none;margin:0;padding:0;font-size:.84rem;flex-wrap:wrap}
+  .nav a{text-decoration:none;color:var(--muted);letter-spacing:.04em}
+  .nav a:hover{color:var(--ink)}
+  .nav a[aria-current="page"]{color:var(--ink);font-weight:600}
+  .nav .btn{padding:.5em 1.05em;font-size:.82rem}
+  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important;font-weight:600}
+  .nav-intro::before{content:"\25B6";font-size:.7em}
 
-    h1, h2, h3 {
-      font-family: 'Fraunces', serif;
-      font-weight: 500;
-      line-height: 1.2;
-    }
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:vin .3s ease}
+  @keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
 
-    .placeholder {
-      background: #d4cfc3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
-      padding: 20px;
-      border-radius: 2px;
-    }
+  .hero .lead,.pagehead .lead{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--muted);max-width:50ch}
+  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}
+  .hero .shot,.hero figure.ref{margin-top:2.1rem}
+  .pagehead h1{margin-bottom:.2em}
 
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--paper);
-      border-bottom: 1px solid var(--brass);
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 100;
-    }
+  .introcard{margin-top:2.3rem;border:1px solid var(--line);overflow:hidden;text-decoration:none;
+    display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);color:var(--paper);border-radius:2px}
+  .introcard .txt{padding:clamp(1.3rem,4vw,2.3rem);display:flex;flex-direction:column;gap:.6rem;justify-content:center}
+  .introcard .eyebrow{color:color-mix(in srgb,var(--paper) 68%,transparent)}
+  .introcard h3{font-size:clamp(1.25rem,3vw,1.8rem);margin:0;color:var(--paper)}
+  .introcard p{color:color-mix(in srgb,var(--paper) 80%,transparent);margin:0;max-width:42ch}
+  .introcard .btn{align-self:flex-start;margin-top:.3rem}
+  .introcard .stage{position:relative;min-height:210px;background:
+      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 30%,var(--ink)) 0%, var(--ink) 66%);
+    display:flex;align-items:center;justify-content:center;padding:1.3rem}
+  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
+    color:var(--accent-ink);width:74px;height:74px;display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;}
+  .introcard .stage .cap{position:absolute;bottom:.85rem;left:0;right:0;text-align:center;font-size:.58rem;
+    letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
 
-    .nav-wordmark {
-      font-family: 'Fraunces', serif;
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--ink);
-      text-decoration: none;
-      line-height: 1.1;
-    }
+  .grid{display:grid;gap:1.2rem}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  figure.tile{margin:0}
+  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
 
-    .nav-wordmark span {
-      display: block;
-      font-family: 'Mulish', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-top: 2px;
-    }
+  .list{list-style:none;padding:0;margin:1.4rem 0 0}
+  .list li{padding:.85rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+  .price{font-family:var(--font-display);white-space:nowrap}
+  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
+  .steps{list-style:none;counter-reset:s;padding:0;margin:1.5rem 0 0;display:grid;gap:1rem}
+  .steps li{counter-increment:s;padding-left:3rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;
+    border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:.9rem}
+  .steps h3{margin:0 0 .2rem}
 
-    .nav-links a {
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-    }
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,3.6rem);align-items:start}
+  .facts{list-style:none;padding:0;margin:1.1rem 0 0}
+  .facts li{padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
+  .facts li b{font-weight:600}
+  .facts li span:last-child{color:var(--muted);text-align:right}
+  .facts li a{color:var(--ink)}
 
-    .nav-links a:hover {
-      color: var(--accent);
-    }
+  .form{display:grid;gap:.9rem;margin-top:1.3rem;max-width:32rem}
+  .form label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
+    border-radius:2px;background:color-mix(in srgb,var(--ink) 3%,var(--paper));color:var(--ink)}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:.85rem;color:var(--muted)}
 
-    .btn-primary {
-      background: var(--accent);
-      color: var(--accent-ink);
-      padding: 12px 28px;
-      border-radius: 2px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      display: inline-block;
-      transition: opacity 0.2s;
-    }
+  footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 82%,transparent);padding:2.6rem 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.86rem}
+  footer nav{display:flex;gap:1rem;flex-wrap:wrap}
+  footer a{text-decoration:none;color:color-mix(in srgb,var(--paper) 82%,transparent)}
+  footer a:hover{color:var(--paper)}
 
-    .btn-primary:hover {
-      opacity: 0.9;
-    }
+  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.6rem,2vw,.72rem);
+    letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
 
-    .btn-secondary {
-      color: var(--accent-ink);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      border-bottom: 1px solid var(--accent-ink);
-      display: inline-block;
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 24px;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: linear-gradient(135deg, var(--ink) 0%, var(--accent) 100%);
-    }
-
-    .hero-bg::after {
-      content: attr(data-label);
-      position: absolute;
-      bottom: 16px;
-      right: 20px;
-      font-size: 11px;
-      color: var(--paper);
-      opacity: 0.3;
-      font-family: 'Mulish', sans-serif;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-    }
-
-    .hero-monogram {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--brass);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Fraunces', serif;
-      font-size: 24px;
-      font-weight: 500;
-      color: var(--brass);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      color: var(--paper);
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 32px;
-      color: var(--paper);
-      opacity: 0.95;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .hero-address {
-      font-size: 14px;
-      color: var(--paper);
-      opacity: 0.85;
-    }
-
-    /* Section */
-    section {
-      padding: 80px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'Mulish', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--brass);
-      margin-bottom: 16px;
-    }
-
-    section h2 {
-      font-size: 38px;
-      margin-bottom: 48px;
-      color: var(--ink);
-    }
-
-    /* Treatments */
-    .treatments-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-    }
-
-    .treatment-card {
-      background: #fff;
-      padding: 32px;
-      border-radius: 2px;
-      border-top: 2px solid var(--brass);
-    }
-
-    .treatment-card h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-      color: var(--ink);
-    }
-
-    .treatment-card p {
-      color: var(--muted);
-      margin-bottom: 16px;
-      line-height: 1.65;
-    }
-
-    .treatment-meta {
-      font-size: 14px;
-      color: var(--brass);
-      font-weight: 600;
-    }
-
-    .treatment-meta span {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    /* The Room */
-    .room-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-
-    .room-grid .placeholder {
-      aspect-ratio: 4 / 3;
-    }
-
-    .room-text {
-      max-width: 700px;
-      font-size: 17px;
-      line-height: 1.7;
-      color: var(--ink);
-    }
-
-    .room-text p {
-      margin-bottom: 16px;
-    }
-
-    /* Visit */
-    .visit-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .visit-info h3 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .visit-info p {
-      margin-bottom: 12px;
-      line-height: 1.7;
-    }
-
-    .visit-info a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .visit-info .btn-primary {
-      margin-top: 24px;
-      color: var(--accent-ink);
-    }
-
-    .visit-map .placeholder {
-      aspect-ratio: 1 / 1;
-      min-height: 400px;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--ink);
-      color: var(--paper);
-      padding: 60px 24px 40px;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 40px;
-    }
-
-    .footer-wordmark {
-      font-family: 'Fraunces', serif;
-      font-size: 28px;
-      font-weight: 500;
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-
-    .footer-wordmark span {
-      display: block;
-      font-family: 'Mulish', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-top: 4px;
-      opacity: 0.8;
-    }
-
-    .footer-info p {
-      margin-bottom: 8px;
-      opacity: 0.9;
-    }
-
-    .footer-credit {
-      border-top: 1px solid rgba(176, 125, 58, 0.3);
-      padding-top: 24px;
-      text-align: center;
-      font-size: 13px;
-      opacity: 0.7;
-    }
-
-    .footer-credit p {
-      margin-bottom: 8px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav {
-        padding: 16px 20px;
-      }
-
-      .nav-wordmark {
-        font-size: 18px;
-      }
-
-      .nav-links {
-        gap: 20px;
-      }
-
-      .nav-links a:not(.btn-primary) {
-        display: none;
-      }
-
-      .hero {
-        min-height: 500px;
-        padding: 60px 20px;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      section {
-        padding: 60px 20px;
-      }
-
-      section h2 {
-        font-size: 32px;
-      }
-
-      .treatments-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .room-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .visit-content {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-  </style>
+  @media (max-width:920px){
+    .grid--3{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr;gap:1.6rem}
+    .introcard{grid-template-columns:1fr} .introcard .stage{min-height:160px}
+  }
+  @media (max-width:600px){
+    body{font-size:16px}
+    .nav ul{width:100%;order:3;gap:.7rem 1rem;font-size:.8rem}
+    .grid--2,.grid--3{grid-template-columns:1fr}
+    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
+    .list li,.facts li{flex-direction:column;gap:.1rem}
+    .list li .price{align-self:flex-start}
+    .facts li span:last-child{text-align:left}
+    footer .wrap{flex-direction:column;gap:.7rem}
+    .shot--hero{min-height:min(50vh,380px)}
+  }
+</style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav data-od-id="nav">
-    <a href="#" class="nav-wordmark">
-      Durango
-      <span>MASSAGE</span>
-    </a>
-    <div class="nav-links">
-      <a href="#treatments">Treatments</a>
-      <a href="#room">The Room</a>
-      <a href="#visit">Book</a>
-      <a href="#visit" class="btn-primary">Book</a>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" data-od-id="hero">
-    <div class="hero-bg" data-label="Treatment room, low light, peaceful stillness"></div>
-    <div class="hero-content">
-      <div class="hero-monogram">D</div>
-      <h1>An hour that resets the week.</h1>
-      <p>West valley massage and day spa, where the room is as calm as the work.</p>
-      <div class="hero-actions">
-        <a href="#visit" class="btn-primary">Book online</a>
-        <a href="#treatments" class="btn-secondary">See treatments</a>
+<div class="mock-banner">Concept mockup for Durango Massage — built by Hillside Visuals</div>
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">Durango Massage</a>
+    <ul>
+      <li><a href="#/treatments">Treatments</a></li>
+      <li><a href="#/room">The Room</a></li>
+      <li><a href="#/visit">Visit</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
+    </ul>
+    <a class="btn" href="#/visit">Book</a>
+  </div>
+</header>
+<main>
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap hero">
+      <p class="eyebrow">West valley · Desert Inn and Durango</p>
+      <h1>An hour that resets<br>the week.</h1>
+      <p class="lead">West valley massage and day spa, where the room is as calm as the work. Open seven days, walk-ins welcome when a room is free.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/visit">Book online</a>
+        <a class="btn btn--ghost" href="#/treatments">See treatments</a>
       </div>
-      <p class="hero-address">8550 W Desert Inn Rd, Suite 106</p>
+      <div class="shot shot--hero" data-shot="The treatment room, low warm light"></div>
+      
+    </div>
+    <div class="wrap block">
+      <p class="eyebrow">Treatments</p>
+      <h2>What we do.</h2>
+      <p style="color:var(--muted)">Full body, deep tissue, reflexology, hot stone, body scrub, and couples.</p>
+      <div class="grid grid--3" style="margin-top:1.5rem">
+        <div class="shot shot--square" data-shot="Deep tissue, mid-session"></div>
+        <div class="shot shot--square" data-shot="Herb foot bath before reflexology"></div>
+        <div class="shot shot--square" data-shot="Hot stones warming"></div>
+      </div>
+      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="#/treatments">See all treatments</a></p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p class="eyebrow">The room</p>
+          <h2>A clean, quiet space.</h2>
+          <p>Every session is in a private room with soft lighting and personal music. No shared rooms, no interruptions, the table always prepared before you arrive.</p>
+          <p><a class="btn btn--ghost" href="#/room">See the room</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="Private room, made up"></div>
+      </div>
     </div>
   </section>
-
-  <!-- Treatments -->
-  <section id="treatments" data-od-id="treatments">
-    <div class="section-label">Treatments</div>
-    <h2>What we do</h2>
-    <div class="treatments-grid">
-
-      <div class="treatment-card">
-        <h3>Full Body Massage</h3>
-        <p>A complete session from shoulders to feet. Steady pressure, personal music, low light.</p>
-        <div class="treatment-meta">
-          60 / 90 min
-          <span>Pricing at booking</span>
-        </div>
-      </div>
-
-      <div class="treatment-card">
-        <h3>Deep Tissue</h3>
-        <p>Focused work on tension and knots. Firm pressure where you need it most.</p>
-        <div class="treatment-meta">
-          60 / 90 min
-          <span>Pricing at booking</span>
-        </div>
-      </div>
-
-      <div class="treatment-card">
-        <h3>Foot Reflexology with Herb Bath</h3>
-        <p>Herb foot bath followed by reflexology. A grounded, restorative hour.</p>
-        <div class="treatment-meta">
-          60 min
-          <span>Pricing at booking</span>
-        </div>
-      </div>
-
-      <div class="treatment-card">
-        <h3>Hot Stone</h3>
-        <p>Smooth heated stones with oil work. Heat and pressure together.</p>
-        <div class="treatment-meta">
-          90 min
-          <span>Pricing at booking</span>
-        </div>
-      </div>
-
-      <div class="treatment-card">
-        <h3>Body Scrub</h3>
-        <p>Full exfoliation and rinse. Skin feels renewed, soft, clean.</p>
-        <div class="treatment-meta">
-          60 min
-          <span>Pricing at booking</span>
-        </div>
-      </div>
-
-      <div class="treatment-card">
-        <h3>Couples Massage</h3>
-        <p>Two side by side sessions in the same private room.</p>
-        <div class="treatment-meta">
-          60 / 90 min
-          <span>Pricing at booking</span>
-        </div>
-      </div>
-
+  <section class="view" data-route="/treatments" id="view-treatments">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Treatments</p>
+      <h1>What we do.</h1>
+      <p class="lead">Pricing is set at booking. Sources disagree on prices, so this is a concept menu.</p>
+    </div>
+    <div class="wrap block">
+      <ul class="list">
+        <li><span>Full Body Massage<span class="desc">Shoulders to feet. Steady pressure, personal music, low light.</span></span><span class="price">60 / 90 min</span></li>
+        <li><span>Deep Tissue<span class="desc">Focused work on tension and knots. Firm pressure where you need it.</span></span><span class="price">60 / 90 min</span></li>
+        <li><span>Foot Reflexology with Herb Bath<span class="desc">Herb foot bath, then reflexology. A grounded, restorative hour.</span></span><span class="price">60 min</span></li>
+        <li><span>Hot Stone<span class="desc">Smooth heated stones with oil work. Heat and pressure together.</span></span><span class="price">90 min</span></li>
+        <li><span>Body Scrub<span class="desc">Full exfoliation and rinse. Skin feels renewed.</span></span><span class="price">60 min</span></li>
+        <li><span>Couples Massage<span class="desc">Two side by side sessions in the same private room.</span></span><span class="price">60 / 90 min</span></li>
+      </ul>
+      <p style="margin-top:1rem;color:var(--muted);font-size:.86rem">Prices shown are placeholders for this mockup.</p>
+      <p style="margin-top:1.4rem"><a class="btn" href="#/visit">Book online</a></p>
     </div>
   </section>
-
-  <!-- The Room -->
-  <section id="room" data-od-id="room">
-    <div class="section-label">The Room</div>
-    <h2>A clean, quiet space</h2>
-    <div class="room-grid">
-      <div class="placeholder">Private room interior, soft lighting</div>
-      <div class="placeholder">Treatment table, clean linens</div>
-      <div class="placeholder">Herb foot bath setup</div>
+  <section class="view" data-route="/room" id="view-room">
+    <div class="wrap pagehead">
+      <p class="eyebrow">The room</p>
+      <h1>A clean, quiet space.</h1>
+      <p class="lead">Built for the hour to be yours.</p>
     </div>
-    <div class="room-text">
-      <p>Each session happens in a private room with soft lighting and personal music. The space is calm, clean, and set up for your hour.</p>
-      <p>No shared rooms, no interruptions. The work is skilled, the room is quiet, and the table is always prepared before you arrive.</p>
-      <p>People return because the room feels like what a massage room should feel like.</p>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>Each session happens in a private room with soft lighting and personal music. The space is calm, clean, and set up for your hour.</p>
+          <p>No shared rooms, no interruptions. The work is skilled, the room is quiet, and the table is always prepared before you arrive. People return because the room feels like what a massage room should feel like.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="Private room interior, soft lighting"></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <h2>What a visit is like</h2>
+      <div class="grid grid--3" style="margin-top:1.3rem">
+        <div><h3>A private room</h3><p class="desc">Yours for the session, door closed, lights low.</p></div>
+        <div><h3>Prepared ahead</h3><p class="desc">Clean linens, the table set before you walk in.</p></div>
+        <div><h3>Skilled hands</h3><p class="desc">Licensed therapists who have done this a long time.</p></div>
+      </div>
+      <p style="margin-top:1.7rem"><a class="btn" href="#/visit">Book online</a></p>
     </div>
   </section>
-
-  <!-- Visit -->
-  <section id="visit" data-od-id="visit">
-    <div class="section-label">Visit</div>
-    <h2>Come see us</h2>
-    <div class="visit-content">
-
-      <div class="visit-info">
-        <h3>Location & Hours</h3>
-        <p>8550 W Desert Inn Rd, Suite 106<br>Las Vegas, NV 89117</p>
-        <p><a href="tel:7028636668">(702) 863-6668</a></p>
-        <p>Mon to Sun, hours TBC</p>
-        <p style="font-size: 15px; color: var(--muted); margin-top: 20px;">Walk-ins welcome when a room is open. Booking online ensures your time.</p>
-        <a href="#visit" class="btn-primary">Book online</a>
-      </div>
-
-      <div class="visit-map">
-        <div class="placeholder">Map: Desert Inn & Durango intersection, west valley</div>
-      </div>
-
+  <section class="view" data-route="/visit" id="view-visit">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Visit</p>
+      <h1>Desert Inn and Durango.</h1>
+      <p class="lead">West valley, a commercial corner. Walk-ins welcome when a room is open.</p>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer data-od-id="footer">
-    <div class="footer-content">
-
-      <div>
-        <div class="footer-wordmark">
-          Durango
-          <span>MASSAGE</span>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <ul class="facts">
+            <li><b>Address</b><span>8550 W Desert Inn Rd, Ste 106, Las Vegas, NV 89117</span></li>
+            <li><b>Hours</b><span>Monday to Sunday, hours TBC</span></li>
+            <li><b>Pricing</b><span>Set at booking. TBC in this mockup.</span></li>
+            <li><b>Call</b><span><a href="tel:+17028636668">(702) 863-6668</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/durangomassagenv/" target="_blank" rel="noopener">@durangomassagenv</a></span></li>
+          </ul>
+          <p style="margin-top:1.3rem"><a class="btn" href="tel:+17028636668">Call to book</a></p>
+        </div>
+        <div class="grid" style="gap:1rem">
+          <div class="shot shot--wide" data-shot="The front desk and waiting area"></div>
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="shot shot--square" data-shot="A treatment room, made up"></div>
+            <div class="shot shot--square" data-shot="The herb foot bath setup"></div>
+          </div>
         </div>
       </div>
-
-      <div class="footer-info">
-        <p>@durangomassagenv</p>
-        <p>(702) 863-6668</p>
-        <p>8550 W Desert Inn Rd, Suite 106, Las Vegas, NV 89117</p>
-      </div>
-
     </div>
-
-    <div class="footer-credit">
-      <p>Concept mockup by Hillside Visuals</p>
-      <p>&copy; 2026 Durango Massage</p>
-    </div>
-  </footer>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "DaySpa",
-    "name": "Durango Massage",
-    "description": "West valley massage and day spa offering full body massage, deep tissue, foot reflexology, hot stone, body scrub, and couples massage.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "8550 W Desert Inn Rd, Suite 106",
-      "addressLocality": "Las Vegas",
-      "addressRegion": "NV",
-      "postalCode": "89117",
-      "addressCountry": "US"
-    },
-    "telephone": "+17028636668",
-    "url": "https://durangomassage.com"
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr"></span> Durango Massage · Las Vegas, NV 89117</span>
+    <nav><a href="#/treatments">Treatments</a> <a href="#/room">The Room</a> <a href="#/visit">Visit</a> <a href="https://www.instagram.com/durangomassagenv/" target="_blank" rel="noopener">@durangomassagenv</a></nav>
+    <span>Concept mockup by Hillside Visuals</span>
+  </div>
+</footer>
+<script>
+(function(){
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home=document.getElementById('view-home')||views[0];
+    var rof=function(v){return v.getAttribute('data-route');};
+    var render=function(){
+      var h=(location.hash||'').replace(/^#/,'');
+      if(h&&h.charAt(0)!=='/')h='/'+h;
+      var m=views.filter(function(v){return rof(v)===h;})[0]||home;
+      views.forEach(function(v){v.classList.toggle('is-active',v===m);});
+      navLinks.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+rof(m)?'page':'false');});
+      window.scrollTo(0,0);
+    };
+    window.addEventListener('hashchange',render);render();
   }
-  </script>
-
+  var form=document.querySelector('.form');
+  if(form){var st=form.querySelector('.status');var note=st?st.textContent:'';
+    form.addEventListener('submit',function(e){e.preventDefault();if(st)st.textContent=note;});}
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DaySpa",
+  "name": "Durango Massage",
+  "telephone": "(702) 863-6668",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8550 W Desert Inn Rd, Ste 106",
+    "addressLocality": "Las Vegas",
+    "addressRegion": "NV",
+    "postalCode": "89117"
+  }
+}
+</script>
 </body>
 </html>

@@ -1,445 +1,343 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Durvo | Plant-based kitchen, Las Vegas</title>
-<meta name="description" content="Durvo, a plant-based breakfast and lunch kitchen on South Decatur in Las Vegas. Bulgarian comfort cooking grown from plants. Reserve a table or order pickup by phone.">
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNCIgZmlsbD0iIzIyMzEyQiIvPjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMi41Ii8+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTMuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjVGMEU2IiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC42Ii8+PHRleHQgeD0iMzIiIHk9IjM3LjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0Y1RjBFNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RDwvdGV4dD48L3N2Zz4=">
+<title>Durvo</title>
+<meta name="description" content="A fully plant-based breakfast and lunch table in southwest Las Vegas. Bulgarian comfort cooking, grown from plants.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#22312B; --paper:#F5F0E6; --muted:#5f6a60;
+    --accent:#C64A62; --accent-ink:#FBF3E7;
+    --line:rgba(34,49,43,.15); --gold:#3A1E27;
+    --font-display:"Bricolage Grotesque", Georgia, "Times New Roman", serif;
+    --font-body:"Newsreader", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw:1120px; --pad:clamp(1.15rem, 5vw, 3rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.08;margin:0 0 .4em;
+    text-wrap:balance;overflow-wrap:break-word;}
+  h1{font-size:clamp(2.1rem,6vw,4.2rem);letter-spacing:-.015em}
+  h2{font-size:clamp(1.5rem,4vw,2.6rem)}
+  h3{font-size:1.08rem}
+  p{margin:0 0 1rem;max-width:64ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem;font-weight:600}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.6em;
+    border-radius:6px;text-decoration:none;font-weight:600;letter-spacing:.03em;white-space:nowrap;
+    transition:transform .15s ease,opacity .15s ease}
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .view > .wrap:first-child{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(.4rem,2vw,1.1rem)}
+  .block{padding-top:clamp(1.9rem,5vw,3.4rem);padding-bottom:clamp(1.9rem,5vw,3.4rem);border-top:1px solid var(--line)}
+  .block:first-child{border-top:0}
+  .pagehead + .block{border-top:0;padding-top:0}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+
+  .shot{position:relative;overflow:hidden;background:
+      repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 12px,transparent 12px 24px),
+      color-mix(in srgb,var(--ink) 6%,var(--paper));
+    border:1px dashed var(--line);border-radius:6px;display:flex;align-items:center;
+    justify-content:center;text-align:center;color:var(--muted);
+    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
+    padding:1rem;min-height:200px}
+  .shot::after{content:"\25C8 " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
+  .shot--hero{min-height:min(56vh,500px)}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+  figure.ref{margin:0;position:relative;overflow:hidden;border-radius:6px}
+  figure.ref img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
+  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:2px}
+
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.8rem;padding-bottom:.8rem}
+  .brandmark{font-family:var(--font-display);font-size:clamp(1.05rem,3.4vw,1.32rem);font-weight:700;
+    text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
+  .brandmark img{height:1.6em;width:auto}
+  .nav ul{display:flex;gap:1rem 1.4rem;list-style:none;margin:0;padding:0;font-size:.84rem;flex-wrap:wrap}
+  .nav a{text-decoration:none;color:var(--muted);letter-spacing:.04em}
+  .nav a:hover{color:var(--ink)}
+  .nav a[aria-current="page"]{color:var(--ink);font-weight:600}
+  .nav .btn{padding:.5em 1.05em;font-size:.82rem}
+  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important;font-weight:600}
+  .nav-intro::before{content:"\25B6";font-size:.7em}
+
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:vin .3s ease}
+  @keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+
+  .hero .lead,.pagehead .lead{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--muted);max-width:50ch}
+  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}
+  .hero .shot,.hero figure.ref{margin-top:2.1rem}
+  .pagehead h1{margin-bottom:.2em}
+
+  .introcard{margin-top:2.3rem;border:1px solid var(--line);overflow:hidden;text-decoration:none;
+    display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);color:var(--paper);border-radius:6px}
+  .introcard .txt{padding:clamp(1.3rem,4vw,2.3rem);display:flex;flex-direction:column;gap:.6rem;justify-content:center}
+  .introcard .eyebrow{color:color-mix(in srgb,var(--paper) 68%,transparent)}
+  .introcard h3{font-size:clamp(1.25rem,3vw,1.8rem);margin:0;color:var(--paper)}
+  .introcard p{color:color-mix(in srgb,var(--paper) 80%,transparent);margin:0;max-width:42ch}
+  .introcard .btn{align-self:flex-start;margin-top:.3rem}
+  .introcard .stage{position:relative;min-height:210px;background:
+      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 30%,var(--ink)) 0%, var(--ink) 66%);
+    display:flex;align-items:center;justify-content:center;padding:1.3rem}
+  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
+    color:var(--accent-ink);width:74px;height:74px;display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;}
+  .introcard .stage .cap{position:absolute;bottom:.85rem;left:0;right:0;text-align:center;font-size:.58rem;
+    letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
+
+  .grid{display:grid;gap:1.2rem}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  figure.tile{margin:0}
+  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+
+  .list{list-style:none;padding:0;margin:1.4rem 0 0}
+  .list li{padding:.85rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+  .price{font-family:var(--font-display);white-space:nowrap}
+  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
+
+  .steps{list-style:none;counter-reset:s;padding:0;margin:1.5rem 0 0;display:grid;gap:1rem}
+  .steps li{counter-increment:s;padding-left:3rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;
+    border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:.9rem}
+  .steps h3{margin:0 0 .2rem}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,3.6rem);align-items:start}
+  .facts{list-style:none;padding:0;margin:1.1rem 0 0}
+  .facts li{padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
+  .facts li b{font-weight:600}
+  .facts li span:last-child{color:var(--muted);text-align:right}
+  .facts li a{color:var(--ink)}
+
+  .form{display:grid;gap:.9rem;margin-top:1.3rem;max-width:32rem}
+  .form label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
+    border-radius:6px;background:color-mix(in srgb,var(--ink) 3%,var(--paper));color:var(--ink)}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:.85rem;color:var(--muted)}
+
+  footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 82%,transparent);padding:2.6rem 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.86rem}
+  footer nav{display:flex;gap:1rem;flex-wrap:wrap}
+  footer a{text-decoration:none;color:color-mix(in srgb,var(--paper) 82%,transparent)}
+  footer a:hover{color:var(--paper)}
+
+  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.6rem,2vw,.72rem);
+    letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
+
+  @media (max-width:920px){
+    .grid--3{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr;gap:1.6rem}
+    .introcard{grid-template-columns:1fr} .introcard .stage{min-height:160px}
+  }
+  @media (max-width:600px){
+    body{font-size:16px}
+    .nav ul{width:100%;order:3;gap:.7rem 1rem;font-size:.8rem}
+    .grid--2,.grid--3{grid-template-columns:1fr}
+    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
+    .list li,.facts li{flex-direction:column;gap:.1rem}
+    .list li .price{align-self:flex-start}
+    .facts li span:last-child{text-align:left}
+    footer .wrap{flex-direction:column;gap:.7rem}
+    .shot--hero{min-height:min(50vh,380px)}
+  }
+</style>
+</head>
+<body>
+<div class="mock-banner">Concept mockup for Durvo — built by Hillside Visuals</div>
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">DURVO</a>
+    <ul>
+      <li><a href="#/menu">Menu</a></li>
+      <li><a href="#/about">The name</a></li>
+      <li><a href="#/visit">Visit</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
+    </ul>
+    <a class="btn" href="#/visit">Reserve</a>
+  </div>
+</header>
+<main>
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap hero">
+      <p class="eyebrow">Breakfast and lunch, seven days</p>
+      <h1>Plant-based,<br>all day.</h1>
+      <p class="lead">A fully plant-based table on South Decatur, from the first coffee to the last lunch plate. Bulgarian comfort cooking, grown from plants, in a room of dark wood and green.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/visit">Reserve a table</a>
+        <a class="btn btn--ghost" href="#/menu">See the menu</a>
+      </div>
+      <div class="shot shot--hero" data-shot="The dining room, dark wood and booths"></div>
+      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <span class="eyebrow">Brand film</span>
+          <h3>Watch the Durvo intro</h3>
+          <p>A short brand reveal. Drop it on Instagram, a story, or the top of a reel.</p>
+          <span class="btn">Play the intro</span>
+        </span>
+        <span class="stage"><span class="seal">D</span><span class="cap">Short brand reveal</span></span>
+      </a>
+    </div>
+    <div class="wrap block">
+      <p class="eyebrow">The menu</p>
+      <h2>From first coffee to last lunch plate.</h2>
+      <p style="color:var(--muted)">Mornings, plates, and sweets. All plant-based, none of it a compromise.</p>
+      <div class="grid grid--3" style="margin-top:1.5rem">
+        <div class="shot shot--square" data-shot="Pistachio pesto rigatoni, side view"></div>
+        <div class="shot shot--square" data-shot="Jackfruit crab cakes, overhead"></div>
+        <div class="shot shot--square" data-shot="Three Layers of Love, one spoon"></div>
+      </div>
+      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="#/menu">See the full menu</a></p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p class="eyebrow">The name</p>
+          <h2>Durvo means tree.</h2>
+          <p>Durvo is Bulgarian for tree. The name is the menu, Bulgarian comfort cooking grown from plants, and the room is built to match it.</p>
+          <p><a class="btn btn--ghost" href="#/about">Read the story</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="Chef Hanny at the pass"></div>
+      </div>
+    </div>
+  </section>
+  <section class="view" data-route="/menu" id="view-menu">
+    <div class="wrap pagehead">
+      <p class="eyebrow">The menu</p>
+      <h1>From first coffee to last lunch plate.</h1>
+      <p class="lead">A concept selection. Everything plant-based.</p>
+    </div>
+    <div class="wrap block">
+      <ul class="list">
+        <li><span>Breakfast and brunch plates<span class="desc">Soft, savory, and made for slow mornings, done the Bulgarian way.</span></span><span class="price">Mornings</span></li>
+        <li><span>Specialty coffee<span class="desc">The first cup of the day, poured with a steady hand.</span></span><span class="price">Mornings</span></li>
+        <li><span>Artichoke with saffron aioli<span class="desc">A whole artichoke, hot from the pot, leaves to pull through saffron.</span></span><span class="price">Plates</span></li>
+        <li><span>Pistachio pesto rigatoni with crispy tofu<span class="desc">Rigatoni folded in green pistachio pesto, golden tofu on top.</span></span><span class="price">Plates</span></li>
+        <li><span>Jackfruit crab cakes with celery slaw<span class="desc">Crisp outside, soft inside, a bright celery slaw on the side.</span></span><span class="price">Plates</span></li>
+        <li><span>Ocean bay filet<span class="desc">Hearts of palm and jackfruit, cut thick and finished in the pan.</span></span><span class="price">Plates</span></li>
+        <li><span>Three Layers of Love<span class="desc">Walnut cashew cream, mango sherbet, and matcha mousse in one bowl.</span></span><span class="price">Sweets</span></li>
+      </ul>
+      <p style="margin-top:1rem;color:var(--muted);font-size:.86rem">Prices shown are placeholders for this mockup.</p>
+      <p style="margin-top:1.4rem"><a class="btn" href="#/visit">Reserve a table</a></p>
+    </div>
+  </section>
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap pagehead">
+      <p class="eyebrow">The name</p>
+      <h1>Durvo means tree.</h1>
+      <p class="lead">A Bulgarian root, a Las Vegas table.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>Durvo is Bulgarian for tree. Rayna ran a restaurant in Bulgaria before moving to Las Vegas about five years ago; Chef Hanny runs the kitchen.</p>
+          <p>The name is the menu, Bulgarian comfort cooking grown from plants, and the room is built to match it: dark wood, booth seating, a working bar, and green at every turn. Nothing about it reads like the strip mall it sits in.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="The bar and the green wall"></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <h2>What to know</h2>
+      <div class="grid grid--3" style="margin-top:1.3rem">
+        <div><h3>All plant-based</h3><p class="desc">Every plate, all day. Happy that it happens to be vegan.</p></div>
+        <div><h3>Breakfast and lunch</h3><p class="desc">Open seven days, roughly 8:30a to 2:30p. Hours TBC.</p></div>
+        <div><h3>Built as a destination</h3><p class="desc">Dark wood and booths, made to shake the strip-mall feel.</p></div>
+      </div>
+      <p style="margin-top:1.7rem"><a class="btn" href="#/visit">Reserve a table</a></p>
+    </div>
+  </section>
+  <section class="view" data-route="/visit" id="view-visit">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Visit</p>
+      <h1>South Decatur Blvd.</h1>
+      <p class="lead">Decatur and Hacienda, southwest of the Strip. Reserve ahead or order online for pickup.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <ul class="facts">
+            <li><b>Address</b><span>5255 S Decatur Blvd, Ste 107, Las Vegas, NV 89118</span></li>
+            <li><b>Hours</b><span>Daily, roughly 8:30a to 2:30p (TBC)</span></li>
+            <li><b>Order</b><span>Online / pickup, link in the mockup</span></li>
+            <li><b>Call</b><span><a href="tel:+17253009970">(725) 300-9970</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/durvo_nv/" target="_blank" rel="noopener">@durvo_nv</a></span></li>
+          </ul>
+          <p style="margin-top:1.3rem"><a class="btn" href="tel:+17253009970">Call to reserve</a></p>
+        </div>
+        <div class="grid" style="gap:1rem">
+          <div class="shot shot--wide" data-shot="Storefront on South Decatur"></div>
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="shot shot--square" data-shot="The dining room from the door"></div>
+            <div class="shot shot--square" data-shot="A full table, mid-lunch"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr"></span> Durvo · Las Vegas, NV 89118</span>
+    <nav><a href="#/menu">Menu</a> <a href="#/about">The name</a> <a href="#/visit">Visit</a> <a href="https://www.instagram.com/durvo_nv/" target="_blank" rel="noopener">@durvo_nv</a></nav>
+    <span>Concept mockup by Hillside Visuals</span>
+  </div>
+</footer>
+<script>
+(function(){
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home=document.getElementById('view-home')||views[0];
+    var rof=function(v){return v.getAttribute('data-route');};
+    var render=function(){
+      var h=(location.hash||'').replace(/^#/,'');
+      if(h&&h.charAt(0)!=='/')h='/'+h;
+      var m=views.filter(function(v){return rof(v)===h;})[0]||home;
+      views.forEach(function(v){v.classList.toggle('is-active',v===m);});
+      navLinks.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+rof(m)?'page':'false');});
+      window.scrollTo(0,0);
+    };
+    window.addEventListener('hashchange',render);render();
+  }
+  var form=document.querySelector('.form');
+  if(form){var st=form.querySelector('.status');var note=st?st.textContent:'';
+    form.addEventListener('submit',function(e){e.preventDefault();if(st)st.textContent=note;});}
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "Durvo",
-  "alternateName": "DurVo",
-  "servesCuisine": ["Plant-based", "Vegan", "Bulgarian"],
-  "telephone": "+1-725-300-9970",
+  "servesCuisine": "Plant-based",
+  "telephone": "(725) 300-9970",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "5255 S Decatur Blvd Ste 107",
+    "streetAddress": "5255 S Decatur Blvd, Ste 107",
     "addressLocality": "Las Vegas",
     "addressRegion": "NV",
-    "postalCode": "89118",
-    "addressCountry": "US"
-  },
-  "sameAs": ["https://www.instagram.com/durvo_nv"]
+    "postalCode": "89118"
+  }
 }
 </script>
-<style>
-:root{
-  --paper:#F5F0E6;
-  --surface:#EEE9DF;
-  --ink:#22312B;
-  --ink-deep:#182721;
-  --muted:#5D665F;
-  --muted-dark:#ADAFA6;
-  --hairline:#D7D5CC;
-  --hairline-dark:#445049;
-  --rose:#C64A62;
-  --rose-deep:#A42946;
-  --rose-hover:#8F1036;
-  --rose-light:#D75A70;
-  --rose-wash:#F2E6DE;
-  --wine:#3A1E27;
-  --font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --font-body:"Newsreader",Georgia,"Times New Roman",serif;
-  --r-card:12px;
-  --shadow-soft:0 14px 34px rgba(24,39,33,.10);
-  --shadow-card:0 10px 24px rgba(24,39,33,.12);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
-img,svg{display:block}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-section{scroll-margin-top:84px}
-.container{max-width:1160px;margin-inline:auto;padding-inline:clamp(20px,5vw,40px)}
-
-/* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .18s ease-out,transform .18s ease-out,border-color .18s ease-out,box-shadow .18s ease-out}
-.btn:active{transform:scale(.98)}
-.btn-primary{background:var(--rose-deep);color:var(--paper);box-shadow:0 6px 16px rgba(164,41,70,.28)}
-.btn-primary:hover{background:var(--rose-hover);box-shadow:0 8px 20px rgba(164,41,70,.36)}
-.btn-ghost-dark{border-color:var(--paper);color:var(--paper)}
-.btn-ghost-dark:hover{background:rgba(245,240,230,.10)}
-.btn-nav{min-height:44px;padding:0 20px}
-@media(max-width:560px){
-  .hero-cta,.visit-cta{flex-direction:column}
-  .hero-cta .btn,.visit-cta .btn{width:100%}
-}
-
-/* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:50;background:var(--paper)}
-.nav-inner{max-width:1160px;margin-inline:auto;padding-inline:clamp(20px,5vw,40px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 0;min-height:72px;border-bottom:1px solid var(--hairline)}
-.nav-top{display:flex;align-items:center;gap:20px}
-.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-.brand-text{font-family:var(--font-display);font-weight:800;font-size:1.05rem;letter-spacing:.12em}
-.nav-links{display:flex;align-items:center;gap:2px}
-.nav-link{font-family:var(--font-display);font-weight:600;font-size:.85rem;letter-spacing:.02em;color:var(--ink);padding:10px 14px;border-radius:999px;text-decoration:none;transition:background .15s ease-out}
-.nav-link:hover{background:var(--surface)}
-@media(max-width:720px){
-  .nav-inner{min-height:64px}
-  .nav-links{order:3;flex:1 1 100%;justify-content:space-between;margin-top:6px;padding-top:8px;border-top:1px solid var(--hairline);margin-bottom:10px}
-  .nav-link{padding:10px 8px}
-}
-
-/* ---------- seal + sprig ---------- */
-.seal{position:relative;display:inline-grid;place-items:center;border:1.5px solid currentColor;border-radius:50%;color:inherit}
-.seal::after{content:"";position:absolute;inset:11%;border:1px solid currentColor;border-radius:50%;opacity:.55}
-.seal-d{font-family:var(--font-display);font-weight:800;line-height:1}
-.seal-nav{width:38px;height:38px}
-.seal-nav .seal-d{font-size:18px}
-.seal-hero{width:clamp(56px,8vw,84px);height:clamp(56px,8vw,84px)}
-.seal-hero .seal-d{font-size:clamp(28px,4vw,44px)}
-.seal-foot{width:40px;height:40px}
-.seal-foot .seal-d{font-size:19px}
-.sprig{width:16px;height:16px;flex:none}
-.eyebrow .sprig{color:var(--rose)}
-.eyebrow-dark .sprig{color:var(--rose-light)}
-
-/* ---------- hero ---------- */
-.hero{position:relative;background:radial-gradient(120% 95% at 88% -10%,rgba(198,74,98,.20),transparent 55%),linear-gradient(180deg,var(--ink),var(--ink-deep));color:var(--paper);overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(56px,10vw,128px)}
-.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 16px}
-.eyebrow-dark{color:var(--paper)}
-.hero-lockup{display:flex;align-items:center;gap:clamp(16px,2vw,26px)}
-.hero-wordmark{font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,8.5vw,6.4rem);letter-spacing:.12em;line-height:.95;margin:0;color:var(--paper)}
-.hero-tagline{font-family:var(--font-body);font-style:italic;font-weight:500;font-size:clamp(1.3rem,2.6vw,1.75rem);margin:20px 0 0;color:var(--paper)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.hero-address{margin:28px 0 0;color:var(--muted-dark);font-family:var(--font-body);font-size:1rem}
-.hero-dish{position:relative;margin:0;border:1px solid var(--hairline-dark);border-radius:12px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
-.ph{aspect-ratio:4/3;background-size:cover;background-position:center;background-color:var(--ink-deep)}
-.tag{position:absolute;top:14px;left:14px;background:var(--paper);color:var(--ink);font-family:var(--font-display);font-weight:700;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
-.ph-cap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:32px 18px 16px;background:linear-gradient(transparent,rgba(24,39,33,.86));border-radius:0 0 12px 12px;color:var(--paper)}
-.ph-cap strong{display:block;font-family:var(--font-display);font-weight:700;font-size:1.15rem;letter-spacing:.02em}
-.ph-cap span{display:block;font-family:var(--font-body);font-size:.95rem;color:var(--muted-dark);margin-top:2px}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
-
-/* ---------- sections ---------- */
-.menu{background:var(--surface)}
-.gallery{background:var(--paper)}
-.story{background:var(--surface);text-align:center}
-.visit{background:linear-gradient(180deg,var(--ink),var(--ink-deep));color:var(--paper)}
-.footer{background:var(--ink-deep);color:var(--paper)}
-section:not(.hero):not(.visit){padding-block:clamp(64px,10vw,120px)}
-.visit{padding-block:clamp(64px,10vw,120px)}
-.section-head{margin-bottom:clamp(28px,5vw,46px)}
-.story .section-head{margin-bottom:clamp(20px,3vw,30px)}
-.section-title{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.6vw,3.1rem);letter-spacing:-.01em;line-height:1.05;margin:0;color:var(--ink)}
-.title-dark{color:var(--paper)}
-
-/* ---------- menu ---------- */
-.menu-card{max-width:820px;margin-inline:auto;background:var(--paper);border:1px solid var(--hairline);border-radius:var(--r-card);padding:clamp(20px,4vw,40px);box-shadow:var(--shadow-soft)}
-.menu-group{padding-bottom:clamp(16px,3vw,26px);margin-bottom:clamp(16px,3vw,26px);border-bottom:1px solid var(--hairline)}
-.menu-group:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
-.menu-group-label{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 12px}
-.menu-list{list-style:none;margin:0;padding:0}
-.menu-item{padding:15px 2px;border-bottom:1px solid var(--hairline)}
-.menu-item:last-child{border-bottom:none}
-.menu-name{font-family:var(--font-display);font-weight:600;font-size:1.08rem;color:var(--ink)}
-.menu-item p{margin:3px 0 0;font-family:var(--font-body);font-size:1rem;line-height:1.55;color:var(--muted);max-width:58ch}
-.sweet-card{background:var(--rose-wash);border:1px solid rgba(198,74,98,.25);border-radius:10px;padding:18px 20px}
-.sweet-card .menu-name{color:var(--wine)}
-.sweet-card p{color:var(--wine)}
-.menu-full{text-align:center;margin-top:30px}
-.menu-full a{font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--wine);text-decoration:none;border-bottom:2px solid var(--rose);padding-bottom:4px}
-.menu-full a:hover{border-bottom-color:var(--wine)}
-
-/* ---------- gallery ---------- */
-.gallery-intro{max-width:62ch;font-family:var(--font-body);font-size:1.05rem;line-height:1.65;color:var(--muted);margin:0 0 clamp(26px,4vw,40px)}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.g-card{position:relative;border-radius:var(--r-card);overflow:hidden;margin:0;aspect-ratio:4/3;background:var(--ink-deep);box-shadow:var(--shadow-card);transition:transform .2s ease-out,box-shadow .2s ease-out}
-.g-card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(24,39,33,.18)}
-.g-ph{position:absolute;inset:0;background-size:cover;background-position:center}
-.g-label{position:absolute;left:0;right:0;bottom:0;margin:0;padding:34px 16px 14px;background:linear-gradient(transparent,rgba(24,39,33,.86));font-family:var(--font-body);color:var(--paper);font-size:1rem;line-height:1.4}
-@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){
-  .gallery-grid{grid-template-columns:1fr;gap:14px}
-  .g-label{font-size:1.02rem}
-}
-
-/* ---------- story ---------- */
-.story-copy{font-family:var(--font-body);font-size:clamp(1.1rem,2vw,1.3rem);line-height:1.7;color:var(--ink);max-width:62ch;margin-inline:auto}
-.story-tag{font-family:var(--font-body);font-style:italic;font-weight:500;font-size:clamp(1.5rem,2.6vw,1.9rem);color:var(--rose);margin:34px 0 0}
-
-/* ---------- visit ---------- */
-.visit-intro{font-family:var(--font-body);font-size:clamp(1.05rem,1.8vw,1.2rem);line-height:1.65;color:var(--muted-dark);max-width:62ch;margin:6px 0 0}
-.visit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start;margin-top:clamp(28px,5vw,44px)}
-.visit-block{padding:0 0 24px;margin:0 0 24px;border-bottom:1px solid var(--hairline-dark)}
-.visit-block:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
-.v-label{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-dark);margin-bottom:10px}
-.visit-block p{margin:0;font-family:var(--font-body);font-size:1.1rem;line-height:1.55;color:var(--paper)}
-.visit-block .tel{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--rose-light);padding-bottom:1px}
-.visit-block .tel:hover{border-bottom-color:var(--paper)}
-.chip{display:inline-block;background:var(--rose-wash);color:var(--wine);font-family:var(--font-display);font-weight:700;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
-.visit-map{position:relative;border:1px solid var(--hairline-dark);border-radius:var(--r-card);overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.32)}
-.visit-map .ph{aspect-ratio:4/3}
-.map-label{position:absolute;left:0;right:0;bottom:0;margin:0;padding:30px 16px 14px;background:linear-gradient(transparent,rgba(24,39,33,.86));font-family:var(--font-body);color:var(--paper);font-size:1rem}
-.visit-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,5vw,44px)}
-@media(max-width:820px){.visit-grid{grid-template-columns:1fr}}
-
-/* ---------- footer ---------- */
-.footer{border-top:1px solid var(--hairline-dark)}
-.footer-inner{text-align:center;display:grid;justify-items:center;gap:12px;padding-block:56px 48px}
-.brand-dark{color:var(--paper)}
-.footer-tag{font-family:var(--font-body);font-style:italic;color:var(--muted-dark);font-size:1rem;margin:4px 0 0}
-.footer-meta{font-family:var(--font-body);color:var(--muted-dark);font-size:.95rem;margin:0}
-.footer-note{margin-top:6px;font-family:var(--font-body);font-size:.8rem;color:var(--muted-dark)}
-
-:is(.hero,.visit,.footer) :focus-visible{outline-color:var(--paper)}
-.btn-primary:focus-visible{outline-color:var(--paper)}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .btn,.g-card{transition:none}
-}
-</style>
-</head>
-<body id="top">
-
-<header class="nav" data-od-id="nav">
-  <div class="nav-inner">
-    <div class="nav-top">
-      <a href="#top" class="brand" aria-label="Durvo home" data-od-id="nav-brand">
-        <span class="seal seal-nav" aria-hidden="true"><span class="seal-d">D</span></span>
-        <span class="brand-text">DURVO</span>
-      </a>
-      <a class="btn btn-primary btn-nav" href="#visit" data-od-id="btn-reserve-nav">Reserve</a>
-    </div>
-    <nav class="nav-links" aria-label="Primary" data-od-id="nav-links">
-      <a class="nav-link" href="#menu" data-od-id="link-menu">Menu</a>
-      <a class="nav-link" href="#visit" data-od-id="link-reserve">Reserve</a>
-      <a class="nav-link" href="#menu" data-od-id="link-order">Order</a>
-      <a class="nav-link" href="#visit" data-od-id="link-visit">Visit</a>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-
-  <section class="hero" data-od-id="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow eyebrow-dark" data-od-id="hero-eyebrow">
-          <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-          Breakfast and lunch, seven days
-        </p>
-        <div class="hero-lockup">
-          <span class="seal seal-hero" aria-hidden="true"><span class="seal-d">D</span></span>
-          <h1 class="hero-wordmark" data-od-id="hero-wordmark">DURVO</h1>
-        </div>
-        <p class="hero-tagline" data-od-id="hero-tagline">Plant-based, all day.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#visit" data-od-id="btn-reserve-hero">Reserve a table</a>
-          <a class="btn btn-ghost-dark" href="#visit" data-od-id="btn-order-hero">Order online / pickup</a>
-        </div>
-        <p class="hero-address" data-od-id="hero-address">5255 S Decatur Blvd Ste 107, Las Vegas</p>
-      </div>
-      <figure class="hero-dish" data-od-id="hero-dish">
-        <div class="ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgxNjAgMC41IDAuNSkiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyMjMxMkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxODI3MjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJyIiBjeD0iMC41IiBjeT0iMC41IiByPSIxIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjQzY0QTYyIiBzdG9wLW9wYWNpdHk9IjAuMTIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNjRBNjIiIHN0b3Atb3BhY2l0eT0iMCIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNnKSIvPgo8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjcikiLz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTIwLDE4MCkgc2NhbGUoMTApIj48ZyBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjEwIj4KPHBhdGggZD0iTTEyIDIxLjUgTDEyIDcuNSIgc3Ryb2tlPSIjRjVGMEU2IiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0xMiAxMyBDOC40IDEzLjIgNi42IDExIDcuOCA3LjQgQzEwLjYgOC42IDExLjggMTAuOCAxMiAxMyBaIi8+CjxwYXRoIGQ9Ik0xMi40IDEwLjUgQzE1IDEwLjQgMTYuOSA4LjYgMTYuNiA1LjggQzE0IDYuNSAxMi45IDguNSAxMi40IDEwLjUgWiIvPgo8cGF0aCBkPSJNMTIuNyA3LjYgQzE0LjIgNy40IDE1LjIgNi4zIDE1IDQuOSBDMTMuNSA1LjIgMTIuOSA2LjIgMTIuNyA3LjYgWiIvPgo8L2c+PC9nPgo8ZyBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjMyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDAwLDg0MCkiPgo8Y2lyY2xlIHI9IjYyIi8+PGNpcmNsZSByPSI1MCIvPjxjaXJjbGUgcj0iNSIgZmlsbD0iI0Y1RjBFNiIgc3Ryb2tlPSJub25lIiBvcGFjaXR5PSIwLjYiLz4KPC9nPgo8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MjAiIHI9IjUiIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMjUiLz4KPGNpcmNsZSBjeD0iMTA4MCIgY3k9IjkwIiByPSIzIiBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+')" role="img" aria-label="Photo placeholder for the ocean bay filet"></div>
-        <span class="tag">Photo placeholder</span>
-        <figcaption class="ph-cap">
-          <strong>Ocean bay filet</strong>
-          <span>Hearts of palm and jackfruit</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="menu" id="menu" data-od-id="menu">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow" data-od-id="menu-eyebrow">
-          <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-          The menu
-        </p>
-        <h2 class="section-title" data-od-id="menu-title">From first coffee to last lunch plate</h2>
-      </div>
-
-      <div class="menu-card">
-        <div class="menu-group" data-od-id="menu-group-mornings">
-          <h3 class="menu-group-label">
-            <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-            Mornings
-          </h3>
-          <ul class="menu-list">
-            <li class="menu-item" data-od-id="menu-item-brunch">
-              <div class="menu-name">Breakfast and brunch plates</div>
-              <p>Soft, savory, and made for slow mornings, done the Bulgarian way.</p>
-            </li>
-            <li class="menu-item" data-od-id="menu-item-coffee">
-              <div class="menu-name">Specialty coffee</div>
-              <p>The first cup of the day, poured with a steady hand.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="menu-group" data-od-id="menu-group-plates">
-          <h3 class="menu-group-label">
-            <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-            Plates
-          </h3>
-          <ul class="menu-list">
-            <li class="menu-item" data-od-id="menu-item-artichoke">
-              <div class="menu-name">Artichoke with saffron aioli</div>
-              <p>A whole artichoke, hot from the pot, leaves to pull through saffron.</p>
-            </li>
-            <li class="menu-item" data-od-id="menu-item-rigatoni">
-              <div class="menu-name">Pistachio pesto rigatoni with crispy tofu</div>
-              <p>Rigatoni folded in green pistachio pesto, golden tofu on top.</p>
-            </li>
-            <li class="menu-item" data-od-id="menu-item-crabcakes">
-              <div class="menu-name">Jackfruit crab cakes with celery slaw</div>
-              <p>Crisp outside, soft inside, with a bright celery slaw on the side.</p>
-            </li>
-            <li class="menu-item" data-od-id="menu-item-filet">
-              <div class="menu-name">Ocean bay filet</div>
-              <p>Hearts of palm and jackfruit, cut thick and finished in the pan. The name says it all.</p>
-            </li>
-            <li class="menu-item" data-od-id="menu-item-tacos">
-              <div class="menu-name">Street tacos</div>
-              <p>Warm tortillas with saucy fillings. No fork required.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="menu-group" data-od-id="menu-group-sweets">
-          <h3 class="menu-group-label">
-            <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-            Sweets
-          </h3>
-          <div class="sweet-card" data-od-id="menu-item-sweets">
-            <div class="menu-name">Three Layers of Love</div>
-            <p>Walnut cashew cream, mango sherbet, and matcha mousse in one bowl. Save room.</p>
-          </div>
-        </div>
-      </div>
-
-      <p class="menu-full"><a href="#menu" data-od-id="menu-full-link">See the full menu</a></p>
-    </div>
-  </section>
-
-  <section class="gallery" id="gallery" data-od-id="gallery">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow" data-od-id="gallery-eyebrow">
-          <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-          Gallery
-        </p>
-        <h2 class="section-title" data-od-id="gallery-title">Around the table</h2>
-      </div>
-      <p class="gallery-intro" data-od-id="gallery-intro">Six photo placeholders for the first shoot. Real plates and the real room are on the way.</p>
-      <div class="gallery-grid">
-        <figure class="g-card" data-od-id="g-card-crabcakes">
-          <div class="g-ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgxNjAgMC41IDAuNSkiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyMjMxMkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxODI3MjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJyIiBjeD0iMC44NSIgY3k9IjAuMTIiIHI9IjAuNyI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0M2NEE2MiIgc3RvcC1vcGFjaXR5PSIwLjI0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzY0QTYyIiBzdG9wLW9wYWNpdHk9IjAiLz4KPC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjZykiLz4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI3IpIi8+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYyMCwxOTApIHNjYWxlKDkpIj48ZyBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjEwIj4KPHBhdGggZD0iTTEyIDIxLjUgTDEyIDcuNSIgc3Ryb2tlPSIjRjVGMEU2IiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0xMiAxMyBDOC40IDEzLjIgNi42IDExIDcuOCA3LjQgQzEwLjYgOC42IDExLjggMTAuOCAxMiAxMyBaIi8+CjxwYXRoIGQ9Ik0xMi40IDEwLjUgQzE1IDEwLjQgMTYuOSA4LjYgMTYuNiA1LjggQzE0IDYuNSAxMi45IDguNSAxMi40IDEwLjUgWiIvPgo8cGF0aCBkPSJNMTIuNyA3LjYgQzE0LjIgNy40IDE1LjIgNi4zIDE1IDQuOSBDMTMuNSA1LjIgMTIuOSA2LjIgMTIuNyA3LjYgWiIvPgo8L2c+PC9nPgo8ZyBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjMyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDMwLDc5MCkiPgo8Y2lyY2xlIHI9IjYyIi8+PGNpcmNsZSByPSI1MCIvPjxjaXJjbGUgcj0iNSIgZmlsbD0iI0Y1RjBFNiIgc3Ryb2tlPSJub25lIiBvcGFjaXR5PSIwLjYiLz4KPC9nPgo8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MjAiIHI9IjUiIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMjUiLz4KPGNpcmNsZSBjeD0iMTA4MCIgY3k9IjkwIiByPSIzIiBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+')" role="img" aria-label="Photo placeholder for jackfruit crab cakes, overhead"></div>
-          <span class="tag">Photo placeholder</span>
-          <figcaption class="g-label">jackfruit crab cakes, overhead</figcaption>
-        </figure>
-        <figure class="g-card" data-od-id="g-card-rigatoni">
-          <div class="g-ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgyMDAgMC41IDAuNSkiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyMjMxMkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxRTJDMjYiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJyIiBjeD0iMC4xNCIgY3k9IjAuMiIgcj0iMC42MiI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0M2NEE2MiIgc3RvcC1vcGFjaXR5PSIwLjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNjRBNjIiIHN0b3Atb3BhY2l0eT0iMCIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNnKSIvPgo8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjcikiLz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUwLDIxMCkgc2NhbGUoOCkiPjxnIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMTAiPgo8cGF0aCBkPSJNMTIgMjEuNSBMMTIgNy41IiBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KPHBhdGggZD0iTTEyIDEzIEM4LjQgMTMuMiA2LjYgMTEgNy44IDcuNCBDMTAuNiA4LjYgMTEuOCAxMC44IDEyIDEzIFoiLz4KPHBhdGggZD0iTTEyLjQgMTAuNSBDMTUgMTAuNCAxNi45IDguNiAxNi42IDUuOCBDMTQgNi41IDEyLjkgOC41IDEyLjQgMTAuNSBaIi8+CjxwYXRoIGQ9Ik0xMi43IDcuNiBDMTQuMiA3LjQgMTUuMiA2LjMgMTUgNC45IEMxMy41IDUuMiAxMi45IDYuMiAxMi43IDcuNiBaIi8+CjwvZz48L2c+CjxnIHN0cm9rZT0iI0Y1RjBFNiIgc3Ryb2tlLXdpZHRoPSIyLjUiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuMzIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMzAsNzkwKSI+CjxjaXJjbGUgcj0iNjIiLz48Y2lyY2xlIHI9IjUwIi8+PGNpcmNsZSByPSI1IiBmaWxsPSIjRjVGMEU2IiBzdHJva2U9Im5vbmUiIG9wYWNpdHk9IjAuNiIvPgo8L2c+CjxjaXJjbGUgY3g9IjEyMCIgY3k9IjgyMCIgcj0iNSIgZmlsbD0iI0Y1RjBFNiIgb3BhY2l0eT0iMC4yNSIvPgo8Y2lyY2xlIGN4PSIxMDgwIiBjeT0iOTAiIHI9IjMiIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMyIvPgo8L3N2Zz4=')" role="img" aria-label="Photo placeholder for pistachio pesto rigatoni, side view"></div>
-          <span class="tag">Photo placeholder</span>
-          <figcaption class="g-label">pistachio pesto rigatoni, side view</figcaption>
-        </figure>
-        <figure class="g-card" data-od-id="g-card-filet">
-          <div class="g-ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgxNjAgMC41IDAuNSkiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyMjMxMkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxODI3MjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJyIiBjeD0iMC41IiBjeT0iMC4yOCIgcj0iMC45NSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0M2NEE2MiIgc3RvcC1vcGFjaXR5PSIwLjE4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzY0QTYyIiBzdG9wLW9wYWNpdHk9IjAiLz4KPC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjZykiLz4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI3IpIi8+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQyMCwyMzApIHNjYWxlKDguNSkiPjxnIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMTAiPgo8cGF0aCBkPSJNMTIgMjEuNSBMMTIgNy41IiBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KPHBhdGggZD0iTTEyIDEzIEM4LjQgMTMuMiA2LjYgMTEgNy44IDcuNCBDMTAuNiA4LjYgMTEuOCAxMC44IDEyIDEzIFoiLz4KPHBhdGggZD0iTTEyLjQgMTAuNSBDMTUgMTAuNCAxNi45IDguNiAxNi42IDUuOCBDMTQgNi41IDEyLjkgOC41IDEyLjQgMTAuNSBaIi8+CjxwYXRoIGQ9Ik0xMi43IDcuNiBDMTQuMiA3LjQgMTUuMiA2LjMgMTUgNC45IEMxMy41IDUuMiAxMi45IDYuMiAxMi43IDcuNiBaIi8+CjwvZz48L2c+CjxnIHN0cm9rZT0iI0Y1RjBFNiIgc3Ryb2tlLXdpZHRoPSIyLjUiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuMzIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDk2MCw4MDApIj4KPGNpcmNsZSByPSI2MiIvPjxjaXJjbGUgcj0iNTAiLz48Y2lyY2xlIHI9IjUiIGZpbGw9IiNGNUYwRTYiIHN0cm9rZT0ibm9uZSIgb3BhY2l0eT0iMC42Ii8+CjwvZz4KPGNpcmNsZSBjeD0iMTIwIiBjeT0iODIwIiByPSI1IiBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjI1Ii8+CjxjaXJjbGUgY3g9IjEwODAiIGN5PSI5MCIgcj0iMyIgZmlsbD0iI0Y1RjBFNiIgb3BhY2l0eT0iMC4zIi8+Cjwvc3ZnPg==')" role="img" aria-label="Photo placeholder for ocean bay filet, plated"></div>
-          <span class="tag">Photo placeholder</span>
-          <figcaption class="g-label">ocean bay filet, plated</figcaption>
-        </figure>
-        <figure class="g-card" data-od-id="g-card-tacos">
-          <div class="g-ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgyMCAwLjUgMC41KSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyMzEyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE4MjcyMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmFkaWFsR3JhZGllbnQgaWQ9InIiIGN4PSIwLjE4IiBjeT0iMC44MiIgcj0iMC42Ij4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjQzY0QTYyIiBzdG9wLW9wYWNpdHk9IjAuMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M2NEE2MiIgc3RvcC1vcGFjaXR5PSIwIi8+CjwvcmFkaWFsR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNyKSIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMDAsMjQwKSBzY2FsZSg3LjUpIj48ZyBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjEwIj4KPHBhdGggZD0iTTEyIDIxLjUgTDEyIDcuNSIgc3Ryb2tlPSIjRjVGMEU2IiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0xMiAxMyBDOC40IDEzLjIgNi42IDExIDcuOCA3LjQgQzEwLjYgOC42IDExLjggMTAuOCAxMiAxMyBaIi8+CjxwYXRoIGQ9Ik0xMi40IDEwLjUgQzE1IDEwLjQgMTYuOSA4LjYgMTYuNiA1LjggQzE0IDYuNSAxMi45IDguNSAxMi40IDEwLjUgWiIvPgo8cGF0aCBkPSJNMTIuNyA3LjYgQzE0LjIgNy40IDE1LjIgNi4zIDE1IDQuOSBDMTMuNSA1LjIgMTIuOSA2LjIgMTIuNyA3LjYgWiIvPgo8L2c+PC9nPgo8ZyBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjMyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDQwLDc4MCkiPgo8Y2lyY2xlIHI9IjYyIi8+PGNpcmNsZSByPSI1MCIvPjxjaXJjbGUgcj0iNSIgZmlsbD0iI0Y1RjBFNiIgc3Ryb2tlPSJub25lIiBvcGFjaXR5PSIwLjYiLz4KPC9nPgo8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MjAiIHI9IjUiIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMjUiLz4KPGNpcmNsZSBjeD0iMTA4MCIgY3k9IjkwIiByPSIzIiBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+')" role="img" aria-label="Photo placeholder for street tacos, above the table"></div>
-          <span class="tag">Photo placeholder</span>
-          <figcaption class="g-label">street tacos, above the table</figcaption>
-        </figure>
-        <figure class="g-card" data-od-id="g-card-dessert">
-          <div class="g-ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgxNDAgMC41IDAuNSkiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyMjMxMkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxQjJBMjQiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJyIiBjeD0iMC44IiBjeT0iMC44IiByPSIwLjY1Ij4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjQzY0QTYyIiBzdG9wLW9wYWNpdHk9IjAuMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M2NEE2MiIgc3RvcC1vcGFjaXR5PSIwIi8+CjwvcmFkaWFsR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNyKSIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MDAsMjAwKSBzY2FsZSg4KSI+PGcgZmlsbD0iI0Y1RjBFNiIgb3BhY2l0eT0iMC4xMCI+CjxwYXRoIGQ9Ik0xMiAyMS41IEwxMiA3LjUiIHN0cm9rZT0iI0Y1RjBFNiIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgo8cGF0aCBkPSJNMTIgMTMgQzguNCAxMy4yIDYuNiAxMSA3LjggNy40IEMxMC42IDguNiAxMS44IDEwLjggMTIgMTMgWiIvPgo8cGF0aCBkPSJNMTIuNCAxMC41IEMxNSAxMC40IDE2LjkgOC42IDE2LjYgNS44IEMxNCA2LjUgMTIuOSA4LjUgMTIuNCAxMC41IFoiLz4KPHBhdGggZD0iTTEyLjcgNy42IEMxNC4yIDcuNCAxNS4yIDYuMyAxNSA0LjkgQzEzLjUgNS4yIDEyLjkgNi4yIDEyLjcgNy42IFoiLz4KPC9nPjwvZz4KPGcgc3Ryb2tlPSIjRjVGMEU2IiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iMC4zMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAzMCw3OTApIj4KPGNpcmNsZSByPSI2MiIvPjxjaXJjbGUgcj0iNTAiLz48Y2lyY2xlIHI9IjUiIGZpbGw9IiNGNUYwRTYiIHN0cm9rZT0ibm9uZSIgb3BhY2l0eT0iMC42Ii8+CjwvZz4KPGNpcmNsZSBjeD0iMTIwIiBjeT0iODIwIiByPSI1IiBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjI1Ii8+CjxjaXJjbGUgY3g9IjEwODAiIGN5PSI5MCIgcj0iMyIgZmlsbD0iI0Y1RjBFNiIgb3BhY2l0eT0iMC4zIi8+Cjwvc3ZnPg==')" role="img" aria-label="Photo placeholder for Three Layers of Love, one spoon"></div>
-          <span class="tag">Photo placeholder</span>
-          <figcaption class="g-label">Three Layers of Love, one spoon</figcaption>
-        </figure>
-        <figure class="g-card" data-od-id="g-card-room">
-          <div class="g-ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgxNjAgMC41IDAuNSkiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyMjMxMkIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxODI3MjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJyIiBjeD0iMC41IiBjeT0iMC41IiByPSIxIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjQzY0QTYyIiBzdG9wLW9wYWNpdHk9IjAuMTIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNjRBNjIiIHN0b3Atb3BhY2l0eT0iMCIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNnKSIvPgo8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjcikiLz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTIwLDE4MCkgc2NhbGUoMTApIj48ZyBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjEwIj4KPHBhdGggZD0iTTEyIDIxLjUgTDEyIDcuNSIgc3Ryb2tlPSIjRjVGMEU2IiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0xMiAxMyBDOC40IDEzLjIgNi42IDExIDcuOCA3LjQgQzEwLjYgOC42IDExLjggMTAuOCAxMiAxMyBaIi8+CjxwYXRoIGQ9Ik0xMi40IDEwLjUgQzE1IDEwLjQgMTYuOSA4LjYgMTYuNiA1LjggQzE0IDYuNSAxMi45IDguNSAxMi40IDEwLjUgWiIvPgo8cGF0aCBkPSJNMTIuNyA3LjYgQzE0LjIgNy40IDE1LjIgNi4zIDE1IDQuOSBDMTMuNSA1LjIgMTIuOSA2LjIgMTIuNyA3LjYgWiIvPgo8L2c+PC9nPgo8ZyBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjMyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDAwLDg0MCkiPgo8Y2lyY2xlIHI9IjYyIi8+PGNpcmNsZSByPSI1MCIvPjxjaXJjbGUgcj0iNSIgZmlsbD0iI0Y1RjBFNiIgc3Ryb2tlPSJub25lIiBvcGFjaXR5PSIwLjYiLz4KPC9nPgo8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MjAiIHI9IjUiIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMjUiLz4KPGNpcmNsZSBjeD0iMTA4MCIgY3k9IjkwIiByPSIzIiBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+')" role="img" aria-label="Photo placeholder for the room, dark wood and booths"></div>
-          <span class="tag">Photo placeholder</span>
-          <figcaption class="g-label">the room, dark wood and booths</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="story" id="story" data-od-id="story">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow" data-od-id="story-eyebrow">
-          <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-          The name
-        </p>
-        <h2 class="section-title" data-od-id="story-heading">Durvo means tree</h2>
-      </div>
-      <p class="story-copy" data-od-id="story-copy">Durvo is Bulgarian for tree. The name is the menu, Bulgarian comfort cooking grown from plants, and the room is built to match it, dark wood, booth seating, a working bar, and green at every turn. It is a neighborhood table, not a strip mall room, open from the first coffee to the last lunch plate.</p>
-      <p class="story-tag" data-od-id="story-tagline">Plant-based, all day.</p>
-    </div>
-  </section>
-
-  <section class="visit" id="visit" data-od-id="visit">
-    <div class="container">
-      <div class="section-head section-head-dark">
-        <p class="eyebrow eyebrow-dark" data-od-id="visit-eyebrow">
-          <svg class="sprig" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5 12 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 13C8.4 13.2 6.6 11 7.8 7.4C10.6 8.6 11.8 10.8 12 13Z" fill="currentColor"/><path d="M12.4 10.5C15 10.4 16.9 8.6 16.6 5.8C14 6.5 12.9 8.5 12.4 10.5Z" fill="currentColor"/><path d="M12.7 7.6C14.2 7.4 15.2 6.3 15 4.9C13.5 5.2 12.9 6.2 12.7 7.6Z" fill="currentColor"/></svg>
-          Visit
-        </p>
-        <h2 class="section-title title-dark" data-od-id="visit-title">Come sit down</h2>
-        <p class="visit-intro" data-od-id="visit-intro">Reservations and pickup orders are taken by phone. Call us and we will hold your table or bag your order.</p>
-      </div>
-
-      <div class="visit-grid">
-        <div class="visit-info">
-          <div class="visit-block" data-od-id="visit-address">
-            <span class="v-label">Address</span>
-            <p>5255 S Decatur Blvd Ste 107, Las Vegas, NV 89118</p>
-          </div>
-          <div class="visit-block" data-od-id="visit-phone">
-            <span class="v-label">Phone</span>
-            <p><a class="tel" href="tel:+17253009970">(725) 300-9970</a></p>
-          </div>
-          <div class="visit-block" data-od-id="visit-hours">
-            <span class="v-label">Hours <span class="chip" data-od-id="hours-confirm">to confirm</span></span>
-            <p>Weekdays, 8:30am to 2:30pm</p>
-            <p>Weekends, 9:00am to 2:30pm</p>
-          </div>
-          <div class="visit-block" data-od-id="visit-bar">
-            <span class="v-label">Coming soon</span>
-            <p>The wine list and the bar are coming soon. Coffee carries the mornings until then.</p>
-          </div>
-        </div>
-        <div class="visit-map" data-od-id="visit-map">
-          <div class="ph" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC45IiB5Mj0iMSIgZ3JhZGllbnRUcmFuc2Zvcm09InJvdGF0ZSgyMCAwLjUgMC41KSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyMzEyQiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE4MjcyMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmFkaWFsR3JhZGllbnQgaWQ9InIiIGN4PSIwLjE4IiBjeT0iMC44MiIgcj0iMC42Ij4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjQzY0QTYyIiBzdG9wLW9wYWNpdHk9IjAuMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M2NEE2MiIgc3RvcC1vcGFjaXR5PSIwIi8+CjwvcmFkaWFsR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNyKSIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMDAsMjQwKSBzY2FsZSg3LjUpIj48ZyBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjEwIj4KPHBhdGggZD0iTTEyIDIxLjUgTDEyIDcuNSIgc3Ryb2tlPSIjRjVGMEU2IiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0xMiAxMyBDOC40IDEzLjIgNi42IDExIDcuOCA3LjQgQzEwLjYgOC42IDExLjggMTAuOCAxMiAxMyBaIi8+CjxwYXRoIGQ9Ik0xMi40IDEwLjUgQzE1IDEwLjQgMTYuOSA4LjYgMTYuNiA1LjggQzE0IDYuNSAxMi45IDguNSAxMi40IDEwLjUgWiIvPgo8cGF0aCBkPSJNMTIuNyA3LjYgQzE0LjIgNy40IDE1LjIgNi4zIDE1IDQuOSBDMTMuNSA1LjIgMTIuOSA2LjIgMTIuNyA3LjYgWiIvPgo8L2c+PC9nPgo8ZyBzdHJva2U9IiNGNUYwRTYiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjMyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDQwLDc4MCkiPgo8Y2lyY2xlIHI9IjYyIi8+PGNpcmNsZSByPSI1MCIvPjxjaXJjbGUgcj0iNSIgZmlsbD0iI0Y1RjBFNiIgc3Ryb2tlPSJub25lIiBvcGFjaXR5PSIwLjYiLz4KPC9nPgo8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MjAiIHI9IjUiIGZpbGw9IiNGNUYwRTYiIG9wYWNpdHk9IjAuMjUiLz4KPGNpcmNsZSBjeD0iMTA4MCIgY3k9IjkwIiByPSIzIiBmaWxsPSIjRjVGMEU2IiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+')" role="img" aria-label="Map placeholder for 5255 S Decatur Blvd, Las Vegas"></div>
-          <span class="tag">Map placeholder</span>
-          <p class="map-label">S Decatur Blvd, the southwest valley</p>
-        </div>
-      </div>
-
-      <div class="visit-cta" data-od-id="visit-cta">
-        <a class="btn btn-primary" href="tel:+17253009970" data-od-id="btn-reserve-visit">Reserve a table</a>
-        <a class="btn btn-ghost-dark" href="tel:+17253009970" data-od-id="btn-order-visit">Order online / pickup</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer" data-od-id="footer">
-  <div class="container footer-inner">
-    <a href="#top" class="brand brand-dark" aria-label="Durvo home" data-od-id="footer-brand">
-      <span class="seal seal-foot" aria-hidden="true"><span class="seal-d">D</span></span>
-      <span class="brand-text">DURVO</span>
-    </a>
-    <p class="footer-tag">Plant-based, all day.</p>
-    <p class="footer-meta">@durvo_nv, (725) 300-9970, 5255 S Decatur Blvd Ste 107, Las Vegas</p>
-    <p class="footer-note">Concept mockup by Hillside Visuals.</p>
-  </div>
-</footer>
-
 </body>
 </html>
