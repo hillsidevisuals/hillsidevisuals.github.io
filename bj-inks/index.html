@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BJ INKS</title>
+<meta name="description" content="BJ INKS is the independent tattoo practice of BJ Rascon in Las Vegas. Anime, skulls, and fine black linework, by appointment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* BJ INKS runs dark: near-black ground, bone text, one vermilion CTA */
+    --ink:#EFE9DC;        /* "ink": the bone text/marks on the dark ground */
+    --paper:#0C0C0E;      /* the gallery-wall ground */
+    --muted:#9a9488;
+    --accent:#D93A21;
+    --accent-ink:#0C0C0E;
+    --line:rgba(239,233,220,.14);
+    --font-display:"Oswald", "Helvetica Neue", Arial, sans-serif;
+    --font-body:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw:1120px;
+    --pad:clamp(1.15rem, 5vw, 3rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;margin:0 0 .4em;
+    text-wrap:balance;overflow-wrap:break-word;text-transform:uppercase;letter-spacing:.01em}
+  h1{font-size:clamp(2.3rem,6.5vw,4.6rem);letter-spacing:0}
+  h2{font-size:clamp(1.6rem,4vw,2.7rem)}
+  h3{font-size:1.05rem;letter-spacing:.03em}
+  p{margin:0 0 1rem;max-width:64ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem;
+    font-family:var(--font-display);font-weight:600}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.6em;
+    border-radius:0;text-decoration:none;font-weight:600;letter-spacing:.08em;white-space:nowrap;
+    text-transform:uppercase;font-family:var(--font-display);font-size:.92rem;
+    transition:transform .15s ease,opacity .15s ease}
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .view > .wrap:first-child{padding-top:clamp(2.4rem,7vw,5rem)}
+  .block{padding:clamp(2.4rem,8vw,6rem) 0;border-top:1px solid var(--line)}
+  .block:first-child{border-top:0}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+
+  .shot{position:relative;overflow:hidden;background:
+      repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px),
+      color-mix(in srgb,var(--ink) 6%,var(--paper));
+    border:1px dashed var(--line);border-radius:0;display:flex;align-items:center;
+    justify-content:center;text-align:center;color:var(--muted);
+    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
+    padding:1rem;min-height:200px}
+  .shot::after{content:"\25C8 " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
+  .shot--hero{min-height:min(58vh,520px)}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.85rem;padding-bottom:.85rem}
+  .brandmark{font-family:var(--font-display);font-size:clamp(1.15rem,3.5vw,1.4rem);font-weight:700;
+    text-decoration:none;white-space:nowrap;margin-right:auto;text-transform:uppercase;letter-spacing:.14em}
+  .nav ul{display:flex;gap:1.1rem 1.5rem;list-style:none;margin:0;padding:0;font-size:.8rem;flex-wrap:wrap;
+    font-family:var(--font-display);font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+  .nav a{text-decoration:none;color:var(--muted)}
+  .nav a:hover{color:var(--ink)}
+  .nav a[aria-current="page"]{color:var(--ink)}
+  .nav .btn{padding:.55em 1.1em;font-size:.78rem}
+  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important}
+  .nav-intro::before{content:"\25B6";font-size:.7em}
+
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .32s ease}
+  @keyframes viewin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+
+  .hero .lead{font-size:clamp(1rem,2.6vw,1.15rem);color:var(--muted);max-width:44ch}
+  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
+  .hero .shot{margin-top:2.2rem}
+  .pagehead h1{margin-bottom:.2em}
+  .pagehead .lead{font-size:clamp(1rem,2.4vw,1.12rem);color:var(--muted);max-width:52ch}
+
+  .introcard{margin-top:2.4rem;border:1px solid var(--line);overflow:hidden;text-decoration:none;
+    display:grid;grid-template-columns:1.1fr .9fr;background:#141416;color:var(--ink)}
+  .introcard .txt{padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;gap:.7rem;justify-content:center}
+  .introcard h3{font-size:clamp(1.3rem,3vw,1.9rem);margin:0}
+  .introcard p{color:var(--muted);margin:0;max-width:40ch}
+  .introcard .btn{align-self:flex-start;margin-top:.4rem}
+  .introcard .stage{position:relative;min-height:220px;background:
+      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 26%,#141416) 0%, #0C0C0E 66%);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:1.4rem}
+  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
+    color:var(--accent-ink);width:76px;height:76px;display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;transform:rotate(-4deg);letter-spacing:.04em}
+  .introcard .stage .cap{position:absolute;bottom:.9rem;left:0;right:0;font-size:.6rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);font-family:var(--font-display)}
+
+  .grid{display:grid;gap:1.2rem}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  figure.tile{margin:0}
+  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;
+    font-family:var(--font-display)}
+
+  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
+
+  .steps{list-style:none;counter-reset:s;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem}
+  .steps li{counter-increment:s;padding-left:3rem;position:relative}
+  .steps li::before{content:"0" counter(s);position:absolute;left:0;top:.05rem;
+    font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--accent);letter-spacing:.05em}
+  .steps h3{margin:0 0 .2rem}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,4rem);align-items:start}
+  .facts{list-style:none;padding:0;margin:1.2rem 0 0}
+  .facts li{padding:.6rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
+  .facts li b{font-weight:600;font-family:var(--font-display);letter-spacing:.06em;text-transform:uppercase;font-size:.82rem;align-self:center}
+  .facts li span:last-child{color:var(--muted);text-align:right}
+  .facts li a{color:var(--ink)}
+
+  .form{display:grid;gap:.9rem;margin-top:1.4rem;max-width:32rem}
+  .form label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem;font-family:var(--font-display)}
+  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
+    border-radius:0;background:#141416;color:var(--ink)}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:.85rem;color:var(--muted)}
+
+  footer{background:var(--ink);color:#3a352c;padding:2.6rem 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.84rem;
+    font-family:var(--font-display);letter-spacing:.08em;text-transform:uppercase}
+  footer nav{display:flex;gap:1.1rem;flex-wrap:wrap}
+  footer a{text-decoration:none;color:#3a352c}
+  footer a:hover{color:#0C0C0E}
+
+  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.62rem,2vw,.72rem);
+    letter-spacing:.18em;text-transform:uppercase;padding:.5rem .8rem;font-family:var(--font-display)}
+
+  @media (max-width:920px){
+    .grid--3{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr;gap:1.6rem}
+    .introcard{grid-template-columns:1fr}
+    .introcard .stage{min-height:170px}
+  }
+  @media (max-width:600px){
+    body{font-size:16px}
+    .nav ul{width:100%;order:3;gap:.7rem 1.1rem;font-size:.78rem}
+    .grid--3{grid-template-columns:1fr 1fr}
+    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
+    .facts li{flex-direction:column;gap:.1rem}
+    .facts li span:last-child{text-align:left}
+    .facts li b{align-self:flex-start}
+    footer .wrap{flex-direction:column;gap:.7rem}
+    .shot--hero{min-height:min(52vh,400px)}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Concept mockup for BJ INKS &mdash; built by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">BJ INKS</a>
+    <ul>
+      <li><a href="#/work">Work</a></li>
+      <li><a href="#/about">About</a></li>
+      <li><a href="#/booking">Booking</a></li>
+      <li><a href="#/studio">Studio</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
+    </ul>
+    <a class="btn" href="#/booking">Request a consult</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap hero">
+      <p class="eyebrow">BJ Rascon &middot; Las Vegas</p>
+      <h1>Ink worth keeping.</h1>
+      <p class="lead">Custom tattooing in Las Vegas. By appointment.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/booking">Request a consult</a>
+        <a class="btn btn--ghost" href="#/work">See the work</a>
+      </div>
+      <div class="shot shot--hero" data-shot="Healed anime sleeve, studio light"></div>
+
+      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <span class="eyebrow">Brand film</span>
+          <h3>Watch the BJ INKS intro</h3>
+          <p>A six second brand reveal. Drop it on Instagram, a story, or the top of a reel.</p>
+          <span class="btn">Play the intro</span>
+        </span>
+        <span class="stage"><span class="seal">BJ</span><span class="cap">Six second reveal</span></span>
+      </a>
+    </div>
+
+    <div class="wrap block">
+      <p class="eyebrow">Portfolio</p>
+      <h2>Anime, skulls, fine black linework.</h2>
+      <p style="color:var(--muted)">A through line of illustrative work. Line to colour, fine stipple detail, and wall scale brushwork.</p>
+      <div class="grid grid--3" style="margin-top:1.6rem">
+        <div class="shot shot--square" data-shot="Anime half sleeve"></div>
+        <div class="shot shot--square" data-shot="Black linework skull"></div>
+        <div class="shot shot--square" data-shot="Color manga panel"></div>
+      </div>
+      <p style="margin-top:1.4rem"><a class="btn btn--ghost" href="#/work">See all work</a></p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p class="eyebrow">The artist</p>
+          <h2>Drawn first. Inked after.</h2>
+          <p>BJ Rascon is an established Las Vegas tattoo artist, now working independently out of the Tattoo MoA studio on Decatur. Every piece starts as linework on paper.</p>
+          <p><a class="btn btn--ghost" href="#/about">More about BJ</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="BJ at the drawing table"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="view" data-route="/work" id="view-work">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Work</h1>
+      <p class="lead">Anime and illustrative work, skulls, and fine black linework. Every piece by appointment.</p>
+    </div>
+    <div class="wrap block">
+      <div class="grid grid--3">
+        <figure class="tile"><div class="shot shot--square" data-shot="Anime half sleeve"></div><figcaption>Line to colour, upper arm</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Black linework skull"></div><figcaption>Fine stipple detail</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Color manga panel"></div><figcaption>Full colour frame</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Fine-line script"></div><figcaption>Thin needles, clean pull</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Mural detail"></div><figcaption>Wall scale brushwork</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Healed back piece"></div><figcaption>Aged and settled</figcaption></figure>
+      </div>
+      <p style="margin-top:1.8rem"><a class="btn" href="#/booking">Request a consult</a></p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap pagehead">
+      <p class="eyebrow">About</p>
+      <h1>The artist</h1>
+      <p class="lead">BJ Rascon, tattooing in Las Vegas by appointment.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>BJ Rascon is an established Las Vegas tattoo artist, now working independently out of the Tattoo MoA studio on Decatur. The work shown on @bj_inks runs from anime and skulls to fine black linework and wall scale murals.</p>
+          <p>Drawing comes first. Every piece starts as linework on paper, worked out before it ever meets the skin. Sessions are by appointment, so each piece gets the time it needs.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="Artist headshot, studio light"></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <h2>How the work goes</h2>
+      <div class="grid grid--3" style="margin-top:1.4rem">
+        <div><h3>Drawing first</h3><p class="desc">Every tattoo begins as a drawing worked out on paper.</p></div>
+        <div><h3>By appointment</h3><p class="desc">One piece at a time, booked ahead, never rushed.</p></div>
+        <div><h3>Illustrative range</h3><p class="desc">Anime, skulls, fine linework, and mural scale art.</p></div>
+      </div>
+      <p style="margin-top:1.8rem"><a class="btn" href="#/booking">Book a consult</a></p>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING ============ -->
+  <section class="view" data-route="/booking" id="view-booking">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Consult</p>
+      <h1>Book a consult</h1>
+      <p class="lead">Three steps between your idea and a date.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <h2>How it works</h2>
+          <ol class="steps">
+            <li><h3>Send your idea</h3><p class="desc">References, placement, size. One short message is enough.</p></li>
+            <li><h3>Get a quote and a date</h3><p class="desc">BJ replies with a price and a session that fits your schedule.</p></li>
+            <li><h3>Deposit holds the slot</h3><p class="desc">A deposit locks your date. The balance settles on the day.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Booking</b><span>By appointment only</span></li>
+            <li><b>Deposit</b><span>Required to hold a date. Amount TBC.</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17027279018">(702) 727-9018</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/bj_inks/" target="_blank" rel="noopener">@bj_inks</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Consult request</h2>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Your idea, placement, and size</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Request a consult</button>
+            <p class="status" role="status">Demo form. Submissions are not connected in this mockup. BJ reads every request himself.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STUDIO ============ -->
+  <section class="view" data-route="/studio" id="view-studio">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Studio</p>
+      <h1>The studio</h1>
+      <p class="lead">Inside the Tattoo MoA studio on South Decatur.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>BJ works out of a private suite at Tattoo MoA (Masters of Art), a shared studio space on the South Decatur commercial corridor. By appointment only, so the room stays quiet and focused during a session.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>4001 S Decatur Blvd, Ste 33, Las Vegas, NV 89103</span></li>
+            <li><b>Hours</b><span>By appointment only. Walk-ins: TBC</span></li>
+            <li><b>Parking</b><span>On site lot off Decatur</span></li>
+            <li><b>Getting here</b><span>South Decatur Blvd near Flamingo</span></li>
+          </ul>
+          <p style="margin-top:1.4rem"><a class="btn" href="#/booking">Request a consult</a></p>
+        </div>
+        <div class="grid" style="gap:1rem">
+          <div class="shot shot--wide" data-shot="Studio suite, chair and station"></div>
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="shot shot--square" data-shot="Ink and needle station"></div>
+            <div class="shot shot--square" data-shot="Flash and drawings on the wall"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <div class="shot shot--wide" data-shot="Map / storefront on S Decatur Blvd"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr"></span> BJ INKS &middot; Las Vegas, NV 89103</span>
+    <nav>
+      <a href="#/work">Work</a>
+      <a href="#/about">About</a>
+      <a href="#/booking">Booking</a>
+      <a href="#/studio">Studio</a>
+      <a href="https://www.instagram.com/bj_inks/" target="_blank" rel="noopener">@bj_inks</a>
+    </nav>
+    <span>Concept mockup by Hillside Visuals</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var views = [].slice.call(document.querySelectorAll('.view'));
+  var navLinks = [].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home = document.getElementById('view-home') || views[0];
+    var routeOf = function(v){ return v.getAttribute('data-route'); };
+    var render = function(){
+      var h = (location.hash || '').replace(/^#/, '');
+      if(h && h.charAt(0) !== '/') h = '/' + h;
+      var match = views.filter(function(v){ return routeOf(v) === h; })[0] || home;
+      views.forEach(function(v){ v.classList.toggle('is-active', v === match); });
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + routeOf(match) ? 'page' : 'false');
+      });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', render);
+    render();
+  }
+
+  var form = document.querySelector('.form');
+  if(form){
+    var status = form.querySelector('.status');
+    var note = status ? status.textContent : '';
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(status) status.textContent = note;
+    });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"TattooParlor",
+  "name":"BJ INKS",
+  "telephone":"(702) 727-9018",
+  "address":{"@type":"PostalAddress","streetAddress":"4001 S Decatur Blvd, Ste 33","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89103"}
+}
+</script>
+
+</body>
+</html>
