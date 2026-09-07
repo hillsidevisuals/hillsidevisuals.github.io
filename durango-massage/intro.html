@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Durango Massage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Mulish', sans-serif;
+      background: #F0ECE1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Soft circle motif background */
+    .bg-motif {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(188, 125, 58, 0.03);
+      opacity: 0;
+      animation: motifFade 7s ease-out forwards;
+    }
+
+    @keyframes motifFade {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      15% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .brand-lockup {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    /* D Monogram */
+    .monogram {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 32px;
+      position: relative;
+      opacity: 0;
+      animation: monogramReveal 1.5s ease-out forwards;
+    }
+
+    .monogram-circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #F0ECE1;
+      border: 2px solid #B07D3A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      stroke-dasharray: 377;
+      stroke-dashoffset: 377;
+      animation: drawCircle 1.2s ease-out forwards;
+    }
+
+    .monogram-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 64px;
+      font-weight: 500;
+      color: #22302A;
+      opacity: 0;
+      animation: letterFade 0.6s ease-out 0.8s forwards;
+    }
+
+    @keyframes monogramReveal {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes drawCircle {
+      0% {
+        box-shadow: 0 0 0 0 rgba(176, 125, 58, 0);
+      }
+      100% {
+        box-shadow: 0 0 24px 0 rgba(176, 125, 58, 0.08);
+      }
+    }
+
+    @keyframes letterFade {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Durango wordmark */
+    .wordmark {
+      font-family: 'Fraunces', serif;
+      font-size: 72px;
+      font-weight: 500;
+      color: #22302A;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: wordmarkAssemble 1.2s ease-out 1.5s forwards;
+    }
+
+    @keyframes wordmarkAssemble {
+      0% {
+        opacity: 0;
+        letter-spacing: 0.2em;
+        transform: translateY(-8px);
+      }
+      100% {
+        opacity: 1;
+        letter-spacing: 0;
+        transform: translateY(0);
+      }
+    }
+
+    /* MASSAGE label */
+    .label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #5C6B62;
+      letter-spacing: 0;
+      opacity: 0;
+      animation: labelSpace 1s ease-out 3s forwards;
+      margin-bottom: 24px;
+    }
+
+    @keyframes labelSpace {
+      0% {
+        opacity: 0;
+        letter-spacing: 0;
+      }
+      100% {
+        opacity: 1;
+        letter-spacing: 0.2em;
+      }
+    }
+
+    /* Brass hairline */
+    .hairline {
+      width: 0;
+      height: 1px;
+      background: #B07D3A;
+      margin: 0 auto 20px;
+      opacity: 0;
+      animation: hairlineExtend 0.8s ease-out 4s forwards;
+    }
+
+    @keyframes hairlineExtend {
+      0% {
+        width: 0;
+        opacity: 0;
+      }
+      1% {
+        opacity: 1;
+      }
+      100% {
+        width: 280px;
+        opacity: 1;
+      }
+    }
+
+    /* Tagline */
+    .tagline {
+      font-family: 'Mulish', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #22302A;
+      line-height: 1.6;
+      opacity: 0;
+      animation: taglineFade 1s ease-out 5s forwards;
+    }
+
+    @keyframes taglineFade {
+      0% {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-motif"></div>
+
+  <div class="brand-lockup">
+    <div class="monogram">
+      <div class="monogram-circle">
+        <div class="monogram-letter">D</div>
+      </div>
+    </div>
+
+    <div class="wordmark">Durango</div>
+
+    <div class="label">MASSAGE</div>
+
+    <div class="hairline"></div>
+
+    <div class="tagline">An hour that resets the week.</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyrus Luna Plunk, portrait photographer in Las Vegas</title>
+<meta name="description" content="Cyrus Luna Plunk is a portrait photographer in Las Vegas making headshots and artist portraits for actors, musicians, dancers, and creators in a private studio on E Flamingo Rd.">
+<meta name="theme-color" content="#141417">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Photographer",
+  "name": "Cyrus Luna Plunk",
+  "description": "Portrait and headshot photography studio in Las Vegas, Nevada.",
+  "url": "https://cyruslunaplunk.com",
+  "telephone": "+1-615-603-5960",
+  "sameAs": ["https://instagram.com/cyruslunaplunk"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1641 E Flamingo Rd Ste 9",
+    "addressLocality": "Las Vegas",
+    "addressRegion": "NV",
+    "postalCode": "89119",
+    "addressCountry": "US"
+  },
+  "priceRange": "TBC"
+}
+</script>
+<style>
+  :root{
+    --ink:#141417;
+    --paper:#ECECE8;
+    --accent:#3457D5;
+    --accent-ink:#F7F7F5;
+    --surface:oklch(24.36% 0.006 281);
+    --surface-2:oklch(28.36% 0.006 281);
+    --border:oklch(100% 0 0 / 0.12);
+    --border-strong:oklch(100% 0 0 / 0.24);
+    --muted:oklch(62.5% 0.007 277);
+    --paper-surface:oklch(97% 0.006 250);
+    --paper-border:oklch(84.96% 0.008 248);
+    --muted-paper:oklch(30% 0.007 278);
+    --accent-hover:oklch(51% 0.16 286);
+    --accent-active:oklch(46% 0.16 286);
+    --font-display:"Newsreader", Georgia, "Times New Roman", serif;
+    --font-body:"Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --wrap:1180px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+  [hidden]{display:none !important;}
+
+  html{
+    color-scheme:dark;
+    scroll-behavior:smooth;
+  }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:clip;
+  }
+
+  ul{list-style:none;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  ::selection{background:var(--accent);color:var(--accent-ink);}
+
+  .wrap{
+    width:min(var(--wrap), 100%);
+    margin-inline:auto;
+    padding-inline:clamp(20px, 5vw, 48px);
+  }
+
+  .skip-link{
+    position:fixed;
+    top:-100px;
+    left:16px;
+    z-index:200;
+    padding:10px 16px;
+    background:var(--accent);
+    color:var(--accent-ink);
+    font-size:14px;
+    font-weight:600;
+  }
+  .skip-link:focus{top:16px;}
+
+  /* ---------- type scale ---------- */
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:580;
+    letter-spacing:-0.015em;
+    text-wrap:balance;
+  }
+  h1{
+    font-size:clamp(2.55rem, 6vw, 4rem);
+    line-height:1.01;
+    letter-spacing:-0.02em;
+  }
+  h2{
+    font-size:clamp(2.05rem, 3.6vw, 3rem);
+    line-height:1.05;
+  }
+  h3{
+    font-size:1.45rem;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  h1 em{font-style:italic;font-weight:480;}
+
+  .eyebrow{
+    display:block;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:18px;
+  }
+
+  p.lede{
+    font-size:17px;
+    line-height:1.65;
+    color:var(--paper);
+    max-width:52ch;
+    margin-top:24px;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-body);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    min-height:52px;
+    padding:8px 26px;
+    transition:background-color .18s ease-out, transform .18s ease-out, box-shadow .18s ease-out;
+  }
+  .btn-accent{
+    background:var(--accent);
+    color:var(--accent-ink);
+  }
+  .btn-accent:hover{
+    background:var(--accent-hover);
+    box-shadow:0 8px 28px oklch(0% 0 0 / 0.35);
+    transform:translateY(-1px);
+  }
+  .btn-accent:active{
+    background:var(--accent-active);
+    transform:none;
+    box-shadow:none;
+  }
+
+  .btn-link{
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    color:var(--paper);
+    text-underline-offset:5px;
+    text-decoration:underline;
+    text-decoration-color:oklch(100% 0 0 / 0.34);
+    text-decoration-thickness:1px;
+    transition:color .18s ease-out, text-decoration-color .18s ease-out;
+  }
+  .btn-link:hover{color:var(--accent);text-decoration-color:var(--accent);}
+  .btn-link.on-light{color:var(--ink);text-decoration-color:oklch(15% 0.004 280 / 0.4);}
+  .btn-link.on-light:hover{color:var(--accent-hover);text-decoration-color:var(--accent-hover);}
+
+  /* ---------- monogram ---------- */
+  .monogram{
+    display:grid;
+    place-items:center;
+    border:1px solid oklch(100% 0 0 / 0.32);
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-indent:0.1em;
+    color:var(--paper);
+  }
+  .mono-sm{width:40px;height:40px;font-size:11px;flex:none;}
+
+  /* ---------- sticky nav ---------- */
+  .site-nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:oklch(19.4% 0.008 281 / 0.88);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    height:72px;
+  }
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-right:auto;
+  }
+  .wordmark{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    color:var(--paper);
+  }
+  .nav-links{
+    display:flex;
+    gap:30px;
+  }
+  .nav-links a{
+    font-size:14px;
+    font-weight:500;
+    color:var(--muted);
+    transition:color .18s ease-out;
+  }
+  .nav-links a:hover{color:var(--paper);}
+  .nav-cta{margin-left:8px;min-height:44px;padding:6px 22px;}
+  .nav-cta .cta-long{display:inline;}
+  .nav-cta .cta-short{display:none;}
+
+  .menu-btn{
+    display:none;
+    width:44px;
+    height:44px;
+    margin-left:6px;
+    background:transparent;
+    border:1px solid var(--border-strong);
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:6px;
+  }
+  .menu-btn span{
+    display:block;
+    width:18px;
+    height:1.5px;
+    background:var(--paper);
+  }
+
+  .mobile-menu{
+    display:none;
+    border-top:1px solid var(--border);
+    background:var(--ink);
+    padding:16px 20px 24px;
+  }
+  .mobile-menu.open{display:block;}
+  .mobile-menu a.mm-link{
+    display:block;
+    font-family:var(--font-display);
+    font-size:24px;
+    font-weight:580;
+    letter-spacing:-0.01em;
+    padding:12px 0;
+    color:var(--paper);
+  }
+  .mobile-menu a.mm-link:hover{color:var(--accent);}
+  .mobile-menu .mm-close{
+    display:block;
+    margin:18px 0 4px;
+    width:auto;
+    color:var(--muted);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:10px 0;
+    border:0;
+    background:none;
+    cursor:pointer;
+  }
+  .mobile-menu .mm-cta{
+    display:flex;
+    margin-top:10px;
+    width:100%;
+  }
+
+  /* ---------- sections ---------- */
+  .section{
+    padding-block:clamp(72px, 11vw, 132px);
+    scroll-margin-top:84px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-block:clamp(48px, 8vw, 96px) clamp(72px, 10vw, 120px);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.16fr 0.84fr;
+    gap:clamp(32px, 5vw, 64px);
+    align-items:center;
+  }
+  .hero-actions{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- placeholder frames ---------- */
+  .frame{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(180deg, var(--surface-2), var(--surface));
+    border:1px solid var(--border);
+    transition:border-color .18s ease-out;
+  }
+  .frame::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34)),
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34)),
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34)),
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34)),
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34)),
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34)),
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34)),
+      linear-gradient(oklch(100% 0 0 / 0.34), oklch(100% 0 0 / 0.34));
+    background-repeat:no-repeat;
+    background-position:
+      14px 14px, 14px 14px, calc(100% - 14px) 14px, calc(100% - 14px) 14px,
+      14px calc(100% - 14px), 14px calc(100% - 14px), calc(100% - 14px) calc(100% - 14px), calc(100% - 14px) calc(100% - 14px);
+    background-size:
+      22px 2px, 2px 22px, 22px 2px, 2px 22px,
+      22px 2px, 2px 22px, 22px 2px, 2px 22px;
+    opacity:.85;
+    transition:opacity .18s ease-out;
+  }
+  .frame:hover{border-color:var(--border-strong);}
+  .frame:hover::before{opacity:1;}
+  .frame .wm{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    opacity:0.11;
+  }
+  .frame-4x5{aspect-ratio:4/5;}
+  .frame-landscape{aspect-ratio:16/10;}
+
+  .hero-frame{max-width:460px;}
+  .frame-caption{
+    margin-top:14px;
+    font-size:12px;
+    line-height:1.5;
+    color:var(--muted);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- work wall ---------- */
+  .work-intro{
+    max-width:58ch;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:clamp(40px, 6vw, 64px);
+  }
+  .wall{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:52px 16px;
+  }
+  .work-item .cap{
+    margin-top:12px;
+  }
+  .cap .cap-main{
+    display:block;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--paper);
+  }
+  .cap .cap-no{
+    color:var(--muted);
+    margin-right:10px;
+  }
+  .cap .cap-sub{
+    display:block;
+    margin-top:4px;
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- sessions (paper band) ---------- */
+  .band-paper{
+    background:var(--paper);
+    color:var(--ink);
+  }
+  .band-paper .eyebrow{color:var(--muted-paper);}
+  .sessions-intro{
+    max-width:56ch;
+    color:var(--muted-paper);
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:clamp(40px, 6vw, 64px);
+  }
+  .sessions-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .session-card{
+    display:flex;
+    flex-direction:column;
+    background:var(--paper-surface);
+    border:1px solid var(--paper-border);
+    padding:clamp(24px, 3vw, 36px);
+    transition:transform .18s ease-out, border-color .18s ease-out, box-shadow .18s ease-out;
+  }
+  .session-card:hover{
+    transform:translateY(-3px);
+    border-color:oklch(70% 0.008 250);
+    box-shadow:0 18px 40px oklch(10% 0.004 280 / 0.14);
+  }
+  .session-card h3{margin-bottom:14px;}
+  .session-card p.desc{
+    font-size:15px;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  .session-card ul{
+    margin:22px 0 2px;
+    border-top:1px solid var(--paper-border);
+    padding-top:18px;
+  }
+  .session-card li{
+    position:relative;
+    padding:6px 0 6px 20px;
+    font-size:14px;
+    line-height:1.5;
+    color:var(--muted-paper);
+  }
+  .session-card li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:12px;
+    width:7px;
+    height:7px;
+    border:1px solid oklch(0% 0 0 / 0.4);
+  }
+  .session-foot{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-top:auto;
+    padding-top:26px;
+  }
+  .session-foot .price{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--muted-paper);
+  }
+
+  /* ---------- studio ---------- */
+  .studio-grid{
+    display:grid;
+    grid-template-columns:1.02fr 0.98fr;
+    gap:clamp(36px, 6vw, 80px);
+    align-items:center;
+  }
+  .studio-copy p.lede{margin-top:0;margin-bottom:28px;}
+  .studio-address{
+    border-top:1px solid var(--border);
+    padding-top:20px;
+    max-width:34ch;
+  }
+  .studio-address dt{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .studio-address dd{
+    font-size:16px;
+    line-height:1.55;
+    color:var(--paper);
+  }
+  .studio-address dd + dt{margin-top:20px;}
+
+  /* ---------- footer / about + booking ---------- */
+  .footer{
+    background:oklch(16.5% 0.007 281);
+    border-top:1px solid var(--border);
+    padding-top:clamp(72px, 10vw, 120px);
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.02fr 0.98fr;
+    gap:clamp(40px, 6vw, 88px);
+  }
+  .about-copy{
+    max-width:46ch;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.65;
+  }
+
+  .booking{
+    border:1px solid var(--border);
+    background:var(--surface);
+    padding:clamp(26px, 3.4vw, 40px);
+    scroll-margin-top:96px;
+  }
+  .booking .eyebrow{margin-bottom:22px;}
+  .booking-list{display:grid;gap:18px;}
+  .booking-list dt{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  .booking-list dd{
+    font-size:16px;
+    color:var(--paper);
+  }
+  .booking-list dd a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:oklch(100% 0 0 / 0.3);transition:color .18s ease-out, text-decoration-color .18s ease-out;}
+  .booking-list dd a:hover{color:var(--accent);text-decoration-color:var(--accent);}
+  .booking-note{
+    margin-top:22px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .booking .btn{width:100%;margin-top:26px;}
+
+  .footer-base{
+    margin-top:clamp(56px, 8vw, 88px);
+    border-top:1px solid var(--border);
+    padding:26px 0 34px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .footer-base .monogram{opacity:.9;}
+  .footer-word{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+  }
+  .footer-base .credit{
+    margin-left:auto;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .footer-base .credit a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:oklch(100% 0 0 / 0.25);}
+  .footer-base .credit a:hover{color:var(--paper);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero-grid,
+    .studio-grid,
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-grid{align-items:start;}
+    .hero-frame{max-width:min(460px, 100%);}
+    .sessions-grid{grid-template-columns:1fr;}
+    .session-card{max-width:560px;}
+    .wall{grid-template-columns:repeat(2, 1fr);}
+  }
+
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .menu-btn{display:flex;}
+  }
+
+  @media (max-width:460px){
+    .nav-inner{height:64px;gap:12px;}
+    .nav-cta{margin-left:0;padding:6px 16px;}
+    .nav-cta .cta-long{display:none;}
+    .nav-cta .cta-short{display:inline;}
+    .wordmark{
+      font-size:12px;
+      letter-spacing:0.17em;
+      white-space:normal;
+      line-height:1.35;
+    }
+    .wordmark .w1{display:block;}
+    .wordmark .w2{display:block;}
+    .mono-sm{width:36px;height:36px;font-size:10px;}
+    .wall{grid-template-columns:1fr;}
+    .hero-actions{flex-direction:column;align-items:stretch;}
+    .hero-actions .btn,
+    .hero-actions .btn-link{width:100%;justify-content:center;text-align:center;}
+    .session-foot{flex-direction:column;align-items:flex-start;gap:14px;}
+    .footer-base{flex-wrap:wrap;}
+    .footer-base .credit{margin-left:0;width:100%;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      transition-duration:0.01ms !important;
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      scroll-behavior:auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- 1 / Sticky nav -->
+<header class="site-nav" id="nav" data-od-id="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#top" data-od-id="nav-wordmark">
+      <span class="monogram mono-sm" aria-hidden="true">CLP</span>
+      <span class="wordmark"><span class="w1">CYRUS LUNA </span><span class="w2">PLUNK</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary" data-od-id="nav-links">
+      <a href="#work">Work</a>
+      <a href="#sessions">Sessions</a>
+      <a href="#studio">Studio</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn-accent nav-cta" href="#book" data-od-id="nav-book"><span class="cta-long">Book a session</span><span class="cta-short">Book</span></a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" data-od-id="nav-menu-toggle" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a class="mm-link" href="#work">Work</a>
+    <a class="mm-link" href="#sessions">Sessions</a>
+    <a class="mm-link" href="#studio">Studio</a>
+    <a class="mm-link" href="#about">About</a>
+    <a class="btn btn-accent mm-cta" href="#book">Book a session</a>
+    <button class="mm-close" id="menu-close">Close menu</button>
+  </div>
+</header>
+
+<main id="main">
+<!-- 2 / Hero -->
+<section class="hero" id="top" data-od-id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 data-od-id="hero-headline">Portraits that get you <em>the callback</em>.</h1>
+      <p class="lede" data-od-id="hero-lede">Headshots and portraits for Las Vegas actors, musicians, dancers, and creators, made in a private studio on E Flamingo Rd. If your headshot is a working tool, this is where it gets made.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="#book" data-od-id="hero-book">Book a session</a>
+        <a class="btn-link" href="#work" data-od-id="hero-see-work">See the work</a>
+      </div>
+    </div>
+    <figure class="hero-frame" data-od-id="hero-placeholder">
+      <div class="frame frame-4x5" role="img" aria-label="Empty placeholder portrait frame. A studio headshot for a Las Vegas performer to be shot at the first session.">
+        <span class="monogram wm" aria-hidden="true">CLP</span>
+      </div>
+      <figcaption class="frame-caption">Placeholder portrait. A studio headshot for a Las Vegas performer, to be shot at the first session after the studio opens.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 3 / Work -->
+<section class="section" id="work" data-od-id="work">
+  <div class="wrap">
+    <span class="eyebrow">The work</span>
+    <h2 data-od-id="work-heading">A gallery wall in progress.</h2>
+    <p class="work-intro" data-od-id="work-intro">Six frames, zero photos yet. A brand new studio does not pretend otherwise. Every frame below is a reserved spot on the wall, to be filled by the first sessions shot in this room.</p>
+
+    <div class="wall" data-od-id="work-grid">
+      <figure class="work-item" data-od-id="work-item-headshot">
+        <div class="frame frame-4x5" role="img" aria-label="Empty placeholder frame for a headshot for casting and socials.">
+          <span class="monogram wm" aria-hidden="true">CLP</span>
+        </div>
+        <figcaption class="cap">
+          <span class="cap-main"><span class="cap-no">01</span>Headshot</span>
+          <span class="cap-sub">For casting and socials.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-item" data-od-id="work-item-editorial">
+        <div class="frame frame-4x5" role="img" aria-label="Empty placeholder frame for an editorial portrait for press and features.">
+          <span class="monogram wm" aria-hidden="true">CLP</span>
+        </div>
+        <figcaption class="cap">
+          <span class="cap-main"><span class="cap-no">02</span>Editorial portrait</span>
+          <span class="cap-sub">For press and features.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-item" data-od-id="work-item-musician">
+        <div class="frame frame-4x5" role="img" aria-label="Empty placeholder frame for a musician press photo for releases and playlists.">
+          <span class="monogram wm" aria-hidden="true">CLP</span>
+        </div>
+        <figcaption class="cap">
+          <span class="cap-main"><span class="cap-no">03</span>Musician press photo</span>
+          <span class="cap-sub">For releases and playlists.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-item" data-od-id="work-item-dancer">
+        <div class="frame frame-4x5" role="img" aria-label="Empty placeholder frame for a dancer portfolio for auditions and seasons.">
+          <span class="monogram wm" aria-hidden="true">CLP</span>
+        </div>
+        <figcaption class="cap">
+          <span class="cap-main"><span class="cap-no">04</span>Dancer portfolio</span>
+          <span class="cap-sub">For auditions and seasons.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-item" data-od-id="work-item-actor">
+        <div class="frame frame-4x5" role="img" aria-label="Empty placeholder frame for an actor headshot for casting sites and reps.">
+          <span class="monogram wm" aria-hidden="true">CLP</span>
+        </div>
+        <figcaption class="cap">
+          <span class="cap-main"><span class="cap-no">05</span>Actor headshot</span>
+          <span class="cap-sub">For casting sites and reps.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-item" data-od-id="work-item-band">
+        <div class="frame frame-4x5" role="img" aria-label="Empty placeholder frame for a band promo for stages and lineups.">
+          <span class="monogram wm" aria-hidden="true">CLP</span>
+        </div>
+        <figcaption class="cap">
+          <span class="cap-main"><span class="cap-no">06</span>Band promo</span>
+          <span class="cap-sub">For stages and lineups.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 4 / Sessions -->
+<section class="section band-paper" id="sessions" data-od-id="sessions">
+  <div class="wrap">
+    <span class="eyebrow">Sessions</span>
+    <h2 data-od-id="sessions-heading">Three ways to book.</h2>
+    <p class="sessions-intro" data-od-id="sessions-intro">Three session types, kept deliberately simple. Each is priced on request and shaped around the photo you need, not around a menu of extras.</p>
+
+    <div class="sessions-grid" data-od-id="sessions-grid">
+      <article class="session-card" data-od-id="session-artist-headshot">
+        <h3>Artist Headshot</h3>
+        <p class="desc">A focused session for the photo that sits at the top of your casting profile.</p>
+        <ul>
+          <li>Studio or on location</li>
+          <li>Direction for an easy, confident pose</li>
+          <li>A hand picked set of edited files</li>
+        </ul>
+        <div class="session-foot">
+          <span class="price">Pricing on request.</span>
+          <a class="btn-link on-light" href="#book">Book this session</a>
+        </div>
+      </article>
+
+      <article class="session-card" data-od-id="session-portfolio">
+        <h3>Portfolio / Editorial Portrait</h3>
+        <p class="desc">A fuller session for your website, press kit, or the project you are about to launch.</p>
+        <ul>
+          <li>Multiple looks and wardrobe changes</li>
+          <li>Studio, outdoor, or another location</li>
+          <li>A curated selection of finished files</li>
+        </ul>
+        <div class="session-foot">
+          <span class="price">Pricing on request.</span>
+          <a class="btn-link on-light" href="#book">Book this session</a>
+        </div>
+      </article>
+
+      <article class="session-card" data-od-id="session-press">
+        <h3>Press &amp; Promo</h3>
+        <p class="desc">Promotional photos for a single, an album, a show, or a role that is about to land.</p>
+        <ul>
+          <li>Press ready selections</li>
+          <li>Grid friendly and 4:5 crops</li>
+          <li>Built around your timeline, not mine</li>
+        </ul>
+        <div class="session-foot">
+          <span class="price">Pricing on request.</span>
+          <a class="btn-link on-light" href="#book">Book this session</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5 / Studio -->
+<section class="section" id="studio" data-od-id="studio">
+  <div class="wrap studio-grid">
+    <div class="studio-copy">
+      <span class="eyebrow">The studio</span>
+      <h2 data-od-id="studio-heading">A small room on Flamingo.</h2>
+      <p class="lede" data-od-id="studio-lede">A private one room studio on E Flamingo Rd, set up for headshots and portraits. Natural window light and strobes are both on hand, so a session can go from soft to sharp in the same sitting. Some slots are held open for walk-in booking, with most sessions by appointment.</p>
+
+      <dl class="studio-address" data-od-id="studio-address">
+        <dt>The address</dt>
+        <dd>1641 E Flamingo Rd Ste 9, Las Vegas, NV 89119</dd>
+        <dt>Getting in</dt>
+        <dd>A street level unit in a small commercial plaza. Street parking right outside.</dd>
+      </dl>
+    </div>
+
+    <figure data-od-id="studio-placeholder">
+      <div class="frame frame-landscape" role="img" aria-label="Empty placeholder frame for the studio room at 1641 E Flamingo Rd Ste 9.">
+        <span class="monogram wm" aria-hidden="true">CLP</span>
+      </div>
+      <figcaption class="frame-caption">Room placeholder. The studio at 1641 E Flamingo Rd Ste 9, to be photographed when the space is set up.</figcaption>
+    </figure>
+  </div>
+</section>
+</main>
+
+<!-- 6 / About + booking footer -->
+<footer class="footer" id="about" data-od-id="about">
+  <div class="wrap footer-grid">
+    <div class="about-copy">
+      <span class="eyebrow">About</span>
+      <h2 data-od-id="about-heading">Cyrus Luna Plunk.</h2>
+      <p class="lede" data-od-id="about-lede">Cyrus Luna Plunk is a Las Vegas portrait photographer who builds every session around one question: will this photo get you the callback? The approach is direct and collaborative, and the direction is hands on. Sessions stay simple, the photos are made to be used, and the studio stays small on purpose.</p>
+    </div>
+
+    <div class="booking" id="book" data-od-id="booking">
+      <span class="eyebrow">Booking</span>
+      <dl class="booking-list">
+        <div>
+          <dt>Studio</dt>
+          <dd>1641 E Flamingo Rd Ste 9, Las Vegas, NV 89119</dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd><a href="tel:+16156035960">(615) 603-5960</a></dd>
+        </div>
+        <div>
+          <dt>Instagram</dt>
+          <dd><a href="https://instagram.com/cyruslunaplunk">@cyruslunaplunk</a></dd>
+        </div>
+        <div>
+          <dt>Website</dt>
+          <dd><a href="https://cyruslunaplunk.com">cyruslunaplunk.com</a></dd>
+        </div>
+      </dl>
+      <p class="booking-note">Walk-in booking by appointment. A few slots are held open most weeks.</p>
+      <a class="btn btn-accent" href="tel:+16156035960" data-od-id="footer-book">Book a session</a>
+    </div>
+  </div>
+
+  <div class="wrap footer-base" data-od-id="footer-base">
+    <span class="monogram mono-sm" aria-hidden="true">CLP</span>
+    <span class="footer-word">CYRUS LUNA PLUNK</span>
+    <span class="credit">© 2026 Cyrus Luna Plunk. Concept mockup by Hillside Visuals.</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var close = document.getElementById('menu-close');
+
+    function open(){
+      menu.hidden = false;
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('aria-label', 'Close menu');
+    }
+    function shut(){
+      menu.hidden = true;
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open menu');
+    }
+
+    btn.addEventListener('click', function(){
+      menu.classList.contains('open') ? shut() : open();
+    });
+    close.addEventListener('click', shut);
+    menu.addEventListener('click', function(e){
+      if (e.target && e.target.closest('a')) shut();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('open')) shut();
+    });
+  })();
+</script>
+</body>
+</html>
