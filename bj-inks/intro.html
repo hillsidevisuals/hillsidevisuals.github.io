@@ -3,138 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BJ INKS | Brand Intro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-@page{size:1280px 720px;margin:0}
 :root{
-  --bg:#0C0C0E;
-  --surface:oklch(0.185 0.006 300);
-  --raised:oklch(0.235 0.007 300);
-  --bone:#EFE9DC;
-  --muted:oklch(0.76 0.012 90);
-  --faint:oklch(0.76 0.012 90 / 0.6);
-  --line:oklch(0.95 0.014 90 / 0.12);
-  --line-strong:oklch(0.95 0.014 90 / 0.24);
+  --ink:#0C0C0E;
+  --paper:#EFE9DC;
   --accent:#D93A21;
+  --hair:rgba(239,233,220,0.12);
   --font-display:"Oswald","Helvetica Neue",Arial,sans-serif;
   --font-body:"Inter","Helvetica Neue",Arial,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg)}
-body{color:var(--bone);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-
-/* page shell around the 16:9 frame */
-.wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:32px 24px}
-.frame{position:relative;width:min(1200px,100%);aspect-ratio:16 / 9;container-type:inline-size;font-size:1cqw;background:var(--bg);overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.5)}
-.frame-bg{position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 44%,var(--raised) 0%,var(--bg) 62%)}
-.frame::before{content:"";position:absolute;inset:2.6em;border:1px solid var(--line);pointer-events:none;z-index:3}
-.frame-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.controls{margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center}
-.page-meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
-.replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);
-  background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer;font-family:var(--font-display)}
-.replay:hover{border-color:var(--bone)}
-.visit{color:var(--faint);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-family:var(--font-display)}
-.visit:hover{color:var(--bone)}
-.replaying .seal,.replaying .wc-letter,.replaying .brush path,.replaying .tagline,.replaying .meta,.replaying .corner{animation:none}
-
-/* lockup group */
-.lockup{display:flex;align-items:center;gap:2em}
-.seal{width:clamp(40px,7em,130px);height:clamp(40px,7em,130px);flex:none;display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:var(--bg);font-family:var(--font-display);font-size:clamp(16px,2.6em,52px);font-weight:700;letter-spacing:.02em;line-height:1;border-radius:0;transform:rotate(-4deg);animation:seal-in .62s cubic-bezier(.34,1.56,.64,1) both;will-change:transform,opacity,filter}
-.wordmark{font-family:var(--font-display);font-size:clamp(26px,7.5em,140px);font-weight:700;text-transform:uppercase;color:var(--bone);line-height:1}
-.wc-letter{display:inline-block;padding-right:.14em;animation:char-in .5s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(.55s + var(--i)*.07s)}
-.wc-sp{display:inline-block;width:.55em}
-
-/* brush stroke sweep */
-.brush{width:42em;height:1.6em;margin-top:1.3em;opacity:.92}
-.brush path{fill:none;stroke:var(--accent);stroke-width:clamp(2.5px,.28em,6px);stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:100;stroke-dashoffset:100;animation:sweep .85s ease-out 1.25s both}
-
-/* tagline and meta */
-.tagline{margin-top:1.1em;font-size:clamp(15px,1.9em,32px);color:var(--muted);letter-spacing:.02em;animation:rise .8s ease-out 2.3s both}
-.meta{display:flex;align-items:center;gap:1.2em;margin-top:2.2em;font-size:clamp(10px,1.3em,22px);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);animation:rise .7s ease-out 2.7s both}
-.meta .sep{color:var(--line-strong)}
-
-/* corner captions */
-.corner{position:absolute;bottom:2.8em;z-index:4;font-size:clamp(9px,1.15em,20px);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);animation:rise .7s ease-out 3.1s both}
-.corner-l{left:2.8em}
-.corner-r{right:2.8em}
-
-/* keyframes */
-@keyframes seal-in{
-  0%{opacity:0;transform:scale(2) rotate(-12deg);filter:brightness(1.5)}
-  55%{opacity:1;transform:scale(.9) rotate(-5deg);filter:brightness(1.3)}
-  78%{transform:scale(1.06) rotate(-3deg);filter:brightness(1.1)}
-  100%{transform:scale(1) rotate(-4deg);filter:brightness(1)}
+html,body{height:100%}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-body);
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(16px,3.4vw,30px);
+  padding:clamp(16px,4vw,44px);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
-@keyframes char-in{
-  0%{opacity:0;transform:translateY(.9em)}
-  65%{opacity:1;transform:translateY(-.06em)}
-  100%{opacity:1;transform:translateY(0)}
+
+/* ---------- responsive stage: one 16:9 unit, everything sized in cqw ---------- */
+.stage{
+  position:relative;
+  width:min(100%,1180px);
+  aspect-ratio:16 / 9;
+  container-type:inline-size;
+  background:var(--ink);
+  border:1px solid var(--hair);
+  overflow:hidden;
 }
-@keyframes sweep{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
-@keyframes rise{
-  0%{opacity:0;transform:translateY(.8em)}
-  60%{opacity:1;transform:translateY(-.05em)}
-  100%{opacity:1;transform:translateY(0)}
+.stage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(58% 62% at 50% 42%,rgba(239,233,220,0.055),transparent 72%);
+  pointer-events:none;
 }
+
+.comp{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3.2cqw;
+  padding:6cqw;
+}
+
+/* ---------- lockup ---------- */
+.lockup{display:flex;align-items:center;gap:3cqw}
+
+.seal{
+  width:8.6cqw;
+  height:8.6cqw;
+  flex:none;
+  border:0.34cqw solid var(--paper);
+  border-radius:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:4cqw;
+  letter-spacing:0.08em;
+  line-height:1;
+  color:var(--paper);
+  opacity:0;
+  transform:rotate(-3deg);
+}
+.seal i{font-style:normal;transform:translateX(0.04em)}
+
+.wordmark{
+  display:inline-flex;
+  align-items:flex-end;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:10.4cqw;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:0.15em;
+  color:var(--paper);
+}
+.wordmark .g{display:inline-block;overflow:hidden}
+.wordmark .g > i{display:inline-block;font-style:normal;transform:translateY(120%)}
+.wordmark .sp{display:inline-block;width:0.42em}
+
+/* ---------- the single accent: a hard vermilion rule ---------- */
+.rule{
+  width:40cqw;
+  max-width:100%;
+  height:0.55cqw;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left center;
+}
+
+/* ---------- tagline + meta ---------- */
+.tagline{
+  max-width:86cqw;
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:2.65cqw;
+  line-height:1.4;
+  letter-spacing:0.01em;
+  text-align:center;
+  color:var(--paper);
+  opacity:0;
+}
+.meta{
+  display:flex;
+  align-items:center;
+  gap:1.4cqw;
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:1.9cqw;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:rgba(239,233,220,0.62);
+  opacity:0;
+}
+.meta .dot{color:rgba(239,233,220,0.4)}
+
+/* ---------- run state (kinetic type recipe) ---------- */
+.stage.run .seal{animation:stamp .42s cubic-bezier(.2,.75,.25,1) .45s both}
+.stage.run .wordmark .g > i{
+  animation:drive .52s cubic-bezier(.16,.7,.2,1) both;
+  animation-delay:var(--d);
+}
+.stage.run .rule{animation:snap .2s cubic-bezier(.7,0,.3,1) 3s both}
+.stage.run .tagline{animation:resolve .6s ease-out 3.6s both}
+.stage.run .meta{animation:resolve .6s ease-out 4.5s both}
+
+@keyframes stamp{
+  0%{opacity:0;transform:rotate(-3deg) scale(1.5)}
+  55%{opacity:1;transform:rotate(-3deg) scale(.96)}
+  100%{opacity:1;transform:rotate(-3deg) scale(1)}
+}
+@keyframes drive{
+  from{transform:translateY(120%)}
+  to{transform:translateY(0)}
+}
+@keyframes snap{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+@keyframes resolve{
+  from{opacity:0;transform:translateY(1.3cqw)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ---------- controls ---------- */
+.controls{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  opacity:0;
+  animation:resolve .6s ease-out 5.4s both;
+}
+.btn{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--paper);
+  background:transparent;
+  border:1px solid rgba(239,233,220,0.28);
+  border-radius:0;
+  padding:11px 22px;
+  min-height:44px;
+  cursor:pointer;
+}
+.btn:hover{background:rgba(239,233,220,0.08);border-color:rgba(239,233,220,0.5)}
+.btn:active{background:rgba(239,233,220,0.12)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.lnk{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:6px 2px;
+  font-family:var(--font-body);
+  font-size:12px;
+  letter-spacing:0.02em;
+  color:var(--paper);
+  text-decoration:none;
+  border-bottom:1px solid rgba(239,233,220,0.35);
+}
+.lnk:hover{border-bottom-color:var(--paper)}
+.lnk:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
 @media (prefers-reduced-motion:reduce){
-  .seal,.wc-letter,.brush path,.tagline,.meta,.corner{animation:none}
+  .stage.run .seal,
+  .stage.run .wordmark .g > i,
+  .stage.run .rule,
+  .stage.run .tagline,
+  .stage.run .meta,
+  .controls{animation:none}
+  .seal{opacity:1}
+  .wordmark .g > i{transform:translateY(0)}
+  .rule{transform:scaleX(1)}
+  .tagline,.meta,.controls{opacity:1}
 }
 </style>
 </head>
 <body>
 
-<main class="wrap">
-  <section class="frame" data-od-id="intro-stage" aria-label="BJ INKS brand intro, six second reveal">
-    <div class="frame-bg" aria-hidden="true"></div>
-
-    <div class="frame-inner">
-      <div class="lockup">
-        <span class="seal" data-od-id="intro-seal" aria-label="BJ monogram seal">BJ</span>
-        <h1 class="wordmark" data-od-id="intro-wordmark">
-          <span class="wc-letter" style="--i:0">B</span><span class="wc-letter" style="--i:1">J</span><span class="wc-sp" aria-hidden="true"></span><span class="wc-letter" style="--i:2">I</span><span class="wc-letter" style="--i:3">N</span><span class="wc-letter" style="--i:4">K</span><span class="wc-letter" style="--i:5">S</span>
-        </h1>
-      </div>
-
-      <svg class="brush" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true" data-od-id="intro-brush">
-        <path d="M 10 12 C 110 5, 220 19, 330 12 C 420 7, 520 16, 590 9"/>
-      </svg>
-
-      <p class="tagline" data-od-id="intro-tagline">Custom tattooing in Las Vegas. By appointment.</p>
-
-      <div class="meta" data-od-id="intro-meta">
-        <span>Las Vegas, NV</span>
-        <span class="sep" aria-hidden="true">·</span>
-        <span>@bj_inks</span>
-      </div>
+<main class="stage run" id="stage" data-od-id="intro-stage" aria-label="BJ INKS brand intro">
+  <div class="comp">
+    <div class="lockup">
+      <span class="seal" data-od-id="intro-seal" aria-hidden="true"><i>BJ</i></span>
+      <h1 class="wordmark" data-od-id="intro-wordmark" aria-label="BJ INKS">
+        <span class="g" style="--d:1s"><i aria-hidden="true">B</i></span><span class="g" style="--d:1.12s"><i aria-hidden="true">J</i></span><span class="sp" aria-hidden="true"></span><span class="g" style="--d:1.3s"><i aria-hidden="true">I</i></span><span class="g" style="--d:1.42s"><i aria-hidden="true">N</i></span><span class="g" style="--d:1.54s"><i aria-hidden="true">K</i></span><span class="g" style="--d:1.66s"><i aria-hidden="true">S</i></span>
+      </h1>
     </div>
 
-    <p class="corner corner-l" data-od-id="intro-corner-l">BJ INKS · Brand intro</p>
-    <p class="corner corner-r" data-od-id="intro-corner-r">Six second reveal</p>
-  </section>
+    <div class="rule" data-od-id="intro-rule" aria-hidden="true"></div>
 
-  <div class="controls">
-    <span class="page-meta" data-od-id="page-meta">BJ INKS · brand intro · 6s</span>
-    <button class="replay" type="button">Replay</button>
-    <a class="visit" href="./">Visit the site</a>
+    <p class="tagline" data-od-id="intro-tagline">Custom tattooing in Las Vegas. By appointment.</p>
+
+    <p class="meta" data-od-id="intro-meta">
+      <span>Las Vegas, NV</span>
+      <span class="dot" aria-hidden="true">&middot;</span>
+      <span>@bj_inks</span>
+    </p>
   </div>
 </main>
 
+<div class="controls">
+  <button class="btn" type="button" id="replay" data-od-id="intro-replay">Replay</button>
+  <a class="lnk" href="./" data-od-id="intro-visit">Visit the site</a>
+</div>
+
 <script>
 (function(){
-  var frame = document.querySelector('.frame');
-  var btn = document.querySelector('.replay');
-  if(btn && frame){
-    btn.addEventListener('click', function(){
-      frame.classList.add('replaying');
-      void frame.offsetWidth;
-      frame.classList.remove('replaying');
-    });
+  var stage = document.getElementById('stage');
+  var replay = document.getElementById('replay');
+  function play(){
+    stage.classList.remove('run');
+    void stage.offsetWidth;
+    stage.classList.add('run');
   }
+  replay.addEventListener('click', play);
+  if(!stage.classList.contains('run')) play();
 })();
 </script>
 

@@ -1,127 +1,299 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-<title>Durvo | Brand intro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Durvo brand intro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#22312B;
-    --raised:color-mix(in srgb, #C64A62 16%, #22312B);
-    --bone:#F5F0E6;
-    --muted:color-mix(in srgb, #F5F0E6 72%, transparent);
-    --faint:color-mix(in srgb, #F5F0E6 50%, transparent);
-    --line:color-mix(in srgb, #F5F0E6 16%, transparent);
-    --accent:#C64A62;
-    --accent-ink:#FBF3E7;
-    --font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-    --font-body:"Newsreader","Helvetica Neue",Arial,sans-serif;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg)}
-  body{color:var(--bone);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
-  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:clamp(14px,4vw,32px)}
-  /* The frame is a fluid 16:9 canvas. EVERY size inside is in cqw (1% of the frame's own
-     width) or clamp()ed against it, so the whole composition scales as one unit from a phone
-     to a desktop with nothing ever clipping. Do not put fixed px sizes on the content. */
-  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
-    font-size:1cqw;background:var(--bg);overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.5)}
-  .frame-bg{position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 44%,var(--raised) 0%,var(--bg) 62%)}
-  .frame::before{content:"";position:absolute;inset:3.2cqw;border:1px solid var(--line);pointer-events:none;z-index:3}
-  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;padding:0 5cqw;text-align:center}
+:root{
+  --ink:#22312B;
+  --paper:#F5F0E6;
+  --rose:#C64A62;
+  --wine:#3A1E27;
+  --surface:#EEE9DF;
+  --ink-deep:#182721;
+  --muted:#5D665F;
+  --hairline:#D7D5CC;
+  --rose-deep:#A42946;
+  --rose-light:#D75A70;
+  --fd:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --fb:"Newsreader",Georgia,"Times New Roman",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  min-height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  background:
+    radial-gradient(90% 60% at 82% -6%, rgba(198,74,98,.12), transparent 55%),
+    linear-gradient(165deg, var(--ink) 0%, var(--ink-deep) 68%, #1d2a24 100%);
+  font-family:var(--fd);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
 
-  .lockup{display:flex;align-items:center;gap:1.6cqw;max-width:100%}
-  .seal{width:clamp(26px,6cqw,120px);height:clamp(26px,6cqw,120px);flex:none;display:inline-flex;
-    align-items:center;justify-content:center;background:var(--accent);color:var(--accent-ink);
-    font-family:var(--font-display);font-size:clamp(11px,2.3cqw,46px);font-weight:700;line-height:1;
-    border-radius:50%;transform:rotate(-4deg);
-    animation:seal-in .62s cubic-bezier(.34,1.56,.64,1) both}
-  .wordmark{font-family:var(--font-display);font-size:clamp(17px,6.6cqw,124px);font-weight:700;
-    text-transform:uppercase;letter-spacing:.06em;color:var(--bone);line-height:1;white-space:nowrap;min-width:0}
-  .wordmark .l{display:inline-block;animation:char-in .5s cubic-bezier(.34,1.56,.64,1) both;
-    animation-delay:calc(.55s + var(--i) * .06s)}
-  .wordmark .sp{display:inline-block;width:.4em}
-  /* very narrow frame: stack the seal above the wordmark so a long name never clips */
-  @container (max-width: 430px){ .lockup{flex-direction:column;gap:2.5cqw} }
+/* ---------- responsive plate ---------- */
+.frame{
+  position:relative;
+  width:min(100%, 1280px);
+  aspect-ratio:16/9;
+  container-type:inline-size;
+  overflow:hidden;
+  border-radius:clamp(14px, 1.7vw, 26px);
+  background:
+    radial-gradient(120% 82% at 50% 6%, #FBF7EF, transparent 62%),
+    linear-gradient(180deg, var(--paper), var(--surface));
+  box-shadow:0 34px 90px rgba(9,16,13,.5), inset 0 0 0 1px rgba(58,30,39,.10);
+}
+@media (max-width:600px){
+  .frame{ aspect-ratio:3/4; }
+}
 
-  .brush{width:min(36cqw,60%);height:1.4cqw;margin-top:2.4cqw}
-  .brush path{fill:none;stroke:var(--accent);stroke-width:clamp(2px,.26cqw,6px);stroke-linecap:round;
-    vector-effect:non-scaling-stroke;stroke-dasharray:640;stroke-dashoffset:640;
-    animation:sweep .85s ease-out 1.15s both}
+.stage{ position:absolute; inset:0; }
+.scene{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+}
+.stage.run .scene{ animation:floatY 8.5s ease-in-out 3s infinite; }
+@keyframes floatY{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-1.1cqw)} }
 
-  .tagline{margin-top:2.2cqw;font-size:clamp(12px,1.8cqw,30px);color:var(--muted);max-width:100%;
-    animation:rise .8s ease-out 2.1s both}
-  .meta{display:flex;align-items:center;justify-content:center;gap:1.2cqw;flex-wrap:wrap;margin-top:3.4cqw;
-    font-size:clamp(9px,1.25cqw,20px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--faint);max-width:100%;animation:rise .7s ease-out 2.5s both}
+/* ---------- the tree ---------- */
+.tree{ position:absolute; inset:0; width:100%; height:100%; z-index:1; }
+.tree .link{
+  fill:none;
+  stroke:var(--ink);
+  stroke-opacity:.8;
+  stroke-width:2.8;
+  stroke-linecap:round;
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+}
+.tree .trunk{ stroke-width:4; stroke-opacity:.92; }
+.stage.run .tree .link{ animation:draw 1.25s cubic-bezier(.4,0,.2,1) both; }
+@keyframes draw{ to{ stroke-dashoffset:0 } }
 
-  .page-meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
-  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--bone);background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer}
-  .replay:hover{border-color:var(--bone)}
-  .visit{color:var(--faint);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
-  .visit:hover{color:var(--bone)}
-  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+.tree .node{
+  opacity:0;
+  transform:scale(0);
+  transform-box:fill-box;
+  transform-origin:center;
+}
+.tree .node .halo{ fill:#F7F3EA; }
+.tree .node .dot{ fill:var(--rose); stroke:var(--rose-deep); stroke-width:1; }
+.tree .node.ever .dot{ fill:var(--ink); stroke:none; }
+.stage.run .tree .node{ animation:pop .62s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes pop{ to{ transform:scale(1); opacity:1 } }
 
-  @keyframes seal-in{0%{opacity:0;transform:scale(2) rotate(-12deg)}55%{opacity:1;transform:scale(.9) rotate(-5deg)}100%{opacity:1;transform:scale(1) rotate(-4deg)}}
-  @keyframes char-in{0%{opacity:0;transform:translateY(.9em)}65%{opacity:1;transform:translateY(-.05em)}100%{opacity:1;transform:translateY(0)}}
-  @keyframes sweep{from{stroke-dashoffset:640}to{stroke-dashoffset:0}}
-  @keyframes rise{0%{opacity:0;transform:translateY(.8em)}60%{opacity:1;transform:translateY(-.04em)}100%{opacity:1;transform:translateY(0)}}
-  @media (prefers-reduced-motion:reduce){.seal,.wordmark .l,.brush path,.tagline,.meta{animation:none;opacity:1}}
-  .replaying .seal,.replaying .wordmark .l,.replaying .brush path,.replaying .tagline,.replaying .meta{animation:none}
+/* ---------- frosted lockup ---------- */
+.lockup{
+  position:relative;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1.5cqw;
+  margin-top:3cqw;
+  padding:4cqw 5.4cqw 3.4cqw;
+  background:rgba(251,247,239,.66);
+  -webkit-backdrop-filter:blur(3px) saturate(1.04);
+  backdrop-filter:blur(3px) saturate(1.04);
+  border:1px solid rgba(34,49,43,.16);
+  border-radius:3cqw;
+  box-shadow:0 2cqw 5cqw rgba(20,33,27,.2);
+  opacity:0;
+}
+.stage.run .lockup{ animation:cardIn 1s cubic-bezier(.16,1,.3,1) 1.9s both; }
+@keyframes cardIn{ from{opacity:0;transform:translateY(2.4cqw) scale(.985)} to{opacity:1;transform:none} }
+
+.seal{
+  position:relative;
+  width:clamp(28px, 5.4cqw, 60px);
+  height:clamp(28px, 5.4cqw, 60px);
+  display:grid;
+  place-items:center;
+  border:1px solid var(--ink);
+  border-radius:50%;
+  color:var(--ink);
+  opacity:0;
+}
+.seal::after{
+  content:"";
+  position:absolute;
+  inset:12%;
+  border:1px solid currentColor;
+  border-radius:50%;
+  opacity:.38;
+}
+.seal span{
+  font-family:var(--fd);
+  font-weight:800;
+  font-size:clamp(14px, 3cqw, 30px);
+  line-height:1;
+}
+.stage.run .seal{ animation:sealIn .8s cubic-bezier(.2,1.1,.3,1) 2.1s both; }
+@keyframes sealIn{ from{opacity:0;transform:translateY(1.4cqw) scale(.86)} to{opacity:1;transform:none} }
+
+.wm{
+  font-family:var(--fd);
+  font-weight:800;
+  font-size:clamp(28px, 7cqw, 84px);
+  line-height:.96;
+  letter-spacing:.12em;
+  margin-right:-.12em;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.wm span{ display:inline-block; opacity:0; }
+.stage.run .wm span{ animation:letterIn .72s cubic-bezier(.2,.8,.25,1) both; }
+.stage.run .wm span:nth-child(1){ animation-delay:2.40s }
+.stage.run .wm span:nth-child(2){ animation-delay:2.47s }
+.stage.run .wm span:nth-child(3){ animation-delay:2.54s }
+.stage.run .wm span:nth-child(4){ animation-delay:2.61s }
+.stage.run .wm span:nth-child(5){ animation-delay:2.68s }
+@keyframes letterIn{
+  from{ opacity:0; filter:blur(.8cqw); transform:translateY(.5cqw) scale(1.12) }
+  to{ opacity:1; filter:blur(0); transform:none }
+}
+
+.tagline{
+  font-family:var(--fb);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(12px, 2.7cqw, 26px);
+  letter-spacing:.01em;
+  color:var(--wine);
+  opacity:0;
+}
+.tagline em{ font-style:italic; color:var(--rose-deep); }
+.stage.run .tagline{ animation:fadeUp .85s cubic-bezier(.2,.7,.2,1) 3.5s both; }
+
+.meta{
+  font-family:var(--fd);
+  font-weight:600;
+  font-size:clamp(10px, 1.7cqw, 14px);
+  letter-spacing:.14em;
+  color:var(--muted);
+  opacity:0;
+}
+.stage.run .meta{ animation:fadeUp .8s cubic-bezier(.2,.7,.2,1) 4s both; }
+@keyframes fadeUp{ from{opacity:0;transform:translateY(1.6cqw)} to{opacity:1;transform:none} }
+
+/* ---------- controls ---------- */
+.controls{
+  position:absolute;
+  left:0; right:0;
+  bottom:2.4cqw;
+  z-index:4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2cqw;
+  opacity:0;
+}
+.stage.run .controls{ animation:fadeUp .8s ease-out 4.5s both; }
+.controls button,
+.controls a{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:.6em .4em;
+  font-family:var(--fd);
+  font-weight:700;
+  font-size:clamp(10px, 1.5cqw, 13px);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--wine);
+  background:none;
+  border:0;
+  text-decoration:none;
+  cursor:pointer;
+}
+.controls .lbl{ border-bottom:1.5px solid transparent; padding-bottom:.18em; }
+.controls button:hover .lbl,
+.controls a:hover .lbl{ border-bottom-color:var(--rose-deep); }
+.controls button:focus-visible,
+.controls a:focus-visible{ outline:2px solid var(--rose-deep); outline-offset:3px; border-radius:2px; }
+.controls .sep{ width:4px; height:4px; border-radius:50%; background:var(--rose); opacity:.7; }
+
+@media (prefers-reduced-motion:reduce){
+  .stage.run .scene,
+  .stage.run .lockup,
+  .stage.run .seal,
+  .stage.run .wm span,
+  .stage.run .tagline,
+  .stage.run .meta,
+  .stage.run .controls,
+  .stage.run .tree .link,
+  .stage.run .tree .node{ animation:none !important; }
+  .lockup,.seal,.tagline,.meta,.controls{ opacity:1 !important; transform:none !important; }
+  .wm span{ opacity:1 !important; filter:none !important; transform:none !important; }
+  .tree .link{ stroke-dashoffset:0 !important; }
+  .tree .node{ opacity:1 !important; transform:none !important; }
+}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <section class="frame" aria-label="Durvo brand intro, six second reveal">
-    <div class="frame-bg" aria-hidden="true"></div>
-    <div class="inner">
-      <div class="lockup">
-        <span class="seal" aria-hidden="true">D</span>
-        <h1 class="wordmark" data-text="DURVO">DURVO</h1>
-      </div>
-      <svg class="brush" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M 10 12 C 110 5, 220 19, 330 12 C 420 7, 520 16, 590 9"/>
+<div class="frame" data-od-id="brand-intro-frame">
+  <div class="stage run" data-od-id="brand-intro-stage">
+    <div class="scene">
+
+      <svg class="tree" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path class="link trunk" pathLength="1" style="animation-delay:.35s" d="M500 486 C500 452 500 430 500 398"/>
+        <path class="link" pathLength="1" style="animation-delay:.92s" d="M500 403 C452 390 372 382 312 344"/>
+        <path class="link" pathLength="1" style="animation-delay:1s"   d="M500 403 C548 390 628 382 688 344"/>
+        <path class="link" pathLength="1" style="animation-delay:1.06s" d="M500 400 C500 334 500 266 500 198"/>
+        <path class="link" pathLength="1" style="animation-delay:1.5s"  d="M312 344 C258 306 182 268 130 200"/>
+        <path class="link" pathLength="1" style="animation-delay:1.62s" d="M312 344 C316 296 312 244 300 190"/>
+        <path class="link" pathLength="1" style="animation-delay:1.72s" d="M688 344 C742 306 818 268 870 200"/>
+        <path class="link" pathLength="1" style="animation-delay:1.84s" d="M688 344 C684 296 688 244 700 190"/>
+        <path class="link" pathLength="1" style="animation-delay:1.95s" d="M500 198 C468 160 424 120 398 84"/>
+        <path class="link" pathLength="1" style="animation-delay:2.05s" d="M500 198 C532 160 576 120 602 84"/>
+
+        <g class="node ever" style="animation-delay:.3s"><circle class="halo" cx="500" cy="486" r="10"/><circle class="dot" cx="500" cy="486" r="7"/></g>
+        <g class="node ever" style="animation-delay:1.5s"><circle class="halo" cx="312" cy="344" r="8"/><circle class="dot" cx="312" cy="344" r="5"/></g>
+        <g class="node ever" style="animation-delay:1.58s"><circle class="halo" cx="688" cy="344" r="8"/><circle class="dot" cx="688" cy="344" r="5"/></g>
+        <g class="node ever" style="animation-delay:1.8s"><circle class="halo" cx="500" cy="198" r="8"/><circle class="dot" cx="500" cy="198" r="5"/></g>
+        <g class="node" style="animation-delay:2s"><circle class="halo" cx="130" cy="200" r="12"/><circle class="dot" cx="130" cy="200" r="9"/></g>
+        <g class="node" style="animation-delay:2.12s"><circle class="halo" cx="300" cy="190" r="12"/><circle class="dot" cx="300" cy="190" r="9"/></g>
+        <g class="node" style="animation-delay:2.22s"><circle class="halo" cx="870" cy="200" r="12"/><circle class="dot" cx="870" cy="200" r="9"/></g>
+        <g class="node" style="animation-delay:2.34s"><circle class="halo" cx="700" cy="190" r="12"/><circle class="dot" cx="700" cy="190" r="9"/></g>
+        <g class="node" style="animation-delay:2.5s"><circle class="halo" cx="398" cy="84" r="12"/><circle class="dot" cx="398" cy="84" r="9"/></g>
+        <g class="node" style="animation-delay:2.6s"><circle class="halo" cx="602" cy="84" r="12"/><circle class="dot" cx="602" cy="84" r="9"/></g>
       </svg>
-      <p class="tagline">Plant-based, all day.</p>
-      <div class="meta">Las Vegas · @durvo_nv</div>
+
+      <div class="lockup" data-od-id="brand-intro-lockup">
+        <div class="seal" aria-hidden="true"><span>D</span></div>
+        <h1 class="wm" aria-label="DURVO"><span aria-hidden="true">D</span><span aria-hidden="true">U</span><span aria-hidden="true">R</span><span aria-hidden="true">V</span><span aria-hidden="true">O</span></h1>
+        <p class="tagline">Plant-based, <em>all day.</em></p>
+        <p class="meta">Las Vegas&nbsp;&nbsp;&middot;&nbsp;&nbsp;@durvo_nv</p>
+      </div>
+
     </div>
-  </section>
-  <div class="row">
-    <span class="page-meta">Durvo · brand intro · 6s</span>
-    <button class="replay" type="button">Replay</button>
-    <a class="visit" href="./">Visit the site</a>
+
+    <div class="controls" data-od-id="brand-intro-controls">
+      <button type="button" class="replay" data-od-id="brand-intro-replay"><span class="lbl">Replay</span></button>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="./" data-od-id="brand-intro-visit"><span class="lbl">Visit the site</span></a>
+    </div>
   </div>
-</main>
+</div>
+
 <script>
 (function(){
-  var wm = document.querySelector('.wordmark');
-  if(wm){
-    var text = wm.getAttribute('data-text') || wm.textContent;
-    wm.textContent = '';
-    var i = 0;
-    text.split('').forEach(function(ch){
-      if(ch === ' '){ var s = document.createElement('span'); s.className = 'sp'; wm.appendChild(s); return; }
-      var span = document.createElement('span');
-      span.className = 'l'; span.textContent = ch; span.style.setProperty('--i', i++);
-      wm.appendChild(span);
-    });
-  }
-  var frame = document.querySelector('.frame');
-  var btn = document.querySelector('.replay');
-  if(btn && frame){
-    btn.addEventListener('click', function(){
-      frame.classList.add('replaying');
-      // force reflow, then let the animations run again
-      void frame.offsetWidth;
-      frame.classList.remove('replaying');
-    });
-  }
+  var stage = document.querySelector('.stage');
+  var replay = document.querySelector('.replay');
+  replay.addEventListener('click', function(){
+    stage.classList.remove('run');
+    void stage.offsetWidth;
+    stage.classList.add('run');
+  });
 })();
 </script>
 </body>

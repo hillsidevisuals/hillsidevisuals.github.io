@@ -2,127 +2,274 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Taco Boom | Brand intro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taco Boom, brand intro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+  /*
+   * Taco Boom brand intro, built on the Bold Poster motion recipe:
+   * a rule draws across, a giant tilted display drops in, a lockup rises
+   * line by line, a standfirst fades, a footer rule and metadata draw in.
+   * Reskinned end to end to the street screen print system in BRAND-NOTES.md.
+   * Palette used, nothing else: ink #1C130D, cream #FFF7EA,
+   * chili text safe #B8300F, chili bright (graphics only) #E5401C,
+   * mustard #FFC42E.
+   */
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:#1C130D; }
+  img,svg{ display:block; }
+  h1,p{ margin:0; }
+  button{ font:inherit; }
+
   :root{
-    --bg:#1C130D;
-    --raised:color-mix(in srgb, #FFC42E 12%, #1C130D);
-    --bone:#FFF7EA;
-    --muted:color-mix(in srgb, #FFF7EA 72%, transparent);
-    --faint:color-mix(in srgb, #FFF7EA 50%, transparent);
-    --line:color-mix(in srgb, #FFF7EA 16%, transparent);
-    --accent:#B8300F;
-    --accent-ink:#FFF7EA;
-    --font-display:"Bungee","Helvetica Neue",Arial,sans-serif;
-    --font-body:"Manrope","Helvetica Neue",Arial,sans-serif;
+    --ink:#1C130D;
+    --cream:#FFF7EA;
+    --chili-safe:#B8300F;
+    --chili-bright:#E5401C;
+    --mustard:#FFC42E;
+    --font-display:'Bungee','Arial Black',sans-serif;
+    --font-body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg)}
-  body{color:var(--bone);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
-  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:clamp(14px,4vw,32px)}
-  /* The frame is a fluid 16:9 canvas. EVERY size inside is in cqw (1% of the frame's own
-     width) or clamp()ed against it, so the whole composition scales as one unit from a phone
-     to a desktop with nothing ever clipping. Do not put fixed px sizes on the content. */
-  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
-    font-size:1cqw;background:var(--bg);overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.5)}
-  .frame-bg{position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 44%,var(--raised) 0%,var(--bg) 62%)}
-  .frame::before{content:"";position:absolute;inset:3.2cqw;border:1px solid var(--line);pointer-events:none;z-index:3}
-  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;padding:0 5cqw;text-align:center}
 
-  .lockup{display:flex;align-items:center;gap:1.6cqw;max-width:100%}
-  .seal{width:clamp(26px,6cqw,120px);height:clamp(26px,6cqw,120px);flex:none;display:inline-flex;
-    align-items:center;justify-content:center;background:var(--accent);color:var(--accent-ink);
-    font-family:var(--font-display);font-size:clamp(11px,2.3cqw,46px);font-weight:700;line-height:1;
-    border-radius:0;transform:rotate(-4deg);
-    animation:seal-in .62s cubic-bezier(.34,1.56,.64,1) both}
-  .wordmark{font-family:var(--font-display);font-size:clamp(17px,6.6cqw,124px);font-weight:700;
-    text-transform:uppercase;color:var(--bone);line-height:1;white-space:nowrap;min-width:0}
-  .wordmark .l{display:inline-block;animation:char-in .5s cubic-bezier(.34,1.56,.64,1) both;
-    animation-delay:calc(.55s + var(--i) * .06s)}
-  .wordmark .sp{display:inline-block;width:.4em}
-  /* very narrow frame: stack the seal above the wordmark so a long name never clips */
-  @container (max-width: 430px){ .lockup{flex-direction:column;gap:2.5cqw} }
+  body{ font-family:var(--font-body); }
 
-  .brush{width:min(36cqw,60%);height:1.4cqw;margin-top:2.4cqw}
-  .brush path{fill:none;stroke:var(--accent);stroke-width:clamp(2px,.26cqw,6px);stroke-linecap:round;
-    vector-effect:non-scaling-stroke;stroke-dasharray:640;stroke-dashoffset:640;
-    animation:sweep .85s ease-out 1.15s both}
+  /* the responsive frame: every inner size is clamp(min, Ncqw, max), so the
+     composition scales fluidly with its own container width instead of a
+     fixed viewport, and never drops below a legible floor at narrow widths */
+  .frame{
+    container-type:inline-size;
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    background:var(--ink);
+  }
 
-  .tagline{margin-top:2.2cqw;font-size:clamp(12px,1.8cqw,30px);color:var(--muted);max-width:100%;
-    animation:rise .8s ease-out 2.1s both}
-  .meta{display:flex;align-items:center;justify-content:center;gap:1.2cqw;flex-wrap:wrap;margin-top:3.4cqw;
-    font-size:clamp(9px,1.25cqw,20px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--faint);max-width:100%;animation:rise .7s ease-out 2.5s both}
+  .halftone{ position:absolute; inset:0; opacity:0.14; pointer-events:none; }
 
-  .page-meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
-  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--bone);background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer}
-  .replay:hover{border-color:var(--bone)}
-  .visit{color:var(--faint);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
-  .visit:hover{color:var(--bone)}
-  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+  .stage{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    padding:clamp(16px,5cqw,68px) clamp(16px,6cqw,92px);
+  }
 
-  @keyframes seal-in{0%{opacity:0;transform:scale(2) rotate(-12deg)}55%{opacity:1;transform:scale(.9) rotate(-5deg)}100%{opacity:1;transform:scale(1) rotate(-4deg)}}
-  @keyframes char-in{0%{opacity:0;transform:translateY(.9em)}65%{opacity:1;transform:translateY(-.05em)}100%{opacity:1;transform:translateY(0)}}
-  @keyframes sweep{from{stroke-dashoffset:640}to{stroke-dashoffset:0}}
-  @keyframes rise{0%{opacity:0;transform:translateY(.8em)}60%{opacity:1;transform:translateY(-.04em)}100%{opacity:1;transform:translateY(0)}}
-  @media (prefers-reduced-motion:reduce){.seal,.wordmark .l,.brush path,.tagline,.meta{animation:none;opacity:1}}
-  .replaying .seal,.replaying .wordmark .l,.replaying .brush path,.replaying .tagline,.replaying .meta{animation:none}
+  /* ===== top row: eyebrow + chili rule drawing across ===== */
+  .top-row{ display:flex; align-items:center; gap:clamp(10px,1.8cqw,26px); position:relative; z-index:2; }
+  .eyebrow{
+    font-family:var(--font-body); font-weight:800;
+    font-size:clamp(10px,1.5cqw,19px); letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--cream); opacity:0.82; white-space:nowrap;
+    opacity:0; animation:fadeIn 0.4s ease-out 0.25s both;
+  }
+  .rule{
+    flex:1; height:clamp(2px,0.32cqw,5px); background:var(--chili-bright);
+    transform-origin:left center; transform:scaleX(0);
+    animation:ruleX 0.6s cubic-bezier(.16,1,.3,1) 0.35s both;
+  }
+  @keyframes ruleX{ to{ transform:scaleX(1); } }
+  @keyframes fadeIn{ to{ opacity:0.82; } }
+
+  /* ===== wordmark stage, centered in the remaining space ===== */
+  .wordmark-area{
+    flex:1; position:relative; z-index:2;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+  }
+  .wm-taco{
+    font-family:var(--font-display); font-size:clamp(13px,2.6cqw,32px);
+    letter-spacing:0.14em; text-transform:uppercase;
+    color:transparent; -webkit-text-stroke:1.4px var(--cream);
+    margin-bottom:clamp(4px,0.7cqw,10px);
+    opacity:0; transform:translateY(0.8em);
+    animation:riseIn 0.45s cubic-bezier(.16,1,.3,1) 1.05s both;
+  }
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+
+  .wm-boom-wrap{
+    position:relative; display:inline-block;
+    font-family:var(--font-display); font-size:clamp(58px,15cqw,192px);
+    letter-spacing:-0.03em; text-transform:uppercase;
+  }
+  .wm-boom{
+    position:relative; z-index:1; display:inline-block;
+    color:var(--mustard);
+    text-shadow:
+      clamp(2px,0.32cqw,6px) clamp(2px,0.32cqw,6px) 0 var(--chili-safe),
+      clamp(4px,0.64cqw,12px) clamp(4px,0.64cqw,12px) 0 var(--ink);
+    opacity:0;
+    transform:translateY(-1.1em) rotate(-9deg) scale(0.88);
+    animation:boomDrop 0.6s cubic-bezier(.2,1.4,.35,1) 0.55s both;
+  }
+  @keyframes boomDrop{
+    0%   { opacity:0; transform:translateY(-1.1em) rotate(-9deg) scale(0.88); }
+    68%  { opacity:1; transform:translateY(0.04em) rotate(3deg) scale(1.04); }
+    100% { opacity:1; transform:translateY(0) rotate(0deg) scale(1); }
+  }
+
+  /* comic burst, detonates once behind the wordmark then settles tucked in,
+     mustard fill, the accent moment */
+  .wm-burst{
+    position:absolute; top:50%; left:50%; z-index:0;
+    width:1em; height:1em;
+    fill:var(--mustard);
+    opacity:0;
+    transform:translate(-50%,-50%) scale(0.15) rotate(-34deg);
+    animation:burstDetonate 0.65s cubic-bezier(.18,1,.32,1) 0.55s both;
+  }
+  @keyframes burstDetonate{
+    0%   { opacity:0;   transform:translate(-50%,-50%) scale(0.15) rotate(-34deg); }
+    42%  { opacity:1;   transform:translate(-50%,-50%) scale(1.35) rotate(10deg); }
+    100% { opacity:1;   transform:translate(-50%,-50%) scale(0.82) rotate(4deg); }
+  }
+
+  .tagline{
+    margin-top:clamp(10px,1.6cqw,26px);
+    font-family:var(--font-body); font-weight:800;
+    font-size:clamp(14px,2.2cqw,29px); color:var(--cream);
+    opacity:0; transform:translateY(0.6em);
+    animation:fadeUp 0.5s ease-out 1.35s both;
+  }
+  @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
+
+  /* ===== footer: neutral rule + meta line ===== */
+  /* footer, meta and controls share one flex row so they reflow together
+     and can never overlap, even at very short (wide-and-flat or narrow)
+     aspect ratios; controls wrap under the meta line if the row runs out
+     of room rather than floating independently over anything else */
+  .footer{ position:relative; z-index:2; }
+  .footer-rule{
+    height:clamp(1px,0.16cqw,2px); background:var(--cream); opacity:0;
+    transform-origin:left center; transform:scaleX(0);
+    animation:footerRuleX 0.5s cubic-bezier(.16,1,.3,1) 1.70s both;
+  }
+  @keyframes footerRuleX{ to{ opacity:0.4; transform:scaleX(1); } }
+  .footer-bottom-row{
+    margin-top:clamp(8px,1.3cqw,18px);
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; row-gap:clamp(6px,1cqw,14px); column-gap:clamp(10px,1.6cqw,24px);
+  }
+  .footer-meta{
+    display:flex; align-items:center;
+    gap:clamp(6px,0.9cqw,14px);
+    font-family:var(--font-body); font-weight:700;
+    font-size:clamp(11px,1.35cqw,19px); letter-spacing:0.04em;
+    color:var(--cream); opacity:0;
+    animation:fadeIn2 0.45s ease-out 1.95s both;
+  }
+  @keyframes fadeIn2{ to{ opacity:0.85; } }
+  .footer-meta .dot{ color:var(--mustard); }
+
+  /* ===== controls: small, unobtrusive ===== */
+  .controls{
+    display:flex; align-items:center; gap:clamp(10px,1.4cqw,20px);
+    opacity:0; animation:fadeIn3 0.4s ease-out 2.20s both;
+  }
+  @keyframes fadeIn3{ to{ opacity:1; } }
+  .replay-btn{
+    display:inline-flex; align-items:center; gap:clamp(4px,0.6cqw,8px);
+    background:transparent; border:1px solid rgba(255,247,234,0.35);
+    border-radius:999px; cursor:pointer;
+    padding:clamp(5px,0.9cqw,10px) clamp(10px,1.6cqw,18px);
+    font-family:var(--font-body); font-weight:700;
+    font-size:clamp(9px,1.05cqw,14px); letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--cream); opacity:0.75;
+    transition:opacity .15s ease, border-color .15s ease;
+  }
+  .replay-btn svg{ width:clamp(8px,1cqw,13px); height:clamp(8px,1cqw,13px); }
+  .replay-btn:hover{ opacity:1; border-color:rgba(255,196,46,0.7); }
+  .replay-btn:focus-visible{ outline:2px solid var(--mustard); outline-offset:2px; }
+  .visit-link{
+    font-family:var(--font-body); font-weight:700;
+    font-size:clamp(9px,1.05cqw,14px); letter-spacing:0.04em;
+    color:var(--mustard); opacity:0.85; text-decoration:none;
+    border-bottom:1px solid rgba(255,196,46,0.4);
+    transition:opacity .15s ease;
+  }
+  .visit-link:hover{ opacity:1; }
+  .visit-link:focus-visible{ outline:2px solid var(--mustard); outline-offset:3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow,.rule,.wm-boom,.wm-burst,.wm-taco,.tagline,.footer-rule,.footer-meta,.controls{
+      animation:none !important;
+    }
+    .eyebrow{ opacity:0.82; }
+    .rule{ transform:scaleX(1); }
+    .wm-boom{ opacity:1; transform:none; }
+    .wm-burst{ opacity:1; transform:translate(-50%,-50%) scale(0.82) rotate(4deg); }
+    .wm-taco{ opacity:1; transform:none; }
+    .tagline{ opacity:1; transform:none; }
+    .footer-rule{ opacity:0.4; transform:scaleX(1); }
+    .footer-meta{ opacity:0.85; }
+    .controls{ opacity:1; }
+  }
 </style>
 </head>
 <body>
-<main class="wrap">
-  <section class="frame" aria-label="Taco Boom brand intro, six second reveal">
-    <div class="frame-bg" aria-hidden="true"></div>
-    <div class="inner">
-      <div class="lockup">
-        <span class="seal" aria-hidden="true">TB</span>
-        <h1 class="wordmark" data-text="TACO BOOM">TACO BOOM</h1>
-      </div>
-      <svg class="brush" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M 10 12 C 110 5, 220 19, 330 12 C 420 7, 520 16, 590 9"/>
-      </svg>
-      <p class="tagline">Fast tacos, big flavor.</p>
-      <div class="meta">Las Vegas · @tacoboomlv</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="boom-burst" viewBox="0 0 200 200">
+      <path d="M 100.0,8.0 L 120.7,50.1 L 162.2,37.8 L 153.6,77.8 L 196.0,100.0 L 148.0,119.9 L 159.4,159.4 L 123.0,155.4 L 100.0,190.0 L 79.0,150.8 L 34.2,165.8 L 47.3,121.8 L 14.0,100.0 L 43.6,76.7 L 35.7,35.7 L 79.7,51.0 Z"/>
+    </symbol>
+    <pattern id="halftone-mustard" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.4" fill="#FFC42E"/>
+    </pattern>
+  </defs>
+</svg>
+
+<div class="frame" id="frame" data-od-id="brand-intro-frame">
+  <svg class="halftone" viewBox="0 0 400 400" preserveAspectRatio="none"><rect width="400" height="400" fill="url(#halftone-mustard)"/></svg>
+
+  <div class="stage">
+    <div class="top-row">
+      <span class="eyebrow anim-el">Las Vegas Street Tacos</span>
+      <span class="rule anim-el"></span>
     </div>
-  </section>
-  <div class="row">
-    <span class="page-meta">Taco Boom · brand intro · 6s</span>
-    <button class="replay" type="button">Replay</button>
-    <a class="visit" href="./">Visit the site</a>
+
+    <div class="wordmark-area">
+      <span class="wm-taco anim-el">Taco</span>
+      <span class="wm-boom-wrap" data-od-id="brand-intro-wordmark">
+        <svg class="wm-burst anim-el" viewBox="0 0 200 200"><use href="#boom-burst"/></svg>
+        <span class="wm-boom anim-el">Boom</span>
+      </span>
+      <p class="tagline anim-el" data-od-id="brand-intro-tagline">Fast tacos, big flavor.</p>
+    </div>
+
+    <div class="footer">
+      <div class="footer-rule anim-el"></div>
+      <div class="footer-bottom-row">
+        <div class="footer-meta anim-el">
+          <span>Las Vegas</span>
+          <span class="dot">&middot;</span>
+          <span>@tacoboomlv</span>
+        </div>
+        <div class="controls anim-el">
+          <button class="replay-btn" id="replayBtn" type="button" aria-label="Replay the intro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+            Replay
+          </button>
+          <a class="visit-link" href="./">Visit the site</a>
+        </div>
+      </div>
+    </div>
   </div>
-</main>
+</div>
+
 <script>
-(function(){
-  var wm = document.querySelector('.wordmark');
-  if(wm){
-    var text = wm.getAttribute('data-text') || wm.textContent;
-    wm.textContent = '';
-    var i = 0;
-    text.split('').forEach(function(ch){
-      if(ch === ' '){ var s = document.createElement('span'); s.className = 'sp'; wm.appendChild(s); return; }
-      var span = document.createElement('span');
-      span.className = 'l'; span.textContent = ch; span.style.setProperty('--i', i++);
-      wm.appendChild(span);
-    });
-  }
-  var frame = document.querySelector('.frame');
-  var btn = document.querySelector('.replay');
-  if(btn && frame){
-    btn.addEventListener('click', function(){
-      frame.classList.add('replaying');
-      // force reflow, then let the animations run again
+  (function(){
+    var frame = document.getElementById('frame');
+    var replayBtn = document.getElementById('replayBtn');
+    replayBtn.addEventListener('click', function(){
+      var animated = frame.querySelectorAll('.anim-el');
+      animated.forEach(function(el){ el.style.animation = 'none'; });
       void frame.offsetWidth;
-      frame.classList.remove('replaying');
+      animated.forEach(function(el){ el.style.animation = ''; });
     });
-  }
-})();
+  })();
 </script>
+
 </body>
 </html>
