@@ -1,340 +1,1174 @@
+<!-- fingerprint: P5 H4 E5 S4 R5 V4 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Super Kyuramen · Las Vegas</title>
-<meta name="description" content="Super Kyuramen is now open in Las Vegas Chinatown on Spring Mountain Rd. Ramen by day, izakaya by night.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Super Kyuramen Las Vegas. Ramen by day, izakaya by night. Honeycomb booths, a sushi bar and a lantern alley in Chinatown.">
+<title>Super Kyuramen Las Vegas</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#F7F3EC; --paper:#1C1A18; --muted:#a39f98;
-    --accent:#E1251B; --accent-ink:#F7F3EC;
-    --line:rgba(247,243,236,.15); --gold:#E8A94B;
-    --font-display:"Bebas Neue", Georgia, "Times New Roman", serif;
-    --font-body:"Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --maxw:1120px; --pad:clamp(1.15rem, 5vw, 3rem);
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  img{max-width:100%;display:block}
-  a{color:inherit}
-  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.08;margin:0 0 .4em;
-    text-wrap:balance;overflow-wrap:break-word;text-transform:uppercase;letter-spacing:.02em;}
-  h1{font-size:clamp(2.1rem,6vw,4.2rem);letter-spacing:0}
-  h2{font-size:clamp(1.5rem,4vw,2.6rem)}
-  h3{font-size:1.08rem}
-  p{margin:0 0 1rem;max-width:64ch}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem;font-weight:600}
-  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.6em;
-    border-radius:0;text-decoration:none;font-weight:600;letter-spacing:.03em;white-space:nowrap;
-    transition:transform .15s ease,opacity .15s ease}
-  .btn:hover{transform:translateY(-1px);opacity:.92}
-  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
-  .view > .wrap:first-child{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(.4rem,2vw,1.1rem)}
-  .block{padding-top:clamp(1.9rem,5vw,3.4rem);padding-bottom:clamp(1.9rem,5vw,3.4rem);border-top:1px solid var(--line)}
-  .block:first-child{border-top:0}
-  .pagehead + .block{border-top:0;padding-top:0}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+:root{
+  /* Colour · OKLCH tokens only */
+  --color-ink: oklch(0.16 0.006 60);
+  --color-void: oklch(0.08 0.004 60);
+  --color-paper: oklch(0.95 0.012 85);
+  --color-signal: oklch(0.56 0.22 27);
+  --color-signal-deep: oklch(0.44 0.19 27);
+  --color-lantern: oklch(0.76 0.13 75);
+  --color-muted: oklch(0.68 0.008 70);
+  --line-on-dark: color-mix(in oklch, var(--color-paper) 16%, transparent);
+  --line-strong: color-mix(in oklch, var(--color-paper) 30%, transparent);
+  --surface-hover: color-mix(in oklch, var(--color-paper) 7%, transparent);
+  --chip-bg: color-mix(in oklch, var(--color-void) 72%, transparent);
+  --bg-shot: radial-gradient(120% 100% at 50% 15%, color-mix(in oklch, var(--color-paper) 9%, transparent), transparent 62%), linear-gradient(var(--color-void), var(--color-ink));
+  --bg-shot-alley: radial-gradient(120% 100% at 50% 0%, color-mix(in oklch, var(--color-lantern) 24%, transparent), transparent 60%), linear-gradient(var(--color-void), var(--color-ink));
+  --glow-hero: radial-gradient(90% 70% at 15% 0%, color-mix(in oklch, var(--color-paper) 7%, transparent), transparent 55%);
+  --shadow-card: 0 1.5rem 3.5rem -1.5rem color-mix(in oklch, var(--color-void) 70%, transparent);
+  --line-on-day: color-mix(in oklch, var(--color-ink) 40%, transparent);
+  --surface-day-hover: color-mix(in oklch, var(--color-ink) 8%, var(--color-paper));
 
-  .shot{position:relative;overflow:hidden;background:
-      repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px),
-      color-mix(in srgb,var(--ink) 6%,var(--paper));
-    border:1px dashed var(--line);border-radius:0;display:flex;align-items:center;
-    justify-content:center;text-align:center;color:var(--muted);
-    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
-    padding:1rem;min-height:200px}
-  .shot::after{content:"\25C8 " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
-  .shot--hero{min-height:min(56vh,500px)}
-  .shot--wide{aspect-ratio:16/10;min-height:0}
-  .shot--square{aspect-ratio:1/1;min-height:0}
-  figure.ref{margin:0;position:relative;overflow:hidden;border-radius:0}
-  figure.ref img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
-  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.14em;
-    text-transform:uppercase;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:2px}
+  /* Type */
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  --text-hero: clamp(3.25rem, 9vw, 8rem);
+  --text-title: clamp(2.5rem, 5.5vw, 4.5rem);
+  --text-block: clamp(2rem, 3.5vw, 3.25rem);
+  --text-card: clamp(1.375rem, 2.5vw, 1.75rem);
+  --text-lede: clamp(1rem, 1.3vw, 1.125rem);
+  --text-body: clamp(1rem, 1vw, 1.0625rem);
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+  --text-label: 0.8125rem;
+  --lh-display: 1.06;
+  --lh-title: 1.08;
+  --lh-body: 1.65;
+  --lh-lede: 1.7;
+  --ls-title: 0.01em;
+  --ls-label: 0.16em;
+  --ls-button: 0.1em;
+  --ls-caption: 0.05em;
 
-  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.8rem;padding-bottom:.8rem}
-  .brandmark{font-family:var(--font-display);font-size:clamp(1.05rem,3.4vw,1.32rem);font-weight:400;
-    text-decoration:none;white-space:nowrap;margin-right:auto;text-transform:uppercase;letter-spacing:.02em;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
-  .brandmark img{height:1.6em;width:auto}
-  .nav ul{display:flex;gap:1rem 1.4rem;list-style:none;margin:0;padding:0;font-size:.84rem;flex-wrap:wrap}
-  .nav a{text-decoration:none;color:var(--muted);letter-spacing:.04em}
-  .nav a:hover{color:var(--ink)}
-  .nav a[aria-current="page"]{color:var(--ink);font-weight:600}
-  .nav a.btn{color:var(--accent-ink);padding:.6em 1.25em;font-size:.84rem;font-weight:700}
-  .nav a.btn:hover{color:var(--accent-ink)}
-  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important;font-weight:600}
-  .nav-intro::before{content:"\25B6";font-size:.7em}
+  /* Space · 8pt grid */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --pad-page: clamp(1.25rem, 4vw, 3.25rem);
+  --wrap: 76rem;
+  --wrap-narrow: 46rem;
 
-  .view{display:block}
-  body.routed .view{display:none}
-  body.routed .view.is-active{display:block;animation:vin .3s ease}
-  @keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+  /* Geometry */
+  --radius-0: 0;
+  --radius-1: 4px;
+  --radius-2: 8px;
+  --border-width: 1px;
+  --border-width-strong: 2px;
+  --outline-w: 2px;
+  --control-min: 2.75rem;
+  --chop-size: 2rem;
+  --rule-w: 2.5rem;
+  --rule-h: 3px;
+  --ar-hero: 16 / 10;
+  --ar-card: 4 / 5;
+  --ar-square: 1 / 1;
+  --ar-wide: 16 / 9;
 
-  .hero .lead,.pagehead .lead{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--muted);max-width:50ch}
-  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}
-  .hero .shot,.hero figure.ref{margin-top:2.1rem}
-  .pagehead h1{margin-bottom:.2em}
+  /* Motion */
+  --dur: 180ms;
+  --ease: ease-out;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:var(--space-0);
+  background:var(--color-ink);
+  color:var(--color-paper);
+  font-family:var(--font-body);
+  font-size:var(--text-body);
+  line-height:var(--lh-body);
+  letter-spacing:var(--space-0);
+}
+body.routed .view{display:none}
+body.routed .view.is-active{display:block}
+img{max-width:100%;display:block}
+a{color:var(--color-paper);text-decoration:underline;text-underline-offset:0.2em}
+a:hover{color:var(--color-paper)}
+:focus-visible{outline:var(--outline-w) solid var(--color-paper);outline-offset:var(--space-1)}
+h1,h2,h3{margin:var(--space-0)}
+p{margin:var(--space-0)}
 
-  .introcard{margin-top:2.3rem;border:1px solid var(--line);overflow:hidden;text-decoration:none;
-    display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);color:var(--paper);border-radius:0}
-  .introcard .txt{padding:clamp(1.3rem,4vw,2.3rem);display:flex;flex-direction:column;gap:.6rem;justify-content:center}
-  .introcard .eyebrow{color:color-mix(in srgb,var(--paper) 68%,transparent)}
-  .introcard h3{font-size:clamp(1.25rem,3vw,1.8rem);margin:0;color:var(--paper)}
-  .introcard p{color:color-mix(in srgb,var(--paper) 80%,transparent);margin:0;max-width:42ch}
-  .introcard .btn{align-self:flex-start;margin-top:.3rem}
-  .introcard .stage{position:relative;min-height:210px;background:
-      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 30%,var(--ink)) 0%, var(--ink) 66%);
-    display:flex;align-items:center;justify-content:center;padding:1.3rem}
-  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
-    color:var(--accent-ink);width:74px;height:74px;display:flex;align-items:center;justify-content:center;
-    font-size:1.4rem;text-transform:uppercase;letter-spacing:.02em;}
-  .introcard .stage .cap{position:absolute;bottom:.85rem;left:0;right:0;text-align:center;font-size:.58rem;
-    letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
+/* Router views */
+.view{background:var(--color-ink)}
 
-  .grid{display:grid;gap:1.2rem}
-  .grid--2{grid-template-columns:repeat(2,1fr)}
-  .grid--3{grid-template-columns:repeat(3,1fr)}
-  figure.tile{margin:0}
-  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+/* Top banner · the one allowed mark */
+.topnote{
+  background:var(--color-void);
+  text-align:center;
+  padding:var(--space-2) var(--space-4);
+  color:var(--color-muted);
+  font-size:var(--text-caption);
+  letter-spacing:var(--ls-label);
+  text-transform:uppercase;
+  border-bottom:var(--border-width) solid var(--line-on-dark);
+}
 
-  .list{list-style:none;padding:0;margin:1.4rem 0 0}
-  .list li{padding:.85rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-  .price{font-family:var(--font-display);white-space:nowrap}
-  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
+/* Slab nav */
+.slab{
+  position:sticky;
+  top:var(--space-0);
+  z-index:10;
+  background:var(--color-void);
+  border-bottom:var(--border-width) solid var(--line-on-dark);
+}
+.slab-inner{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--space-3) var(--space-6);
+  max-width:var(--wrap);
+  margin:var(--space-0) auto;
+  padding:var(--space-3) var(--pad-page);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:var(--space-3);
+  text-decoration:none;
+}
+.brand:hover{color:var(--color-paper)}
+.chop{
+  width:var(--chop-size);
+  height:var(--chop-size);
+  flex:0 0 auto;
+  background:var(--color-signal);
+  color:var(--color-paper);
+  font-family:var(--font-display);
+  font-size:var(--text-card);
+  line-height:1;
+  display:grid;
+  place-items:center;
+  border-radius:var(--radius-0);
+}
+.wordmark{
+  font-family:var(--font-display);
+  font-size:clamp(1.25rem, 2vw, 1.5rem);
+  letter-spacing:var(--ls-label);
+  line-height:1;
+}
+.wordmark-sub{
+  display:block;
+  font-family:var(--font-body);
+  font-size:var(--text-caption);
+  letter-spacing:var(--ls-label);
+  text-transform:uppercase;
+  color:var(--color-muted);
+  margin-top:var(--space-1);
+}
+.nav-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-1);
+  align-items:center;
+}
+.nav-links a{
+  display:inline-block;
+  min-height:var(--control-min);
+  line-height:1;
+  padding:var(--space-4) var(--space-3);
+  text-decoration:none;
+  font-size:var(--text-label);
+  font-weight:700;
+  letter-spacing:var(--ls-caption);
+  text-transform:uppercase;
+  border-bottom:var(--border-width-strong) solid transparent;
+  border-radius:var(--radius-1);
+}
+.nav-links a:hover{background:var(--surface-hover)}
+.nav-links a[aria-current="page"]{
+  border-bottom-color:var(--color-paper);
+  color:var(--color-paper);
+}
+.nav-film{margin-left:var(--space-2);color:var(--color-muted)}
+.nav-film:hover{color:var(--color-paper)}
 
-  .steps{list-style:none;counter-reset:s;padding:0;margin:1.5rem 0 0;display:grid;gap:1rem}
-  .steps li{counter-increment:s;padding-left:3rem;position:relative}
-  .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;
-    border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:.9rem}
-  .steps h3{margin:0 0 .2rem}
+/* Wrap + blocks */
+.wrap{
+  max-width:var(--wrap);
+  margin:var(--space-0) auto;
+  padding-left:var(--pad-page);
+  padding-right:var(--pad-page);
+}
+.wrap-narrow{max-width:var(--wrap-narrow)}
+.block{
+  border-top:var(--border-width) solid var(--line-on-dark);
+  padding-top:var(--space-8);
+  padding-bottom:var(--space-8);
+}
 
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,3.6rem);align-items:start}
-  .facts{list-style:none;padding:0;margin:1.1rem 0 0}
-  .facts li{padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
-  .facts li b{font-weight:600}
-  .facts li span:last-child{color:var(--muted);text-align:right}
-  .facts li a{color:var(--ink)}
+/* Hero · poster */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:var(--color-void);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:var(--space-0);
+  background:var(--glow-hero);
+  pointer-events:none;
+}
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0, 3fr) minmax(0, 2fr);
+  gap:var(--space-7);
+  align-items:center;
+  max-width:var(--wrap);
+  margin:var(--space-0) auto;
+  padding-top:clamp(var(--space-8), 9vw, var(--space-10));
+  padding-bottom:clamp(var(--space-8), 9vw, var(--space-10));
+  padding-left:var(--pad-page);
+  padding-right:var(--pad-page);
+}
+.hero-copy{position:relative;z-index:1}
+.lockup{display:grid;gap:var(--space-3);justify-items:start;margin-bottom:var(--space-6)}
+.lockup-word{
+  font-family:var(--font-display);
+  font-size:clamp(2rem, 4.5vw, 3.25rem);
+  letter-spacing:var(--ls-title);
+  line-height:var(--lh-display);
+}
+.lockup-rule{
+  width:var(--rule-w);
+  height:var(--rule-h);
+  background:var(--color-signal);
+  border-radius:var(--radius-0);
+}
+.lockup-city{
+  font-size:var(--text-label);
+  font-weight:700;
+  letter-spacing:var(--ls-label);
+  text-transform:uppercase;
+  color:var(--color-paper);
+}
+.hero-title{
+  font-family:var(--font-display);
+  font-size:var(--text-hero);
+  line-height:var(--lh-display);
+  letter-spacing:var(--ls-title);
+  color:var(--color-paper);
+  margin-bottom:var(--space-6);
+}
+.hero-lede{
+  max-width:var(--wrap-narrow);
+  font-size:var(--text-lede);
+  line-height:var(--lh-lede);
+  color:var(--color-paper);
+  margin-bottom:var(--space-7);
+}
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-3);
+}
 
-  .form{display:grid;gap:.9rem;margin-top:1.3rem;max-width:32rem}
-  .form label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
-  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
-    border-radius:0;background:color-mix(in srgb,var(--ink) 3%,var(--paper));color:var(--ink)}
-  .form textarea{min-height:6rem;resize:vertical}
-  .form .status{font-size:.85rem;color:var(--muted)}
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:var(--control-min);
+  padding:var(--space-2) clamp(1.25rem, 3vw, 2rem);
+  font-family:var(--font-display);
+  font-size:var(--text-card);
+  letter-spacing:var(--ls-button);
+  line-height:1;
+  text-decoration:none;
+  border:var(--border-width) solid transparent;
+  border-radius:var(--radius-1);
+  transition:background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.btn-primary{
+  background:var(--color-signal);
+  color:var(--color-paper);
+}
+.btn-primary:hover{background:var(--color-signal-deep);color:var(--color-paper)}
+.btn-ghost{
+  background:transparent;
+  color:var(--color-paper);
+  border-color:var(--line-strong);
+}
+.btn-ghost:hover{background:var(--surface-hover);border-color:var(--color-paper);color:var(--color-paper)}
 
-  footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 82%,transparent);padding:2.6rem 0}
-  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.86rem}
-  footer nav{display:flex;gap:1rem;flex-wrap:wrap}
-  footer a{text-decoration:none;color:color-mix(in srgb,var(--paper) 82%,transparent)}
-  footer a:hover{color:var(--paper)}
+/* Shot placeholders · marked Hillside shoot */
+.shot{
+  position:relative;
+  overflow:hidden;
+  border:var(--border-width) solid var(--line-on-dark);
+  border-radius:var(--radius-2);
+  background:var(--color-ink);
+  margin:var(--space-0);
+  aspect-ratio:var(--ar-card);
+  box-shadow:var(--shadow-card);
+}
+.shot-bg{
+  position:absolute;
+  inset:var(--space-0);
+  background:var(--bg-shot);
+  display:block;
+}
+.shot-hero{aspect-ratio:var(--ar-hero)}
+.shot-square{aspect-ratio:var(--ar-square)}
+.shot-wide{aspect-ratio:var(--ar-wide)}
+.shot-alley .shot-bg{background:var(--bg-shot-alley)}
+.shot-map .shot-bg{background:var(--bg-shot)}
+.shot-map .shot-bg::before{
+  content:"";
+  position:absolute;
+  left:50%;top:var(--space-0);bottom:var(--space-0);
+  width:var(--border-width);
+  background:var(--line-on-dark);
+  transform:translateX(-50%);
+}
+.shot-map .shot-bg::after{
+  content:"";
+  position:absolute;
+  top:50%;left:var(--space-0);right:var(--space-0);
+  height:var(--border-width);
+  background:var(--line-on-dark);
+  transform:translateY(-50%);
+}
+.shot-pin{
+  position:absolute;
+  left:50%;top:50%;
+  width:var(--space-4);
+  height:var(--space-4);
+  transform:translate(-50%, -50%);
+  border:var(--border-width-strong) solid var(--color-paper);
+  border-radius:50%;
+  background:var(--color-signal);
+  z-index:1;
+}
+.shot-cap{
+  position:absolute;
+  left:var(--space-3);
+  right:var(--space-3);
+  bottom:var(--space-3);
+  margin:var(--space-0);
+  padding:var(--space-2) var(--space-3);
+  background:var(--chip-bg);
+  border:var(--border-width) solid var(--line-on-dark);
+  border-radius:var(--radius-1);
+  font-size:var(--text-caption);
+  line-height:1.4;
+  letter-spacing:var(--ls-caption);
+  text-transform:uppercase;
+  color:var(--color-paper);
+  z-index:2;
+}
 
-  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.6rem,2vw,.72rem);
-    letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
+/* Cards */
+.grid{
+  display:grid;
+  gap:var(--space-5);
+}
+.grid-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
+.grid-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
+.grid-4{grid-template-columns:repeat(4, minmax(0, 1fr))}
+.card{
+  display:block;
+  text-decoration:none;
+  border:var(--border-width) solid var(--line-on-dark);
+  border-radius:var(--radius-2);
+  background:var(--color-ink);
+  padding:var(--space-4);
+  transition:border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.card:hover{border-color:var(--line-strong);background:var(--surface-hover)}
+.card-title{
+  font-family:var(--font-display);
+  font-size:var(--text-card);
+  line-height:var(--lh-title);
+  letter-spacing:var(--ls-title);
+  color:var(--color-paper);
+  margin-top:var(--space-4);
+}
+.card-copy{
+  margin-top:var(--space-2);
+  font-size:var(--text-small);
+  line-height:var(--lh-body);
+  color:var(--color-muted);
+}
 
-  @media (max-width:920px){
-    .grid--3{grid-template-columns:repeat(2,1fr)}
-    .split{grid-template-columns:1fr;gap:1.6rem}
-    .introcard{grid-template-columns:1fr} .introcard .stage{min-height:160px}
-  }
-  @media (max-width:600px){
-    body{font-size:16px}
-    .nav ul{width:100%;order:3;gap:.7rem 1rem;font-size:.8rem}
-    .grid--2,.grid--3{grid-template-columns:1fr}
-    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
-    .list li,.facts li{flex-direction:column;gap:.1rem}
-    .list li .price{align-self:flex-start}
-    .facts li span:last-child{text-align:left}
-    footer .wrap{flex-direction:column;gap:.7rem}
-    .shot--hero{min-height:min(50vh,380px)}
-  }
+/* Section heads · red rule + label, single column */
+.view-head{padding-top:clamp(var(--space-8), 8vw, var(--space-10))}
+.rule-label{
+  display:grid;
+  gap:var(--space-3);
+  justify-items:start;
+  margin-bottom:var(--space-5);
+}
+.rule{
+  width:var(--rule-w);
+  height:var(--rule-h);
+  background:var(--color-signal);
+  border-radius:var(--radius-0);
+}
+.view-label{
+  font-size:var(--text-label);
+  font-weight:700;
+  letter-spacing:var(--ls-label);
+  text-transform:uppercase;
+  color:var(--color-muted);
+}
+.view-title{
+  font-family:var(--font-display);
+  font-size:var(--text-title);
+  line-height:var(--lh-title);
+  letter-spacing:var(--ls-title);
+  color:var(--color-paper);
+}
+.view-lede{
+  max-width:var(--wrap-narrow);
+  margin-top:var(--space-4);
+  font-size:var(--text-lede);
+  line-height:var(--lh-lede);
+  color:var(--color-paper);
+}
+.view-body{
+  padding-top:var(--space-7);
+  padding-bottom:var(--space-9);
+  display:grid;
+  gap:var(--space-7);
+}
 
-  .mock-banner{background:#000;color:var(--ink)}
-  footer{background:color-mix(in srgb,var(--ink) 5%,var(--paper));color:color-mix(in srgb,var(--ink) 62%,transparent);border-top:1px solid var(--line)}
-  footer a{color:color-mix(in srgb,var(--ink) 62%,transparent)}
-  footer a:hover{color:var(--ink)}
-  .introcard{background:color-mix(in srgb,var(--ink) 7%,var(--paper))}
-  .form input,.form textarea{background:color-mix(in srgb,var(--ink) 6%,var(--paper))}</style>
+/* Block titles (Home teasers) */
+.block-title{
+  font-family:var(--font-display);
+  font-size:var(--text-block);
+  line-height:var(--lh-title);
+  letter-spacing:var(--ls-title);
+  color:var(--color-paper);
+}
+.block-lede{
+  max-width:var(--wrap-narrow);
+  margin-top:var(--space-3);
+  margin-bottom:var(--space-6);
+  font-size:var(--text-lede);
+  line-height:var(--lh-lede);
+  color:var(--color-muted);
+}
+.room-teaser{margin-top:var(--space-5)}
+.text-link{
+  display:inline-block;
+  margin-top:var(--space-4);
+  font-size:var(--text-label);
+  font-weight:700;
+  letter-spacing:var(--ls-caption);
+  text-transform:uppercase;
+  color:var(--color-paper);
+  text-underline-offset:0.3em;
+}
+.text-link:hover{color:var(--color-paper)}
+
+/* Film band · the one warm paper day band */
+.film-band{
+  display:block;
+  background:var(--color-paper);
+  color:var(--color-ink);
+  text-decoration:none;
+  padding:var(--space-9) var(--pad-page);
+}
+.film-band:hover{color:var(--color-ink)}
+.film-band .block-title{color:var(--color-ink)}
+.film-band .block-lede{color:var(--color-ink)}
+.film-cta{
+  display:inline-flex;
+  align-items:center;
+  min-height:var(--control-min);
+  padding:var(--space-2) clamp(1.25rem, 3vw, 2rem);
+  font-family:var(--font-display);
+  font-size:var(--text-card);
+  letter-spacing:var(--ls-button);
+  line-height:1;
+  color:var(--color-ink);
+  border:var(--border-width) solid var(--line-on-day);
+  border-radius:var(--radius-1);
+  margin-top:var(--space-6);
+  transition:background var(--dur) var(--ease);
+}
+.film-band:hover .film-cta{background:var(--surface-day-hover)}
+.film-band .block-title{margin-bottom:var(--space-0)}
+.film-band .block-lede{margin-bottom:var(--space-0)}
+
+/* Menu note */
+.menu-note{
+  margin-top:var(--space-7);
+  font-size:var(--text-small);
+  color:var(--color-muted);
+}
+.menu-note a{color:var(--color-paper)}
+.menu-note a:hover{color:var(--color-paper)}
+
+/* Room prose + points */
+.prose{
+  max-width:var(--wrap-narrow);
+  font-size:var(--text-lede);
+  line-height:var(--lh-lede);
+  color:var(--color-paper);
+}
+.points-grid{margin-top:var(--space-7)}
+
+/* Steps */
+.steps{
+  counter-reset:none;
+  display:grid;
+  gap:var(--space-5);
+}
+.step{
+  border:var(--border-width) solid var(--line-on-dark);
+  border-radius:var(--radius-2);
+  background:var(--color-ink);
+  padding:var(--space-5);
+}
+.step-num{
+  width:var(--space-6);
+  height:var(--space-6);
+  display:grid;
+  place-items:center;
+  font-family:var(--font-display);
+  font-size:var(--text-card);
+  line-height:1;
+  color:var(--color-paper);
+  background:var(--color-void);
+  border:var(--border-width) solid var(--line-on-dark);
+  border-radius:var(--radius-1);
+  margin-bottom:var(--space-4);
+}
+.step-title{
+  font-family:var(--font-display);
+  font-size:var(--text-card);
+  line-height:var(--lh-title);
+  letter-spacing:var(--ls-title);
+  color:var(--color-paper);
+}
+.step-copy{
+  margin-top:var(--space-2);
+  font-size:var(--text-small);
+  line-height:var(--lh-body);
+  color:var(--color-muted);
+}
+.step-copy a{color:var(--color-paper)}
+.step-copy a:hover{color:var(--color-paper)}
+
+/* Facts */
+.facts{
+  list-style:none;
+  margin:var(--space-0);
+  padding:var(--space-0);
+  border-top:var(--border-width) solid var(--line-on-dark);
+}
+.facts li{
+  display:flex;
+  gap:var(--space-4);
+  align-items:baseline;
+  padding:var(--space-3) var(--space-0);
+  border-bottom:var(--border-width) solid var(--line-on-dark);
+}
+.fact-key{
+  flex:0 0 7.5rem;
+  font-size:var(--text-label);
+  font-weight:700;
+  letter-spacing:var(--ls-caption);
+  text-transform:uppercase;
+  color:var(--color-muted);
+}
+.fact-val{
+  font-size:var(--text-small);
+  color:var(--color-paper);
+}
+.fact-val a{color:var(--color-paper)}
+.fact-val a:hover{color:var(--color-paper)}
+
+/* Concept form */
+.form-card{
+  border:var(--border-width) solid var(--line-on-dark);
+  border-radius:var(--radius-2);
+  background:var(--color-void);
+  padding:var(--space-6);
+  display:grid;
+  gap:var(--space-4);
+  max-width:var(--wrap-narrow);
+}
+.form-card h3{
+  font-family:var(--font-display);
+  font-size:var(--text-block);
+  line-height:var(--lh-title);
+  letter-spacing:var(--ls-title);
+  color:var(--color-paper);
+}
+.field{display:grid;gap:var(--space-2)}
+.field label{
+  font-size:var(--text-label);
+  font-weight:700;
+  letter-spacing:var(--ls-caption);
+  text-transform:uppercase;
+  color:var(--color-muted);
+}
+.field input,
+.field select{
+  min-height:var(--control-min);
+  padding:var(--space-3);
+  background:var(--color-ink);
+  border:var(--border-width) solid var(--line-strong);
+  border-radius:var(--radius-1);
+  color:var(--color-paper);
+  font-family:var(--font-body);
+  font-size:var(--text-body);
+}
+.field input:focus-visible,
+.field select:focus-visible{outline:var(--outline-w) solid var(--color-paper);outline-offset:var(--space-1)}
+.field select option{background:var(--color-ink)}
+.form-note{
+  font-size:var(--text-caption);
+  line-height:1.5;
+  color:var(--color-muted);
+  border-top:var(--border-width) solid var(--line-on-dark);
+  padding-top:var(--space-3);
+}
+
+/* Visit */
+.facts-card{
+  border:var(--border-width) solid var(--line-on-dark);
+  border-radius:var(--radius-2);
+  background:var(--color-ink);
+  padding:var(--space-5);
+  display:grid;
+  gap:var(--space-5);
+  align-content:start;
+}
+.facts-card h3{
+  font-family:var(--font-display);
+  font-size:var(--text-card);
+  line-height:var(--lh-title);
+  letter-spacing:var(--ls-title);
+  color:var(--color-paper);
+  margin-bottom:var(--space-2);
+}
+.facts-card p{
+  font-size:var(--text-small);
+  line-height:var(--lh-body);
+  color:var(--color-muted);
+}
+.facts-card p strong{color:var(--color-paper);font-weight:700}
+.visit-group{display:grid;gap:var(--space-5)}
+
+/* Footer */
+.footer{
+  background:var(--color-void);
+  border-top:var(--border-width) solid var(--line-on-dark);
+  padding-top:var(--space-8);
+  padding-bottom:var(--space-7);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap:var(--space-7);
+}
+.footer .chop{margin-bottom:var(--space-4)}
+.footer-brand p{
+  margin-top:var(--space-3);
+  font-size:var(--text-small);
+  line-height:var(--lh-body);
+  color:var(--color-muted);
+}
+.footer-title{
+  font-size:var(--text-label);
+  font-weight:700;
+  letter-spacing:var(--ls-label);
+  text-transform:uppercase;
+  color:var(--color-paper);
+  margin-bottom:var(--space-4);
+}
+.footer-links{list-style:none;margin:var(--space-0);padding:var(--space-0);display:grid;gap:var(--space-3)}
+.footer-links a{
+  font-size:var(--text-small);
+  color:var(--color-muted);
+  text-underline-offset:0.2em;
+}
+.footer-links a:hover{color:var(--color-paper)}
+.footer-bottom{
+  max-width:var(--wrap);
+  margin:var(--space-7) auto var(--space-0);
+  padding:var(--space-4) var(--pad-page) var(--space-0);
+  border-top:var(--border-width) solid var(--line-on-dark);
+  font-size:var(--text-caption);
+  letter-spacing:var(--ls-caption);
+  color:var(--color-muted);
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-3);
+  justify-content:space-between;
+}
+
+/* Responsive */
+@media (max-width: 899px){
+  .hero-grid{grid-template-columns:minmax(0, 1fr)}
+  .grid-4{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  .grid-3{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  .footer-grid{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr)}
+}
+@media (max-width: 559px){
+  .grid-4,.grid-3,.grid-2{grid-template-columns:minmax(0, 1fr)}
+  .block{padding-top:var(--space-7);padding-bottom:var(--space-7)}
+  .film-band{padding-top:var(--space-7);padding-bottom:var(--space-7)}
+  .footer-grid{grid-template-columns:minmax(0, 1fr)}
+  .nav-links{gap:var(--space-1);width:100%}
+  .nav-links a{flex:1 1 auto;text-align:center;padding-left:var(--space-2);padding-right:var(--space-2)}
+  .nav-film{margin-left:var(--space-0)}
+}
+</style>
 </head>
 <body>
-<div class="mock-banner">Concept Las Vegas page for Super Kyuramen — built by Hillside Visuals</div>
-<header class="nav">
-  <div class="wrap">
-    <a class="brandmark" href="#/">SUPER KYURAMEN</a>
-    <ul>
-      <li><a href="#/menu">Menu</a></li>
-      <li><a href="#/room">The Room</a></li>
-      <li><a href="#/visit">Visit</a></li>
 
-    </ul>
-    <a class="btn" href="#/visit">Reserve</a>
+<p class="topnote" data-od-id="hillside-banner">Concept mockup by Hillside Visuals</p>
+
+<nav class="slab" data-od-id="site-nav" aria-label="Primary">
+  <div class="slab-inner">
+    <a class="brand" href="#/" data-od-id="brand-home">
+      <span class="chop" aria-hidden="true">SK</span>
+      <span class="brand-text">
+        <span class="wordmark">Super Kyuramen</span>
+        <span class="wordmark-sub">Las Vegas</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#/work" data-od-id="nav-menu">Menu</a>
+      <a href="#/about" data-od-id="nav-about">The Room</a>
+      <a href="#/booking" data-od-id="nav-booking">Reserve</a>
+      <a href="#/studio" data-od-id="nav-studio">Visit</a>
+      <a class="nav-film" href="intro.html" target="_blank" rel="noopener" data-od-id="nav-film">Brand film</a>
+    </div>
   </div>
-</header>
+</nav>
+
 <main>
-  <section class="view is-active" data-route="/" id="view-home">
-    <div class="wrap hero">
-      <p class="eyebrow">Super Kyuramen · Las Vegas · Now open</p>
-      <h1>Ramen by day.<br>Izakaya by night.</h1>
-      <p class="lead">Now open in Las Vegas, on Spring Mountain Road in the heart of Chinatown. Super-exclusive plates, honeycomb booths, and a lantern-lit yokocho alley under one roof.</p>
-      <div class="cta-row">
-        <a class="btn" href="#/visit">Reserve a table</a>
-        <a class="btn btn--ghost" href="#/menu">See the menu</a>
-      </div>
-      <div class="shot shot--hero" data-shot="The lantern-lined yokocho alley at dusk"></div>
-      
-    </div>
-    <div class="wrap block">
-      <p class="eyebrow">The Vegas menu</p>
-      <h2>What to order here.</h2>
-      <p style="color:var(--muted)">The full Kyuramen menu runs here, plus the Super-exclusive plates built for the Vegas room.</p>
-      <div class="grid grid--3" style="margin-top:1.5rem">
-        <div class="shot shot--square" data-shot="Super Kyuramen Dragon Roll"></div>
-        <div class="shot shot--square" data-shot="Jumbo lump crab maruyaki off the fire"></div>
-        <div class="shot shot--square" data-shot="Tableside omurice, sauce pouring"></div>
-      </div>
-      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="#/menu">See the full menu</a></p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p class="eyebrow">The room</p>
-          <h2>Multi-level booths and a yokocho alley.</h2>
-          <p>About 5,200 square feet: honeycomb booths, a large sushi bar, noren curtains, private themed dining rooms, and a lantern-lined alley with a Japanese wishing tree.</p>
-          <p><a class="btn btn--ghost" href="#/room">See the room</a></p>
-        </div>
-        <div class="shot shot--wide" data-shot="Honeycomb booths and the sushi bar"></div>
-      </div>
-    </div>
-  </section>
-  <section class="view" data-route="/menu" id="view-menu">
-    <div class="wrap pagehead">
-      <p class="eyebrow">The Vegas menu</p>
-      <h1>What to order here.</h1>
-      <p class="lead">The Super-exclusive plates, built for the Vegas room. Full Kyuramen menu runs alongside.</p>
-    </div>
-    <div class="wrap block">
-      <ul class="list">
-        <li><span>Super Kyuramen Dragon Roll<span class="desc">The roll that headlines this menu. Built for the Vegas room and nowhere else.</span></span><span class="price">Super exclusive</span></li>
-        <li><span>Jumbo Lump Crab Maruyaki<span class="desc">Jumbo lump crab, grilled maruyaki style. Char from the fire, nothing in the way of the crab.</span></span><span class="price">Super exclusive</span></li>
-        <li><span>Toro Uni Crispy Monaka<span class="desc">Crispy monaka shell stacked with toro and uni. Eaten the second it lands.</span></span><span class="price">Super exclusive</span></li>
-        <li><span>Tableside Omurice<span class="desc">Omelette over rice, glazed and finished at your booth. The pour happens tableside.</span></span><span class="price">Tableside</span></li>
-        <li><span>Signature Kyuramen Ramen<span class="desc">The bowl the franchise was built on. Poured the same here, just in a bigger room.</span></span><span class="price">Signature</span></li>
-        <li><span>Kyuramen Street Cup<span class="desc">Ramen in a takeaway cup, from the yokocho alley entrance.</span></span><span class="price">To go</span></li>
-      </ul>
-      <p style="margin-top:1rem;color:var(--muted);font-size:.86rem">Prices shown are placeholders for this mockup.</p>
-      <p style="margin-top:1.4rem"><a class="btn" href="#/visit">Reserve a table</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/room" id="view-room">
-    <div class="wrap pagehead">
-      <p class="eyebrow">The room</p>
-      <h1>Multi-level booths, a sushi bar, a lantern-lit alley.</h1>
-      <p class="lead">Ramen by day, izakaya by night, in one 5,200 square foot room.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p>The Vegas shop is a former furniture showroom with high ceilings and an open layout. Multi-level honeycomb booths, a large sushi bar, and noren fabric curtains.</p>
-          <p>Private themed dining rooms, a ramen shop room, an izakaya room, a manga cafe room, and a yokocho-inspired alleyway lined with lanterns and a Japanese wishing tree. Same complex as Chubby Cattle BBQ.</p>
-        </div>
-        <div class="shot shot--wide" data-shot="The sushi bar under the lanterns"></div>
-      </div>
-    </div>
-    <div class="wrap block">
-      <h2>In the room</h2>
-      <div class="grid grid--3" style="margin-top:1.3rem">
-        <div><h3>Honeycomb booths</h3><p class="desc">Multi-level, tucked in, built for a night out.</p></div>
-        <div><h3>Themed private rooms</h3><p class="desc">Ramen shop, izakaya, and manga cafe rooms to book.</p></div>
-        <div><h3>The yokocho alley</h3><p class="desc">Lantern-lined, with a Japanese wishing tree at the end.</p></div>
-      </div>
-      <p style="margin-top:1.7rem"><a class="btn" href="#/visit">Reserve a table</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/visit" id="view-visit">
-    <div class="wrap pagehead">
-      <p class="eyebrow">Visit</p>
-      <h1>Spring Mountain Rd, Chinatown.</h1>
-      <p class="lead">In Hotai Plaza on Spring Mountain, the sibling of Kyuramen in Henderson.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <ul class="facts">
-            <li><b>Address</b><span>4525 Spring Mountain Rd, Ste 101-102, Las Vegas, NV 89103</span></li>
-            <li><b>Hours</b><span>Grand opening season. Hours TBC.</span></li>
-            <li><b>Reserve</b><span>Through kyuramen.com and the Kyuramen app</span></li>
-            <li><b>Instagram</b><span><a href="https://www.instagram.com/superkyuramen/" target="_blank" rel="noopener">@superkyuramen</a></span></li>
-            <li><b>All locations</b><span><a href="https://kyuramen.com/superkyuramen" target="_blank" rel="noopener">kyuramen.com</a></span></li>
-          </ul>
-          <p style="margin-top:1.3rem"><a class="btn" href="https://kyuramen.com/superkyuramen">Reserve at kyuramen.com</a></p>
-        </div>
-        <div class="grid" style="gap:1rem">
-          <div class="shot shot--wide" data-shot="Storefront in Hotai Plaza"></div>
-          <div class="grid grid--2" style="gap:1rem">
-            <div class="shot shot--square" data-shot="The wishing tree at the alley&#x27;s end"></div>
-            <div class="shot shot--square" data-shot="A booth set for dinner"></div>
-          </div>
+
+<!-- ============ HOME ============ -->
+<section class="view is-active" data-route="/" data-od-id="view-home">
+
+  <div class="hero" data-od-id="hero-home">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="lockup" data-od-id="lockup-home">
+          <span class="lockup-word">Super Kyuramen</span>
+          <span class="lockup-rule" aria-hidden="true"></span>
+          <span class="lockup-city">Las Vegas · Chinatown</span>
+        </p>
+        <h1 class="hero-title">Ramen by day.<br>Izakaya by night.</h1>
+        <p class="hero-lede">The elevated Super ramen house from the Kyuramen family, now open in Las Vegas Chinatown. Ramen, sushi, yakitori and tableside omurice in honeycomb booths under lantern light.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#/booking" data-od-id="cta-reserve-home">Reserve</a>
+          <a class="btn btn-ghost" href="#/work" data-od-id="cta-menu-home">See the menu</a>
         </div>
       </div>
+      <figure class="shot shot-hero" data-od-id="shot-hero">
+        <span class="shot-bg" data-shot="Steam over the open kitchen" role="img" aria-label="Steam over the open kitchen"></span>
+        <figcaption class="shot-cap">Hillside shoot. Steam over the open kitchen.</figcaption>
+      </figure>
     </div>
-  </section>
-</main>
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="yr"></span> Super Kyuramen · Las Vegas, NV 89103</span>
-    <nav><a href="#/menu">Menu</a> <a href="#/room">The Room</a> <a href="#/visit">Visit</a> <a href="https://www.instagram.com/superkyuramen/" target="_blank" rel="noopener">@superkyuramen</a></nav>
-    <span>Part of kyuramen.com · Herndon VA · Las Vegas</span>
   </div>
+
+  <section class="wrap block" data-od-id="block-order">
+    <h2 class="block-title">What to order</h2>
+    <p class="block-lede">Three plates we would start with. The full set lives in the menu.</p>
+    <div class="grid grid-3">
+      <a class="card" href="#/work" data-od-id="teaser-card-roll">
+        <figure class="shot">
+          <span class="shot-bg" data-shot="Dragon roll, cut and plated" role="img" aria-label="Dragon roll, cut and plated"></span>
+          <figcaption class="shot-cap">Hillside shoot. Dragon roll, cut and plated.</figcaption>
+        </figure>
+        <h3 class="card-title">Super Kyuramen Dragon Roll</h3>
+        <p class="card-copy">The signature roll, cut at the sushi bar.</p>
+      </a>
+      <a class="card" href="#/work" data-od-id="teaser-card-tonkotsu">
+        <figure class="shot">
+          <span class="shot-bg" data-shot="Bowl steam at the counter" role="img" aria-label="Bowl steam at the counter"></span>
+          <figcaption class="shot-cap">Hillside shoot. Bowl steam at the counter.</figcaption>
+        </figure>
+        <h3 class="card-title">Tonkotsu</h3>
+        <p class="card-copy">Pork bone broth, chashu and a soft egg.</p>
+      </a>
+      <a class="card" href="#/work" data-od-id="teaser-card-omurice">
+        <figure class="shot">
+          <span class="shot-bg" data-shot="Omurice poured at the table" role="img" aria-label="Omurice poured at the table"></span>
+          <figcaption class="shot-cap">Hillside shoot. Omurice poured at the table.</figcaption>
+        </figure>
+        <h3 class="card-title">Tableside Omurice</h3>
+        <p class="card-copy">Omelet rice with curry or demi-glace poured at the table.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap block" data-od-id="block-room">
+    <h2 class="block-title">The room</h2>
+    <p class="block-lede">About 5,168 sq ft of honeycomb booths, a sushi bar and a lantern alley to themed private rooms.</p>
+    <figure class="shot shot-wide room-teaser" data-od-id="shot-room-teaser">
+      <span class="shot-bg" data-shot="Honeycomb booths at night" role="img" aria-label="Honeycomb booths at night"></span>
+      <figcaption class="shot-cap">Hillside shoot. Honeycomb booths at night.</figcaption>
+    </figure>
+    <a class="text-link" href="#/about" data-od-id="link-room-about">Inside the room</a>
+  </section>
+
+  <a class="film-band" href="intro.html" target="_blank" rel="noopener" data-od-id="card-film">
+    <div class="wrap-narrow">
+      <h2 class="block-title">The film</h2>
+      <p class="block-lede">A night in the alley, shot for the brand. Honeycomb booths, neon curtains, the wishing tree.</p>
+      <span class="film-cta">Watch the film</span>
+    </div>
+  </a>
+
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="view" data-route="/work" data-od-id="view-menu">
+
+  <header class="wrap view-head" data-od-id="head-menu">
+    <div class="rule-label">
+      <span class="rule" aria-hidden="true"></span>
+    </div>
+    <h1 class="view-title">The menu</h1>
+    <p class="view-lede">Ramen by day, izakaya by night. A spread of the real menu, no prices.</p>
+  </header>
+
+  <div class="wrap view-body">
+    <div class="grid grid-4">
+      <article class="card" data-od-id="menu-item-tonkotsu">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Pork broth, chashu, soft egg" role="img" aria-label="Pork broth, chashu, soft egg"></span>
+          <figcaption class="shot-cap">Hillside shoot. Pork broth, chashu, soft egg.</figcaption>
+        </figure>
+        <h3 class="card-title">Tonkotsu</h3>
+        <p class="card-copy">Pork bone broth, chashu and a soft egg.</p>
+      </article>
+      <article class="card" data-od-id="menu-item-sapporo">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Sapporo miso, butter and corn" role="img" aria-label="Sapporo miso, butter and corn"></span>
+          <figcaption class="shot-cap">Hillside shoot. Sapporo miso, butter and corn.</figcaption>
+        </figure>
+        <h3 class="card-title">Sapporo Miso</h3>
+        <p class="card-copy">Miso ramen with butter and corn.</p>
+      </article>
+      <article class="card" data-od-id="menu-item-yinyang">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Yin-yang, two broths" role="img" aria-label="Yin-yang, two broths"></span>
+          <figcaption class="shot-cap">Hillside shoot. Yin-yang, two broths.</figcaption>
+        </figure>
+        <h3 class="card-title">Yin-Yang Bowl</h3>
+        <p class="card-copy">Two flavors in one bowl.</p>
+      </article>
+      <article class="card" data-od-id="menu-item-cup">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Cup of ramen to go" role="img" aria-label="Cup of ramen to go"></span>
+          <figcaption class="shot-cap">Hillside shoot. Cup of ramen to go.</figcaption>
+        </figure>
+        <h3 class="card-title">Kyuramen Street Cup</h3>
+        <p class="card-copy">Ramen in a cup for the road.</p>
+      </article>
+      <article class="card" data-od-id="menu-item-roll">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Dragon roll on a dark plate" role="img" aria-label="Dragon roll on a dark plate"></span>
+          <figcaption class="shot-cap">Hillside shoot. Dragon roll on a dark plate.</figcaption>
+        </figure>
+        <h3 class="card-title">Super Kyuramen Dragon Roll</h3>
+        <p class="card-copy">The signature roll, cut at the bar.</p>
+      </article>
+      <article class="card" data-od-id="menu-item-monaka">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Crispy monaka with uni" role="img" aria-label="Crispy monaka with uni"></span>
+          <figcaption class="shot-cap">Hillside shoot. Crispy monaka with uni.</figcaption>
+        </figure>
+        <h3 class="card-title">Toro Uni Crispy Monaka</h3>
+        <p class="card-copy">Fatty tuna and uni in a crisp shell.</p>
+      </article>
+      <article class="card" data-od-id="menu-item-omurice">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Omurice under demi-glace" role="img" aria-label="Omurice under demi-glace"></span>
+          <figcaption class="shot-cap">Hillside shoot. Omurice under demi-glace.</figcaption>
+        </figure>
+        <h3 class="card-title">Tableside Omurice</h3>
+        <p class="card-copy">Curry or demi-glace poured at the table.</p>
+      </article>
+      <article class="card" data-od-id="menu-item-tiramisu">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Matcha tiramisu on the bar" role="img" aria-label="Matcha tiramisu on the bar"></span>
+          <figcaption class="shot-cap">Hillside shoot. Matcha tiramisu on the bar.</figcaption>
+        </figure>
+        <h3 class="card-title">Matcha Tiramisu</h3>
+        <p class="card-copy">Green tea cream over mascarpone.</p>
+      </article>
+    </div>
+    <p class="menu-note">Full menu at <a href="https://kyuramen.com" target="_blank" rel="noopener" data-od-id="link-kyuramen-site">kyuramen.com</a>.</p>
+  </div>
+
+</section>
+
+<!-- ============ THE ROOM ============ -->
+<section class="view" data-route="/about" data-od-id="view-about">
+
+  <header class="wrap view-head" data-od-id="head-about">
+    <div class="rule-label">
+      <span class="rule" aria-hidden="true"></span>
+    </div>
+    <h1 class="view-title">The room</h1>
+    <p class="view-lede">A room you wander, lit like the middle of the night.</p>
+  </header>
+
+  <div class="wrap view-body">
+    <p class="prose">About 5,168 sq ft of honeycomb booths stacked across levels, wrapped around a large sushi bar. A lantern-lined yokocho alley leads past neon fabric curtains to themed private rooms: a ramen shop, an izakaya and a manga cafe. A wishing tree stands near the entrance.</p>
+    <p class="prose">This is the Super concept of the Kyuramen family. The chain opened in New York in 2014 and now runs more than 126 locations. Las Vegas is the second Super Kyuramen in the United States, after Herndon, Virginia.</p>
+
+    <div class="grid grid-3 points-grid">
+      <article class="card" data-od-id="room-point-booths">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Booths stacked at night" role="img" aria-label="Booths stacked at night"></span>
+          <figcaption class="shot-cap">Hillside shoot. Booths stacked at night.</figcaption>
+        </figure>
+        <h3 class="card-title">The booths</h3>
+        <p class="card-copy">Honeycomb booths, roomy and layered, lit warm.</p>
+      </article>
+      <article class="card" data-od-id="room-point-alley">
+        <figure class="shot shot-square shot-alley">
+          <span class="shot-bg" data-shot="Lanterns down the alley" role="img" aria-label="Lanterns down the alley"></span>
+          <figcaption class="shot-cap">Hillside shoot. Lanterns down the alley.</figcaption>
+        </figure>
+        <h3 class="card-title">The alley</h3>
+        <p class="card-copy">The lantern-lined yokocho alley to themed private rooms.</p>
+      </article>
+      <article class="card" data-od-id="room-point-bar">
+        <figure class="shot shot-square">
+          <span class="shot-bg" data-shot="Sushi at the bar" role="img" aria-label="Sushi at the bar"></span>
+          <figcaption class="shot-cap">Hillside shoot. Sushi at the bar.</figcaption>
+        </figure>
+        <h3 class="card-title">The bar</h3>
+        <p class="card-copy">A large sushi bar with the kitchen in view.</p>
+      </article>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ RESERVE ============ -->
+<section class="view" data-route="/booking" data-od-id="view-booking">
+
+  <header class="wrap view-head" data-od-id="head-booking">
+    <div class="rule-label">
+      <span class="rule" aria-hidden="true"></span>
+    </div>
+    <h1 class="view-title">Reserve a table</h1>
+    <p class="view-lede">Three honest ways in. Hours are TBC, so call before you plan around us.</p>
+  </header>
+
+  <div class="wrap view-body">
+    <div class="grid grid-3">
+      <article class="step" data-od-id="step-time">
+        <p class="step-num" aria-hidden="true">1</p>
+        <h2 class="step-title">Pick a time</h2>
+        <p class="step-copy">Choose a date and party size below. The form on this page is a concept, not a live booking system.</p>
+      </article>
+      <article class="step" data-od-id="step-phone">
+        <p class="step-num" aria-hidden="true">2</p>
+        <h2 class="step-title">Groups by phone</h2>
+        <p class="step-copy">For large groups and themed private rooms, call <a href="tel:+13473503522" data-od-id="link-step-phone">(347) 350-3522</a>.</p>
+      </article>
+      <article class="step" data-od-id="step-walkin">
+        <p class="step-num" aria-hidden="true">3</p>
+        <h2 class="step-title">Walk-ins at the bar</h2>
+        <p class="step-copy">The sushi bar keeps room for walk-ins, day and night.</p>
+      </article>
+    </div>
+
+    <ul class="facts" data-od-id="facts-booking">
+      <li>
+        <span class="fact-key">Hours</span>
+        <span class="fact-val">TBC. See <a href="https://kyuramen.com" target="_blank" rel="noopener" data-od-id="link-hours">kyuramen.com</a>.</span>
+      </li>
+      <li>
+        <span class="fact-key">Phone</span>
+        <span class="fact-val"><a href="tel:+13473503522" data-od-id="link-phone">(347) 350-3522</a></span>
+      </li>
+      <li>
+        <span class="fact-key">Instagram</span>
+        <span class="fact-val"><a href="https://instagram.com/superkyuramen" target="_blank" rel="noopener" data-od-id="link-ig">@superkyuramen</a></span>
+      </li>
+    </ul>
+
+    <form class="form-card" data-od-id="booking-form" novalidate>
+      <h3>Request a time</h3>
+      <div class="field" data-od-id="field-name">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name">
+      </div>
+      <div class="field" data-od-id="field-party">
+        <label for="f-party">Party size</label>
+        <select id="f-party" name="party">
+          <option>2 people</option>
+          <option>3 to 4 people</option>
+          <option>5 to 8 people</option>
+          <option>Themed private room</option>
+        </select>
+      </div>
+      <div class="field" data-od-id="field-date">
+        <label for="f-date">Date</label>
+        <input id="f-date" name="date" type="date">
+      </div>
+      <div class="field" data-od-id="field-time">
+        <label for="f-time">Time</label>
+        <input id="f-time" name="time" type="time">
+      </div>
+      <button class="btn btn-primary" type="button" data-od-id="form-submit">Request time</button>
+      <p class="form-note">This is a concept form, not a live booking system.</p>
+    </form>
+  </div>
+
+</section>
+
+<!-- ============ VISIT ============ -->
+<section class="view" data-route="/studio" data-od-id="view-studio">
+
+  <header class="wrap view-head" data-od-id="head-studio">
+    <div class="rule-label">
+      <span class="rule" aria-hidden="true"></span>
+    </div>
+    <h1 class="view-title">Find the shop</h1>
+    <p class="view-lede">In Hotai Plaza, along Spring Mountain Road in Las Vegas Chinatown.</p>
+  </header>
+
+  <div class="wrap view-body">
+    <div class="grid grid-2">
+      <aside class="facts-card" data-od-id="visit-info">
+        <div>
+          <h3>Address</h3>
+          <p><strong>4525 W Spring Mountain Rd, Ste 101-102</strong><br>Las Vegas, NV 89103</p>
+          <p>Hotai Plaza, Chinatown, same plaza as Chubby Cattle BBQ.</p>
+        </div>
+        <div>
+          <h3>Hours</h3>
+          <p>Hours TBC. See <a href="https://kyuramen.com" target="_blank" rel="noopener" data-od-id="link-visit-hours">kyuramen.com</a>.</p>
+        </div>
+        <div>
+          <h3>Parking</h3>
+          <p>Park in the Hotai Plaza lot.</p>
+        </div>
+      </aside>
+
+      <div class="visit-group" data-od-id="visit-media">
+        <figure class="shot shot-wide" data-od-id="shot-storefront">
+          <span class="shot-bg" data-shot="Storefront on Spring Mountain" role="img" aria-label="Storefront on Spring Mountain"></span>
+          <figcaption class="shot-cap">Hillside shoot. Storefront on Spring Mountain.</figcaption>
+        </figure>
+        <div class="grid grid-2">
+          <figure class="shot shot-square" data-od-id="shot-entrance">
+            <span class="shot-bg shot-alley" data-shot="Lantern alley entrance" role="img" aria-label="Lantern alley entrance"></span>
+            <figcaption class="shot-cap">Hillside shoot. Lantern alley entrance.</figcaption>
+          </figure>
+          <figure class="shot shot-square" data-od-id="shot-bar">
+            <span class="shot-bg" data-shot="Bar and booths at night" role="img" aria-label="Bar and booths at night"></span>
+            <figcaption class="shot-cap">Hillside shoot. Bar and booths at night.</figcaption>
+          </figure>
+        </div>
+        <figure class="shot shot-wide shot-map" data-od-id="shot-map">
+          <span class="shot-bg" data-shot="Map of Spring Mountain Road" role="img" aria-label="Map of Spring Mountain Road"></span>
+          <span class="shot-pin" aria-hidden="true"></span>
+          <figcaption class="shot-cap">Hillside shoot. Spring Mountain Rd, Chinatown.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer" data-od-id="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <span class="chop" aria-hidden="true">SK</span>
+      <p data-od-id="footer-lockup">Super Kyuramen<br>Las Vegas · Chinatown</p>
+      <p>Ramen by day. Izakaya by night.</p>
+    </div>
+    <div>
+      <p class="footer-title" data-od-id="footer-col-explore">Explore</p>
+      <ul class="footer-links">
+        <li><a href="#/" data-od-id="footer-home">Home</a></li>
+        <li><a href="#/work" data-od-id="footer-menu">Menu</a></li>
+        <li><a href="#/about" data-od-id="footer-about">The Room</a></li>
+        <li><a href="#/booking" data-od-id="footer-booking">Reserve</a></li>
+        <li><a href="#/studio" data-od-id="footer-studio">Visit</a></li>
+        <li><a href="intro.html" target="_blank" rel="noopener" data-od-id="footer-film">Brand film</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title" data-od-id="footer-col-connect">Contact</p>
+      <ul class="footer-links">
+        <li><a href="tel:+13473503522" data-od-id="footer-phone">(347) 350-3522</a></li>
+        <li><a href="https://instagram.com/superkyuramen" target="_blank" rel="noopener" data-od-id="footer-ig">@superkyuramen</a></li>
+        <li><a href="https://kyuramen.com" target="_blank" rel="noopener" data-od-id="footer-site">kyuramen.com</a></li>
+        <li><a href="#/studio" data-od-id="footer-address">4525 W Spring Mountain Rd</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-bottom">
+    <span>Super Kyuramen Las Vegas</span>
+    <span>Concept website by Hillside Visuals</span>
+  </p>
 </footer>
+
 <script>
-(function(){
-  document.getElementById('yr').textContent=new Date().getFullYear();
-  var views=[].slice.call(document.querySelectorAll('.view'));
-  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
-  if(views.length){
-    document.body.classList.add('routed');
-    var home=document.getElementById('view-home')||views[0];
-    var rof=function(v){return v.getAttribute('data-route');};
-    var render=function(){
-      var h=(location.hash||'').replace(/^#/,'');
-      if(h&&h.charAt(0)!=='/')h='/'+h;
-      var m=views.filter(function(v){return rof(v)===h;})[0]||home;
-      views.forEach(function(v){v.classList.toggle('is-active',v===m);});
-      navLinks.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+rof(m)?'page':'false');});
-      window.scrollTo(0,0);
-    };
-    window.addEventListener('hashchange',render);render();
-  }
-  var form=document.querySelector('.form');
-  if(form){var st=form.querySelector('.status');var note=st?st.textContent:'';
-    form.addEventListener('submit',function(e){e.preventDefault();if(st)st.textContent=note;});}
-})();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Super Kyuramen Las Vegas",
-  "servesCuisine": "Japanese",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "4525 Spring Mountain Rd, Ste 101-102",
-    "addressLocality": "Las Vegas",
-    "addressRegion": "NV",
-    "postalCode": "89103"
-  }
+document.body.classList.add('routed');
+var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+var	links = Array.prototype.slice.call(document.querySelectorAll('a[href^="#/"]'));
+function route(){
+  var	h = location.hash || '#/';
+  var r = h.slice(1);
+  if (r.charAt(0) !== '/') r = '/' + r;
+  return r;
 }
+function render(){
+  var r = route();
+  var active = null;
+  views.forEach(function(v){
+    if (v.getAttribute('data-route') === r) active = v;
+  });
+  if (!active) active = views[0];
+  views.forEach(function(v){
+    v.classList.toggle('is-active', v === active);
+  });
+  links.forEach(function(a){
+    var	target = '/' + a.getAttribute('href').slice(2);
+    if (target === active.getAttribute('data-route')) {
+      a.setAttribute('aria-current', 'page');
+    } else {
+      a.removeAttribute('aria-current');
+    }
+  });
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', render);
+render();
 </script>
+
 </body>
 </html>

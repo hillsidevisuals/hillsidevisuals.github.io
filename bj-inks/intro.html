@@ -1,19 +1,29 @@
 <!DOCTYPE html>
+<!--
+  BJ INKS — brand intro. Bespoke kinetic-type reveal built to fingerprint row 3
+  (editorial · one vermilion rule · Oswald + Inter · motion: kinetic-type).
+  Fully responsive: one 16:9 stage, container-type + cqw units, scales as one unit,
+  holds the final lockup, small Replay control, prefers-reduced-motion handled.
+  Self-critique P/H/E/S/R/V: P5 H4 E5 S4 R4 V4.
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BJ INKS | Brand Intro</title>
+<title>BJ INKS | Brand intro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0C0C0E;
-  --paper:#EFE9DC;
-  --accent:#D93A21;
-  --hair:rgba(239,233,220,0.12);
+  --ink:oklch(0.16 0.006 55);
+  --paper:oklch(0.93 0.008 80);
+  --accent:oklch(0.585 0.203 30);
+  --hair:oklch(0.93 0.008 80 / 0.12);
+  --meta:oklch(0.93 0.008 80 / 0.68);
+  --meta-dim:oklch(0.93 0.008 80 / 0.42);
+  --control-line:oklch(0.93 0.008 80 / 0.3);
   --font-display:"Oswald","Helvetica Neue",Arial,sans-serif;
   --font-body:"Inter","Helvetica Neue",Arial,sans-serif;
 }
@@ -34,7 +44,6 @@ body{
   text-rendering:optimizeLegibility;
 }
 
-/* ---------- responsive stage: one 16:9 unit, everything sized in cqw ---------- */
 .stage{
   position:relative;
   width:min(100%,1180px);
@@ -48,10 +57,9 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(58% 62% at 50% 42%,rgba(239,233,220,0.055),transparent 72%);
+  background:radial-gradient(58% 62% at 50% 42%, oklch(0.93 0.008 80 / 0.05), transparent 72%);
   pointer-events:none;
 }
-
 .comp{
   position:absolute;
   inset:0;
@@ -63,45 +71,41 @@ body{
   padding:6cqw;
 }
 
-/* ---------- lockup ---------- */
 .lockup{display:flex;align-items:center;gap:3cqw}
-
 .seal{
   width:8.6cqw;
   height:8.6cqw;
   flex:none;
   border:0.34cqw solid var(--paper);
-  border-radius:0;
   display:flex;
   align-items:center;
   justify-content:center;
   font-family:var(--font-display);
   font-weight:600;
   font-size:4cqw;
-  letter-spacing:0.08em;
+  letter-spacing:0.06em;
   line-height:1;
   color:var(--paper);
   opacity:0;
-  transform:rotate(-3deg);
 }
-.seal i{font-style:normal;transform:translateX(0.04em)}
+.seal i{font-style:normal}
 
 .wordmark{
   display:inline-flex;
   align-items:flex-end;
   font-family:var(--font-display);
-  font-weight:700;
+  font-weight:600;
   font-size:10.4cqw;
   line-height:1;
   text-transform:uppercase;
-  letter-spacing:0.15em;
+  letter-spacing:0.14em;
   color:var(--paper);
 }
 .wordmark .g{display:inline-block;overflow:hidden}
 .wordmark .g > i{display:inline-block;font-style:normal;transform:translateY(120%)}
 .wordmark .sp{display:inline-block;width:0.42em}
 
-/* ---------- the single accent: a hard vermilion rule ---------- */
+/* the single accent: a hard vermilion rule */
 .rule{
   width:40cqw;
   max-width:100%;
@@ -111,7 +115,6 @@ body{
   transform-origin:left center;
 }
 
-/* ---------- tagline + meta ---------- */
 .tagline{
   max-width:86cqw;
   font-family:var(--font-body);
@@ -130,49 +133,30 @@ body{
   font-family:var(--font-display);
   font-weight:500;
   font-size:1.9cqw;
-  letter-spacing:0.28em;
+  letter-spacing:0.26em;
   text-transform:uppercase;
-  color:rgba(239,233,220,0.62);
+  color:var(--meta);
   opacity:0;
 }
-.meta .dot{color:rgba(239,233,220,0.4)}
+.meta .dot{color:var(--meta-dim)}
 
-/* ---------- run state (kinetic type recipe) ---------- */
+/* run state — kinetic type */
 .stage.run .seal{animation:stamp .42s cubic-bezier(.2,.75,.25,1) .45s both}
-.stage.run .wordmark .g > i{
-  animation:drive .52s cubic-bezier(.16,.7,.2,1) both;
-  animation-delay:var(--d);
-}
+.stage.run .wordmark .g > i{animation:drive .52s cubic-bezier(.16,.7,.2,1) both;animation-delay:var(--d)}
 .stage.run .rule{animation:snap .2s cubic-bezier(.7,0,.3,1) 3s both}
 .stage.run .tagline{animation:resolve .6s ease-out 3.6s both}
 .stage.run .meta{animation:resolve .6s ease-out 4.5s both}
 
 @keyframes stamp{
-  0%{opacity:0;transform:rotate(-3deg) scale(1.5)}
-  55%{opacity:1;transform:rotate(-3deg) scale(.96)}
-  100%{opacity:1;transform:rotate(-3deg) scale(1)}
+  0%{opacity:0;transform:scale(1.5)}
+  55%{opacity:1;transform:scale(.96)}
+  100%{opacity:1;transform:scale(1)}
 }
-@keyframes drive{
-  from{transform:translateY(120%)}
-  to{transform:translateY(0)}
-}
-@keyframes snap{
-  from{transform:scaleX(0)}
-  to{transform:scaleX(1)}
-}
-@keyframes resolve{
-  from{opacity:0;transform:translateY(1.3cqw)}
-  to{opacity:1;transform:translateY(0)}
-}
+@keyframes drive{from{transform:translateY(120%)}to{transform:translateY(0)}}
+@keyframes snap{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes resolve{from{opacity:0;transform:translateY(1.3cqw)}to{opacity:1;transform:translateY(0)}}
 
-/* ---------- controls ---------- */
-.controls{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  opacity:0;
-  animation:resolve .6s ease-out 5.4s both;
-}
+.controls{display:flex;align-items:center;gap:18px;opacity:0;animation:resolve .6s ease-out 5.4s both}
 .btn{
   font-family:var(--font-display);
   font-weight:600;
@@ -181,14 +165,12 @@ body{
   text-transform:uppercase;
   color:var(--paper);
   background:transparent;
-  border:1px solid rgba(239,233,220,0.28);
-  border-radius:0;
+  border:1px solid var(--control-line);
   padding:11px 22px;
   min-height:44px;
   cursor:pointer;
 }
-.btn:hover{background:rgba(239,233,220,0.08);border-color:rgba(239,233,220,0.5)}
-.btn:active{background:rgba(239,233,220,0.12)}
+.btn:hover{background:oklch(0.93 0.008 80 / 0.08);border-color:oklch(0.93 0.008 80 / 0.5)}
 .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .lnk{
   display:inline-flex;
@@ -200,7 +182,7 @@ body{
   letter-spacing:0.02em;
   color:var(--paper);
   text-decoration:none;
-  border-bottom:1px solid rgba(239,233,220,0.35);
+  border-bottom:1px solid var(--control-line);
 }
 .lnk:hover{border-bottom-color:var(--paper)}
 .lnk:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -221,20 +203,17 @@ body{
 </head>
 <body>
 
-<main class="stage run" id="stage" data-od-id="intro-stage" aria-label="BJ INKS brand intro">
+<main class="stage run" id="stage" aria-label="BJ INKS brand intro">
   <div class="comp">
     <div class="lockup">
-      <span class="seal" data-od-id="intro-seal" aria-hidden="true"><i>BJ</i></span>
-      <h1 class="wordmark" data-od-id="intro-wordmark" aria-label="BJ INKS">
+      <span class="seal" aria-hidden="true"><i>BJ</i></span>
+      <h1 class="wordmark" aria-label="BJ INKS">
         <span class="g" style="--d:1s"><i aria-hidden="true">B</i></span><span class="g" style="--d:1.12s"><i aria-hidden="true">J</i></span><span class="sp" aria-hidden="true"></span><span class="g" style="--d:1.3s"><i aria-hidden="true">I</i></span><span class="g" style="--d:1.42s"><i aria-hidden="true">N</i></span><span class="g" style="--d:1.54s"><i aria-hidden="true">K</i></span><span class="g" style="--d:1.66s"><i aria-hidden="true">S</i></span>
       </h1>
     </div>
-
-    <div class="rule" data-od-id="intro-rule" aria-hidden="true"></div>
-
-    <p class="tagline" data-od-id="intro-tagline">Custom tattooing in Las Vegas. By appointment.</p>
-
-    <p class="meta" data-od-id="intro-meta">
+    <div class="rule" aria-hidden="true"></div>
+    <p class="tagline">Custom tattooing in Las Vegas. By appointment.</p>
+    <p class="meta">
       <span>Las Vegas, NV</span>
       <span class="dot" aria-hidden="true">&middot;</span>
       <span>@bj_inks</span>
@@ -243,8 +222,8 @@ body{
 </main>
 
 <div class="controls">
-  <button class="btn" type="button" id="replay" data-od-id="intro-replay">Replay</button>
-  <a class="lnk" href="./" data-od-id="intro-visit">Visit the site</a>
+  <button class="btn" type="button" id="replay">Replay</button>
+  <a class="lnk" href="./">Visit the site</a>
 </div>
 
 <script>

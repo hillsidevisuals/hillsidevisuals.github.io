@@ -1,0 +1,388 @@
+<!doctype html>
+<!-- fingerprint: P_3 H_4 E_5 S_5 V_5 R_4 -->
+<!-- P_3: token-driven system; H_4: scrim anchors the lockup; E_5: transform/opacity only; S_5: cqw scales; V_5: brand-only tokens; R_4: AA pills and display wordmark -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ÜMACHA · Brand Intro</title>
+  <meta name="description" content="ÜMACHA · Las Vegas · Animated brand intro">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-blue: oklch(0.66 0.135 264);
+      --color-blue-ink: oklch(0.42 0.11 264);
+      --color-matcha: oklch(0.74 0.11 132);
+      --color-taro: oklch(0.76 0.075 305);
+      --color-paper: oklch(0.965 0.012 110);
+      --color-ink: oklch(0.28 0.02 280);
+      --color-line: oklch(0.90 0.012 110);
+
+      --blob-taro: oklch(0.86 0.09 305 / 0.55);
+      --blob-matcha: oklch(0.85 0.11 132 / 0.5);
+      --blob-deep: oklch(0.45 0.14 264 / 0.55);
+      --blob-cream: oklch(0.96 0.02 110 / 0.55);
+
+      --font-display: "Fredoka", system-ui, sans-serif;
+      --font-body: "Quicksand", system-ui, sans-serif;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in: cubic-bezier(0.55, 0.06, 0.68, 0.19);
+      --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
+
+      --radius-pill: 999px;
+      --radius-monogram: 50%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--color-paper);
+      overflow: hidden;
+    }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      min-height: 30rem;
+      overflow: hidden;
+      container-type: inline-size;
+      background: linear-gradient(160deg, color-mix(in oklch, var(--color-blue) 82%, var(--color-blue-ink)), var(--color-blue));
+      display: grid;
+      place-items: center;
+    }
+
+    .liquid,
+    .scrim {
+      position: absolute;
+      inset: 0;
+    }
+
+    .liquid {
+      z-index: 0;
+      inset: -8cqw;
+    }
+
+    .scrim {
+      z-index: 1;
+      background: radial-gradient(closest-side at 50% 46%,
+        color-mix(in oklch, var(--color-blue-ink) 62%, transparent),
+        color-mix(in oklch, var(--color-blue-ink) 10%, transparent) 62%,
+        transparent 78%);
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      mix-blend-mode: screen;
+      filter: blur(6cqw);
+      will-change: transform;
+    }
+
+    .blob-taro {
+      top: 6%;
+      left: 8%;
+      width: 46cqw;
+      height: 46cqw;
+      background: var(--blob-taro);
+      animation: drift-a 16s var(--ease-in-out) infinite;
+    }
+
+    .blob-matcha {
+      bottom: 4%;
+      right: 6%;
+      width: 40cqw;
+      height: 40cqw;
+      background: var(--blob-matcha);
+      animation: drift-b 19s var(--ease-in-out) infinite;
+    }
+
+    .blob-deep {
+      top: 26%;
+      right: 12%;
+      width: 34cqw;
+      height: 34cqw;
+      background: var(--blob-deep);
+      animation: drift-c 22s var(--ease-in-out) infinite;
+    }
+
+    .blob-cream {
+      left: 10%;
+      bottom: 10%;
+      width: 30cqw;
+      height: 30cqw;
+      background: var(--blob-cream);
+      animation: drift-c 20s var(--ease-in-out) 1s infinite;
+    }
+
+    .lockup {
+      position: relative;
+      z-index: 2;
+      width: min(88cqw, 78rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5cqw;
+      text-align: center;
+    }
+
+    .monogram {
+      display: grid;
+      place-items: center;
+      width: clamp(3rem, 9cqw, 5.5rem);
+      height: clamp(3rem, 9cqw, 5.5rem);
+      border-radius: var(--radius-monogram);
+      background: var(--color-blue-ink);
+      color: var(--color-paper);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1;
+      box-shadow: 0 0 0 0.35rem color-mix(in oklch, var(--color-paper) 30%, transparent);
+    }
+
+    .wordmark {
+      margin: 0;
+      color: var(--color-paper);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: 0.015em;
+      font-size: clamp(2.5rem, 15cqw, 12rem);
+    }
+
+    .tagline {
+      margin: 0;
+      max-width: 86cqw;
+      color: var(--color-blue-ink);
+      background: var(--color-paper);
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-style: normal;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      font-size: clamp(0.9rem, 2.4cqw, 1.4rem);
+      padding: 0.7em 1.4em;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 1rem 2.5rem color-mix(in oklch, var(--color-blue-ink) 25%, transparent);
+    }
+
+    .meta {
+      margin: 0;
+      color: var(--color-blue-ink);
+      background: var(--color-paper);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      font-size: clamp(0.75rem, 1.6cqw, 1rem);
+      padding: 0.5em 1.1em;
+      border-radius: var(--radius-pill);
+    }
+
+    .replay {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 3;
+      border: 0;
+      cursor: pointer;
+      color: var(--color-blue-ink);
+      background: var(--color-paper);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      font-size: 0.9rem;
+      padding: 0.7em 1.2em;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 0.6rem 1.5rem color-mix(in oklch, var(--color-blue-ink) 25%, transparent);
+    }
+
+    .replay:hover,
+    .replay:focus-visible {
+      background: color-mix(in oklch, var(--color-paper) 88%, var(--color-blue));
+    }
+
+    .replay:focus-visible {
+      outline: 0.2rem solid var(--color-paper);
+      outline-offset: 0.15rem;
+    }
+
+    .monogram,
+    .wordmark,
+    .tagline,
+    .meta,
+    .replay {
+      opacity: 0;
+    }
+
+    body.play .monogram {
+      animation: monogram-in 0.8s var(--ease-out) 0.2s both;
+    }
+
+    body.play .wordmark {
+      animation: rise-in 0.9s var(--ease-out) 0.5s both;
+    }
+
+    body.play .tagline {
+      animation: rise-in 0.8s var(--ease-out) 1.4s both;
+    }
+
+    body.play .meta {
+      animation: rise-in 0.7s var(--ease-out) 2.2s both;
+    }
+
+    body.play .replay {
+      animation: replay-in 0.6s var(--ease-out) 3.2s both;
+    }
+
+    @keyframes monogram-in {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(4cqw);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes replay-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes drift-a {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(6cqw, -8cqw, 0) scale(1.12);
+      }
+    }
+
+    @keyframes drift-b {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-7cqw, 6cqw, 0) scale(0.92);
+      }
+    }
+
+    @keyframes drift-c {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1.05);
+      }
+      50% {
+        transform: translate3d(5cqw, 7cqw, 0) scale(1);
+      }
+    }
+
+    body.still * {
+      animation: none !important;
+    }
+
+    body.still .monogram,
+    body.still .wordmark,
+    body.still .tagline,
+    body.still .meta,
+    body.still .replay {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blob {
+        animation: none !important;
+      }
+
+      body.play .monogram,
+      body.play .wordmark,
+      body.play .tagline,
+      body.play .meta,
+      body.play .replay {
+        animation: fade-in 150ms var(--ease-out) 0s both !important;
+      }
+    }
+  </style>
+</head>
+<body class="play">
+  <main class="stage">
+    <div class="liquid" aria-hidden="true">
+      <span class="blob blob-taro"></span>
+      <span class="blob blob-matcha"></span>
+      <span class="blob blob-deep"></span>
+      <span class="blob blob-cream"></span>
+    </div>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="lockup">
+      <span class="monogram" aria-hidden="true">Ü</span>
+      <h1 class="wordmark">ÜMACHA</h1>
+      <p class="tagline">Matcha, cheese cream, and boba on Blue Diamond</p>
+      <p class="meta">Las Vegas, NV · @umacha_official</p>
+    </div>
+    <button type="button" class="replay">Replay</button>
+  </main>
+  <script>
+    (function () {
+      var replay = document.querySelector(".replay");
+      if (replay) {
+        replay.addEventListener("click", function () {
+          document.body.classList.remove("play");
+          void document.body.offsetWidth;
+          document.body.classList.add("play");
+        });
+      }
+      if (location.search.indexOf("still") !== -1) {
+        document.body.classList.add("still");
+      }
+    })();
+  </script>
+</body>
+</html>

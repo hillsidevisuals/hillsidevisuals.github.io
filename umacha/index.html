@@ -1,332 +1,978 @@
+<!--
+  fingerprint: P5 H5 E4 S5 R4 V4
+  Self-critique (Philosophy / Hierarchy / Execution / Specificity / Restraint / Variety):
+  P5 stay inside ÜMACHA's known identity, no rebrand, a local Vegas front door only.
+  H5 floating pill nav, compact hero, drinks-first bento as the spine, clear view routing.
+  E4 single self-contained file, hash router, responsive at 390 / 768 / 1280, AA text throughout.
+  S5 real drink names, real Blue Diamond address, real phone, no invented prices or history.
+  R4 one accent per surface, labelled Hillside-shoot placeholders, no fake metrics or hype.
+  V4 tiles of different sizes, rounded geometry, matcha and taro tints kept at a distance.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+  <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ÜMACHA · Las Vegas</title>
-<meta name="description" content="ÜMACHA is now open in southwest Las Vegas. Japanese tea, coffee, and cheese-cream drinks on Blue Diamond Rd.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#2A3A2E; --paper:#F3EFE2; --muted:#63695b;
-    --accent:#6C9250; --accent-ink:#FFFFFF;
-    --line:rgba(42,58,46,.16); --gold:#B98B4E;
-    --font-display:"Baloo 2", Georgia, "Times New Roman", serif;
-    --font-body:"Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --maxw:1120px; --pad:clamp(1.15rem, 5vw, 3rem);
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ÜMACHA · Las Vegas | Matcha, cheese cream, and boba on Blue Diamond</title>
+  <meta name="description" content="ÜMACHA Las Vegas on Blue Diamond Road. Matcha, cheese cream, and boba, served in a soft playful storefront.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "ÜMACHA Las Vegas",
+    "alternateName": "ÜMACHA",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4860 Blue Diamond Rd, Ste 100",
+      "addressLocality": "Las Vegas",
+      "addressRegion": "NV",
+      "postalCode": "89139",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-702-908-0202",
+    "servesCuisine": "Matcha, cheese cream, bubble tea",
+    "areaServed": "Southwest Las Vegas",
+    "sameAs": "https://www.instagram.com/umacha_official/"
   }
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  img{max-width:100%;display:block}
-  a{color:inherit}
-  h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.08;margin:0 0 .4em;
-    text-wrap:balance;overflow-wrap:break-word;}
-  h1{font-size:clamp(2.1rem,6vw,4.2rem);letter-spacing:-.01em}
-  h2{font-size:clamp(1.5rem,4vw,2.6rem)}
-  h3{font-size:1.08rem}
-  p{margin:0 0 1rem;max-width:64ch}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem;font-weight:600}
-  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.6em;
-    border-radius:14px;text-decoration:none;font-weight:600;letter-spacing:.03em;white-space:nowrap;
-    transition:transform .15s ease,opacity .15s ease}
-  .btn:hover{transform:translateY(-1px);opacity:.92}
-  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
-  .view > .wrap:first-child{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(.4rem,2vw,1.1rem)}
-  .block{padding-top:clamp(1.9rem,5vw,3.4rem);padding-bottom:clamp(1.9rem,5vw,3.4rem);border-top:1px solid var(--line)}
-  .block:first-child{border-top:0}
-  .pagehead + .block{border-top:0;padding-top:0}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+  </script>
+  <style>
+    :root{
+      --color-blue:     oklch(0.66 0.135 264);
+      --color-blue-ink: oklch(0.42 0.11 264);
+      --color-matcha:   oklch(0.74 0.11 132);
+      --color-taro:     oklch(0.76 0.075 305);
+      --color-paper:    oklch(0.965 0.012 110);
+      --color-ink:      oklch(0.28 0.02 280);
+      --color-line:     oklch(0.90 0.012 110);
+      --color-white:    oklch(1 0 0);
 
-  .shot{position:relative;overflow:hidden;background:
-      repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 12px,transparent 12px 24px),
-      color-mix(in srgb,var(--ink) 6%,var(--paper));
-    border:1px dashed var(--line);border-radius:14px;display:flex;align-items:center;
-    justify-content:center;text-align:center;color:var(--muted);
-    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
-    padding:1rem;min-height:200px}
-  .shot::after{content:"\25C8 " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
-  .shot--hero{min-height:min(56vh,500px)}
-  .shot--wide{aspect-ratio:16/10;min-height:0}
-  .shot--square{aspect-ratio:1/1;min-height:0}
-  figure.ref{margin:0;position:relative;overflow:hidden;border-radius:14px}
-  figure.ref img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
-  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.14em;
-    text-transform:uppercase;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:2px}
+      --tint-soft:      oklch(0.9 0.05 110 / 0.6);
+      --tint-cream:     oklch(0.9 0.05 110 / 0.5);
+      --tint-faint:     oklch(0.94 0.02 110 / 0.6);
 
-  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.8rem;padding-bottom:.8rem}
-  .brandmark{font-family:var(--font-display);font-size:clamp(1.05rem,3.4vw,1.32rem);font-weight:700;
-    text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
-  .brandmark img{height:1.6em;width:auto}
-  .nav ul{display:flex;gap:1rem 1.4rem;list-style:none;margin:0;padding:0;font-size:.84rem;flex-wrap:wrap}
-  .nav a{text-decoration:none;color:var(--muted);letter-spacing:.04em}
-  .nav a:hover{color:var(--ink)}
-  .nav a[aria-current="page"]{color:var(--ink);font-weight:600}
-  .nav a.btn{color:var(--accent-ink);padding:.6em 1.25em;font-size:.84rem;font-weight:700}
-  .nav a.btn:hover{color:var(--accent-ink)}
-  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important;font-weight:600}
-  .nav-intro::before{content:"\25B6";font-size:.7em}
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
 
-  .view{display:block}
-  body.routed .view{display:none}
-  body.routed .view.is-active{display:block;animation:vin .3s ease}
-  @keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+      --font-display: "Fredoka", "Quicksand", system-ui, sans-serif;
+      --font-body: "Quicksand", system-ui, sans-serif;
 
-  .hero .lead,.pagehead .lead{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--muted);max-width:50ch}
-  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}
-  .hero .shot,.hero figure.ref{margin-top:2.1rem}
-  .pagehead h1{margin-bottom:.2em}
+      --radius-pill: 9999px;
+      --radius-l: 1.75rem;
+      --radius-m: 1.25rem;
+      --radius-s: 0.875rem;
 
-  .introcard{margin-top:2.3rem;border:1px solid var(--line);overflow:hidden;text-decoration:none;
-    display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);color:var(--paper);border-radius:14px}
-  .introcard .txt{padding:clamp(1.3rem,4vw,2.3rem);display:flex;flex-direction:column;gap:.6rem;justify-content:center}
-  .introcard .eyebrow{color:color-mix(in srgb,var(--paper) 68%,transparent)}
-  .introcard h3{font-size:clamp(1.25rem,3vw,1.8rem);margin:0;color:var(--paper)}
-  .introcard p{color:color-mix(in srgb,var(--paper) 80%,transparent);margin:0;max-width:42ch}
-  .introcard .btn{align-self:flex-start;margin-top:.3rem}
-  .introcard .stage{position:relative;min-height:210px;background:
-      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 30%,var(--ink)) 0%, var(--ink) 66%);
-    display:flex;align-items:center;justify-content:center;padding:1.3rem}
-  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
-    color:var(--accent-ink);width:74px;height:74px;display:flex;align-items:center;justify-content:center;
-    font-size:1.4rem;}
-  .introcard .stage .cap{position:absolute;bottom:.85rem;left:0;right:0;text-align:center;font-size:.58rem;
-    letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
+      --shadow-1: 0 1.25rem 3rem oklch(0.28 0.02 280 / 0.12);
 
-  .grid{display:grid;gap:1.2rem}
-  .grid--2{grid-template-columns:repeat(2,1fr)}
-  .grid--3{grid-template-columns:repeat(3,1fr)}
-  figure.tile{margin:0}
-  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in: cubic-bezier(0.55, 0.06, 0.68, 0.19);
+      --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
 
-  .list{list-style:none;padding:0;margin:1.4rem 0 0}
-  .list li{padding:.85rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-  .price{font-family:var(--font-display);white-space:nowrap}
-  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
+      --content: 76rem;
+      --measure: 34rem;
+    }
 
-  .steps{list-style:none;counter-reset:s;padding:0;margin:1.5rem 0 0;display:grid;gap:1rem}
-  .steps li{counter-increment:s;padding-left:3rem;position:relative}
-  .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;
-    border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:.9rem}
-  .steps h3{margin:0 0 .2rem}
+    *, *::before, *::after{ box-sizing: border-box; margin: 0; padding: 0; }
+    html{ scroll-behavior: smooth; }
+    body{
+      font-family: var(--font-body);
+      font-weight: 500;
+      color: var(--color-ink);
+      background: var(--color-paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4{
+      font-family: var(--font-display);
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--color-blue-ink);
+      letter-spacing: -0.01em;
+    }
+    a{ color: var(--color-blue-ink); text-decoration: none; }
+    img{ display: block; max-width: 100%; }
+    button{ font-family: inherit; cursor: pointer; }
+    :focus-visible{
+      outline: 3px solid var(--color-blue);
+      outline-offset: 3px;
+      border-radius: var(--radius-s);
+    }
 
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,3.6rem);align-items:start}
-  .facts{list-style:none;padding:0;margin:1.1rem 0 0}
-  .facts li{padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
-  .facts li b{font-weight:600}
-  .facts li span:last-child{color:var(--muted);text-align:right}
-  .facts li a{color:var(--ink)}
+    .wrap{
+      width: 100%;
+      max-width: var(--content);
+      margin-inline: auto;
+      padding-inline: var(--space-6);
+    }
 
-  .form{display:grid;gap:.9rem;margin-top:1.3rem;max-width:32rem}
-  .form label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
-  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
-    border-radius:14px;background:color-mix(in srgb,var(--ink) 3%,var(--paper));color:var(--ink)}
-  .form textarea{min-height:6rem;resize:vertical}
-  .form .status{font-size:.85rem;color:var(--muted)}
+    /* ---------- Floating pill nav ---------- */
+    .pill-nav{
+      position: sticky;
+      top: var(--space-4);
+      z-index: 50;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      width: fit-content;
+      max-width: calc(100% - 2 * var(--space-4));
+      margin: var(--space-4) auto var(--space-8);
+      padding: var(--space-2);
+      background: var(--color-white);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-1);
+    }
+    .pill-nav .wordmark{
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: normal;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+      color: var(--color-blue-ink);
+      padding: var(--space-2) var(--space-3);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      white-space: nowrap;
+    }
+    .mono{
+      width: 1.9rem;
+      height: 1.9rem;
+      border-radius: 50%;
+      background: var(--color-blue-ink);
+      color: var(--color-white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: normal;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+    .pill-nav .links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+      align-items: center;
+      justify-content: center;
+    }
+    .pill-nav .links a{
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-ink);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-pill);
+      transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
+    }
+    .pill-nav .links a:hover{ background: var(--tint-soft); color: var(--color-blue-ink); }
+    .pill-nav .links a[aria-current="page"]{
+      background: var(--color-blue-ink);
+      color: var(--color-white);
+    }
 
-  footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 82%,transparent);padding:2.6rem 0}
-  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.86rem}
-  footer nav{display:flex;gap:1rem;flex-wrap:wrap}
-  footer a{text-decoration:none;color:color-mix(in srgb,var(--paper) 82%,transparent)}
-  footer a:hover{color:var(--paper)}
+    /* ---------- Views & routing ---------- */
+    .view{ padding-block: var(--space-4) var(--space-16); }
+    body.routed .view{ display: none; }
+    body.routed .view.is-active{ display: block; animation: viewIn 240ms var(--ease-out); }
 
-  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.6rem,2vw,.72rem);
-    letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
+    @keyframes viewIn{
+      from{ opacity: 0; transform: translateY(6px); }
+      to{ opacity: 1; transform: translateY(0); }
+    }
 
-  @media (max-width:920px){
-    .grid--3{grid-template-columns:repeat(2,1fr)}
-    .split{grid-template-columns:1fr;gap:1.6rem}
-    .introcard{grid-template-columns:1fr} .introcard .stage{min-height:160px}
-  }
-  @media (max-width:600px){
-    body{font-size:16px}
-    .nav ul{width:100%;order:3;gap:.7rem 1rem;font-size:.8rem}
-    .grid--2,.grid--3{grid-template-columns:1fr}
-    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
-    .list li,.facts li{flex-direction:column;gap:.1rem}
-    .list li .price{align-self:flex-start}
-    .facts li span:last-child{text-align:left}
-    footer .wrap{flex-direction:column;gap:.7rem}
-    .shot--hero{min-height:min(50vh,380px)}
-  }
-</style>
+    /* ---------- Hero (Home) ---------- */
+    .hero{
+      text-align: center;
+      padding: var(--space-8) 0 var(--space-12);
+    }
+    .hero .lockup{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .hero .wordmark-big{
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: normal;
+      font-size: clamp(2.6rem, 11vw, 5.5rem);
+      line-height: 0.95;
+      color: var(--color-blue-ink);
+      letter-spacing: 0.01em;
+    }
+    .hero .tagline-line{
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-style: normal;
+      color: var(--color-blue-ink);
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+    .hero .local-tagline{
+      max-width: var(--measure);
+      margin: var(--space-6) auto var(--space-8);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+    .hero .cta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      justify-content: center;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-style: normal;
+      font-size: 1.05rem;
+      border: none;
+      transition: transform 160ms var(--ease-out), background 160ms var(--ease-out);
+    }
+    .btn-primary{
+      background: var(--color-blue-ink);
+      color: var(--color-white);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); }
+    .btn-soft{
+      background: var(--color-white);
+      color: var(--color-blue-ink);
+      border: 1px solid var(--color-line);
+    }
+    .btn-soft:hover{ transform: translateY(-2px); }
+
+    .launch-stamp{
+      width: 7rem;
+      height: 7rem;
+      margin: var(--space-10) auto 0;
+      border-radius: 50%;
+      border: 2px solid var(--color-blue-ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.72rem;
+      line-height: 1.4;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-blue-ink);
+      transform: rotate(-6deg);
+    }
+
+    /* ---------- Section headings ---------- */
+    .section{
+      margin-top: var(--space-10);
+    }
+    .section-title{
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      text-align: center;
+      margin-bottom: var(--space-8);
+      color: var(--color-blue-ink);
+    }
+
+    /* ---------- Bento grid (drinks first) ---------- */
+    .bento{
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: 1fr;
+    }
+    .tile{
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      padding: var(--space-6);
+      border-radius: var(--radius-l);
+      border: 1px solid var(--color-line);
+      transition: transform 200ms var(--ease-out);
+    }
+    .tile:hover{ transform: translateY(-3px); }
+    .tile-big{ background: var(--color-blue-ink); color: var(--color-white); border-color: transparent; }
+    .tile-big h3{ color: var(--color-white); }
+    .tile-tint{ background: var(--tint-cream); }
+    .tile-tint h3{ color: var(--color-blue-ink); }
+    .tile-accent-matcha{ background: color-mix(in oklch, var(--color-matcha) 32%, var(--color-paper)); }
+    .tile-accent-taro{ background: color-mix(in oklch, var(--color-taro) 34%, var(--color-paper)); }
+
+    .view-title{ font-size: clamp(1.9rem, 6vw, 2.6rem); }
+    .form-title{ font-size: 1.6rem; }
+    .hero-tight{ padding-bottom: 0; }
+    .hero-sub{ padding-bottom: var(--space-6); }
+    .measure-tag{ max-width: var(--measure); }
+    .self-start{ justify-self: start; }
+    .mt-space-4{ margin-top: var(--space-4); }
+    .nav-thin{ font-weight: 500; }
+    .tile h3{ font-size: 1.35rem; }
+    .tile .sum{ font-size: 0.98rem; color: var(--color-ink); }
+    .tile-big .sum{ color: var(--color-white); }
+    .tile .items{ list-style: none; display: grid; gap: var(--space-1); }
+    .tile .items li{
+      font-size: 0.96rem;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      font-weight: 600;
+    }
+    .tile-big .items li{ color: var(--color-white); }
+    .tile-price{ color: inherit; opacity: 0.85; white-space: nowrap; }
+    .tile .note{ font-size: 0.85rem; margin-top: auto; opacity: 0.9; }
+    .tile-big .note{ color: var(--color-white); }
+    .tile .link{ font-weight: 700; color: inherit; align-self: flex-start; }
+
+    /* ---------- Brand strip ---------- */
+    .strip{
+      margin-top: var(--space-16);
+      padding: var(--space-10);
+      border-radius: var(--radius-l);
+      border: 1px solid var(--color-line);
+      background: var(--tint-cream);
+      display: grid;
+      gap: var(--space-2);
+    }
+    .strip h2{ font-size: 2rem; }
+    .strip p{ max-width: var(--measure); font-weight: 600; }
+
+    /* ---------- Brand intro card ---------- */
+    .intro-card{
+      margin-top: var(--space-16);
+      border-radius: var(--radius-l);
+      border: 1px solid var(--color-line);
+      background: var(--color-white);
+      padding: var(--space-10);
+      display: grid;
+      gap: var(--space-2);
+      box-shadow: var(--shadow-1);
+    }
+    .intro-card h2{ font-size: 2rem; }
+    .intro-card p{ max-width: var(--measure); }
+
+    /* ---------- Menu view ---------- */
+    .menu-grid{
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: 1fr;
+      margin-top: var(--space-6);
+    }
+    .menu-cat h3{
+      font-size: 1.5rem;
+      margin-bottom: var(--space-4);
+    }
+    .menu-list{ list-style: none; display: grid; gap: var(--space-2); }
+    .menu-list li{
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-white);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-m);
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+    .price{ color: var(--color-blue-ink); white-space: nowrap; font-weight: 700; }
+    .menu-note{
+      margin-top: var(--space-8);
+      font-size: 0.95rem;
+      color: var(--color-ink);
+      max-width: var(--measure);
+    }
+
+    /* ---------- About view ---------- */
+    .prose{ max-width: var(--measure); display: grid; gap: var(--space-4); font-size: 1.05rem; }
+    .points{
+      margin-top: var(--space-8);
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: 1fr;
+    }
+    .point{
+      border-radius: var(--radius-l);
+      border: 1px solid var(--color-line);
+      padding: var(--space-6);
+      display: grid;
+      gap: var(--space-2);
+    }
+    .point .dot{
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: normal;
+      font-size: 0.9rem;
+    }
+    .point:nth-child(1) .dot{ background: var(--color-matcha); color: var(--color-ink); }
+    .point:nth-child(2) .dot{ background: var(--color-taro); color: var(--color-ink); }
+    .point:nth-child(3) .dot{ background: var(--color-blue-ink); color: var(--color-white); }
+
+    /* ---------- Order view ---------- */
+    .steps{
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: 1fr;
+      margin-top: var(--space-6);
+    }
+    .step{
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+      padding: var(--space-6);
+      border-radius: var(--radius-l);
+      border: 1px solid var(--color-line);
+      background: var(--color-white);
+    }
+    .step .num{
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: normal;
+      font-size: 1.4rem;
+      color: var(--color-white);
+      background: var(--color-blue-ink);
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+    .fact-list{ list-style: none; margin-top: var(--space-8); display: grid; gap: var(--space-3); }
+    .fact-list li{
+      display: flex;
+      gap: var(--space-3);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .fact-list .k{ color: var(--color-blue-ink); font-weight: 700; min-width: 6.5rem; }
+
+    .concept-form{
+      margin-top: var(--space-10);
+      padding: var(--space-8);
+      border-radius: var(--radius-l);
+      border: 2px dashed var(--color-blue);
+      display: grid;
+      gap: var(--space-4);
+      background: var(--tint-faint);
+    }
+    .concept-form label{
+      display: grid;
+      gap: var(--space-1);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--color-blue-ink);
+    }
+    .concept-form input,.concept-form select,.concept-form textarea{
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: var(--space-3);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--color-line);
+      background: var(--color-white);
+      color: var(--color-ink);
+    }
+    .concept-note{
+      font-size: 0.9rem;
+      color: var(--color-ink);
+      font-weight: 600;
+    }
+
+    /* ---------- Visit view ---------- */
+    .visit-grid{
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: 1fr;
+      margin-top: var(--space-6);
+    }
+    .visit-card{
+      border-radius: var(--radius-l);
+      border: 1px solid var(--color-line);
+      background: var(--color-white);
+      padding: var(--space-6);
+      display: grid;
+      gap: var(--space-2);
+    }
+    .visit-card h3{ font-size: 1.3rem; }
+    .visit-card .val{ font-weight: 600; font-size: 1.02rem; color: var(--color-ink); }
+
+    .shot-grid{
+      margin-top: var(--space-10);
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: 1fr;
+    }
+    .shot{
+      border: 2px dashed var(--color-line);
+      border-radius: var(--radius-l);
+      min-height: 11rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-6);
+      color: var(--color-ink);
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: var(--tint-faint);
+    }
+    .shot .what{ display: block; margin-bottom: var(--space-1); color: var(--color-blue-ink); font-weight: 700; }
+
+    /* ---------- Footer ---------- */
+    .footer{
+      margin-top: var(--space-16);
+      padding: var(--space-10) var(--space-6) var(--space-12);
+      border-top: 1px solid var(--color-line);
+      text-align: center;
+      display: grid;
+      gap: var(--space-2);
+      justify-items: center;
+    }
+    .footer .fmenu{ display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; font-weight: 600; }
+    .footer p{ font-weight: 600; color: var(--color-blue-ink); }
+    .footer small{ color: var(--color-ink); }
+
+    /* ---------- Responsive ---------- */
+    @media (min-width: 768px){
+      .bento{ grid-template-columns: repeat(2, 1fr); }
+      .bento .tile-big{ grid-column: span 2; }
+      .points{ grid-template-columns: repeat(3, 1fr); }
+      .steps{ grid-template-columns: repeat(3, 1fr); }
+      .menu-grid{ grid-template-columns: repeat(2, 1fr); }
+      .shot-grid{ grid-template-columns: repeat(3, 1fr); }
+      .visit-grid{ grid-template-columns: repeat(2, 1fr); }
+      .visit-grid .visit-card:first-child{ grid-column: span 2; }
+    }
+    @media (min-width: 1280px){
+      .bento{ grid-template-columns: repeat(4, 1fr); }
+      .bento .tile-big{ grid-column: span 2; }
+      .view{ padding-block: var(--space-8) var(--space-20); }
+    }
+
+    /* ---------- Reduced motion ---------- */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation-duration: 150ms !important; transition-duration: 150ms !important; animation-iteration-count: 1 !important; }
+      html{ scroll-behavior: auto; }
+      .tile:hover,.btn-primary:hover,.btn-soft:hover{ transform: none; }
+    }
+  </style>
 </head>
 <body>
-<div class="mock-banner">Concept Las Vegas page for ÜMACHA — built by Hillside Visuals</div>
-<header class="nav">
-  <div class="wrap">
-    <a class="brandmark" href="#/">ümacha</a>
-    <ul>
-      <li><a href="#/menu">What to order</a></li>
-      <li><a href="#/space">The space</a></li>
-      <li><a href="#/visit">Visit</a></li>
 
-    </ul>
-    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=4860+Blue+Diamond+Rd+Ste+100+Las+Vegas+NV+89139">Get directions</a>
-  </div>
-</header>
-<main>
-  <section class="view is-active" data-route="/" id="view-home">
-    <div class="wrap hero">
-      <p class="eyebrow">Now open · Southwest Las Vegas</p>
-      <h1>ÜMACHA is in Las Vegas.</h1>
-      <p class="lead">Japanese tea, coffee, and cheese-cream drinks. Now on Blue Diamond Rd, next to Costa Mesa and Edgewater.</p>
-      <div class="cta-row">
-        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=4860+Blue+Diamond+Rd+Ste+100+Las+Vegas+NV+89139">Get directions</a>
-        <a class="btn btn--ghost" href="#/menu">See the menu</a>
-      </div>
-      <div class="shot shot--hero" data-shot="The matcha station, up front"></div>
-      
-    </div>
-    <div class="wrap block">
-      <p class="eyebrow">What to order here</p>
-      <h2>Start with these.</h2>
-      <p style="color:var(--muted)">The signatures you know, made at the Blue Diamond shop.</p>
-      <div class="grid grid--3" style="margin-top:1.5rem">
-        <div class="shot shot--square" data-shot="Matcha Milk Tea, iced"></div>
-        <div class="shot shot--square" data-shot="Don-chan cheese-cream float"></div>
-        <div class="shot shot--square" data-shot="Golden Feather, roasted oolong"></div>
-      </div>
-      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="#/menu">See the full menu</a></p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p class="eyebrow">The space</p>
-          <h2>Small, green, and yours.</h2>
-          <p>The Blue Diamond shop seats about 20, with the mascot wall, a window bar, and the matcha station up front. Same ÜMACHA you know, built for a Vegas afternoon.</p>
-          <p><a class="btn btn--ghost" href="#/space">See the space</a></p>
+  <header class="pill-nav">
+    <a class="wordmark" href="#/" aria-label="ÜMACHA home">
+      <span class="mono">Ü</span>
+      <span>ÜMACHA <span class="nav-thin">·</span> <span class="nav-thin">Las Vegas</span></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#/menu" data-nav="menu">Menu</a>
+      <a href="#/about" data-nav="about">About</a>
+      <a href="#/order" data-nav="order">Order</a>
+      <a href="#/visit" data-nav="visit">Visit</a>
+      <a href="intro.html">Intro</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ================= HOME ================= -->
+    <section class="view" data-route="home" id="view-home">
+      <div class="wrap">
+        <div class="hero">
+          <div class="lockup">
+            <h1 class="wordmark-big">ÜMACHA</h1>
+            <span class="tagline-line">Cheese Cream &amp; Bubble Tea</span>
+          </div>
+          <p class="local-tagline">Matcha, cheese cream, and boba on Blue Diamond.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#/menu">See the menu</a>
+            <a class="btn btn-soft" href="#/visit">Find us in Las Vegas</a>
+          </div>
+          <div class="launch-stamp" aria-hidden="true">Now open<br>SW Las Vegas</div>
         </div>
-        <div class="shot shot--wide" data-shot="The mascot wall"></div>
       </div>
-    </div>
-  </section>
-  <section class="view" data-route="/menu" id="view-menu">
-    <div class="wrap pagehead">
-      <p class="eyebrow">What to order here</p>
-      <h1>Start with these.</h1>
-      <p class="lead">The full menu is on umachaus.com. Prices are placeholders for this mockup.</p>
-    </div>
-    <div class="wrap block">
-      <ul class="list">
-        <li><span>Matcha Milk Tea<span class="desc">First-harvest matcha, house milk blend.</span></span><span class="price">$6.50</span></li>
-        <li><span>Don-chan<span class="desc">The signature cheese-cream float.</span></span><span class="price">$7.00</span></li>
-        <li><span>Golden Feather<span class="desc">Roasted oolong, light and toasty.</span></span><span class="price">$6.00</span></li>
-        <li><span>Ceylon Black Milk Tea<span class="desc">Full-bodied, classic.</span></span><span class="price">$6.00</span></li>
-      </ul>
-      <p style="margin-top:1rem;color:var(--muted);font-size:.86rem">Prices shown are placeholders for this mockup.</p>
-      <p style="margin-top:1.4rem"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=4860+Blue+Diamond+Rd+Ste+100+Las+Vegas+NV+89139">Get directions</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/space" id="view-space">
-    <div class="wrap pagehead">
-      <p class="eyebrow">The space</p>
-      <h1>Small, green, and yours.</h1>
-      <p class="lead">A Vegas room in the ÜMACHA look.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p>The Blue Diamond shop seats about 20, with the mascot wall, a window bar, and the matcha station up front.</p>
-          <p>Same ÜMACHA you know, built for a Vegas afternoon. Take-chan, Ama-chan, and Don-chan are all here.</p>
-        </div>
-        <div class="shot shot--wide" data-shot="Window bar, afternoon light"></div>
-      </div>
-    </div>
-    <div class="wrap block">
-      <h2>Good to know</h2>
-      <div class="grid grid--3" style="margin-top:1.3rem">
-        <div><h3>Seats about 20</h3><p class="desc">Room for a study session or a quick catch-up.</p></div>
-        <div><h3>Mascot wall</h3><p class="desc">The full crew, painted, by the window.</p></div>
-        <div><h3>Free parking</h3><p class="desc">Lot right in front on Blue Diamond.</p></div>
-      </div>
-      <p style="margin-top:1.7rem"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=4860+Blue+Diamond+Rd+Ste+100+Las+Vegas+NV+89139">Get directions</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/visit" id="view-visit">
-    <div class="wrap pagehead">
-      <p class="eyebrow">Visit</p>
-      <h1>Blue Diamond Rd.</h1>
-      <p class="lead">Southwest Las Vegas, near Decatur. Free lot in front.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <ul class="facts">
-            <li><b>Address</b><span>4860 Blue Diamond Rd, Ste 100, Las Vegas, NV 89139</span></li>
-            <li><b>Hours</b><span>Daily 11:00a to 8:00p (TBC)</span></li>
-            <li><b>Parking</b><span>Free lot in front</span></li>
-            <li><b>Call</b><span><a href="tel:+17029080202">(702) 908-0202</a></span></li>
-            <li><b>All locations</b><span><a href="https://umachaus.com" target="_blank" rel="noopener">umachaus.com</a></span></li>
-          </ul>
-          <p style="margin-top:1.3rem"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=4860+Blue+Diamond+Rd+Ste+100+Las+Vegas+NV+89139">Open in Maps</a></p>
-        </div>
-        <div class="grid" style="gap:1rem">
-          <div class="shot shot--wide" data-shot="Storefront on Blue Diamond"></div>
-          <div class="grid grid--2" style="gap:1rem">
-            <div class="shot shot--square" data-shot="The counter and menu board"></div>
-            <div class="shot shot--square" data-shot="A table by the window"></div>
+
+      <div class="wrap">
+        <div class="section">
+          <h2 class="section-title">What we pour</h2>
+          <div class="bento">
+
+            <div class="tile tile-big">
+              <h3>Matcha Donchan</h3>
+              <p class="sum">The signature. Cheese cream foam, homemade brown sugar syrup, ceremonial grade matcha, milk, and boba.</p>
+              <ul class="items">
+                <li>Matcha Donchan <span class="tile-price">from</span></li>
+              </ul>
+              <p class="note">Our headline drink, prices finalizing</p>
+            </div>
+
+            <div class="tile tile-tint">
+              <h3>Kyoto Matcha</h3>
+              <ul class="items">
+                <li>Matcha Latte <span class="tile-price">TBC</span></li>
+                <li>Strawberry Matcha <span class="tile-price">TBC</span></li>
+                <li>Matcha Taro Latte <span class="tile-price">TBC</span></li>
+                <li>Dirty Matcha Latte <span class="tile-price">TBC</span></li>
+                <li>Matcha Lemonade <span class="tile-price">TBC</span></li>
+              </ul>
+            </div>
+
+            <div class="tile tile-tint">
+              <h3>Boba Milk Tea</h3>
+              <ul class="items">
+                <li>Brown Sugar <span class="tile-price">TBC</span></li>
+                <li>Black <span class="tile-price">TBC</span></li>
+                <li>Jasmine <span class="tile-price">TBC</span></li>
+                <li>Hojicha <span class="tile-price">TBC</span></li>
+                <li>Thai <span class="tile-price">TBC</span></li>
+                <li>Taro <span class="tile-price">TBC</span></li>
+                <li>Osmanthus Oolong <span class="tile-price">TBC</span></li>
+              </ul>
+            </div>
+
+            <div class="tile tile-accent-taro">
+              <h3>Fruit Tea</h3>
+              <ul class="items">
+                <li>Kiss Me Peach <span class="tile-price">TBC</span></li>
+                <li>Wild and Tough <span class="tile-price">TBC</span></li>
+                <li>Marry Me Mango <span class="tile-price">TBC</span></li>
+                <li>Passion Fruit <span class="tile-price">TBC</span></li>
+                <li>Strawberry <span class="tile-price">TBC</span></li>
+              </ul>
+            </div>
+
+            <div class="tile tile-tint">
+              <h3>Cheese cream tea</h3>
+              <ul class="items">
+                <li>Donchan <span class="tile-price">TBC</span></li>
+                <li>Matcha Donchan <span class="tile-price">TBC</span></li>
+                <li>Love Me <span class="tile-price">TBC</span></li>
+                <li>Matcha Love Me <span class="tile-price">TBC</span></li>
+                <li>Grizzly Coco Chocolate <span class="tile-price">TBC</span></li>
+                <li>Cheese cream black tea <span class="tile-price">TBC</span></li>
+                <li>Cheese cream jasmine <span class="tile-price">TBC</span></li>
+                <li>Cheese cream hojicha <span class="tile-price">TBC</span></li>
+                <li>Snowtone latte <span class="tile-price">TBC</span></li>
+              </ul>
+            </div>
+
+            <div class="tile tile-accent-matcha">
+              <h3>Cool and quiet</h3>
+              <ul class="items">
+                <li>Lemonades <span class="tile-price">TBC</span></li>
+                <li>24oz slushes <span class="tile-price">TBC</span></li>
+                <li>Fresh brewed tea <span class="tile-price">TBC</span></li>
+                <li>Coffee <span class="tile-price">TBC</span></li>
+              </ul>
+              <a class="link" href="#/menu">Full menu</a>
+            </div>
+
           </div>
         </div>
       </div>
+
+      <div class="wrap">
+        <div class="strip">
+          <h2>ÜMACHA is now on Blue Diamond</h2>
+          <p>Our first Las Vegas store brings matcha, cheese cream, and boba to Southwest Las Vegas on Blue Diamond Road.</p>
+          <p>Walk in, order at the counter, and make it yours.</p>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="intro-card">
+          <h2>Meet ÜMACHA</h2>
+          <p>A creamier, softer take on tea. Get the story behind the cheese cream and the ceremonial matcha.</p>
+          <a class="btn btn-soft self-start" href="intro.html">Read the brand intro</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MENU ================= -->
+    <section class="view" data-route="menu" id="view-menu">
+      <div class="wrap">
+        <div class="hero hero-tight">
+          <h1 class="view-title">Menu</h1>
+          <p class="local-tagline measure-tag">Full Las Vegas pricing is being finalized.</p>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-cat">
+            <h3>Original Cheese Cream</h3>
+            <ul class="menu-list">
+              <li>Donchan <span class="price">TBC</span></li>
+              <li>Matcha Donchan <span class="price">TBC</span></li>
+              <li>Love Me <span class="price">TBC</span></li>
+              <li>Matcha Love Me <span class="price">TBC</span></li>
+              <li>Grizzly Coco Chocolate <span class="price">TBC</span></li>
+              <li>Cheese cream black tea <span class="price">TBC</span></li>
+              <li>Cheese cream jasmine <span class="price">TBC</span></li>
+              <li>Cheese cream hojicha <span class="price">TBC</span></li>
+              <li>Snowtone (cheese cream latte) <span class="price">TBC</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3>Kyoto Matcha</h3>
+            <ul class="menu-list">
+              <li>Matcha Latte <span class="price">TBC</span></li>
+              <li>Strawberry Matcha Latte <span class="price">TBC</span></li>
+              <li>Matcha Taro Latte <span class="price">TBC</span></li>
+              <li>Dirty Matcha Latte <span class="price">TBC</span></li>
+              <li>Matcha Lemonade <span class="price">TBC</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3>Boba Milk Tea</h3>
+            <ul class="menu-list">
+              <li>Brown Sugar <span class="price">TBC</span></li>
+              <li>Black <span class="price">TBC</span></li>
+              <li>Jasmine <span class="price">TBC</span></li>
+              <li>Hojicha <span class="price">TBC</span></li>
+              <li>Thai <span class="price">TBC</span></li>
+              <li>Taro <span class="price">TBC</span></li>
+              <li>Osmanthus Oolong <span class="price">TBC</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3>Fruit Tea</h3>
+            <ul class="menu-list">
+              <li>Kiss Me Peach <span class="price">TBC</span></li>
+              <li>Wild and Tough (grapefruit) <span class="price">TBC</span></li>
+              <li>Marry Me Mango <span class="price">TBC</span></li>
+              <li>Passion Fruit <span class="price">TBC</span></li>
+              <li>Strawberry <span class="price">TBC</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3>And more</h3>
+            <ul class="menu-list">
+              <li>Lemonades <span class="price">TBC</span></li>
+              <li>24oz slushes <span class="price">TBC</span></li>
+              <li>Fresh brewed tea <span class="price">TBC</span></li>
+              <li>Coffee <span class="price">TBC</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="menu-note">Vegas prices TBC. We will update this list as final pricing lands.</p>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="view" data-route="about" id="view-about">
+      <div class="wrap">
+        <div class="hero hero-sub">
+          <h1 class="view-title">About ÜMACHA</h1>
+        </div>
+        <div class="prose">
+          <p>ÜMACHA does cheese cream and ceremonial matcha. We top our teas with a smooth, silky cheese cream foam and grind ceremonial grade matcha into crisp, grassy lattes. It is soft, juicy, and a little bit bouncy, the way a good drink should be.</p>
+          <p>The Blue Diamond store is our newest location, the first in Southwest Las Vegas. We are happy to be pouring here.</p>
+        </div>
+        <div class="points">
+          <div class="point">
+            <span class="dot">M</span>
+            <h3>Ceremonial grade matcha</h3>
+            <p>Rich, grassy, and balanced. The heart of our Kyoto Matcha line.</p>
+          </div>
+          <div class="point">
+            <span class="dot">C</span>
+            <h3>Signature cheese cream</h3>
+            <p>A silky foam that sits on top of the tea. Drink it through the crema or stir it in.</p>
+          </div>
+          <div class="point">
+            <span class="dot">V</span>
+            <h3>Now in Southwest Las Vegas</h3>
+            <p>4860 Blue Diamond Rd, Ste 100. The newest home for ÜMACHA.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ORDER ================= -->
+    <section class="view" data-route="order" id="view-order">
+      <div class="wrap">
+        <div class="hero hero-sub">
+          <h1 class="view-title">Order</h1>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="num">1</span>
+            <div>
+              <h3>Walk in</h3>
+              <p>Head to Blue Diamond Rd and come say hi.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="num">2</span>
+            <div>
+              <h3>Order at the counter</h3>
+              <p>Pick your drink and build it your way.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="num">3</span>
+            <div>
+              <h3>Order ahead</h3>
+              <p>Coming soon at the Blue Diamond store.</p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="fact-list">
+          <li><span class="k">Hours</span> TBC</li>
+          <li><span class="k">Delivery apps</span> TBC</li>
+          <li><span class="k">Phone</span> <a href="tel:+17029080202">(702) 908-0202</a></li>
+          <li><span class="k">Instagram</span> <a href="https://www.instagram.com/umacha_official/" target="_blank" rel="noopener">@umacha_official</a></li>
+        </ul>
+
+        <form class="concept-form" onsubmit="return false">
+          <h2 class="form-title">Concept order form</h2>
+          <p class="concept-note">Concept only, not connected. This form does not place an order.</p>
+          <label>Name
+            <input type="text" placeholder="Your name">
+          </label>
+          <label>Drink
+            <select>
+              <option>Matcha Donchan</option>
+              <option>Matcha Latte</option>
+              <option>Brown Sugar Boba Milk Tea</option>
+              <option>Kiss Me Peach</option>
+            </select>
+          </label>
+          <label>Size or notes
+            <textarea rows="3" placeholder="Anything to make it yours"></textarea>
+          </label>
+          <button class="btn btn-primary self-start" type="button">Place concept order</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= VISIT ================= -->
+    <section class="view" data-route="visit" id="view-visit">
+      <div class="wrap">
+        <div class="hero hero-sub">
+          <h1 class="view-title">Visit</h1>
+        </div>
+
+        <div class="visit-grid">
+          <div class="visit-card">
+            <h3>Address</h3>
+            <p class="val">4860 Blue Diamond Rd, Ste 100<br>Las Vegas, NV 89139</p>
+          </div>
+          <div class="visit-card">
+            <h3>Hours</h3>
+            <p class="val">TBC</p>
+          </div>
+          <div class="visit-card">
+            <h3>Parking</h3>
+            <p class="val">Strip center lot on Blue Diamond Rd, TBC</p>
+          </div>
+          <div class="visit-card">
+            <h3>Getting here</h3>
+            <p class="val">Off Blue Diamond Rd, near I-15, TBC</p>
+          </div>
+          <div class="visit-card">
+            <h3>Call</h3>
+            <p class="val"><a href="tel:+17029080202">(702) 908-0202</a></p>
+          </div>
+        </div>
+
+        <div class="shot-grid">
+          <div class="shot">
+            <span><span class="what">Storefront</span>Hillside would shoot the Blue Diamond Rd storefront at golden hour.</span>
+          </div>
+          <div class="shot">
+            <span><span class="what">Menu board</span>Hillside would capture the hand-painted feel of the menu wall.</span>
+          </div>
+          <div class="shot">
+            <span><span class="what">Signage</span>Hillside would frame the corner signage on Blue Diamond.</span>
+          </div>
+        </div>
+
+        <div class="shot mt-space-4">
+          <span><span class="what">Map</span>Storefront map placeholder naming Blue Diamond Rd.</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="fmenu">
+      <a href="#/menu">Menu</a>
+      <a href="#/about">About</a>
+      <a href="#/order">Order</a>
+      <a href="#/visit">Visit</a>
+      <a href="intro.html">Brand intro</a>
     </div>
-  </section>
-</main>
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="yr"></span> ÜMACHA · Las Vegas, NV 89139</span>
-    <nav><a href="#/menu">What to order</a> <a href="#/space">The space</a> <a href="#/visit">Visit</a> <a href="https://www.instagram.com/umacha_official/" target="_blank" rel="noopener">@umacha_official</a></nav>
-    <span>Part of umachaus.com · Costa Mesa · Edgewater · Las Vegas</span>
-  </div>
-</footer>
-<script>
-(function(){
-  document.getElementById('yr').textContent=new Date().getFullYear();
-  var views=[].slice.call(document.querySelectorAll('.view'));
-  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
-  if(views.length){
-    document.body.classList.add('routed');
-    var home=document.getElementById('view-home')||views[0];
-    var rof=function(v){return v.getAttribute('data-route');};
-    var render=function(){
-      var h=(location.hash||'').replace(/^#/,'');
-      if(h&&h.charAt(0)!=='/')h='/'+h;
-      var m=views.filter(function(v){return rof(v)===h;})[0]||home;
-      views.forEach(function(v){v.classList.toggle('is-active',v===m);});
-      navLinks.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+rof(m)?'page':'false');});
-      window.scrollTo(0,0);
-    };
-    window.addEventListener('hashchange',render);render();
-  }
-  var form=document.querySelector('.form');
-  if(form){var st=form.querySelector('.status');var note=st?st.textContent:'';
-    form.addEventListener('submit',function(e){e.preventDefault();if(st)st.textContent=note;});}
-})();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CafeOrCoffeeShop",
-  "name": "\u00dcMACHA Las Vegas",
-  "telephone": "(702) 908-0202",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "4860 Blue Diamond Rd, Ste 100",
-    "addressLocality": "Las Vegas",
-    "addressRegion": "NV",
-    "postalCode": "89139"
-  }
-}
-</script>
+    <p>ÜMACHA · Las Vegas</p>
+    <small>Concept mockup for ÜMACHA, built by Hillside Visuals.</small>
+  </footer>
+
+  <script>
+    (function(){
+      var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+      var links = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+      var routes = { 'home': 'home', 'menu': 'menu', 'about': 'about', 'order': 'order', 'visit': 'visit' };
+
+      function show(route){
+        var target = routes[route] || 'home';
+        views.forEach(function(v){
+          v.classList.toggle('is-active', v.getAttribute('data-route') === target);
+        });
+        links.forEach(function(a){
+          if(a.getAttribute('data-nav') === target){ a.setAttribute('aria-current', 'page'); }
+          else{ a.removeAttribute('aria-current'); }
+        });
+        document.title = target === 'home'
+          ? 'ÜMACHA · Las Vegas | Matcha, cheese cream, and boba on Blue Diamond'
+          : target.charAt(0).toUpperCase() + target.slice(1) + ' · ÜMACHA Las Vegas';
+      }
+
+      function routeFromHash(){
+        var h = location.hash.replace(/^#\/?/, '');
+        return h === '' ? 'home' : h;
+      }
+
+      function handle(){
+        document.body.classList.add('routed');
+        show(routeFromHash());
+        window.scrollTo(0, 0);
+      }
+
+      window.addEventListener('hashchange', handle);
+      handle();
+    })();
+  </script>
 </body>
 </html>
