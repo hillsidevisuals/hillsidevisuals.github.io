@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Soon Tofu | Authentic Korean Comfort</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E63946;
+            --secondary: #F1FAEE;
+            --accent: #457B9D;
+            --bg-dark: #1D3557;
+            --text-main: #111111;
+        }
+        body, html {
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif;
+            background-color: var(--secondary); color: var(--text-main);
+            overflow-x: hidden;
+        }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 5%; background: rgba(255,255,255,0.9);
+            position: fixed; top: 0; width: 90%; z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
+        .nav-links a {
+            margin-left: 2rem; text-decoration: none; color: var(--text-main);
+            font-weight: 400; transition: color 0.3s ease; cursor: pointer;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        
+        /* View Container */
+        #view-container { margin-top: 80px; min-height: 80vh; }
+        .view { display: none; padding: 4rem 5%; opacity: 0; }
+        .view.active { display: block; }
+        
+        /* Layouts (elayadesign style) */
+        .hero {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            min-height: 70vh;
+        }
+        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; margin-bottom: 2rem; color: #555; }
+        .btn {
+            padding: 1rem 2rem; background: var(--primary); color: white;
+            text-decoration: none; border-radius: 4px; font-weight: 600;
+            display: inline-block; cursor: pointer; border: none;
+        }
+        .hero-img {
+            background: var(--accent); height: 500px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; color: white;
+        }
+        
+        /* Menu Grid */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .menu-item { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .menu-item h3 { margin-top: 0; color: var(--primary); }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-dark); color: white; padding: 4rem 5%;
+            text-align: center; margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MR. SOON TOFU</div>
+        <div class="nav-links">
+            <a onclick="navigate('home')">Home</a>
+            <a onclick="navigate('menu')">Menu</a>
+            <a onclick="navigate('about')">About Us</a>
+            <a onclick="navigate('location')">Location</a>
+            <a onclick="navigate('contact')">Contact</a>
+        </div>
+    </nav>
+
+    <div id="view-container">
+        <!-- Home View -->
+        <div id="home" class="view active">
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>Seoul in Every Bowl.</h1>
+                    <p>Experience the bubbling, soul-warming comfort of authentic Korean soft tofu stew, right in the heart of Las Vegas.</p>
+                    <button class="btn" onclick="navigate('menu')">Explore the Menu</button>
+                </div>
+                <div class="hero-img">
+                    [Hot Stone Bowl Image Placeholder]
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu View -->
+        <div id="menu" class="view">
+            <h2 style="text-align:center; font-size: 3rem; margin-bottom: 3rem;">Our Specialties</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Seafood Soon Tofu</h3>
+                    <p>Shrimp, clams, and oysters in a spicy, comforting broth.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Galbi (Short Rib)</h3>
+                    <p>Marinated bone-in short ribs grilled to perfection.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Vegetable Soon Tofu</h3>
+                    <p>Broccoli, mushrooms, and zucchini in a rich vegetable broth.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About View -->
+        <div id="about" class="view">
+            <div class="hero">
+                <div class="hero-img" style="background: var(--bg-dark);">[Chef Image]</div>
+                <div class="hero-text">
+                    <h2>Rooted in Tradition.</h2>
+                    <p>Founded on family recipes passed down for generations, Mr. Soon Tofu is dedicated to preserving the authentic flavors of Korea while providing a modern, welcoming dining experience.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location View -->
+        <div id="location" class="view">
+            <h2 style="text-align:center; font-size: 3rem;">Find Us</h2>
+            <div style="text-align:center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.25rem;">4215 S SPRING MOUNTAIN RD<br>LAS VEGAS, NV 89102</p>
+                <div style="background: #ccc; height: 300px; border-radius: 8px; margin-top: 2rem; display:flex; align-items:center; justify-content:center;">
+                    [Map Placeholder]
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact View -->
+        <div id="contact" class="view">
+            <h2 style="text-align:center; font-size: 3rem;">Get in Touch</h2>
+            <div style="max-width: 500px; margin: 0 auto; background: white; padding: 3rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <p><strong>Phone:</strong> 702-555-0105</p>
+                <p><strong>Hours:</strong><br>Mon-Sun: 11:00 AM - 10:00 PM</p>
+                <button class="btn" style="width: 100%; margin-top: 2rem;">Order Online</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h2>MR. SOON TOFU</h2>
+        <p>&copy; 2026 Mr. Soon Tofu. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // GSAP Micro-interactions & Routing
+        function navigate(viewId) {
+            const currentView = document.querySelector('.view.active');
+            const nextView = document.getElementById(viewId);
+            
+            if(currentView === nextView) return;
+
+            gsap.to(currentView, {
+                opacity: 0, y: -20, duration: 0.3, 
+                onComplete: () => {
+                    currentView.classList.remove('active');
+                    nextView.classList.add('active');
+                    gsap.fromTo(nextView, 
+                        {opacity: 0, y: 20}, 
+                        {opacity: 1, y: 0, duration: 0.5, ease: "power2.out"}
+                    );
+                }
+            });
+            window.scrollTo(0,0);
+        }
+
+        // Initial animation
+        gsap.to('#home', {opacity: 1, duration: 1});
+        gsap.from('.hero-text > *', {y: 30, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"});
+    </script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<!--
+  Hillside Visuals — prospect website MOCKUP template.  ROUTER SITE (v2, 2026-09-07).
+
+  ENGINE: this template drives the v1.5 pipeline (--engine claude) and is the fallback when the
+  default OpenDesign engine (v2) cannot finish the website. Keep it working. See
+  references/opendesign-pipeline.md for v2.
+
+  WHAT CHANGED (2026-09-07): the mockup is now a MULTI-VIEW site, not one long scroll. The nav
+  loads real pages (Home / Work / About / Booking / Studio). Every nav link, every button, every
+  footer link goes somewhere and shows something. Plus the brand intro animation is showcased on
+  the Home page and deployed as its own shareable page at hillsidevisuals.github.io/<slug>/intro.
+
+  HOW THE ROUTER WORKS
+   - Each page is a <section class="view" data-route="/x">. All CSS/markup in ONE file.
+   - No JS  -> every view is visible, the site is a normal long-scroll page, anchors still work.
+   - JS on  -> body gets .routed, only the matching view shows, nav sets aria-current, scroll top.
+   - Legacy "#work" (no slash) is normalised to "/work". Unknown route -> Home.
+   - This keeps the file a single self-contained document (Artifact + one-file Pages hosting).
+
+  THE BRAND INTRO
+   - <li><a class="nav-intro" href="intro.html">Brand Intro</a></li> / <div class="introcard"><div class="txt"><p class="eyebrow">Brand Identity</p><h3>Watch the Intro</h3><p>A quick 6-second motion reveal.</p><a class="btn btn--ghost" href="intro.html">Play</a></div><div class="stage"><div class="seal">BJ</div><div class="cap">Brand Motion</div></div></div> are filled with the intro link/card ONLY when a motion
+     intro exists for this prospect (full tier). Otherwise the packager sets both tokens to "".
+   - The link href is always "intro.html" (relative). publish-mockup.sh copies
+     motion/brand-intro.html to <slug>/intro.html so the link is live on Pages. In the Artifact
+     preview the file is absent (internal only) and the packager also publishes the intro as its
+     own Artifact — both URLs go in ARTIFACT.md.
+
+  The packager copies this to <package>/website/index.html, fills every {{TOKEN}}, then (a) publishes
+  it with the Artifact tool (business name as `title`) and (b) it gets screenshotted for the deck.
+  Complete standalone document — must open on its own (local file, GitHub Pages, Artifact).
+
+  RESPONSIVE + QA — required, MOBILE INCLUDED. Before publishing, for EACH view (load #/, #/work,
+  #/about, #/booking, #/studio) verify with:
+    node render.mjs shot "<file>#/work" a.png --w 1280 --h 900
+    node render.mjs shot "<file>#/work" b.png --w 768  --h 1000
+    node render.mjs shot "<file>#/work" c.png --w 390  --h 1600
+  and OPEN c.png for every view — the 390 render is not optional. Nothing may overflow its box or
+  the viewport at any width; the nav must stay usable on mobile; every headline and button fits.
+  Content-integrity rules below.
+
+  Rules:
+   - CONTENT INTEGRITY (checked in QA before publish): no text clipped, overlapped, ellipsis-cut,
+     or off-screen at 390 / 768 / 1280; no horizontal scroll at any width; every text run at AA
+     contrast on its real background (watch the --muted greys on tinted panels); any image that
+     carries a logo or composed text is object-fit:contain, not cover. Render and open EVERY view
+     at all three widths before publishing.
+   - EVERY NAV ITEM AND BUTTON RESOLVES. No href="#", no dead <button>. A link either loads a view
+     (#/route), scrolls to a real element, opens the intro (intro.html), or is a real tel:/mailto:.
+   - SUBPAGE CONTENT IS REAL, NEVER INVENTED. Fill each view from research.md + brand.md. Unknown
+     facts (exact hours, deposit, artist bio details, staff names) become "TBC" or are left out.
+     Do not fabricate a backstory, awards, prices, or review counts. This holds for every prospect,
+     past and future.
+   - The PROSPECT's site: their name, their brand. No Hillside logo/name (the "concept mockup" banner is fine).
+   - Inline CSS only. Google Fonts <link> is the only external resource.
+   - Swap the two font families + the :root palette to brand.md. Every colour from a :root token.
+   - DON'T default salon/spa/cafe to cream + serif + terracotta. Derive from THIS business; take a risk.
+   - Images: MOST slots are `.shot` placeholders (data-shot = what Hillside shoots). Keep data-shot SHORT
+     (<= 6 words) so it fits. Tiny thumbnails use `.shot .shot--mini` (no label). No lorem.
+   - existing-brand (has-site / multi-location): up to 2 of their own photos, `render.mjs watermark`
+     first, wrap `<figure class="ref"><img ...><figcaption>current photo</figcaption></figure>`.
+     new-brand: placeholders only.
+   - teaser tier: keep the Home view + the Booking view only. Delete Work / About / Studio views
+     and their nav items. Keep the intro card if a motion intro was built.
+   - Fill the JSON-LD @type for the lane.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bajamar Seafood & Tacos</title>
+<meta name="description" content="Fresh Baja-style seafood and tacos on the Las Vegas Strip.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* --- swap every value to fit THIS prospect (brand.md) --- */
+    --ink:#0F172A;
+    --paper:#FAFAF9;
+    --muted:#5c5852;
+    --accent:#EF4444;
+    --accent-ink:#ffffff;
+    --line:rgba(0,0,0,.12);
+    --font-display:"Bebas Neue", Georgia, "Times New Roman", serif;
+    --font-body:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw:1120px;
+    --pad:clamp(1.15rem, 5vw, 3rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.1;margin:0 0 .4em;
+    text-wrap:balance;overflow-wrap:break-word}
+  h1{font-size:clamp(2.1rem,6vw,4.4rem);letter-spacing:-.01em}
+  h2{font-size:clamp(1.55rem,4vw,2.7rem)}
+  h3{font-size:1.1rem}
+  p{margin:0 0 1rem;max-width:64ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.5em;
+    border-radius:2px;text-decoration:none;font-weight:600;letter-spacing:.02em;white-space:nowrap;
+    transition:transform .15s ease,opacity .15s ease}
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .view > .wrap:first-child{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(.4rem,2vw,1.1rem)}
+  .block{padding-top:clamp(1.9rem,5.5vw,3.6rem);padding-bottom:clamp(1.9rem,5.5vw,3.6rem);border-top:1px solid var(--line)}
+  .block:first-child{border-top:0}
+  .pagehead + .block{border-top:0;padding-top:0}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+
+  /* ---- placeholder blocks ---- */
+  .shot{position:relative;overflow:hidden;background:
+      repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 12px,transparent 12px 24px),
+      color-mix(in srgb,var(--ink) 6%,var(--paper));
+    border:1px dashed var(--line);border-radius:3px;display:flex;align-items:center;
+    justify-content:center;text-align:center;color:var(--muted);
+    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
+    padding:1rem;min-height:200px}
+  .shot::after{content:"◈ " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
+  .shot--hero{min-height:min(58vh,520px)}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+  .shot--mini{min-height:0;aspect-ratio:1/1;padding:.4rem}
+  .shot--mini::after{content:"◈";font-size:1rem;max-width:none}
+  figure.ref{margin:0;position:relative;overflow:hidden;border-radius:3px}
+  figure.ref img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
+  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:2px}
+
+  /* ---- nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.85rem;padding-bottom:.85rem}
+  .brandmark{font-family:var(--font-display);font-size:clamp(1.1rem,3.5vw,1.35rem);font-weight:600;text-decoration:none;white-space:nowrap;margin-right:auto}
+  .nav ul{display:flex;gap:1.1rem 1.4rem;list-style:none;margin:0;padding:0;font-size:.86rem;flex-wrap:wrap}
+  .nav a{text-decoration:none;color:var(--muted);letter-spacing:.04em}
+  .nav a:hover{color:var(--ink)}
+  .nav a[aria-current="page"]{color:var(--ink);font-weight:600}
+  .nav a.btn{color:var(--accent-ink);padding:.6em 1.25em;font-size:.84rem;font-weight:700}
+  .nav a.btn:hover{color:var(--accent-ink)}
+  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important;font-weight:600}
+  .nav-intro::before{content:"\25B6";font-size:.7em}
+
+  /* ---- views / router ---- */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .32s ease}
+  @keyframes viewin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+
+  /* ---- hero ---- */
+  .hero .lead{font-size:clamp(1rem,2.6vw,1.15rem);color:var(--muted);max-width:50ch}
+  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
+  .hero .shot{margin-top:2.2rem}
+  .pagehead h1{margin-bottom:.2em}
+  .pagehead .lead{font-size:clamp(1rem,2.4vw,1.12rem);color:var(--muted);max-width:52ch}
+
+  /* ---- intro card (brand intro showcase, Home view) ---- */
+  .introcard{margin-top:2.4rem;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+    display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);color:var(--paper)}
+  .introcard .txt{padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;gap:.7rem;justify-content:center}
+  .introcard .eyebrow{color:color-mix(in srgb,var(--paper) 66%,transparent)}
+  .introcard h3{font-size:clamp(1.3rem,3vw,1.9rem);margin:0}
+  .introcard p{color:color-mix(in srgb,var(--paper) 78%,transparent);margin:0}
+  .introcard .btn{align-self:flex-start;margin-top:.4rem}
+  .introcard .stage{position:relative;min-height:220px;background:
+      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 22%,var(--ink)) 0%, var(--ink) 65%);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:1.4rem}
+  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
+    color:var(--ink);width:76px;height:76px;display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;transform:rotate(-4deg)}
+  .introcard .stage .cap{position:absolute;bottom:.9rem;left:0;right:0;font-size:.6rem;letter-spacing:.2em;
+    text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
+
+  /* ---- grids ---- */
+  .grid{display:grid;gap:1.2rem}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  .grid--4{grid-template-columns:repeat(4,1fr)}
+  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+  figure.tile{margin:0}
+
+  /* ---- list / menu ---- */
+  .list{list-style:none;padding:0;margin:1.4rem 0 0}
+  .list li{padding:.8rem 0;border-bottom:1px solid var(--line);display:flex;
+    justify-content:space-between;align-items:baseline;gap:1rem}
+  .price{font-family:var(--font-display);white-space:nowrap}
+  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
+
+  .dishes{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.4rem;margin-top:1.6rem}
+  .dish{display:flex;gap:1rem;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:1rem}
+  .dish .thumb{width:76px;flex:none}
+  .dish .body{min-width:0}
+  .dish .body h3{margin:0}
+  .dish .p{font-family:var(--font-display);color:var(--accent)}
+
+  /* ---- steps ---- */
+  .steps{list-style:none;counter-reset:s;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem}
+  .steps li{counter-increment:s;padding-left:3rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;
+    border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:.9rem}
+  .steps h3{margin:0 0 .2rem}
+
+  /* ---- two-column blocks ---- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,4rem);align-items:center}
+  .split--text{align-items:start}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+  .facts{list-style:none;padding:0;margin:1.2rem 0 0}
+  .facts li{padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
+  .facts li b{font-weight:600}
+  .facts li span:last-child{color:var(--muted);text-align:right}
+
+  /* ---- concept form ---- */
+  .form{display:grid;gap:.9rem;margin-top:1.4rem;max-width:32rem}
+  .form label{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
+    border-radius:2px;background:color-mix(in srgb,var(--ink) 3%,var(--paper));color:var(--ink)}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:.85rem;color:var(--muted)}
+
+  footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 82%,transparent);padding:2.6rem 0;margin-top:0}
+  body.routed footer{margin-top:0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.86rem}
+  footer nav{display:flex;gap:1rem;flex-wrap:wrap}
+  footer a{text-decoration:none;color:color-mix(in srgb,var(--paper) 82%,transparent)}
+  footer a:hover{color:var(--paper)}
+
+  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.62rem,2vw,.75rem);
+    letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
+
+  /* ================= TABLET  (<= 920px) ================= */
+  @media (max-width:920px){
+    .grid--3,.grid--4{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr;gap:1.6rem}
+    .split .shot--wide{aspect-ratio:16/9}
+    .contact-grid{grid-template-columns:1fr}
+    .dishes{grid-template-columns:1fr;gap:.4rem}
+    .introcard{grid-template-columns:1fr}
+    .introcard .stage{min-height:180px}
+  }
+  /* ================= MOBILE  (<= 600px) ================= */
+  @media (max-width:600px){
+    body{font-size:16px}
+    .nav .wrap{gap:.7rem 1rem}
+    .nav ul{width:100%;order:3;gap:.8rem 1.1rem;font-size:.82rem}
+    .grid--2,.grid--3,.grid--4{grid-template-columns:1fr}
+    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
+    .list li{flex-direction:column;gap:.15rem}
+    .list li .price{align-self:flex-start}
+    .facts li{flex-direction:column;gap:.1rem}
+    .facts li span:last-child{text-align:left}
+    footer .wrap{flex-direction:column;gap:.7rem}
+    .shot--hero{min-height:min(52vh,400px)}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Concept mockup for Bajamar Seafood & Tacos &mdash; built by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">Bajamar Seafood & Tacos</a>
+    <ul>
+      <li><a href="#/work">Menu</a></li>
+      <li><a href="#/about">Our Story</a></li>
+      <li><a href="#/booking">Order Now</a></li>
+      <li><a href="#/studio">Location</a></li>
+      <li><a class="nav-intro" href="intro.html">Brand Intro</a></li>
+    </ul>
+    <a class="btn" href="#/booking">Order Online</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap hero">
+      <p class="eyebrow">Fresh from Baja</p>
+      <h1>Baja Seafood & Tacos in Las Vegas</h1>
+      <p class="lead">Authentic coastal flavors, crispy fish tacos, and fresh ceviche served daily on the Strip.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/booking">Order Online</a>
+        <a class="btn btn--ghost" href="#/work">View Menu</a>
+      </div>
+      <div class="shot shot--hero" data-shot="Crispy Fish Taco with Lime"></div>
+      <div class="introcard"><div class="txt"><p class="eyebrow">Brand Identity</p><h3>Watch the Intro</h3><p>A quick 6-second motion reveal.</p><a class="btn btn--ghost" href="intro.html">Play</a></div><div class="stage"><div class="seal">BJ</div><div class="cap">Brand Motion</div></div></div>
+    </div>
+
+    <div class="wrap block">
+      <p class="eyebrow">The Menu</p>
+      <h2>Fresh Catch Daily</h2>
+      <p style="color:var(--muted)">From spicy shrimp to classic fish tacos.</p>
+      <div class="grid grid--3" style="margin-top:1.6rem">
+        <div class="shot shot--square" data-shot="Spicy Shrimp Taco"></div>
+        <div class="shot shot--square" data-shot="Ceviche Tostada"></div>
+        <div class="shot shot--square" data-shot="Michelada with Shrimp"></div>
+      </div>
+      <p style="margin-top:1.4rem"><a class="btn btn--ghost" href="#/work">See Full Menu</a></p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split split--text">
+        <div>
+          <p class="eyebrow">Our Story</p>
+          <h2>Bringing Baja to Vegas</h2>
+          <p>We believe in fresh ingredients, bold spices, and the coastal lifestyle.</p>
+          <p><a class="btn btn--ghost" href="#/about">Learn More</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="Chef preparing ceviche"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="view" data-route="/work" id="view-work">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Our Menu</p>
+      <h1>Seafood & Tacos</h1>
+      <p class="lead">Explore our selection of fresh mariscos, signature tacos, and refreshing drinks.</p>
+    </div>
+    <div class="wrap block">
+      <div class="grid grid--3">
+        <figure class="tile"><div class="shot shot--square" data-shot="Classic Fish Taco"></div><figcaption>Battered Fish Taco</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Spicy Octopus Taco"></div><figcaption>Pulpo Enchilado</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Shrimp Ceviche"></div><figcaption>Ceviche de Camaron</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Aguachile Verde"></div><figcaption>Spicy Aguachile</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Fish Chicharron"></div><figcaption>Chicharron de Pescado</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Surf & Turf Taco"></div><figcaption>Mar y Tierra</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Clamato Cocktail"></div><figcaption>Coctel de Camaron</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Quesataco"></div><figcaption>Shrimp Quesataco</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Churros"></div><figcaption>Churros with Caramel</figcaption></figure>
+      </div>
+      <p style="margin-top:1.8rem"><a class="btn" href="#/booking">Order Now</a></p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap pagehead">
+      <p class="eyebrow">About Us</p>
+      <h1>The Bajamar Story</h1>
+      <p class="lead">Authentic Baja flavors right in the heart of Las Vegas.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split split--text">
+        <div>
+          <p>Bajamar Seafood & Tacos started with a simple idea: serve the freshest, most authentic Baja-style seafood in the desert.</p>
+          <p>Every day, we prepare our salsas from scratch and batter our fish to order, ensuring every bite takes you straight to the coast.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="Fresh ingredients on table"></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <h2>Our Promise</h2>
+      <div class="grid grid--3" style="margin-top:1.4rem">
+        <div><h3>Fresh Ingredients</h3><p class="desc">Quality seafood sourced responsibly.</p></div>
+        <div><h3>Made from Scratch</h3><p class="desc">Salsas and marinades made daily.</p></div>
+        <div><h3>Authentic Recipes</h3><p class="desc">True Baja coastal flavors.</p></div>
+      </div>
+      <p style="margin-top:1.8rem"><a class="btn" href="#/booking">Visit Us</a></p>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING ============ -->
+  <section class="view" data-route="/booking" id="view-booking">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Order</p>
+      <h1>Order Online</h1>
+      <p class="lead">Skip the line and order your favorites for pickup or delivery.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split split--text">
+        <div>
+          <h2>How to Order</h2>
+          <ol class="steps">
+            <li><h3>Choose your items</h3><p class="desc">Browse our menu of fresh seafood and tacos.</p></li>
+            <li><h3>Select Pickup or Delivery</h3><p class="desc">Tell us how you want to get your food.</p></li>
+            <li><h3>Enjoy</h3><p class="desc">Taste the coastal flavors of Baja.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Pickup</b><span>Available during open hours</span></li>
+            <li><b>Delivery</b><span>Available via UberEats</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17025550110">702-555-0110</a></span></li>
+            <li><b>Instagram</b><span><a href="https://instagram.com/bajamar" target="_blank" rel="noopener">@bajamar</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Catering Requests</h2>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Event Details</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Send Request</button>
+            <p class="status" role="status">We will get back to you within 24 hours.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STUDIO / VISIT ============ -->
+  <section class="view" data-route="/studio" id="view-studio">
+    <div class="wrap pagehead">
+      <p class="eyebrow">Location</p>
+      <h1>Find Us</h1>
+      <p class="lead">Located on the Las Vegas Strip.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split split--text">
+        <div>
+          <p>Join us at our Las Vegas location for the best Baja seafood experience.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>1615 S LAS VEGAS BLVD, LAS VEGAS, NV 89104</span></li>
+            <li><b>Hours</b><span>Mon-Sun: 11am - 10pm</span></li>
+            <li><b>Parking</b><span>Available in rear</span></li>
+            <li><b>Getting here</b><span>Near transit stops</span></li>
+          </ul>
+          <p style="margin-top:1.4rem"><a class="btn" href="#/booking">Order Pickup</a></p>
+        </div>
+        <div class="grid" style="gap:1rem">
+          <div class="shot shot--wide" data-shot="Restaurant Exterior"></div>
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="shot shot--square" data-shot="Dining Room"></div>
+            <div class="shot shot--square" data-shot="Neon Sign"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <div class="shot shot--wide" data-shot="Map / storefront on LAS VEGAS BLVD"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr"></span> Bajamar Seafood & Tacos &middot; LAS VEGAS, NV 89104</span>
+    <nav>
+      <a href="#/work">Menu</a>
+      <a href="#/about">Our Story</a>
+      <a href="#/booking">Order Now</a>
+      <a href="#/studio">Location</a>
+      <a href="https://instagram.com/bajamar" target="_blank" rel="noopener">@bajamar</a>
+    </nav>
+    <span>Built by Hillside Visuals.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var views = [].slice.call(document.querySelectorAll('.view'));
+  var navLinks = [].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home = document.getElementById('view-home') || views[0];
+    var routeOf = function(v){ return v.getAttribute('data-route'); };
+    var render = function(){
+      var h = (location.hash || '').replace(/^#/, '');
+      if(h && h.charAt(0) !== '/') h = '/' + h;            // normalise legacy "#work"
+      var match = views.filter(function(v){ return routeOf(v) === h; })[0] || home;
+      views.forEach(function(v){ v.classList.toggle('is-active', v === match); });
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + routeOf(match) ? 'page' : 'false');
+      });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', render);
+    render();
+  }
+
+  var form = document.querySelector('.form');
+  if(form){
+    var status = form.querySelector('.status');
+    var note = status ? status.textContent : '';
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(status) status.textContent = note;
+    });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Bajamar Seafood & Tacos",
+  "telephone":"702-555-0110",
+  "address":{"@type":"PostalAddress","streetAddress":"1615 S LAS VEGAS BLVD","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89104"}
+}
+</script>
+
+</body>
+</html>

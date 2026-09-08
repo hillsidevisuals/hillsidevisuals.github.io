@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+    <title>Mr. Soon Tofu | Brand Intro</title>
+    <style>
+        body { margin: 0; background: #E63946; color: #F1FAEE; font-family: 'Playfair Display', serif; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        .intro-container { text-align: center; }
+        h1 { font-size: 5rem; margin: 0; }
+        p { font-family: 'Inter', sans-serif; font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="intro-container">
+        <h1 id="title">MR. SOON TOFU</h1>
+        <p id="subtitle">Seoul in Every Bowl.</p>
+    </div>
+    <script>
+        gsap.from("#title", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out" });
+        gsap.from("#subtitle", { y: 20, opacity: 0, duration: 1, delay: 0.8, ease: "power3.out" });
+    </script>
+</body>
+</html>

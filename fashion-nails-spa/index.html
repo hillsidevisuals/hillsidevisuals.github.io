@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Nails & Spa | Las Vegas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #F9F3F1;
+            --accent: #D6A89C;
+            --text-color: #4A4A4A;
+            --white: #FFFFFF;
+        }
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(249, 243, 241, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        #home { background: linear-gradient(rgba(249, 243, 241, 0.5), rgba(249, 243, 241, 1)), url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80') center/cover; }
+        h1 { font-size: 4rem; margin-bottom: 1rem; color: var(--accent); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; width: 100%; max-width: 1200px; margin-top: 3rem; }
+        .card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        footer { padding: 3rem; text-align: center; background: var(--white); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo serif" style="font-size: 1.5rem; font-style: italic; color: var(--accent);">Fashion Nails</div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#book" class="btn">Book Now</a>
+    </div>
+</nav>
+
+<section id="home">
+    <div class="gsap-hero">
+        <h1>Refine Your Elegance</h1>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">A premier sanctuary for nail care and spa treatments on S Fort Apache Rd. Relax, rejuvenate, and radiate.</p>
+        <a href="#book" class="btn">Discover Our Treatments</a>
+    </div>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="grid">
+        <div class="card gsap-card">
+            <h3>Manicure</h3>
+            <p>Signature treatments for perfectly polished hands. Choose from classic, gel, or custom artistry.</p>
+        </div>
+        <div class="card gsap-card">
+            <h3>Pedicure</h3>
+            <p>Melt stress away with our spa pedicures, featuring soothing scrubs and essential oil massages.</p>
+        </div>
+        <div class="card gsap-card">
+            <h3>Spa Packages</h3>
+            <p>Complete self-care indulgence. Combine our best services for the ultimate relaxation experience.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" style="background: var(--white);">
+    <div style="max-width: 800px;" class="gsap-fade">
+        <h2>About Fashion Nails & Spa</h2>
+        <p>Located in the heart of Las Vegas at 6105 S Fort Apache Rd, we are dedicated to providing a luxurious, hygienic, and deeply relaxing experience. Our expert technicians use only premium products to ensure your beauty and well-being are always prioritized.</p>
+    </div>
+</section>
+
+<section id="testimonials">
+    <h2>Client Love</h2>
+    <div class="grid">
+        <div class="card gsap-card">
+            <p>"The absolute best salon in Vegas. The ambiance is so calming, and my nails have never looked better."</p>
+            <p><em>— Sarah J.</em></p>
+        </div>
+        <div class="card gsap-card">
+            <p>"A true hidden gem on Fort Apache. I felt pampered from the moment I walked in."</p>
+            <p><em>— Michelle R.</em></p>
+        </div>
+    </div>
+</section>
+
+<section id="book" style="background: var(--white);">
+    <div class="gsap-fade">
+        <h2>Ready for Relaxation?</h2>
+        <p style="margin-bottom: 2rem;">Book your appointment today and step into serenity.</p>
+        <a href="#" class="btn" style="font-size: 1.2rem; padding: 1rem 2rem;">Book Appointment</a>
+        <p style="margin-top: 2rem; font-size: 0.9rem;">Or call us: <strong>702-555-0112</strong></p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Fashion Nails & Spa. All rights reserved.</p>
+    <p style="font-size: 0.8rem;">6105 S FORT APACHE RD, LAS VEGAS, NV 89148</p>
+</footer>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".gsap-hero", { y: 50, opacity: 0, duration: 1.5, ease: "power3.out" });
+    
+    gsap.utils.toArray('.gsap-card').forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+    });
+
+    gsap.utils.toArray('.gsap-fade').forEach(elem => {
+        gsap.from(elem, {
+            scrollTrigger: {
+                trigger: elem,
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 20,
+            duration: 1
+        });
+    });
+</script>
+</body>
+</html>

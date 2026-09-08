@@ -1,344 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Durvo</title>
-<meta name="description" content="A fully plant-based breakfast and lunch table in southwest Las Vegas. Bulgarian comfort cooking, grown from plants.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#22312B; --paper:#F5F0E6; --muted:#5f6a60;
-    --accent:#C64A62; --accent-ink:#FBF3E7;
-    --line:rgba(34,49,43,.15); --gold:#3A1E27;
-    --font-display:"Bricolage Grotesque", Georgia, "Times New Roman", serif;
-    --font-body:"Newsreader", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --maxw:1120px; --pad:clamp(1.15rem, 5vw, 3rem);
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  img{max-width:100%;display:block}
-  a{color:inherit}
-  h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.08;margin:0 0 .4em;
-    text-wrap:balance;overflow-wrap:break-word;}
-  h1{font-size:clamp(2.1rem,6vw,4.2rem);letter-spacing:-.015em}
-  h2{font-size:clamp(1.5rem,4vw,2.6rem)}
-  h3{font-size:1.08rem}
-  p{margin:0 0 1rem;max-width:64ch}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem;font-weight:600}
-  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.6em;
-    border-radius:6px;text-decoration:none;font-weight:600;letter-spacing:.03em;white-space:nowrap;
-    transition:transform .15s ease,opacity .15s ease}
-  .btn:hover{transform:translateY(-1px);opacity:.92}
-  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
-  .view > .wrap:first-child{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(.4rem,2vw,1.1rem)}
-  .block{padding-top:clamp(1.9rem,5vw,3.4rem);padding-bottom:clamp(1.9rem,5vw,3.4rem);border-top:1px solid var(--line)}
-  .block:first-child{border-top:0}
-  .pagehead + .block{border-top:0;padding-top:0}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
-
-  .shot{position:relative;overflow:hidden;background:
-      repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 12px,transparent 12px 24px),
-      color-mix(in srgb,var(--ink) 6%,var(--paper));
-    border:1px dashed var(--line);border-radius:6px;display:flex;align-items:center;
-    justify-content:center;text-align:center;color:var(--muted);
-    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
-    padding:1rem;min-height:200px}
-  .shot::after{content:"\25C8 " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
-  .shot--hero{min-height:min(56vh,500px)}
-  .shot--wide{aspect-ratio:16/10;min-height:0}
-  .shot--square{aspect-ratio:1/1;min-height:0}
-  figure.ref{margin:0;position:relative;overflow:hidden;border-radius:6px}
-  figure.ref img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
-  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.14em;
-    text-transform:uppercase;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:2px}
-
-  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.8rem;padding-bottom:.8rem}
-  .brandmark{font-family:var(--font-display);font-size:clamp(1.05rem,3.4vw,1.32rem);font-weight:700;
-    text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
-  .brandmark img{height:1.6em;width:auto}
-  .nav ul{display:flex;gap:1rem 1.4rem;list-style:none;margin:0;padding:0;font-size:.84rem;flex-wrap:wrap}
-  .nav a{text-decoration:none;color:var(--muted);letter-spacing:.04em}
-  .nav a:hover{color:var(--ink)}
-  .nav a[aria-current="page"]{color:var(--ink);font-weight:600}
-  .nav a.btn{color:var(--accent-ink);padding:.6em 1.25em;font-size:.84rem;font-weight:700}
-  .nav a.btn:hover{color:var(--accent-ink)}
-  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important;font-weight:600}
-  .nav-intro::before{content:"\25B6";font-size:.7em}
-
-  .view{display:block}
-  body.routed .view{display:none}
-  body.routed .view.is-active{display:block;animation:vin .3s ease}
-  @keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
-
-  .hero .lead,.pagehead .lead{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--muted);max-width:50ch}
-  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}
-  .hero .shot,.hero figure.ref{margin-top:2.1rem}
-  .pagehead h1{margin-bottom:.2em}
-
-  .introcard{margin-top:2.3rem;border:1px solid var(--line);overflow:hidden;text-decoration:none;
-    display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);color:var(--paper);border-radius:6px}
-  .introcard .txt{padding:clamp(1.3rem,4vw,2.3rem);display:flex;flex-direction:column;gap:.6rem;justify-content:center}
-  .introcard .eyebrow{color:color-mix(in srgb,var(--paper) 68%,transparent)}
-  .introcard h3{font-size:clamp(1.25rem,3vw,1.8rem);margin:0;color:var(--paper)}
-  .introcard p{color:color-mix(in srgb,var(--paper) 80%,transparent);margin:0;max-width:42ch}
-  .introcard .btn{align-self:flex-start;margin-top:.3rem}
-  .introcard .stage{position:relative;min-height:210px;background:
-      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 30%,var(--ink)) 0%, var(--ink) 66%);
-    display:flex;align-items:center;justify-content:center;padding:1.3rem}
-  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
-    color:var(--accent-ink);width:74px;height:74px;display:flex;align-items:center;justify-content:center;
-    font-size:1.4rem;}
-  .introcard .stage .cap{position:absolute;bottom:.85rem;left:0;right:0;text-align:center;font-size:.58rem;
-    letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
-
-  .grid{display:grid;gap:1.2rem}
-  .grid--2{grid-template-columns:repeat(2,1fr)}
-  .grid--3{grid-template-columns:repeat(3,1fr)}
-  figure.tile{margin:0}
-  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
-
-  .list{list-style:none;padding:0;margin:1.4rem 0 0}
-  .list li{padding:.85rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-  .price{font-family:var(--font-display);white-space:nowrap}
-  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
-
-  .steps{list-style:none;counter-reset:s;padding:0;margin:1.5rem 0 0;display:grid;gap:1rem}
-  .steps li{counter-increment:s;padding-left:3rem;position:relative}
-  .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;
-    border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:.9rem}
-  .steps h3{margin:0 0 .2rem}
-
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,3.6rem);align-items:start}
-  .facts{list-style:none;padding:0;margin:1.1rem 0 0}
-  .facts li{padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
-  .facts li b{font-weight:600}
-  .facts li span:last-child{color:var(--muted);text-align:right}
-  .facts li a{color:var(--ink)}
-
-  .form{display:grid;gap:.9rem;margin-top:1.3rem;max-width:32rem}
-  .form label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
-  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
-    border-radius:6px;background:color-mix(in srgb,var(--ink) 3%,var(--paper));color:var(--ink)}
-  .form textarea{min-height:6rem;resize:vertical}
-  .form .status{font-size:.85rem;color:var(--muted)}
-
-  footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 82%,transparent);padding:2.6rem 0}
-  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.86rem}
-  footer nav{display:flex;gap:1rem;flex-wrap:wrap}
-  footer a{text-decoration:none;color:color-mix(in srgb,var(--paper) 82%,transparent)}
-  footer a:hover{color:var(--paper)}
-
-  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.6rem,2vw,.72rem);
-    letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
-
-  @media (max-width:920px){
-    .grid--3{grid-template-columns:repeat(2,1fr)}
-    .split{grid-template-columns:1fr;gap:1.6rem}
-    .introcard{grid-template-columns:1fr} .introcard .stage{min-height:160px}
-  }
-  @media (max-width:600px){
-    body{font-size:16px}
-    .nav ul{width:100%;order:3;gap:.7rem 1rem;font-size:.8rem}
-    .grid--2,.grid--3{grid-template-columns:1fr}
-    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
-    .list li,.facts li{flex-direction:column;gap:.1rem}
-    .list li .price{align-self:flex-start}
-    .facts li span:last-child{text-align:left}
-    footer .wrap{flex-direction:column;gap:.7rem}
-    .shot--hero{min-height:min(50vh,380px)}
-  }
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durvo | Supper Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@900&display=swap');
+        
+        body {
+            background-color: #0A0A0A;
+            color: #FAFAFA;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, .display-text {
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+        
+        .accent { color: #D6FD51; }
+        .bg-accent { background-color: #D6FD51; }
+        
+        .view {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .view.active {
+            display: block;
+        }
+        
+        nav {
+            border-bottom: 1px solid rgba(250, 250, 250, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #D6FD51;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: translateX(0);
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(250, 250, 250, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(250, 250, 250, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+    </style>
 </head>
-<body>
-<div class="mock-banner">Concept mockup for Durvo — built by Hillside Visuals</div>
-<header class="nav">
-  <div class="wrap">
-    <a class="brandmark" href="#/">DURVO</a>
-    <ul>
-      <li><a href="#/menu">Menu</a></li>
-      <li><a href="#/about">The name</a></li>
-      <li><a href="#/visit">Visit</a></li>
-      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
-    </ul>
-    <a class="btn" href="#/visit">Reserve</a>
-  </div>
-</header>
-<main>
-  <section class="view is-active" data-route="/" id="view-home">
-    <div class="wrap hero">
-      <p class="eyebrow">Breakfast and lunch, seven days</p>
-      <h1>Plant-based,<br>all day.</h1>
-      <p class="lead">A fully plant-based table on South Decatur, from the first coffee to the last lunch plate. Bulgarian comfort cooking, grown from plants, in a room of dark wood and green.</p>
-      <div class="cta-row">
-        <a class="btn" href="#/visit">Reserve a table</a>
-        <a class="btn btn--ghost" href="#/menu">See the menu</a>
-      </div>
-      <div class="shot shot--hero" data-shot="The dining room, dark wood and booths"></div>
-      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
-        <span class="txt">
-          <span class="eyebrow">Brand film</span>
-          <h3>Watch the Durvo intro</h3>
-          <p>A short brand reveal. Drop it on Instagram, a story, or the top of a reel.</p>
-          <span class="btn">Play the intro</span>
-        </span>
-        <span class="stage"><span class="seal">D</span><span class="cap">Short brand reveal</span></span>
-      </a>
-    </div>
-    <div class="wrap block">
-      <p class="eyebrow">The menu</p>
-      <h2>From first coffee to last lunch plate.</h2>
-      <p style="color:var(--muted)">Mornings, plates, and sweets. All plant-based, none of it a compromise.</p>
-      <div class="grid grid--3" style="margin-top:1.5rem">
-        <div class="shot shot--square" data-shot="Pistachio pesto rigatoni, side view"></div>
-        <div class="shot shot--square" data-shot="Jackfruit crab cakes, overhead"></div>
-        <div class="shot shot--square" data-shot="Three Layers of Love, one spoon"></div>
-      </div>
-      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="#/menu">See the full menu</a></p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p class="eyebrow">The name</p>
-          <h2>Durvo means tree.</h2>
-          <p>Durvo is Bulgarian for tree. The name is the menu, Bulgarian comfort cooking grown from plants, and the room is built to match it.</p>
-          <p><a class="btn btn--ghost" href="#/about">Read the story</a></p>
+<body class="grid-bg">
+
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4">
+        <div class="display-text text-3xl font-black tracking-tighter">DURVO.</div>
+        <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+            <a href="#home" class="nav-link active" data-target="home">Home</a>
+            <a href="#menu" class="nav-link" data-target="menu">Menu</a>
+            <a href="#reservations" class="nav-link" data-target="reservations">Reserve</a>
+            <a href="#events" class="nav-link" data-target="events">Events</a>
+            <a href="#contact" class="nav-link" data-target="contact">Contact</a>
         </div>
-        <div class="shot shot--wide" data-shot="Chef Hanny at the pass"></div>
-      </div>
-    </div>
-  </section>
-  <section class="view" data-route="/menu" id="view-menu">
-    <div class="wrap pagehead">
-      <p class="eyebrow">The menu</p>
-      <h1>From first coffee to last lunch plate.</h1>
-      <p class="lead">A concept selection. Everything plant-based.</p>
-    </div>
-    <div class="wrap block">
-      <ul class="list">
-        <li><span>Breakfast and brunch plates<span class="desc">Soft, savory, and made for slow mornings, done the Bulgarian way.</span></span><span class="price">Mornings</span></li>
-        <li><span>Specialty coffee<span class="desc">The first cup of the day, poured with a steady hand.</span></span><span class="price">Mornings</span></li>
-        <li><span>Artichoke with saffron aioli<span class="desc">A whole artichoke, hot from the pot, leaves to pull through saffron.</span></span><span class="price">Plates</span></li>
-        <li><span>Pistachio pesto rigatoni with crispy tofu<span class="desc">Rigatoni folded in green pistachio pesto, golden tofu on top.</span></span><span class="price">Plates</span></li>
-        <li><span>Jackfruit crab cakes with celery slaw<span class="desc">Crisp outside, soft inside, a bright celery slaw on the side.</span></span><span class="price">Plates</span></li>
-        <li><span>Ocean bay filet<span class="desc">Hearts of palm and jackfruit, cut thick and finished in the pan.</span></span><span class="price">Plates</span></li>
-        <li><span>Three Layers of Love<span class="desc">Walnut cashew cream, mango sherbet, and matcha mousse in one bowl.</span></span><span class="price">Sweets</span></li>
-      </ul>
-      <p style="margin-top:1rem;color:var(--muted);font-size:.86rem">Prices shown are placeholders for this mockup.</p>
-      <p style="margin-top:1.4rem"><a class="btn" href="#/visit">Reserve a table</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/about" id="view-about">
-    <div class="wrap pagehead">
-      <p class="eyebrow">The name</p>
-      <h1>Durvo means tree.</h1>
-      <p class="lead">A Bulgarian root, a Las Vegas table.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p>Durvo is Bulgarian for tree. Rayna ran a restaurant in Bulgaria before moving to Las Vegas about five years ago; Chef Hanny runs the kitchen.</p>
-          <p>The name is the menu, Bulgarian comfort cooking grown from plants, and the room is built to match it: dark wood, booth seating, a working bar, and green at every turn. Nothing about it reads like the strip mall it sits in.</p>
-        </div>
-        <div class="shot shot--wide" data-shot="The bar and the green wall"></div>
-      </div>
-    </div>
-    <div class="wrap block">
-      <h2>What to know</h2>
-      <div class="grid grid--3" style="margin-top:1.3rem">
-        <div><h3>All plant-based</h3><p class="desc">Every plate, all day. Happy that it happens to be vegan.</p></div>
-        <div><h3>Breakfast and lunch</h3><p class="desc">Open seven days, roughly 8:30a to 2:30p. Hours TBC.</p></div>
-        <div><h3>Built as a destination</h3><p class="desc">Dark wood and booths, made to shake the strip-mall feel.</p></div>
-      </div>
-      <p style="margin-top:1.7rem"><a class="btn" href="#/visit">Reserve a table</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/visit" id="view-visit">
-    <div class="wrap pagehead">
-      <p class="eyebrow">Visit</p>
-      <h1>South Decatur Blvd.</h1>
-      <p class="lead">Decatur and Hacienda, southwest of the Strip. Reserve ahead or order online for pickup.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <ul class="facts">
-            <li><b>Address</b><span>5255 S Decatur Blvd, Ste 107, Las Vegas, NV 89118</span></li>
-            <li><b>Hours</b><span>Daily, roughly 8:30a to 2:30p (TBC)</span></li>
-            <li><b>Order</b><span>Online / pickup, link in the mockup</span></li>
-            <li><b>Call</b><span><a href="tel:+17253009970">(725) 300-9970</a></span></li>
-            <li><b>Instagram</b><span><a href="https://www.instagram.com/durvo_nv/" target="_blank" rel="noopener">@durvo_nv</a></span></li>
-          </ul>
-          <p style="margin-top:1.3rem"><a class="btn" href="tel:+17253009970">Call to reserve</a></p>
-        </div>
-        <div class="grid" style="gap:1rem">
-          <div class="shot shot--wide" data-shot="Storefront on South Decatur"></div>
-          <div class="grid grid--2" style="gap:1rem">
-            <div class="shot shot--square" data-shot="The dining room from the door"></div>
-            <div class="shot shot--square" data-shot="A full table, mid-lunch"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="yr"></span> Durvo · Las Vegas, NV 89118</span>
-    <nav><a href="#/menu">Menu</a> <a href="#/about">The name</a> <a href="#/visit">Visit</a> <a href="https://www.instagram.com/durvo_nv/" target="_blank" rel="noopener">@durvo_nv</a></nav>
-    <span>Concept mockup by Hillside Visuals</span>
-  </div>
-</footer>
-<script>
-(function(){
-  document.getElementById('yr').textContent=new Date().getFullYear();
-  var views=[].slice.call(document.querySelectorAll('.view'));
-  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
-  if(views.length){
-    document.body.classList.add('routed');
-    var home=document.getElementById('view-home')||views[0];
-    var rof=function(v){return v.getAttribute('data-route');};
-    var render=function(){
-      var h=(location.hash||'').replace(/^#/,'');
-      if(h&&h.charAt(0)!=='/')h='/'+h;
-      var m=views.filter(function(v){return rof(v)===h;})[0]||home;
-      views.forEach(function(v){v.classList.toggle('is-active',v===m);});
-      navLinks.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+rof(m)?'page':'false');});
-      window.scrollTo(0,0);
-    };
-    window.addEventListener('hashchange',render);render();
-  }
-  var form=document.querySelector('.form');
-  if(form){var st=form.querySelector('.status');var note=st?st.textContent:'';
-    form.addEventListener('submit',function(e){e.preventDefault();if(st)st.textContent=note;});}
-})();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Durvo",
-  "servesCuisine": "Plant-based",
-  "telephone": "(725) 300-9970",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "5255 S Decatur Blvd, Ste 107",
-    "addressLocality": "Las Vegas",
-    "addressRegion": "NV",
-    "postalCode": "89118"
-  }
-}
-</script>
+        <button class="md:hidden border border-white px-4 py-2 text-xs uppercase hover:text-[#0A0A0A] hover:bg-white transition-colors">Menu</button>
+    </nav>
+
+    <main>
+        <!-- View 1: Home -->
+        <section id="home" class="view active px-8 md:px-16 flex flex-col justify-center h-screen relative">
+            <div class="max-w-4xl z-10">
+                <p class="text-[#D6FD51] text-sm mb-4 tracking-[0.2em] uppercase reveal-text">3500 S Las Vegas Blvd</p>
+                <h1 class="text-7xl md:text-9xl font-black leading-none mb-8 reveal-text">EAT.<br>DRINK.<br><span class="text-transparent" style="-webkit-text-stroke: 2px #FAFAFA;">DISAPPEAR.</span></h1>
+                <a href="#reservations" class="inline-block bg-[#D6FD51] text-[#0A0A0A] px-8 py-4 font-bold uppercase tracking-wider hover:bg-white transition-colors nav-trigger" data-target="reservations">Book a Table</a>
+            </div>
+            <div class="absolute right-0 top-1/4 w-1/3 h-2/3 border-l border-t border-[rgba(250,250,250,0.1)] hidden md:block"></div>
+        </section>
+
+        <!-- View 2: Menu -->
+        <section id="menu" class="view px-8 md:px-16 py-24">
+            <h2 class="text-5xl md:text-7xl mb-16">THE <span class="accent">MENU</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 border-t border-[rgba(250,250,250,0.2)] pt-8">
+                <div>
+                    <h3 class="text-3xl mb-8 border-b border-[rgba(250,250,250,0.1)] pb-4">RAW BAR</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end border-b border-dashed border-[rgba(250,250,250,0.2)] pb-2">
+                            <span class="text-lg">Oysters on the Half Shell</span>
+                            <span class="accent">MP</span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-dashed border-[rgba(250,250,250,0.2)] pb-2">
+                            <span class="text-lg">Wagyu Tartare</span>
+                            <span class="accent">28</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-3xl mb-8 border-b border-[rgba(250,250,250,0.1)] pb-4">LARGE PLATES</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end border-b border-dashed border-[rgba(250,250,250,0.2)] pb-2">
+                            <span class="text-lg">Bone-in Ribeye (32oz)</span>
+                            <span class="accent">145</span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-dashed border-[rgba(250,250,250,0.2)] pb-2">
+                            <span class="text-lg">Whole Branzino</span>
+                            <span class="accent">65</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View 3: Reservations -->
+        <section id="reservations" class="view px-8 md:px-16 py-24 h-screen flex flex-col justify-center">
+            <div class="max-w-2xl mx-auto w-full border border-[rgba(250,250,250,0.2)] p-8 md:p-12 bg-[#0A0A0A]">
+                <h2 class="text-4xl mb-8">SECURE ACCESS</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-2 uppercase">Date</label>
+                            <input type="date" class="w-full bg-transparent border-b border-[rgba(250,250,250,0.2)] pb-2 focus:outline-none focus:border-[#D6FD51] text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-2 uppercase">Time</label>
+                            <input type="time" class="w-full bg-transparent border-b border-[rgba(250,250,250,0.2)] pb-2 focus:outline-none focus:border-[#D6FD51] text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-2 uppercase">Guests</label>
+                        <select class="w-full bg-transparent border-b border-[rgba(250,250,250,0.2)] pb-2 focus:outline-none focus:border-[#D6FD51] text-white appearance-none">
+                            <option value="2" class="bg-[#0A0A0A]">2 Guests</option>
+                            <option value="4" class="bg-[#0A0A0A]">4 Guests</option>
+                            <option value="6+" class="bg-[#0A0A0A]">6+ Guests</option>
+                        </select>
+                    </div>
+                    <button type="button" class="w-full bg-white text-[#0A0A0A] py-4 mt-8 font-bold hover:bg-[#D6FD51] transition-colors uppercase tracking-widest">Find Table</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- View 4: Events -->
+        <section id="events" class="view px-8 md:px-16 py-24">
+            <h2 class="text-5xl md:text-7xl mb-8">PRIVATE <span class="text-transparent" style="-webkit-text-stroke: 1px #FAFAFA;">DINING</span></h2>
+            <div class="border border-[rgba(250,250,250,0.2)] p-8 relative overflow-hidden group hover:border-[#D6FD51] transition-colors">
+                <div class="absolute inset-0 bg-[#D6FD51] opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                <h3 class="text-3xl mb-4">THE VAULT</h3>
+                <p class="text-gray-400 max-w-xl mb-8">An intimate, soundproofed enclave for up to 12 guests. Dedicated service, custom menus, absolute discretion.</p>
+                <a href="#contact" class="text-[#D6FD51] hover:text-white uppercase tracking-widest text-sm border-b border-[#D6FD51] pb-1 nav-trigger" data-target="contact">Inquire Now &rarr;</a>
+            </div>
+        </section>
+
+        <!-- View 5: Contact -->
+        <section id="contact" class="view px-8 md:px-16 py-24 h-screen flex flex-col justify-center">
+            <h2 class="text-5xl md:text-7xl mb-16">LOCATE <span class="accent">US</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-xl mb-2 text-gray-400">ADDRESS</h3>
+                    <p class="text-2xl mb-8">3500 S LAS VEGAS BLVD<br>LAS VEGAS, NV 89109</p>
+                    
+                    <h3 class="text-xl mb-2 text-gray-400">HOURS</h3>
+                    <p class="text-xl">THU - SUN<br>8PM - LATE</p>
+                </div>
+                <div class="border-l border-[rgba(250,250,250,0.2)] pl-8 md:pl-16">
+                    <h3 class="text-xl mb-2 text-gray-400">INQUIRIES</h3>
+                    <p class="text-2xl mb-8 hover:text-[#D6FD51] cursor-pointer transition-colors">INFO@DURVOLV.COM</p>
+                    
+                    <h3 class="text-xl mb-2 text-gray-400">VIP / TABLES</h3>
+                    <p class="text-2xl hover:text-[#D6FD51] cursor-pointer transition-colors">702-555-0118</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple hash router
+        const links = document.querySelectorAll('.nav-link');
+        const triggers = document.querySelectorAll('.nav-trigger');
+        const views = document.querySelectorAll('.view');
+        
+        function navigate(targetId) {
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+            links.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('data-target') === targetId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            const targetView = document.getElementById(targetId);
+            if(targetView) {
+                targetView.classList.add('active');
+                
+                // GSAP Animation for entering view
+                gsap.fromTo(targetView, 
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+                );
+                
+                // Update URL without jump
+                history.pushState(null, null, `#${targetId}`);
+            }
+        }
+        
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigate(link.getAttribute('data-target'));
+            });
+        });
+        
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigate(trigger.getAttribute('data-target'));
+            });
+        });
+        
+        // Handle initial hash
+        if(window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            if(document.getElementById(hash)) {
+                navigate(hash);
+            }
+        }
+        
+        // Initial animations
+        gsap.fromTo(".reveal-text", 
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power3.out", delay: 0.2 }
+        );
+    </script>
 </body>
 </html>

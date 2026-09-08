@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brand Intro - Eddie's</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body { margin: 0; background: #1A1A1A; color: #F5F5F0; font-family: 'Oswald', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        h1 { font-size: 8vw; text-transform: uppercase; text-align: center; line-height: 1; }
+        .word { display: inline-block; overflow: hidden; }
+        .char { display: inline-block; transform: translateY(100%); }
+        .accent { color: #D43A2C; }
+    </style>
+</head>
+<body>
+    <h1 id="title">
+        <div><span class="word char-wrap">EDDIE'S</span></div>
+        <div><span class="word char-wrap accent">OLD SCHOOL</span></div>
+        <div><span class="word char-wrap">BARBERSHOP</span></div>
+    </h1>
+    <script>
+        // Simple mock of SplitText for the demo
+        document.querySelectorAll('.char-wrap').forEach(el => {
+            const text = el.innerText;
+            el.innerHTML = '';
+            text.split('').forEach(char => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.innerText = char === ' ' ? '\u00A0' : char;
+                el.appendChild(span);
+            });
+        });
+
+        gsap.to(".char", {
+            y: "0%",
+            duration: 1,
+            stagger: 0.05,
+            ease: "power4.out",
+            delay: 0.5
+        });
+    </script>
+</body>
+</html>\n

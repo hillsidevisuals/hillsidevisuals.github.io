@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibre Salon - Brand Intro</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #F9F8F6; display: flex; justify-content: center; align-items: center; font-family: "Playfair Display", serif; overflow: hidden; }
+        .intro-container { text-align: center; color: #2C2A29; }
+        .intro-title { font-size: 4rem; letter-spacing: 0.1em; opacity: 0; }
+        .intro-sub { font-size: 1.2rem; margin-top: 1rem; font-family: "Inter", sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #8F9489; opacity: 0; }
+        .brand-mark { width: 50px; height: 50px; border: 2px solid #B89C81; margin: 0 auto 2rem; border-radius: 50%; opacity: 0; transform: scale(0.5); }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="intro-container">
+        <div class="brand-mark"></div>
+        <div class="intro-title">FIBRE</div>
+        <div class="intro-sub">Las Vegas</div>
+    </div>
+    <script>
+        const tl = gsap.timeline();
+        tl.to(".brand-mark", { opacity: 1, scale: 1, duration: 1.5, ease: "expo.out" })
+          .to(".intro-title", { opacity: 1, y: -20, duration: 1.5, ease: "power3.out" }, "-=1")
+          .to(".intro-sub", { opacity: 1, y: -10, duration: 1, ease: "power2.out" }, "-=1")
+          .to(".intro-container", { scale: 1.05, duration: 3, ease: "none" }, "-=1.5");
+    </script>
+</body>
+</html>

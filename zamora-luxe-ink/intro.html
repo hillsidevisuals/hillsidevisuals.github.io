@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--
+  Hillside Visuals — prospect BRAND INTRO template.  (2026-09-07)
+
+  A 6 second animated wordmark reveal in the prospect's brand. Self-contained, plays on load,
+  finishes on a held final lockup (no fade to black), has a small Replay control.
+
+  USED BY: the OpenDesign engine's Run 4 fallback, and --engine claude when a motion intro is
+  wanted. The packager copies this to <pkg>/motion/brand-intro.html, fills every {{TOKEN}} from
+  brand.md + the prospect row, then:
+    node render.mjs shot <pkg>/motion/brand-intro.html <pkg>/motion/brand-intro-final.png
+  publish-mockup.sh deploys it to hillsidevisuals.github.io/<slug>/intro and it is also published
+  as its own Artifact. The website Home view links to it via the .introcard.
+
+  RULES
+   - THIS TEMPLATE IS A STARTING POINT, NOT THE FINISHED PIECE. Every brand intro must be its own
+     design, driven by the brand's system (its motif, type, motion feel). Do not ship a straight
+     palette-swap of this layout. Re-compose it: swap the generic brush for the brand's motif,
+     change the entrance and the accent moment, adjust the type rhythm. Two prospects' intros
+     should not look like the same animation recoloured. (Preferred path: build it in OpenDesign
+     with a motion plugin — see opendesign-pipeline.md Run 4.)
+   - Deploy a copy to `<pkg>/website/intro.html` (a sibling of index.html) so the site's
+     `href="intro.html"` link resolves locally and on Pages, not only after the publish script runs.
+   - MOBILE IS NOT OPTIONAL. The frame scales as one unit (cqw units). Before it ships, render at
+     BOTH widths and open them:
+       node render.mjs shot <file> /tmp/i-lg.png --w 1280 --h 800
+       node render.mjs shot <file> /tmp/i-sm.png --w 390  --h 780
+     Nothing clips at 390: the wordmark stays inside the frame, the seal does not cover it, the
+     tagline and meta wrap instead of overflowing. If a long wordmark still clips at 390, shorten
+     {{INTRO_WORDMARK}} (use the monogram-style short form) rather than letting it run off.
+   - Prospect's brand only. No Hillside marks. Every colour from a :root token.
+   - {{INTRO_WORDMARK}} is plain text (usually the business name, or a short form). The script
+     splits it into animated letters. {{INTRO_MONOGRAM}} is 1-2 letters for the seal.
+   - {{INTRO_TAGLINE}} one short line. {{INTRO_META}} e.g. "Las Vegas, NV   ·   @handle".
+   - Real facts only. If there is no IG handle, drop that half of the meta line.
+   - No dashes in the visible copy (a hyphen in a word is fine).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Zamora Luxe Ink | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family={{FONT_DISPLAY_QUERY}}&family={{FONT_BODY_QUERY}}&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:{{CO_INK}};
+    --raised:color-mix(in srgb, {{CO_ACCENT}} 16%, {{CO_INK}});
+    --bone:{{CO_PAPER}};
+    --muted:color-mix(in srgb, {{CO_PAPER}} 72%, transparent);
+    --faint:color-mix(in srgb, {{CO_PAPER}} 50%, transparent);
+    --line:color-mix(in srgb, {{CO_PAPER}} 16%, transparent);
+    --accent:{{CO_ACCENT}};
+    --accent-ink:{{CO_ACCENT_INK}};
+    --font-display:"{{FONT_DISPLAY}}","Helvetica Neue",Arial,sans-serif;
+    --font-body:"{{FONT_BODY}}","Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg)}
+  body{color:var(--bone);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:clamp(14px,4vw,32px)}
+  /* The frame is a fluid 16:9 canvas. EVERY size inside is in cqw (1% of the frame's own
+     width) or clamp()ed against it, so the whole composition scales as one unit from a phone
+     to a desktop with nothing ever clipping. Do not put fixed px sizes on the content. */
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    font-size:1cqw;background:var(--bg);overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.5)}
+  .frame-bg{position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 44%,var(--raised) 0%,var(--bg) 62%)}
+  .frame::before{content:"";position:absolute;inset:3.2cqw;border:1px solid var(--line);pointer-events:none;z-index:3}
+  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:0 5cqw;text-align:center}
+
+  .lockup{display:flex;align-items:center;gap:1.6cqw;max-width:100%}
+  .seal{width:clamp(26px,6cqw,120px);height:clamp(26px,6cqw,120px);flex:none;display:inline-flex;
+    align-items:center;justify-content:center;background:var(--accent);color:var(--accent-ink);
+    font-family:var(--font-display);font-size:clamp(11px,2.3cqw,46px);font-weight:700;line-height:1;
+    border-radius:{{INTRO_SEAL_RADIUS}};transform:rotate(-4deg);
+    animation:seal-in .62s cubic-bezier(.34,1.56,.64,1) both}
+  .wordmark{font-family:var(--font-display);font-size:clamp(17px,6.6cqw,124px);font-weight:700;
+    text-transform:{{WORDMARK_CASE}};color:var(--bone);line-height:1;white-space:nowrap;min-width:0}
+  .wordmark .l{display:inline-block;animation:char-in .5s cubic-bezier(.34,1.56,.64,1) both;
+    animation-delay:calc(.55s + var(--i) * .06s)}
+  .wordmark .sp{display:inline-block;width:.4em}
+  /* very narrow frame: stack the seal above the wordmark so a long name never clips */
+  @container (max-width: 430px){ .lockup{flex-direction:column;gap:2.5cqw} }
+
+  .brush{width:min(36cqw,60%);height:1.4cqw;margin-top:2.4cqw}
+  .brush path{fill:none;stroke:var(--accent);stroke-width:clamp(2px,.26cqw,6px);stroke-linecap:round;
+    vector-effect:non-scaling-stroke;stroke-dasharray:640;stroke-dashoffset:640;
+    animation:sweep .85s ease-out 1.15s both}
+
+  .tagline{margin-top:2.2cqw;font-size:clamp(12px,1.8cqw,30px);color:var(--muted);max-width:100%;
+    animation:rise .8s ease-out 2.1s both}
+  .meta{display:flex;align-items:center;justify-content:center;gap:1.2cqw;flex-wrap:wrap;margin-top:3.4cqw;
+    font-size:clamp(9px,1.25cqw,20px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--faint);max-width:100%;animation:rise .7s ease-out 2.5s both}
+
+  .page-meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--bone);background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer}
+  .replay:hover{border-color:var(--bone)}
+  .visit{color:var(--faint);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+  .visit:hover{color:var(--bone)}
+  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+
+  @keyframes seal-in{0%{opacity:0;transform:scale(2) rotate(-12deg)}55%{opacity:1;transform:scale(.9) rotate(-5deg)}100%{opacity:1;transform:scale(1) rotate(-4deg)}}
+  @keyframes char-in{0%{opacity:0;transform:translateY(.9em)}65%{opacity:1;transform:translateY(-.05em)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes sweep{from{stroke-dashoffset:640}to{stroke-dashoffset:0}}
+  @keyframes rise{0%{opacity:0;transform:translateY(.8em)}60%{opacity:1;transform:translateY(-.04em)}100%{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.seal,.wordmark .l,.brush path,.tagline,.meta{animation:none;opacity:1}}
+  .replaying .seal,.replaying .wordmark .l,.replaying .brush path,.replaying .tagline,.replaying .meta{animation:none}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="frame" aria-label="Zamora Luxe Ink brand intro, six second reveal">
+    <div class="frame-bg" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="lockup">
+        <span class="seal" aria-hidden="true">{{INTRO_MONOGRAM}}</span>
+        <h1 class="wordmark" data-text="{{INTRO_WORDMARK}}">{{INTRO_WORDMARK}}</h1>
+      </div>
+      <svg class="brush" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M 10 12 C 110 5, 220 19, 330 12 C 420 7, 520 16, 590 9"/>
+      </svg>
+      <p class="tagline">{{INTRO_TAGLINE}}</p>
+      <div class="meta">{{INTRO_META}}</div>
+    </div>
+  </section>
+  <div class="row">
+    <span class="page-meta">Zamora Luxe Ink · brand intro · 6s</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./">Visit the site</a>
+  </div>
+</main>
+<script>
+(function(){
+  var wm = document.querySelector('.wordmark');
+  if(wm){
+    var text = wm.getAttribute('data-text') || wm.textContent;
+    wm.textContent = '';
+    var i = 0;
+    text.split('').forEach(function(ch){
+      if(ch === ' '){ var s = document.createElement('span'); s.className = 'sp'; wm.appendChild(s); return; }
+      var span = document.createElement('span');
+      span.className = 'l'; span.textContent = ch; span.style.setProperty('--i', i++);
+      wm.appendChild(span);
+    });
+  }
+  var frame = document.querySelector('.frame');
+  var btn = document.querySelector('.replay');
+  if(btn && frame){
+    btn.addEventListener('click', function(){
+      frame.classList.add('replaying');
+      // force reflow, then let the animations run again
+      void frame.offsetWidth;
+      frame.classList.remove('replaying');
+    });
+  }
+})();
+</script>
+</body>
+</html>

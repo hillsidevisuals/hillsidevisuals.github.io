@@ -1,341 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Taco Boom</title>
-<meta name="description" content="Street-style tacos in Las Vegas. Asada, tripa, capeados, burritos, and fresh guac, made fast on South Jones.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#1C130D; --paper:#FFF7EA; --muted:#6B5B4C;
-    --accent:#B8300F; --accent-ink:#FFF7EA;
-    --line:#E7D9BE; --gold:#C89100;
-    --font-display:"Bungee", Georgia, "Times New Roman", serif;
-    --font-body:"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --maxw:1120px; --pad:clamp(1.15rem, 5vw, 3rem);
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  img{max-width:100%;display:block}
-  a{color:inherit}
-  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.08;margin:0 0 .4em;
-    text-wrap:balance;overflow-wrap:break-word;text-transform:uppercase;letter-spacing:.02em;}
-  h1{font-size:clamp(2.1rem,6vw,4.2rem);letter-spacing:-.02em}
-  h2{font-size:clamp(1.5rem,4vw,2.6rem)}
-  h3{font-size:1.08rem}
-  p{margin:0 0 1rem;max-width:64ch}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem;font-weight:600}
-  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8em 1.6em;
-    border-radius:0;text-decoration:none;font-weight:600;letter-spacing:.03em;white-space:nowrap;
-    transition:transform .15s ease,opacity .15s ease}
-  .btn:hover{transform:translateY(-1px);opacity:.92}
-  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
-  .view > .wrap:first-child{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(.4rem,2vw,1.1rem)}
-  .block{padding-top:clamp(1.9rem,5vw,3.4rem);padding-bottom:clamp(1.9rem,5vw,3.4rem);border-top:1px solid var(--line)}
-  .block:first-child{border-top:0}
-  .pagehead + .block{border-top:0;padding-top:0}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco Boom | Las Vegas</title>
+    <style>
+        :root {
+            --primary: #FF4500;
+            --secondary: #FFD700;
+            --bg: #121212;
+            --text: #F3F4F6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; }
+        
+        nav { position: fixed; top: 0; width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; }
+        .logo { font-size: 2rem; font-family: 'Anton'; color: var(--primary); }
+        .nav-links a { color: var(--text); text-decoration: none; margin-left: 20px; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 100px 5%; }
+        
+        /* Hero View */
+        #hero { align-items: center; text-align: center; background: radial-gradient(circle, rgba(255,69,0,0.2) 0%, rgba(18,18,18,1) 70%); }
+        .hero-title { font-size: clamp(4rem, 10vw, 8rem); line-height: 1; margin-bottom: 20px; color: var(--primary); text-shadow: 4px 4px 0px var(--secondary); }
+        .hero-sub { font-size: 1.5rem; margin-bottom: 40px; max-width: 600px; }
+        .cta-btn { display: inline-block; background: var(--primary); color: #000; padding: 15px 40px; font-size: 1.2rem; font-family: 'Anton'; text-decoration: none; border-radius: 4px; transition: transform 0.3s; }
+        .cta-btn:hover { transform: scale(1.05); }
 
-  .shot{position:relative;overflow:hidden;background:
-      repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 12px,transparent 12px 24px),
-      color-mix(in srgb,var(--ink) 6%,var(--paper));
-    border:1px dashed var(--line);border-radius:0;display:flex;align-items:center;
-    justify-content:center;text-align:center;color:var(--muted);
-    font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.05em;text-transform:uppercase;
-    padding:1rem;min-height:200px}
-  .shot::after{content:"\25C8 " attr(data-shot);max-width:min(90%,30ch);line-height:1.35}
-  .shot--hero{min-height:min(56vh,500px)}
-  .shot--wide{aspect-ratio:16/10;min-height:0}
-  .shot--square{aspect-ratio:1/1;min-height:0}
-  figure.ref{margin:0;position:relative;overflow:hidden;border-radius:0}
-  figure.ref img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
-  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.14em;
-    text-transform:uppercase;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:2px}
+        /* Menu View */
+        #menu .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .menu-item { background: #1a1a1a; padding: 30px; border-left: 5px solid var(--primary); }
+        .menu-item h3 { font-size: 2rem; margin-bottom: 10px; color: var(--secondary); }
+        .menu-item p { color: #aaa; margin-bottom: 15px; }
+        .price { font-weight: bold; font-size: 1.2rem; color: var(--primary); }
 
-  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav .wrap{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;padding-top:.8rem;padding-bottom:.8rem}
-  .brandmark{font-family:var(--font-display);font-size:clamp(1.05rem,3.4vw,1.32rem);font-weight:400;
-    text-decoration:none;white-space:nowrap;margin-right:auto;text-transform:uppercase;letter-spacing:.02em;letter-spacing:.06em;display:flex;align-items:center;gap:.5rem}
-  .brandmark img{height:1.6em;width:auto}
-  .nav ul{display:flex;gap:1rem 1.4rem;list-style:none;margin:0;padding:0;font-size:.84rem;flex-wrap:wrap}
-  .nav a{text-decoration:none;color:var(--muted);letter-spacing:.04em}
-  .nav a:hover{color:var(--ink)}
-  .nav a[aria-current="page"]{color:var(--ink);font-weight:600}
-  .nav a.btn{color:var(--accent-ink);padding:.6em 1.25em;font-size:.84rem;font-weight:700}
-  .nav a.btn:hover{color:var(--accent-ink)}
-  .nav-intro{display:inline-flex;align-items:center;gap:.4em;color:var(--accent)!important;font-weight:600}
-  .nav-intro::before{content:"\25B6";font-size:.7em}
+        /* About View */
+        #about { background: #0a0a0a; }
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-content p { font-size: 1.2rem; line-height: 1.8; margin-top: 30px; }
 
-  .view{display:block}
-  body.routed .view{display:none}
-  body.routed .view.is-active{display:block;animation:vin .3s ease}
-  @keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+        /* Location View */
+        #location { align-items: center; }
+        .address-box { border: 2px solid var(--primary); padding: 50px; text-align: center; }
+        .address-box h2 { font-size: 3rem; margin-bottom: 20px; }
+        .address-box p { font-size: 1.5rem; margin-bottom: 10px; }
 
-  .hero .lead,.pagehead .lead{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--muted);max-width:50ch}
-  .hero .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}
-  .hero .shot,.hero figure.ref{margin-top:2.1rem}
-  .pagehead h1{margin-bottom:.2em}
-
-  .introcard{margin-top:2.3rem;border:1px solid var(--line);overflow:hidden;text-decoration:none;
-    display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);color:var(--paper);border-radius:0}
-  .introcard .txt{padding:clamp(1.3rem,4vw,2.3rem);display:flex;flex-direction:column;gap:.6rem;justify-content:center}
-  .introcard .eyebrow{color:color-mix(in srgb,var(--paper) 68%,transparent)}
-  .introcard h3{font-size:clamp(1.25rem,3vw,1.8rem);margin:0;color:var(--paper)}
-  .introcard p{color:color-mix(in srgb,var(--paper) 80%,transparent);margin:0;max-width:42ch}
-  .introcard .btn{align-self:flex-start;margin-top:.3rem}
-  .introcard .stage{position:relative;min-height:210px;background:
-      radial-gradient(60% 70% at 50% 45%, color-mix(in srgb,var(--accent) 30%,var(--ink)) 0%, var(--ink) 66%);
-    display:flex;align-items:center;justify-content:center;padding:1.3rem}
-  .introcard .stage .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
-    color:var(--accent-ink);width:74px;height:74px;display:flex;align-items:center;justify-content:center;
-    font-size:1.4rem;text-transform:uppercase;letter-spacing:.02em;}
-  .introcard .stage .cap{position:absolute;bottom:.85rem;left:0;right:0;text-align:center;font-size:.58rem;
-    letter-spacing:.2em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
-
-  .grid{display:grid;gap:1.2rem}
-  .grid--2{grid-template-columns:repeat(2,1fr)}
-  .grid--3{grid-template-columns:repeat(3,1fr)}
-  figure.tile{margin:0}
-  .tile figcaption{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
-
-  .list{list-style:none;padding:0;margin:1.4rem 0 0}
-  .list li{padding:.85rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-  .price{font-family:var(--font-display);white-space:nowrap}
-  .desc{color:var(--muted);font-size:.9rem;display:block;margin-top:.2rem}
-
-  .steps{list-style:none;counter-reset:s;padding:0;margin:1.5rem 0 0;display:grid;gap:1rem}
-  .steps li{counter-increment:s;padding-left:3rem;position:relative}
-  .steps li::before{content:counter(s);position:absolute;left:0;top:-.1rem;width:2rem;height:2rem;
-    border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:.9rem}
-  .steps h3{margin:0 0 .2rem}
-
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,5vw,3.6rem);align-items:start}
-  .facts{list-style:none;padding:0;margin:1.1rem 0 0}
-  .facts li{padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:1rem;justify-content:space-between}
-  .facts li b{font-weight:600}
-  .facts li span:last-child{color:var(--muted);text-align:right}
-  .facts li a{color:var(--ink)}
-
-  .form{display:grid;gap:.9rem;margin-top:1.3rem;max-width:32rem}
-  .form label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
-  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:1px solid var(--line);
-    border-radius:0;background:color-mix(in srgb,var(--ink) 3%,var(--paper));color:var(--ink)}
-  .form textarea{min-height:6rem;resize:vertical}
-  .form .status{font-size:.85rem;color:var(--muted)}
-
-  footer{background:var(--ink);color:color-mix(in srgb,var(--paper) 82%,transparent);padding:2.6rem 0}
-  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.86rem}
-  footer nav{display:flex;gap:1rem;flex-wrap:wrap}
-  footer a{text-decoration:none;color:color-mix(in srgb,var(--paper) 82%,transparent)}
-  footer a:hover{color:var(--paper)}
-
-  .mock-banner{background:var(--ink);color:var(--paper);text-align:center;font-size:clamp(.6rem,2vw,.72rem);
-    letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
-
-  @media (max-width:920px){
-    .grid--3{grid-template-columns:repeat(2,1fr)}
-    .split{grid-template-columns:1fr;gap:1.6rem}
-    .introcard{grid-template-columns:1fr} .introcard .stage{min-height:160px}
-  }
-  @media (max-width:600px){
-    body{font-size:16px}
-    .nav ul{width:100%;order:3;gap:.7rem 1rem;font-size:.8rem}
-    .grid--2,.grid--3{grid-template-columns:1fr}
-    .hero .cta-row .btn{flex:1 1 auto;text-align:center}
-    .list li,.facts li{flex-direction:column;gap:.1rem}
-    .list li .price{align-self:flex-start}
-    .facts li span:last-child{text-align:left}
-    footer .wrap{flex-direction:column;gap:.7rem}
-    .shot--hero{min-height:min(50vh,380px)}
-  }
-</style>
+        /* Contact View */
+        #contact { background: var(--primary); color: #000; text-align: center; }
+        #contact h2 { font-size: 4rem; }
+        #contact p { font-size: 1.5rem; margin-top: 20px; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-<div class="mock-banner">Concept site for Taco Boom — built by Hillside Visuals</div>
-<header class="nav">
-  <div class="wrap">
-    <a class="brandmark" href="#/">TACO BOOM</a>
-    <ul>
-      <li><a href="#/menu">Menu</a></li>
-      <li><a href="#/about">About</a></li>
-      <li><a href="#/find">Find us</a></li>
-      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
-    </ul>
-    <a class="btn" href="tel:+17026758737">Call to order</a>
-  </div>
-</header>
-<main>
-  <section class="view is-active" data-route="/" id="view-home">
-    <div class="wrap hero">
-      <p class="eyebrow">Las Vegas street tacos</p>
-      <h1>Fast tacos.<br>Big flavor.</h1>
-      <p class="lead">Tacos, burritos, and capeados. Real street flavor, made fast, right here on South Jones. Walk up, order, eat well.</p>
-      <div class="cta-row">
-        <a class="btn" href="tel:+17026758737">Call to order</a>
-        <a class="btn btn--ghost" href="#/menu">See the menu</a>
-      </div>
-      <div class="shot shot--hero" data-shot="Asada taco, chopped street style"></div>
-      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
-        <span class="txt">
-          <span class="eyebrow">Brand film</span>
-          <h3>Watch the Taco Boom intro</h3>
-          <p>A short brand reveal. Drop it on Instagram, a story, or the top of a reel.</p>
-          <span class="btn">Play the intro</span>
-        </span>
-        <span class="stage"><span class="seal">TB</span><span class="cap">Short brand reveal</span></span>
-      </a>
-    </div>
-    <div class="wrap block">
-      <p class="eyebrow">What&#x27;s cooking</p>
-      <h2>Street food, fast.</h2>
-      <p style="color:var(--muted)">Five things we make well. No fillers, no fuss.</p>
-      <div class="grid grid--3" style="margin-top:1.5rem">
-        <div class="shot shot--square" data-shot="Asada tacos on the flat top"></div>
-        <div class="shot shot--square" data-shot="Capeados, hot out of the fryer"></div>
-        <div class="shot shot--square" data-shot="Fresh guac, made in house"></div>
-      </div>
-      <p style="margin-top:1.3rem"><a class="btn btn--ghost" href="#/menu">See the full menu</a></p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p class="eyebrow">The short version</p>
-          <h2>Walk up. Order. Eat well.</h2>
-          <p>Taco Boom is a street-style taco counter in Las Vegas. Asada, tripa, capeados, burritos, and fresh guac, made fast. No sit-down fuss, just real flavor to go.</p>
-          <p><a class="btn btn--ghost" href="#/about">More about us</a></p>
+    <nav>
+        <div class="logo">TACO BOOM</div>
+        <div class="nav-links">
+            <a href="#hero">HOME</a>
+            <a href="#menu">MENU</a>
+            <a href="#about">ABOUT</a>
+            <a href="#location">VISIT</a>
         </div>
-        <div class="shot shot--wide" data-shot="The counter at lunch"></div>
-      </div>
-    </div>
-  </section>
-  <section class="view" data-route="/menu" id="view-menu">
-    <div class="wrap pagehead">
-      <p class="eyebrow">What&#x27;s cooking</p>
-      <h1>Street food, fast.</h1>
-      <p class="lead">Photos coming after the shoot. Prices are placeholders for this mockup.</p>
-    </div>
-    <div class="wrap block">
-      <ul class="list">
-        <li><span>Asada tacos<span class="desc">Grilled steak, chopped street style, classic and simple.</span></span><span class="price">$</span></li>
-        <li><span>Tripa tacos<span class="desc">Crispy beef tripe, a house favorite for a reason.</span></span><span class="price">$</span></li>
-        <li><span>Capeados<span class="desc">Battered fish and shrimp, Mexican street style, hot out of the fryer.</span></span><span class="price">$</span></li>
-        <li><span>Burritos<span class="desc">Big, wrapped tight, built to travel.</span></span><span class="price">$</span></li>
-        <li><span>Fresh guac<span class="desc">Made in house, every day, no shortcuts.</span></span><span class="price">$</span></li>
-      </ul>
-      <p style="margin-top:1rem;color:var(--muted);font-size:.86rem">Prices set at the counter. This is a concept menu, photography to follow.</p>
-      <p style="margin-top:1.4rem"><a class="btn" href="tel:+17026758737">Call to order</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/about" id="view-about">
-    <div class="wrap pagehead">
-      <p class="eyebrow">About</p>
-      <h1>Walk up. Order. Eat well.</h1>
-      <p class="lead">A street-style taco counter on South Jones.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <p>Taco Boom is a street-style taco counter in Las Vegas. Asada, tripa, capeados, burritos, and fresh guac, made fast.</p>
-          <p>Walk up, order, eat well. No sit-down fuss, just real flavor to go. New menu drops and daily specials go up on @tacoboomlv.</p>
+    </nav>
+
+    <section id="hero">
+        <h1 class="hero-title">Explosive Flavor.</h1>
+        <p class="hero-sub">Vegas' newest obsession. Unapologetic tacos, bold margaritas, zero compromises.</p>
+        <a href="#menu" class="cta-btn">SEE THE MENU</a>
+    </section>
+
+    <section id="menu">
+        <h2>The Lineup</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>Boom Al Pastor</h3>
+                <p>Marinated pork, roasted pineapple, salsa roja, micro cilantro.</p>
+                <span class="price">$4.50</span>
+            </div>
+            <div class="menu-item">
+                <h3>Asada Crunch</h3>
+                <p>Crispy shell wrapped in soft tortilla, grilled steak, guacamole, cotija.</p>
+                <span class="price">$5.00</span>
+            </div>
+            <div class="menu-item">
+                <h3>Fire Mushroom</h3>
+                <p>Charred local mushrooms, jalapeño crema, pickled red onions.</p>
+                <span class="price">$4.00</span>
+            </div>
         </div>
-        <div class="shot shot--wide" data-shot="Behind the counter, flat top going"></div>
-      </div>
-    </div>
-    <div class="wrap block">
-      <h2>How we run</h2>
-      <div class="grid grid--3" style="margin-top:1.3rem">
-        <div><h3>Fast</h3><p class="desc">Made to order, out quick. Call ahead to skip the line.</p></div>
-        <div><h3>Casual</h3><p class="desc">Counter service, walk up, no reservations.</p></div>
-        <div><h3>Real</h3><p class="desc">Street-style, the way it should taste.</p></div>
-      </div>
-      <p style="margin-top:1.7rem"><a class="btn" href="tel:+17026758737">Call to order</a></p>
-    </div>
-  </section>
-  <section class="view" data-route="/find" id="view-find">
-    <div class="wrap pagehead">
-      <p class="eyebrow">Find us</p>
-      <h1>Find Taco Boom.</h1>
-      <p class="lead">South Jones Blvd near Sahara. Call ahead and we will have it ready.</p>
-    </div>
-    <div class="wrap block">
-      <div class="split">
-        <div>
-          <ul class="facts">
-            <li><b>Address</b><span>2555 S Jones Blvd Ste F3, Las Vegas, NV 89146</span></li>
-            <li><b>Call in your order</b><span><a href="tel:+17026758737">(702) 675-8737</a></span></li>
-            <li><b>Hours</b><span>Coming soon. Call ahead for now.</span></li>
-            <li><b>Instagram</b><span><a href="https://www.instagram.com/tacoboomlv/" target="_blank" rel="noopener">@tacoboomlv</a></span></li>
-          </ul>
-          <p style="margin-top:1.3rem"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=2555+S+Jones+Blvd+Ste+F3,+Las+Vegas,+NV+89146">Get directions</a></p>
+    </section>
+
+    <section id="about">
+        <div class="about-content">
+            <h2>We don't do quiet.</h2>
+            <p>Born in Las Vegas, Taco Boom is here to shake up the local food scene. We source loud ingredients, blast loud music, and serve up an experience you won't forget. This isn't your average taqueria.</p>
         </div>
-        <div class="grid" style="gap:1rem">
-          <div class="shot shot--wide" data-shot="Storefront on South Jones"></div>
-          <div class="grid grid--2" style="gap:1rem">
-            <div class="shot shot--square" data-shot="The order window"></div>
-            <div class="shot shot--square" data-shot="A loaded plate to go"></div>
-          </div>
+    </section>
+
+    <section id="location">
+        <div class="address-box">
+            <h2>Find Us</h2>
+            <p>3455 S DURANGO DR</p>
+            <p>LAS VEGAS, NV 89117</p>
+            <p style="margin-top:20px; color:var(--secondary);">702-555-0107</p>
         </div>
-      </div>
-    </div>
-  </section>
-</main>
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="yr"></span> Taco Boom · Las Vegas, NV 89146</span>
-    <nav><a href="#/menu">Menu</a> <a href="#/about">About</a> <a href="#/find">Find us</a> <a href="https://www.instagram.com/tacoboomlv/" target="_blank" rel="noopener">@tacoboomlv</a></nav>
-    <span>Concept mockup by Hillside Visuals</span>
-  </div>
-</footer>
-<script>
-(function(){
-  document.getElementById('yr').textContent=new Date().getFullYear();
-  var views=[].slice.call(document.querySelectorAll('.view'));
-  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
-  if(views.length){
-    document.body.classList.add('routed');
-    var home=document.getElementById('view-home')||views[0];
-    var rof=function(v){return v.getAttribute('data-route');};
-    var render=function(){
-      var h=(location.hash||'').replace(/^#/,'');
-      if(h&&h.charAt(0)!=='/')h='/'+h;
-      var m=views.filter(function(v){return rof(v)===h;})[0]||home;
-      views.forEach(function(v){v.classList.toggle('is-active',v===m);});
-      navLinks.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+rof(m)?'page':'false');});
-      window.scrollTo(0,0);
-    };
-    window.addEventListener('hashchange',render);render();
-  }
-  var form=document.querySelector('.form');
-  if(form){var st=form.querySelector('.status');var note=st?st.textContent:'';
-    form.addEventListener('submit',function(e){e.preventDefault();if(st)st.textContent=note;});}
-})();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Taco Boom",
-  "servesCuisine": "Mexican",
-  "telephone": "(702) 675-8737",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "2555 S Jones Blvd Ste F3",
-    "addressLocality": "Las Vegas",
-    "addressRegion": "NV",
-    "postalCode": "89146"
-  }
-}
-</script>
+    </section>
+
+    <section id="contact">
+        <h2>Ready for the Boom?</h2>
+        <p>Order online or drop by the shop.</p>
+        <a href="#" class="cta-btn" style="background:#000; color:var(--primary); margin-top:30px;">ORDER NOW</a>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Hero animation
+        gsap.from(".hero-title", { duration: 1, y: 100, opacity: 0, ease: "power4.out" });
+        gsap.from(".hero-sub", { duration: 1, y: 50, opacity: 0, ease: "power3.out", delay: 0.3 });
+        gsap.from(".cta-btn", { duration: 1, scale: 0, opacity: 0, ease: "back.out(1.7)", delay: 0.6 });
+
+        // Menu items stagger
+        gsap.from(".menu-item", {
+            scrollTrigger: { trigger: "#menu", start: "top 70%" },
+            y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
+        });
+
+        // About section
+        gsap.from(".about-content", {
+            scrollTrigger: { trigger: "#about", start: "top 70%" },
+            scale: 0.9, opacity: 0, duration: 1, ease: "power2.out"
+        });
+
+        // Location section
+        gsap.from(".address-box", {
+            scrollTrigger: { trigger: "#location", start: "top 70%" },
+            x: -50, opacity: 0, duration: 1, ease: "power3.out"
+        });
+    </script>
 </body>
 </html>
