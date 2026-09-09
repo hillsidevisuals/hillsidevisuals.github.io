@@ -1,180 +1,474 @@
 <!DOCTYPE html>
+<!-- fingerprint: P5 H4 E4 S5 R5 V4
+     Trinity Nugent — concept mockup by Hillside Visuals. Router site, one self-contained file.
+     new-brand: all imagery is a labelled Hillside-shoot placeholder. No invented facts. -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trinity Nugent | Professional Services</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #F9F9F9;
-            --text: #111111;
-            --muted: #888888;
-            --surface: #FFFFFF;
-            --border: #E5E5E5;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-        
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(249,249,249,0.9); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border); }
-        .logo { font-weight: 600; font-size: 1.2rem; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; transition: color 0.3s ease; cursor: pointer; }
-        .nav-links a:hover, .nav-links a.active { color: var(--text); }
-        
-        /* Router Views */
-        .view { display: none; padding-top: 5rem; min-height: 100vh; animation: fadeIn 0.5s ease-out forwards; }
-        .view.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trinity Nugent</title>
+<meta name="description" content="Trinity Nugent is a licensed esthetics practice in the southwest Las Vegas valley. Considered skincare, by appointment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-bg:oklch(0.972 0.004 200);
+    --color-surface:oklch(0.995 0.002 200);
+    --color-ink:oklch(0.24 0.018 210);
+    --color-muted:oklch(0.46 0.016 210);
+    --color-border:oklch(0.88 0.008 205);
+    --color-accent:oklch(0.42 0.062 205);
+    --accent-hover:oklch(0.37 0.066 205);
+    --accent-active:oklch(0.33 0.062 205);
+    --accent-bg:oklch(0.955 0.012 205);
+    --accent-border:oklch(0.86 0.028 205);
+    --accent-text:oklch(0.34 0.062 205);
+    --accent-ink:oklch(0.985 0.004 200);
+    --font-display:"Spectral",Georgia,"Times New Roman",serif;
+    --font-body:"Sora",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --step--1:0.82rem;--step-0:1rem;--step-1:1.25rem;--step-2:1.6rem;
+    --step-3:2.25rem;--step-4:clamp(2.3rem,5vw,3.5rem);
+    --label:0.74rem;
+    --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
+    --space-5:1.5rem;--space-6:2rem;--space-7:3rem;--space-8:4rem;--space-10:6rem;
+    --measure:60ch;--rail:15rem;--radius:2px;
+    --shadow:0 1px 2px oklch(0.24 0.018 210 / 0.06),0 10px 30px oklch(0.24 0.018 210 / 0.05);
+    --ease-out:cubic-bezier(.2,.7,.3,1);
+    --ease-in-out:cubic-bezier(.6,0,.3,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--color-bg);color:var(--color-ink);
+    font-family:var(--font-body);font-weight:300;font-size:var(--step-0);line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.12;margin:0 0 .5em;
+    letter-spacing:.005em;text-wrap:balance;overflow-wrap:break-word}
+  h1{font-size:var(--step-4)}
+  h2{font-size:var(--step-3)}
+  h3{font-size:var(--step-1)}
+  p{margin:0 0 var(--space-4);max-width:var(--measure)}
+  .label{font-family:var(--font-body);font-weight:500;font-size:var(--label);letter-spacing:.18em;
+    text-transform:uppercase;color:var(--color-muted);margin:0 0 var(--space-4)}
 
-        /* Typography & Layout */
-        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-        h1 { font-size: clamp(3rem, 5vw, 5rem); line-height: 1.1; letter-spacing: -2px; font-weight: 400; margin-bottom: 1.5rem; }
-        h2 { font-size: 2rem; font-weight: 400; margin-bottom: 1rem; }
-        p { font-size: 1.1rem; line-height: 1.6; color: var(--muted); max-width: 600px; }
-        
-        /* ElayaDesign Conversion Hero */
-        .hero { display: flex; flex-direction: column; justify-content: center; min-height: 80vh; border-bottom: 1px solid var(--border); }
-        .cta-btn { display: inline-block; padding: 1rem 2rem; background: var(--text); color: var(--surface); text-decoration: none; font-size: 0.9rem; font-weight: 600; margin-top: 2rem; border-radius: 2px; transition: transform 0.3s ease; }
-        .cta-btn:hover { transform: translateY(-2px); }
-        
-        /* Services Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .card { padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; }
-        .card h3 { margin-bottom: 1rem; font-weight: 600; }
-        
-        /* Footer */
-        footer { padding: 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; color: var(--muted); font-size: 0.8rem; }
-    </style>
+  /* ---- layout: left rail + document column ---- */
+  .shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);min-height:100vh}
+  .rail{border-right:1px solid var(--color-border);padding:var(--space-6) var(--space-5);
+    position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:var(--space-6);
+    background:var(--color-bg)}
+  .rail .id{display:flex;align-items:center;gap:var(--space-3);text-decoration:none}
+  .rail .id svg{width:34px;height:34px;flex:none}
+  .rail .id .nm{font-family:var(--font-display);font-size:var(--step-1);line-height:1.1}
+  .rail .id .ds{display:block;font-family:var(--font-body);font-weight:400;font-size:0.62rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--color-muted);margin-top:2px}
+  .rail nav{display:flex;flex-direction:column;gap:var(--space-1)}
+  .rail nav a{text-decoration:none;color:var(--color-muted);font-size:var(--step-0);
+    padding:var(--space-2) 0;letter-spacing:.01em;transition:color .18s var(--ease-out)}
+  .rail nav a:hover{color:var(--color-ink)}
+  .rail nav a[aria-current="page"]{color:var(--color-ink)}
+  .rail nav a[aria-current="page"]::before{content:"";display:inline-block;width:14px;height:1px;
+    background:var(--color-accent);vertical-align:middle;margin-right:8px}
+  .rail .foot{margin-top:auto;font-size:var(--step--1);color:var(--color-muted);line-height:1.7}
+  .rail .foot a{color:var(--accent-text);text-decoration:none}
+  .rail .foot a:hover{text-decoration:underline}
+
+  .main{padding:var(--space-10) clamp(1.25rem,6vw,5rem) var(--space-8)}
+  .col{max-width:44rem}
+
+  .btn{display:inline-flex;align-items:center;gap:.5em;background:var(--color-accent);
+    color:var(--accent-ink);padding:.7em 1.3em;border-radius:var(--radius);text-decoration:none;
+    font-family:var(--font-body);font-weight:500;font-size:var(--step--1);letter-spacing:.03em;
+    border:1px solid transparent;transition:transform .16s var(--ease-out),background .16s var(--ease-out)}
+  .btn:hover{background:var(--accent-hover);transform:translateY(-1px)}
+  .btn:active{background:var(--accent-active)}
+  .btn:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--accent-text);border-color:var(--accent-border)}
+  .btn--ghost:hover{background:var(--accent-bg);transform:translateY(-1px)}
+
+  /* underline-draw device */
+  .draw{position:relative;display:inline-block}
+  .draw::after{content:"";position:absolute;left:0;bottom:-.18em;height:1px;width:100%;
+    background:var(--color-accent);transform:scaleX(0);transform-origin:left;
+    animation:draw .7s var(--ease-out) .15s forwards}
+  @keyframes draw{to{transform:scaleX(1)}}
+
+  .rule{height:1px;background:var(--color-border);border:0;margin:var(--space-7) 0}
+
+  /* placeholder panels — honest, labelled, no photo faked */
+  .ph{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);
+    text-align:center;padding:var(--space-6);color:var(--accent-text);min-height:200px}
+  .ph svg{width:26px;height:26px;opacity:.7}
+  .ph span{font-size:var(--step--1);letter-spacing:.04em;max-width:22ch;line-height:1.5;color:var(--color-muted)}
+  .ph--hero{min-height:min(46vh,380px)}
+  .ph--wide{aspect-ratio:16/10;min-height:0}
+  .ph--sq{aspect-ratio:1/1;min-height:0}
+
+  .grid{display:grid;gap:var(--space-4)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+
+  /* service list — the catalogue spine */
+  .services{list-style:none;padding:0;margin:var(--space-6) 0 0}
+  .services li{padding:var(--space-4) 0;border-top:1px solid var(--color-border);
+    display:grid;grid-template-columns:1fr auto;gap:var(--space-2) var(--space-5);align-items:baseline}
+  .services li:last-child{border-bottom:1px solid var(--color-border)}
+  .services h3{margin:0;font-size:var(--step-1)}
+  .services .note{grid-column:1/-1;color:var(--color-muted);font-size:var(--step--1);margin:0;max-width:52ch}
+  .services .meta{font-family:var(--font-body);font-weight:400;font-size:var(--step--1);
+    color:var(--accent-text);white-space:nowrap}
+
+  .principles{display:grid;gap:var(--space-6);margin-top:var(--space-6)}
+  .principles h3{margin:0 0 var(--space-2)}
+  .principles p{margin:0;color:var(--color-muted)}
+
+  .steps{list-style:none;counter-reset:s;padding:0;margin:var(--space-6) 0 0;display:grid;gap:var(--space-5)}
+  .steps li{counter-increment:s;padding-left:var(--space-8);position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:0;width:2rem;height:2rem;
+    border:1px solid var(--color-accent);color:var(--accent-text);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:var(--step--1)}
+  .steps h3{margin:0 0 var(--space-1)}
+  .steps p{margin:0;color:var(--color-muted);font-size:var(--step--1)}
+
+  .facts{list-style:none;padding:0;margin:var(--space-6) 0 0}
+  .facts li{padding:var(--space-3) 0;border-top:1px solid var(--color-border);
+    display:flex;justify-content:space-between;gap:var(--space-4)}
+  .facts li:last-child{border-bottom:1px solid var(--color-border)}
+  .facts b{font-weight:500}
+  .facts span:last-child{color:var(--color-muted);text-align:right}
+  .facts a{color:var(--accent-text);text-decoration:none}
+
+  .form{display:grid;gap:var(--space-4);margin-top:var(--space-5);max-width:30rem}
+  .form label{display:block;font-size:var(--label);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--color-muted);margin-bottom:var(--space-2)}
+  .form input,.form textarea{width:100%;font:inherit;font-size:var(--step--1);padding:.65em .8em;
+    border:1px solid var(--color-border);border-radius:var(--radius);
+    background:var(--color-surface);color:var(--color-ink)}
+  .form textarea{min-height:5.5rem;resize:vertical}
+  .form input:focus-visible,.form textarea:focus-visible{outline:2px solid var(--color-accent);outline-offset:1px}
+  .form .status{font-size:var(--step--1);color:var(--color-muted);margin:0}
+
+  .introcard{margin-top:var(--space-7);border:1px solid var(--color-border);border-radius:var(--radius);
+    overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;background:var(--color-ink);color:var(--color-bg)}
+  .introcard .txt{padding:clamp(1.4rem,3vw,2.2rem);display:flex;flex-direction:column;gap:var(--space-3);justify-content:center}
+  .introcard h3{margin:0;color:var(--color-bg);font-size:var(--step-2)}
+  .introcard p{margin:0;color:oklch(0.972 0.004 200 / .78);font-size:var(--step--1);max-width:34ch}
+  .introcard .btn{align-self:flex-start;margin-top:var(--space-2)}
+  .introcard .stage{position:relative;min-height:190px;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(60% 70% at 50% 45%,var(--accent-active) 0%,var(--color-ink) 68%)}
+  .introcard .stage svg{width:64px;height:64px}
+  .introcard .stage .cap{position:absolute;bottom:var(--space-3);left:0;right:0;text-align:center;
+    font-size:0.64rem;letter-spacing:.2em;text-transform:uppercase;color:oklch(0.972 0.004 200 / .55)}
+
+  footer.pagefoot{margin-top:var(--space-10);padding-top:var(--space-6);border-top:1px solid var(--color-border);
+    display:flex;flex-wrap:wrap;gap:var(--space-4) var(--space-6);font-size:var(--step--1);color:var(--color-muted)}
+  footer.pagefoot a{color:var(--color-muted);text-decoration:none}
+  footer.pagefoot a:hover{color:var(--color-ink)}
+
+  .mock-banner{background:var(--color-ink);color:var(--color-bg);text-align:center;
+    font-size:0.68rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
+
+  .cta-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-5)}
+  .lead{font-size:var(--step-1);color:var(--color-muted);max-width:38ch}
+  .kicker-nope{}
+
+  /* router */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .3s var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto}
+    .draw::after{animation:none;transform:scaleX(1)}
+    body.routed .view.is-active{animation:fade .12s linear}
+    @keyframes fade{from{opacity:.4}to{opacity:1}}
+  }
+
+  /* ---- tablet / mobile ---- */
+  @media (max-width:860px){
+    .shell{grid-template-columns:1fr}
+    .rail{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;
+      gap:var(--space-4) var(--space-5);border-right:0;border-bottom:1px solid var(--color-border)}
+    .rail .id{margin-right:auto}
+    .rail nav{flex-direction:row;flex-wrap:wrap;gap:var(--space-2) var(--space-4)}
+    .rail nav a{padding:var(--space-1) 0}
+    .rail nav a[aria-current="page"]::before{display:none}
+    .rail .foot{margin-top:0;flex-basis:100%}
+    .main{padding:var(--space-8) clamp(1.25rem,6vw,3rem) var(--space-8)}
+    .grid--3{grid-template-columns:repeat(2,1fr)}
+    .introcard{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    body{font-size:0.96rem}
+    .grid--2,.grid--3{grid-template-columns:1fr}
+    .services li{grid-template-columns:1fr}
+    .services .meta{white-space:normal}
+    .facts li{flex-direction:column;gap:2px}
+    .facts span:last-child{text-align:left}
+    .cta-row .btn{flex:1 1 auto;justify-content:center}
+  }
+</style>
 </head>
 <body>
 
+<div class="mock-banner">Concept mockup for Trinity Nugent &middot; built by Hillside Visuals</div>
+
+<div class="shell">
+  <aside class="rail">
+    <a class="id" href="#/">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/><path d="M6 20 A 38 38 0 0 0 44 58"/></g></svg>
+      <span class="nm">Trinity Nugent<span class="ds">Licensed Esthetics</span></span>
+    </a>
     <nav>
-        <div class="logo">TRINITY NUGENT</div>
-        <div class="nav-links">
-            <a onclick="navigate('home')" class="active">Home</a>
-            <a onclick="navigate('about')">About</a>
-            <a onclick="navigate('services')">Services</a>
-            <a onclick="navigate('portal')">Portal</a>
-            <a onclick="navigate('contact')">Contact</a>
-        </div>
+      <a href="#/">Practice</a>
+      <a href="#/services">Services</a>
+      <a href="#/approach">Approach</a>
+      <a href="#/booking">Booking</a>
+      <a href="#/visit">Visit</a>
+      <a href="intro.html" target="_blank" rel="noopener">Brand intro</a>
     </nav>
+    <div class="foot">
+      By appointment, southwest valley<br>
+      <a href="tel:+16037315550">(603) 731-5550</a><br>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </aside>
 
-    <!-- View: Home -->
-    <main id="home" class="view active container">
-        <section class="hero gsap-hero">
-            <h1 class="gsap-reveal">Clarity in <br>Professional Excellence.</h1>
-            <p class="gsap-reveal">Tailored advisory and personal services designed for those who demand precision and discretion in Las Vegas.</p>
-            <div class="gsap-reveal"><a href="#" onclick="navigate('contact')" class="cta-btn">Schedule a Consultation</a></div>
-        </section>
-        <section class="container" style="padding-top: 4rem;">
-            <h2 class="gsap-reveal">Trusted by Industry Leaders.</h2>
-            <div class="grid">
-                <div class="card gsap-card"><h3>Strategic Advisory</h3><p>Data-driven insights to navigate complex personal and professional landscapes.</p></div>
-                <div class="card gsap-card"><h3>Executive Coaching</h3><p>Refining leadership through targeted, high-impact developmental strategies.</p></div>
-                <div class="card gsap-card"><h3>Private Consulting</h3><p>Bespoke solutions maintaining the highest levels of confidentiality.</p></div>
-            </div>
-        </section>
-    </main>
+  <main class="main">
 
-    <!-- View: About -->
-    <main id="about" class="view container">
-        <div style="padding-top: 4rem;">
-            <h1>About Us.</h1>
-            <p style="margin-top: 2rem; max-width: 800px;">Located at the heart of Las Vegas on S Decatur Blvd, Trinity Nugent was founded on a singular principle: uncompromising professional excellence. We strip away the noise to provide clear, actionable, and discrete services to our clientele.</p>
+    <!-- ===== PRACTICE / HOME ===== -->
+    <section class="view is-active" data-route="/" id="view-home">
+      <div class="col">
+        <h1><span class="draw">Trinity Nugent</span></h1>
+        <p class="lead">A private, appointment-only esthetics practice in the southwest Las Vegas valley.</p>
+        <p>One licensed esthetician, one room, one conversation about your skin at a time. Every
+          appointment starts with a consultation and a plan you can actually keep. No packages you
+          did not ask for, no upsell at the door.</p>
+        <div class="cta-row">
+          <a class="btn" href="#/booking">Request an appointment</a>
+          <a class="btn btn--ghost" href="#/services">See services</a>
         </div>
-    </main>
 
-    <!-- View: Services -->
-    <main id="services" class="view container">
-        <div style="padding-top: 4rem;">
-            <h1>Our Services.</h1>
-            <div class="grid">
-                <div class="card"><h3>Consulting</h3><p>Deep-dive assessments to unearth growth opportunities.</p></div>
-                <div class="card"><h3>Strategy</h3><p>Long-term planning mapped against your specific goals.</p></div>
-                <div class="card"><h3>Execution</h3><p>Hands-on support to turn strategy into measurable results.</p></div>
-                <div class="card"><h3>Retainer</h3><p>Ongoing, priority access to our advisory team.</p></div>
-            </div>
+        <div class="introcard">
+          <div class="txt">
+            <h3>A short brand intro</h3>
+            <p>A six second reveal for a story, a reel, or the top of a booking page.</p>
+            <a class="btn" href="intro.html" target="_blank" rel="noopener">Play the intro</a>
+          </div>
+          <div class="stage">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="var(--accent-ink)" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/><path d="M6 20 A 38 38 0 0 0 44 58"/></g></svg>
+            <span class="cap">Six second reveal</span>
+          </div>
         </div>
-    </main>
 
-    <!-- View: Client Portal -->
-    <main id="portal" class="view container">
-        <div style="padding-top: 4rem; max-width: 500px; margin: 0 auto; text-align: center;">
-            <h1>Secure Portal.</h1>
-            <p style="margin: 1rem auto 2rem;">Access your documents and communications securely.</p>
-            <div class="card" style="text-align: left;">
-                <label style="display:block; margin-bottom: 0.5rem; font-size: 0.9rem;">Email Address</label>
-                <input type="email" style="width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border: 1px solid var(--border); background: var(--bg);" />
-                <label style="display:block; margin-bottom: 0.5rem; font-size: 0.9rem;">Password</label>
-                <input type="password" style="width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border: 1px solid var(--border); background: var(--bg);" />
-                <a href="#" class="cta-btn" style="width: 100%; text-align: center;">Sign In</a>
-            </div>
+        <hr class="rule">
+
+        <h2><span class="draw">What this practice is for</span></h2>
+        <p>Skin that has been getting generic treatment and is not responding. A big event with a
+          real timeline. A routine that has too many products and no order to them. Or simply
+          wanting a professional set of eyes and a plan.</p>
+        <div class="grid grid--3" style="margin-top:var(--space-6)">
+          <div class="ph ph--sq"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/></g></svg><span>Hillside shoot: the treatment room, natural light</span></div>
+          <div class="ph ph--sq"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/></g></svg><span>Hillside shoot: consultation, notes and product</span></div>
+          <div class="ph ph--sq"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/></g></svg><span>Hillside shoot: portrait of the practitioner</span></div>
         </div>
-    </main>
+        <p style="margin-top:var(--space-5)"><a class="btn btn--ghost" href="#/approach">How appointments work</a></p>
+      </div>
+      <footer class="pagefoot">
+        <span>&copy; <span class="yr"></span> Trinity Nugent</span>
+        <a href="#/services">Services</a>
+        <a href="#/booking">Booking</a>
+        <a href="#/visit">Visit</a>
+        <a href="tel:+16037315550">(603) 731-5550</a>
+      </footer>
+    </section>
 
-    <!-- View: Contact -->
-    <main id="contact" class="view container">
-        <div style="padding-top: 4rem;">
-            <h1>Get in Touch.</h1>
-            <div class="grid">
-                <div>
-                    <h3 style="margin-bottom: 1rem;">Office</h3>
-                    <p>2103 S DECATUR BLVD<br>LAS VEGAS, NV 89102</p>
-                    <h3 style="margin: 2rem 0 1rem;">Direct Line</h3>
-                    <p>702-555-0117</p>
-                </div>
-                <div class="card">
-                    <h3>Inquiry Form</h3>
-                    <p style="margin-bottom: 2rem;">We typically respond within 24 hours.</p>
-                    <a href="mailto:hello@trinitynugent.com" class="cta-btn">Email Us</a>
-                </div>
-            </div>
+    <!-- ===== SERVICES ===== -->
+    <section class="view" data-route="/services" id="view-services">
+      <div class="col">
+        <h1><span class="draw">Services</span></h1>
+        <p class="lead">A representative menu. Your plan is set at the consultation.</p>
+        <p>This is a concept list of what a licensed esthetics practice offers. The real menu is
+          built around what Trinity offers and what your skin needs, and is confirmed before you
+          book. Pricing is consultation based, not a fixed price sheet.</p>
+
+        <ul class="services">
+          <li><h3>Consultation and skin reading</h3><span class="meta">Start here</span>
+            <p class="note">A full look at your skin, your history, and your routine, ending with a written plan and a realistic timeline.</p></li>
+          <li><h3>Signature treatment facial</h3><span class="meta">Consultation based</span>
+            <p class="note">Cleanse, exfoliation, extractions as needed, a treatment mask, and finishing care, chosen for your skin that day.</p></li>
+          <li><h3>Targeted treatment course</h3><span class="meta">Planned in a series</span>
+            <p class="note">For texture, congestion, or tone that needs more than one visit. Spaced and tracked over several weeks.</p></li>
+          <li><h3>Brow shaping and tint</h3><span class="meta">Add on or standalone</span>
+            <p class="note">Shape mapped to your face, cleaned up, and tinted to match. Kept natural.</p></li>
+          <li><h3>Lash lift and tint</h3><span class="meta">Add on or standalone</span>
+            <p class="note">A lift and tint on your own lashes. No extensions, no adhesive weight.</p></li>
+          <li><h3>Event preparation</h3><span class="meta">Booked to a date</span>
+            <p class="note">A short plan of visits timed to a wedding, a shoot, or a milestone, so your skin peaks on the right day.</p></li>
+        </ul>
+        <p style="margin-top:var(--space-6)"><a class="btn" href="#/booking">Request an appointment</a></p>
+      </div>
+      <footer class="pagefoot">
+        <span>&copy; <span class="yr"></span> Trinity Nugent</span>
+        <a href="#/">Practice</a>
+        <a href="#/approach">Approach</a>
+        <a href="#/visit">Visit</a>
+      </footer>
+    </section>
+
+    <!-- ===== APPROACH / ABOUT ===== -->
+    <section class="view" data-route="/approach" id="view-approach">
+      <div class="col">
+        <h1><span class="draw">The approach</span></h1>
+        <p class="lead">What to expect from a first appointment.</p>
+        <div class="grid grid--2" style="margin-top:var(--space-6);align-items:start">
+          <div>
+            <p>Trinity Nugent is a licensed esthetician. This is a solo practice, so the person who
+              reads your skin at the consultation is the person who treats it at every visit after.
+              That continuity is the point.</p>
+            <p>A first appointment is unhurried. You talk through what your skin has been doing, what
+              you have tried, and what you actually want. The treatment that day is matched to what
+              is in front of us, not a fixed script, and you leave with a plan in writing.</p>
+          </div>
+          <div class="ph ph--wide"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/><path d="M6 20 A 38 38 0 0 0 44 58"/></g></svg><span>Hillside shoot: hands at work, close and calm</span></div>
         </div>
-    </main>
 
-    <footer>
-        &copy; 2026 Trinity Nugent. All rights reserved.
-    </footer>
+        <hr class="rule">
 
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+        <h2><span class="draw">Three things that stay true</span></h2>
+        <div class="principles">
+          <div><h3>A plan before a product</h3><p>Nothing is recommended until there is a reason for it and an order to use it in.</p></div>
+          <div><h3>Licensed and above board</h3><p>Scope of practice is respected. Anything outside it is referred to the right professional.</p></div>
+          <div><h3>Discretion</h3><p>Appointment only, one client at a time, and the practice address shared when you book.</p></div>
+        </div>
+        <p style="margin-top:var(--space-6)"><a class="btn" href="#/booking">Request an appointment</a></p>
+      </div>
+      <footer class="pagefoot">
+        <span>&copy; <span class="yr"></span> Trinity Nugent</span>
+        <a href="#/services">Services</a>
+        <a href="#/booking">Booking</a>
+        <a href="#/visit">Visit</a>
+      </footer>
+    </section>
 
-        // Simple Router
-        function navigate(viewId) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            
-            document.getElementById(viewId).classList.add('active');
-            event.target.classList.add('active');
-            window.scrollTo(0,0);
-            
-            if(viewId === 'home') initGSAP();
-        }
+    <!-- ===== BOOKING ===== -->
+    <section class="view" data-route="/booking" id="view-booking">
+      <div class="col">
+        <h1><span class="draw">Booking</span></h1>
+        <p class="lead">Appointments are requested, then confirmed by message.</p>
+        <div class="grid grid--2" style="margin-top:var(--space-6);align-items:start">
+          <div>
+            <h2>How it works</h2>
+            <ol class="steps">
+              <li><h3>Send a request</h3><p>Use the form or a text. Say what your skin has been doing and any date you are working toward.</p></li>
+              <li><h3>Consultation is booked</h3><p>Trinity replies with times. The first visit is always a consultation and skin reading.</p></li>
+              <li><h3>Plan, then treat</h3><p>You leave the first visit with a written plan. Follow up visits are scheduled to it.</p></li>
+            </ol>
+            <ul class="facts">
+              <li><b>Hours</b><span>By appointment. TBC</span></li>
+              <li><b>Deposit</b><span>Held to book. Amount TBC</span></li>
+              <li><b>Call or text</b><span><a href="tel:+16037315550">(603) 731-5550</a></span></li>
+              <li><b>Instagram</b><span><a href="https://www.instagram.com/" target="_blank" rel="noopener">handle TBC</a></span></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Request form</h2>
+            <form class="form" novalidate>
+              <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+              <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+              <div><label for="f-brief">What is your skin doing, and any date you are working toward?</label><textarea id="f-brief"></textarea></div>
+              <button class="btn" type="submit">Send request</button>
+              <p class="status" role="status">Concept form. On the live site this sends the request to Trinity directly. Nothing is submitted here.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <footer class="pagefoot">
+        <span>&copy; <span class="yr"></span> Trinity Nugent</span>
+        <a href="#/">Practice</a>
+        <a href="#/services">Services</a>
+        <a href="#/visit">Visit</a>
+      </footer>
+    </section>
 
-        // Micro-interactions setup
-        function initGSAP() {
-            gsap.fromTo(".gsap-reveal", 
-                { y: 30, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power3.out" }
-            );
-            
-            gsap.utils.toArray('.gsap-card').forEach((card, i) => {
-                gsap.fromTo(card,
-                    { y: 50, opacity: 0 },
-                    {
-                        scrollTrigger: { trigger: card, start: "top 90%" },
-                        y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: i * 0.1
-                    }
-                );
-            });
-        }
-        
-        window.onload = initGSAP;
-    </script>
+    <!-- ===== VISIT ===== -->
+    <section class="view" data-route="/visit" id="view-visit">
+      <div class="col">
+        <h1><span class="draw">Visit</span></h1>
+        <p class="lead">The practice is in the Blue Diamond corridor, southwest of the Strip.</p>
+        <div class="grid grid--2" style="margin-top:var(--space-6);align-items:start">
+          <div>
+            <p>This is a private, appointment-only room. The exact address and suite are sent when
+              your consultation is confirmed, along with parking and entrance notes. Mail for the
+              practice goes to a box on Blue Diamond Road.</p>
+            <ul class="facts">
+              <li><b>Area</b><span>Blue Diamond Rd corridor, Las Vegas 89139</span></li>
+              <li><b>Address</b><span>Shared on booking</span></li>
+              <li><b>Mailing</b><span>5155 Blue Diamond Rd, PMB Ste 102, Las Vegas NV 89139</span></li>
+              <li><b>Parking</b><span>On site, free. TBC</span></li>
+              <li><b>Getting here</b><span>Off I-15 at Blue Diamond, about 15 minutes from the Strip</span></li>
+            </ul>
+            <p style="margin-top:var(--space-5)"><a class="btn" href="#/booking">Request an appointment</a></p>
+          </div>
+          <div class="grid" style="gap:var(--space-4)">
+            <div class="ph ph--wide"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/><path d="M6 20 A 38 38 0 0 0 44 58"/></g></svg><span>Hillside shoot: the entrance and the room</span></div>
+            <div class="ph ph--wide"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 44 A 14 14 0 0 0 20 58"/><path d="M6 32 A 26 26 0 0 0 32 58"/></g></svg><span>Map of the Blue Diamond Rd corridor</span></div>
+          </div>
+        </div>
+      </div>
+      <footer class="pagefoot">
+        <span>&copy; <span class="yr"></span> Trinity Nugent</span>
+        <a href="#/">Practice</a>
+        <a href="#/services">Services</a>
+        <a href="#/booking">Booking</a>
+      </footer>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  [].forEach.call(document.querySelectorAll('.yr'),function(e){e.textContent=new Date().getFullYear()});
+
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home=document.getElementById('view-home')||views[0];
+    var routeOf=function(v){return v.getAttribute('data-route')};
+    var render=function(){
+      var h=(location.hash||'').replace(/^#/,'');
+      if(h&&h.charAt(0)!=='/')h='/'+h;
+      var match=views.filter(function(v){return routeOf(v)===h})[0]||home;
+      views.forEach(function(v){v.classList.toggle('is-active',v===match)});
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current',a.getAttribute('href')==='#'+routeOf(match)?'page':'false');
+      });
+      window.scrollTo(0,0);
+    };
+    window.addEventListener('hashchange',render);
+    render();
+  }
+  var form=document.querySelector('.form');
+  if(form){form.addEventListener('submit',function(e){e.preventDefault();});}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HealthAndBeautyBusiness",
+  "name":"Trinity Nugent",
+  "description":"Licensed esthetics practice, by appointment, in southwest Las Vegas.",
+  "telephone":"(603) 731-5550",
+  "address":{"@type":"PostalAddress","streetAddress":"5155 Blue Diamond Rd, PMB Ste 102","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89139"}
+}
+</script>
+
 </body>
 </html>

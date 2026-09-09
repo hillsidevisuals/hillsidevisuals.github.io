@@ -1,49 +1,114 @@
 <!DOCTYPE html>
+<!-- fingerprint: P5 H4 E4 S5 R5 V4
+     Trinity Nugent brand intro. Bespoke, template-bespoke concept: the three-arc mark draws,
+     the name fades up, one fine teal underline draws beneath it, then holds. No flourish.
+     Light paper (a private practice, not a nightclub). Fluid 16:9, cqw units. -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trinity Nugent | Brand Intro</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
-    <style>
-        body { margin: 0; background: #111; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; color: #fff; font-family: 'Inter', sans-serif; }
-        .intro-container { text-align: center; }
-        .brand-name { font-size: 4rem; font-weight: 300; letter-spacing: -2px; clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); line-height: 1.2; margin: 0; }
-        .tagline { font-size: 1rem; color: #888; font-weight: 300; margin-top: 1rem; opacity: 0; transform: translateY(20px); letter-spacing: 2px; text-transform: uppercase; }
-        .line { width: 0; height: 1px; background: #444; margin: 2rem auto; }
-    </style>
+<title>Trinity Nugent | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500&family=Sora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-bg:oklch(0.972 0.004 200);
+    --color-ink:oklch(0.24 0.018 210);
+    --color-muted:oklch(0.46 0.016 210);
+    --color-border:oklch(0.88 0.008 205);
+    --color-accent:oklch(0.42 0.062 205);
+    --accent-text:oklch(0.34 0.062 205);
+    --font-display:"Spectral",Georgia,serif;
+    --font-body:"Sora","Helvetica Neue",Arial,sans-serif;
+    --ease-out:cubic-bezier(.2,.7,.3,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--color-bg)}
+  body{color:var(--color-ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:18px;padding:clamp(14px,4vw,34px)}
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    background:var(--color-bg);overflow:hidden;border:1px solid var(--color-border)}
+  .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:0 6cqw;text-align:center}
+
+  .mark{width:clamp(38px,9cqw,120px);height:clamp(38px,9cqw,120px);overflow:visible}
+  .mark path{fill:none;stroke:var(--color-accent);stroke-width:2.6;stroke-linecap:round;
+    stroke-dasharray:80;stroke-dashoffset:80;animation:drawmark .55s var(--ease-out) both}
+  .mark path:nth-child(2){animation-delay:.12s}
+  .mark path:nth-child(3){animation-delay:.24s}
+
+  .name{font-family:var(--font-display);font-weight:400;color:var(--color-ink);line-height:1;
+    font-size:clamp(22px,8cqw,92px);margin-top:3.4cqw;white-space:nowrap;
+    opacity:0;transform:translateY(.5em);animation:rise .6s var(--ease-out) .5s both}
+
+  .underline{width:0;height:1px;background:var(--color-accent);margin-top:2.6cqw;
+    animation:extend .6s var(--ease-out) .95s both}
+
+  .descriptor{font-family:var(--font-body);font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--color-muted);font-size:clamp(8px,1.5cqw,17px);margin-top:3cqw;
+    opacity:0;animation:fadein .5s var(--ease-out) 1.25s both}
+  .tagline{font-family:var(--font-display);font-weight:300;font-style:normal;color:var(--accent-text);
+    font-size:clamp(11px,2cqw,24px);margin-top:2.4cqw;
+    opacity:0;animation:fadein .5s var(--ease-out) 1.55s both}
+
+  @keyframes drawmark{to{stroke-dashoffset:0}}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @keyframes extend{to{width:min(52cqw,340px)}}
+  @keyframes fadein{to{opacity:1}}
+
+  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+  .page-meta{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-muted)}
+  .replay{font:inherit;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--color-ink);background:transparent;border:1px solid var(--color-border);padding:9px 16px;cursor:pointer}
+  .replay:hover{border-color:var(--color-ink)}
+  .replay:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
+  .visit{color:var(--color-muted);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+  .visit:hover{color:var(--color-ink)}
+
+  @media (prefers-reduced-motion:reduce){
+    .mark path,.name,.underline,.descriptor,.tagline{animation-duration:.01s;animation-delay:0s}
+    .mark path{stroke-dashoffset:0}.name,.descriptor,.tagline{opacity:1;transform:none}
+    .underline{width:min(52cqw,340px)}
+  }
+  .replaying .mark path,.replaying .name,.replaying .underline,.replaying .descriptor,.replaying .tagline{animation:none}
+</style>
 </head>
 <body>
-    <div class="intro-container">
-        <h1 class="brand-name" id="name">TRINITY NUGENT</h1>
-        <div class="line" id="line"></div>
-        <div class="tagline" id="tag">ELEVATING PROFESSIONAL EXCELLENCE</div>
+<main class="wrap">
+  <section class="frame" aria-label="Trinity Nugent brand intro">
+    <div class="inner">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M6 44 A 14 14 0 0 0 20 58"/>
+        <path d="M6 32 A 26 26 0 0 0 32 58"/>
+        <path d="M6 20 A 38 38 0 0 0 44 58"/>
+      </svg>
+      <h1 class="name">Trinity Nugent</h1>
+      <div class="underline" aria-hidden="true"></div>
+      <p class="descriptor">Licensed Esthetics &middot; Las Vegas</p>
+      <p class="tagline">Considered skincare, by appointment.</p>
     </div>
-
-    <script>
-        const tl = gsap.timeline();
-        
-        // Uncover brand name
-        tl.to("#name", {
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 1.5,
-            ease: "power4.inOut"
-        })
-        // Expand line
-        .to("#line", {
-            width: "100%",
-            duration: 1,
-            ease: "power2.out"
-        }, "-=0.5")
-        // Fade up tagline
-        .to("#tag", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out"
-        }, "-=0.5");
-    </script>
+  </section>
+  <div class="row">
+    <span class="page-meta">Trinity Nugent &middot; brand intro</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./">Visit the site</a>
+  </div>
+</main>
+<script>
+(function(){
+  var frame=document.querySelector('.frame');
+  var btn=document.querySelector('.replay');
+  if(btn&&frame){
+    btn.addEventListener('click',function(){
+      frame.classList.add('replaying');
+      void frame.offsetWidth;
+      frame.classList.remove('replaying');
+    });
+  }
+})();
+</script>
 </body>
 </html>
