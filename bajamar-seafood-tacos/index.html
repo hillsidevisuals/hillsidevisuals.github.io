@@ -28,10 +28,10 @@
     --accent-bg:oklch(0.71 0.105 195);
     --accent-bg-hover:oklch(0.66 0.105 195);
     --accent-border:oklch(0.60 0.10 200);
-    --accent-text:oklch(0.99 0.01 200);
+    --accent-text:oklch(0.23 0.045 215);
     --surf:oklch(0.79 0.17 129);
     --surf-ink:oklch(0.30 0.09 135);
-    --coral:oklch(0.58 0.19 27);
+    --coral:oklch(0.53 0.20 28);
     --coral-text:oklch(0.99 0.02 30);
     --deep:oklch(0.25 0.022 205);
     --deep-fg:oklch(0.95 0.02 84);
@@ -95,7 +95,7 @@
   /* ===== mock banner ===== */
   .mock-banner{background:var(--deep);color:var(--deep-fg);text-align:center;
     font-family:var(--font-display);font-weight:600;
-    font-size:clamp(.62rem,2vw,.74rem);letter-spacing:.16em;text-transform:uppercase;padding:.55rem .8rem}
+    font-size:clamp(.8rem,2vw,.88rem);letter-spacing:.03em;padding:.55rem .8rem}
 
   /* ===== nav: edge-aligned row ===== */
   .nav{position:sticky;top:0;z-index:60;background:oklch(0.93 0.024 84 / .92);
@@ -143,8 +143,8 @@
     font-size:var(--step--1);color:var(--surf);margin:0 0 var(--space-4)}
   .poster-photo{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:3px solid var(--surf);
     aspect-ratio:4/5;background:var(--img-hero) left center/cover no-repeat, var(--surface-2);box-shadow:var(--shadow)}
-  .poster-photo figcaption{position:absolute;left:8px;bottom:8px;background:oklch(0.20 0.02 205 / .85);color:var(--deep-fg);
-    font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+  .poster-photo figcaption{position:absolute;left:8px;bottom:8px;background:oklch(0.18 0.02 205 / .9);color:var(--deep-fg);
+    font-size:.82rem;letter-spacing:.04em;padding:4px 9px;border-radius:2px}
   /* poster kept clean; no faint background mark */
 
   /* ===== signature "first bite" rows ===== */
@@ -162,16 +162,16 @@
   .photo.is-spread{background-image:var(--img-spread)}
   .photo.is-aguachile{background-image:var(--img-aguachile);aspect-ratio:4/3}
   .photo.is-room{background-image:var(--img-room)}
-  .photo .cap{background:oklch(0.25 0.02 205 / .82);color:#fff;font-size:.58rem;letter-spacing:.14em;
-    text-transform:uppercase;padding:3px 8px;display:inline-block;margin:8px}
+  .photo .cap{background:oklch(0.18 0.02 205 / .9);color:#fff;font-size:.82rem;letter-spacing:.04em;
+    padding:4px 9px;display:inline-block;margin:8px;border-radius:2px}
 
   /* ===== Hillside-shoot placeholder ===== */
   .shot{border-radius:var(--radius-lg);border:2px dashed var(--accent-border);background:var(--surface);
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;
     padding:1.4rem;min-height:190px;color:var(--muted)}
   .shot svg{width:38px;height:38px;opacity:.5}
-  .shot span{font-family:var(--font-display);font-weight:600;font-size:.72rem;letter-spacing:.1em;
-    text-transform:uppercase;max-width:26ch;line-height:1.4}
+  .shot span{font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.01em;
+    max-width:30ch;line-height:1.45}
   .shot--tall{aspect-ratio:3/4;min-height:0;max-height:440px}
   .shot--wide{aspect-ratio:16/9;min-height:0}
   .shot--sq{aspect-ratio:1/1;min-height:0}
@@ -190,8 +190,8 @@
   .introcard .stage{position:relative;min-height:210px;display:flex;align-items:center;justify-content:center;
     background:radial-gradient(60% 70% at 50% 45%, var(--accent-bg) 0%, var(--deep) 68%)}
   .introcard .stage img{width:96px;height:96px;transform:rotate(-5deg)}
-  .introcard .stage .cap{position:absolute;bottom:.9rem;left:0;right:0;text-align:center;font-size:.58rem;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--deep-muted)}
+  .introcard .stage .cap{position:absolute;bottom:.8rem;left:0;right:0;text-align:center;font-size:.82rem;
+    letter-spacing:.04em;color:var(--deep-muted)}
 
   /* ===== menu ===== */
   .menu-sec{margin-top:var(--space-7)}
@@ -603,7 +603,7 @@
             <form class="form" novalidate>
               <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
               <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
-              <div><label for="f-brief">Date, headcount and what you are thinking</label><textarea id="f-brief"></textarea></div>
+              <div><label for="f-brief">Event date and headcount</label><textarea id="f-brief"></textarea></div>
               <button class="btn" type="submit">Send enquiry</button>
               <p class="status" role="status">Concept form. On the live site this reaches the Rainbow location. It does not send anything here.</p>
             </form>
