@@ -1,0 +1,551 @@
+<!-- fingerprint: P5 H4 E4 S5 R4 V4 -->
+<!DOCTYPE html>
+<!-- Rinkside Brew House - concept website mockup by Hillside Visuals. Router site, one self-contained file.
+     new-brand: all imagery is labelled Hillside-shoot placeholders. No invented facts, no fake chrome. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rinkside Brew House</title>
+<meta name="description" content="Rinkside Brew House. The taproom and kitchen inside City National Arena in Summerlin, with glass walls onto two NHL rinks. Rotating local taps, a kitchen worth photographing, reservations and order-ahead.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-bg:      oklch(0.19 0.022 250);
+    --color-surface: oklch(0.24 0.022 245);
+    --color-fg:      oklch(0.96 0.005 240);
+    --color-muted:   oklch(0.74 0.014 245);
+    --color-border:  oklch(0.33 0.02 250);
+    --color-accent:  oklch(0.68 0.09 235);
+
+    --accent:        var(--color-accent);
+    --accent-hover:  oklch(0.74 0.095 235);
+    --accent-active: oklch(0.62 0.085 235);
+    --accent-bg:     oklch(0.30 0.04 240);
+    --accent-border: oklch(0.46 0.06 238);
+    --accent-text:   oklch(0.20 0.03 250);
+
+    --surface-cold:  oklch(0.24 0.02 240);
+    --surface-warm:  oklch(0.23 0.012 65);
+
+    --font-display: "Saira Condensed","Oswald","Arial Narrow",system-ui,sans-serif;
+    --font-body:    "Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+    --step--1: clamp(0.80rem, 0.77rem + 0.15vw, 0.88rem);
+    --step-0:  clamp(1.00rem, 0.96rem + 0.20vw, 1.10rem);
+    --step-1:  clamp(1.18rem, 1.08rem + 0.50vw, 1.42rem);
+    --step-2:  clamp(1.55rem, 1.32rem + 1.05vw, 2.15rem);
+    --step-3:  clamp(2.05rem, 1.60rem + 2.20vw, 3.30rem);
+    --step-4:  clamp(2.70rem, 1.90rem + 4.00vw, 5.40rem);
+
+    --space-2: 0.5rem;  --space-3: 0.75rem; --space-4: 1rem;
+    --space-5: 1.5rem;  --space-6: 2rem;    --space-7: 3rem;
+    --space-8: 4.5rem;  --space-9: 6.5rem;
+
+    --maxw: 1160px;
+    --pad: clamp(1.15rem, 5vw, 3rem);
+    --radius: 2px;
+    --shadow: 0 18px 50px oklch(0.10 0.02 250 / 0.55);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--font-body);
+    font-size:var(--step-0);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.02;margin:0 0 .38em;
+    text-wrap:balance;overflow-wrap:break-word;font-style:normal}
+  h1{font-size:var(--step-4);letter-spacing:.005em;text-transform:uppercase}
+  h2{font-size:var(--step-3);letter-spacing:.005em;text-transform:uppercase}
+  h3{font-size:var(--step-1);letter-spacing:.01em}
+  p{margin:0 0 1rem;max-width:64ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .block{padding-top:clamp(2.4rem,6vw,4.2rem);padding-bottom:clamp(2.4rem,6vw,4.2rem);
+    border-top:1px solid var(--color-border)}
+  .label{font-family:var(--font-display);font-weight:600;font-size:var(--step--1);
+    letter-spacing:.28em;text-transform:uppercase;color:var(--color-muted);margin:0 0 var(--space-4)}
+  .lead{font-size:var(--step-1);color:var(--color-muted);max-width:52ch}
+  .muted{color:var(--color-muted)}
+
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-text);
+    padding:.72em 1.5em;border-radius:var(--radius);text-decoration:none;font-weight:600;
+    font-family:var(--font-display);letter-spacing:.06em;text-transform:uppercase;font-size:var(--step-0);
+    white-space:nowrap;transition:transform .16s var(--ease-out),background-color .16s var(--ease-out)}
+  .btn:hover{transform:translateY(-1px);background:var(--accent-hover)}
+  .btn:active{background:var(--accent-active)}
+  .btn:focus-visible{outline:2px solid var(--accent-hover);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--color-fg);border:1px solid var(--color-fg)}
+  .btn--ghost:hover{background:transparent;border-color:var(--accent-hover);color:var(--accent-hover)}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.001ms!important;animation-duration:.001ms!important;scroll-behavior:auto}}
+
+  /* ---- placeholder shot ---- */
+  .shot{position:relative;overflow:hidden;
+    background:
+      repeating-linear-gradient(45deg, oklch(0.96 0.005 240 / 0.04) 0 10px, transparent 10px 20px),
+      var(--color-surface);
+    border:1px solid var(--color-border);border-radius:var(--radius);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--color-muted);font-family:var(--font-body);
+    font-size:var(--step--1);letter-spacing:.06em;text-transform:uppercase;
+    padding:1rem;min-height:210px}
+  .shot::after{content:"Hillside shoot / " attr(data-shot);max-width:min(92%,32ch);line-height:1.4}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+  .shot--tall{aspect-ratio:4/5;min-height:0}
+  .shot--map{aspect-ratio:24/9;min-height:0}
+
+  /* ---- masthead nav (arena marquee) ---- */
+  .nav{position:sticky;top:0;z-index:60;background:oklch(0.19 0.022 250 / 0.9);
+    backdrop-filter:blur(9px);border-bottom:1px solid var(--color-border)}
+  .nav .wrap{display:flex;flex-direction:column;align-items:center;gap:var(--space-3);
+    padding-top:var(--space-4);padding-bottom:var(--space-3)}
+  .brandmark{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--color-fg)}
+  .brandmark svg{width:34px;height:34px;color:var(--accent)}
+  .brandmark .r{font-family:var(--font-display);font-weight:700;font-size:1.32rem;letter-spacing:.06em;line-height:.9}
+  .brandmark .b{font-family:var(--font-display);font-weight:600;font-size:.72rem;letter-spacing:.42em;padding-left:.42em;color:var(--color-muted)}
+  .nav ul{display:flex;gap:.6rem 1.5rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;justify-content:center;
+    font-family:var(--font-display);font-size:.95rem;letter-spacing:.12em;text-transform:uppercase}
+  .nav a{text-decoration:none;color:var(--color-muted);padding:.2em 0;border-bottom:2px solid transparent;
+    transition:color .16s var(--ease-out),border-color .16s var(--ease-out)}
+  .nav a:hover{color:var(--color-fg)}
+  .nav a[aria-current="page"]{color:var(--color-fg);border-color:var(--accent)}
+  .nav a.nav-intro{color:var(--accent)}
+  .nav a.nav-intro:hover{color:var(--accent-hover)}
+  .nav a:focus-visible{outline:2px solid var(--accent-hover);outline-offset:3px}
+
+  /* ---- router ---- */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .3s var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+
+  /* ---- hero: the split ---- */
+  .hero{position:relative;overflow:hidden;isolation:isolate}
+  .hero__split{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;z-index:0}
+  .hero__split .p{position:relative}
+  .hero__split .p--rink{background:
+      repeating-linear-gradient(48deg, oklch(0.96 0.005 240 / 0.055) 0 11px, transparent 11px 22px),
+      linear-gradient(180deg, oklch(0.27 0.03 238), oklch(0.20 0.02 240))}
+  .hero__split .p--bar{background:
+      repeating-linear-gradient(-48deg, oklch(0.96 0.005 240 / 0.04) 0 11px, transparent 11px 22px),
+      linear-gradient(180deg, oklch(0.25 0.014 62), oklch(0.19 0.012 60))}
+  .hero__split .p span{position:absolute;bottom:var(--space-4);font-family:var(--font-display);
+    font-weight:600;font-size:var(--step--1);letter-spacing:.26em;text-transform:uppercase;color:var(--color-muted)}
+  .hero__split .p--rink span{left:var(--pad)}
+  .hero__split .p--bar span{right:var(--pad)}
+  .hero__scrim{position:absolute;inset:0;z-index:1;
+    background:radial-gradient(75% 78% at 50% 46%, oklch(0.19 0.022 250 / 0.3), var(--color-bg) 82%)}
+  .hero__content{position:relative;z-index:2;text-align:center;max-width:40rem;margin:0 auto;
+    padding-top:clamp(3.6rem,11vw,7rem);padding-bottom:clamp(3.2rem,9vw,6rem)}
+  .hero__content h1{margin-bottom:.24em}
+  .hero__content .lead{margin:0 auto var(--space-6);color:var(--color-fg)}
+  .cta-row{display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center}
+
+  /* ---- split feature ---- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-border);
+    border:1px solid var(--color-border);border-radius:var(--radius);overflow:hidden}
+  .duo > div{background:var(--color-bg);padding:clamp(1.6rem,4vw,2.6rem)}
+  .duo > .duo--cold{background:linear-gradient(180deg,var(--surface-cold),var(--color-bg))}
+  .duo > .duo--warm{background:linear-gradient(180deg,var(--surface-warm),var(--color-bg))}
+  .duo h2{font-size:var(--step-1);margin-bottom:.5em}
+  .duo p{margin-bottom:0}
+
+  /* ---- band ---- */
+  .band{background:var(--accent-bg);border-top:1px solid var(--accent-border);border-bottom:1px solid var(--accent-border)}
+  .band .wrap{padding-top:var(--space-7);padding-bottom:var(--space-7)}
+  .band h2{color:var(--color-fg)}
+
+  /* ---- intro card ---- */
+  .introcard{margin-top:clamp(2rem,6vw,3.2rem);border:1px solid var(--color-border);border-radius:var(--radius);
+    overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;background:var(--color-surface);
+    text-align:left;text-decoration:none;color:var(--color-fg)}
+  .introcard *{text-decoration:none}
+  .introcard .txt{padding:clamp(1.5rem,4vw,2.4rem);display:flex;flex-direction:column;gap:.55rem;justify-content:center}
+  .introcard h3{margin:0}
+  .introcard p{margin:0;color:var(--color-muted)}
+  .introcard .btn{align-self:flex-start;margin-top:.5rem}
+  .introcard .stage{position:relative;min-height:210px;
+    background:radial-gradient(60% 70% at 50% 45%, var(--accent-bg), var(--color-bg) 66%);
+    display:flex;align-items:center;justify-content:center}
+  .introcard .seal{width:74px;height:74px;background:var(--accent);color:var(--accent-text);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);
+    font-weight:700;font-size:1.5rem;letter-spacing:.04em;transform:rotate(-4deg);border-radius:var(--radius)}
+  .introcard .cap{position:absolute;bottom:.8rem;left:0;right:0;text-align:center;font-size:var(--step--1);
+    letter-spacing:.2em;text-transform:uppercase;color:var(--color-muted)}
+
+  /* ---- pagehead ---- */
+  .pagehead{padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:clamp(.6rem,2vw,1.2rem);text-align:center}
+  .pagehead h1{margin-bottom:.22em}
+  .pagehead .lead{margin-left:auto;margin-right:auto}
+
+  /* ---- generic grids ---- */
+  .grid{display:grid;gap:var(--space-5)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+
+  /* ---- menu list ---- */
+  .menu{list-style:none;padding:0;margin:var(--space-5) 0 0}
+  .menu li{padding:1rem 0;border-bottom:1px solid var(--color-border)}
+  .menu h3{margin:0 0 .2rem}
+  .menu p{margin:0;color:var(--color-muted);font-size:var(--step-0)}
+  .note{font-size:var(--step--1);color:var(--color-muted);margin-top:var(--space-5);letter-spacing:.02em}
+
+  /* ---- steps ---- */
+  .steps{list-style:none;counter-reset:s;padding:0;margin:var(--space-5) 0 0;display:grid;gap:var(--space-5)}
+  .steps li{counter-increment:s;padding-left:3.2rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-.15rem;width:2.1rem;height:2.1rem;
+    border:1px solid var(--accent-border);color:var(--accent-hover);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1rem}
+  .steps h3{margin:0 0 .2rem}
+  .steps p{margin:0;color:var(--color-muted)}
+
+  /* ---- facts ---- */
+  .facts{list-style:none;padding:0;margin:var(--space-5) 0 0}
+  .facts li{padding:.7rem 0;border-bottom:1px solid var(--color-border);display:flex;gap:1rem;justify-content:space-between}
+  .facts b{font-family:var(--font-display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:var(--step--1);
+    color:var(--color-muted);padding-top:.15rem}
+  .facts span:last-child{text-align:right}
+  .facts a{color:var(--accent-hover);text-decoration:none}
+  .facts a:hover{text-decoration:underline}
+
+  /* ---- split blocks ---- */
+  .split2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,5vw,3.4rem);align-items:start}
+
+  /* ---- form ---- */
+  .form{display:grid;gap:var(--space-4);margin-top:var(--space-5);max-width:32rem}
+  .form label{font-family:var(--font-display);font-size:var(--step--1);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--color-muted);display:block;margin-bottom:.3rem}
+  .form input,.form textarea{width:100%;font:inherit;font-family:var(--font-body);padding:.68em .8em;
+    border:1px solid var(--color-border);border-radius:var(--radius);background:var(--color-surface);color:var(--color-fg)}
+  .form input:focus-visible,.form textarea:focus-visible{outline:2px solid var(--accent-hover);outline-offset:1px}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:var(--step--1);color:var(--color-muted)}
+  .form button{justify-self:start;border:0;cursor:pointer}
+
+  /* ---- footer ---- */
+  footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-7) 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);font-size:var(--step--1)}
+  footer nav{display:flex;gap:1.1rem;flex-wrap:wrap;font-family:var(--font-display);letter-spacing:.12em;text-transform:uppercase}
+  footer a{text-decoration:none;color:var(--color-muted)}
+  footer a:hover{color:var(--color-fg)}
+  footer a[aria-current="page"]{color:var(--color-fg)}
+  footer .muted{color:var(--color-muted)}
+
+  .mock-banner{background:var(--color-bg);color:var(--color-muted);text-align:center;
+    font-family:var(--font-body);font-size:var(--step--1);letter-spacing:.01em;
+    padding:.5rem .8rem;border-bottom:1px solid var(--color-border)}
+
+  @media (max-width:900px){
+    .grid--3{grid-template-columns:repeat(2,1fr)}
+    .duo,.split2{grid-template-columns:1fr}
+    .introcard{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .grid--2,.grid--3{grid-template-columns:1fr}
+    .hero__split{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
+    .hero__split .p span{display:none}
+    .cta-row .btn{flex:1 1 auto;text-align:center}
+    .facts li{flex-direction:column;gap:.15rem}
+    .facts span:last-child{text-align:left}
+    footer .wrap{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Concept mockup for Rinkside Brew House, by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">
+      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M54 14 L26 14 A12 12 0 0 0 14 26 L14 54" stroke="currentColor" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32.5" cy="32.5" r="3.6" fill="currentColor"/></svg>
+      <span class="r">RINKSIDE</span><span class="b">BREW HOUSE</span>
+    </a>
+    <ul>
+      <li><a href="#/menu">Beer &amp; Kitchen</a></li>
+      <li><a href="#/about">About</a></li>
+      <li><a href="#/reserve">Reserve</a></li>
+      <li><a href="#/visit">Visit</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="hero">
+      <div class="hero__split" aria-hidden="true">
+        <div class="p p--rink"><span>The rink</span></div>
+        <div class="p p--bar"><span>The bar</span></div>
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero__content">
+          <h1>Cold rink. Warm bar.</h1>
+          <p class="lead">The taproom and kitchen inside City National Arena, with glass walls onto two NHL sheets. Watch a practice, order a draft, stay for dinner.</p>
+          <div class="cta-row">
+            <a class="btn" href="#/reserve">Reserve a table</a>
+            <a class="btn btn--ghost" href="#/menu">See the menu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <p class="label">One room, two sides</p>
+      <div class="duo">
+        <div class="duo--cold">
+          <h2>Rinkside</h2>
+          <p>The dining room sits between the two ice sheets. Golden Knights practice is free and open to the public, and the community rink runs skate sessions, learn to skate, and league play most of the day. You get the best seat for all of it.</p>
+        </div>
+        <div class="duo--warm">
+          <h2>The bar</h2>
+          <p>A rotating list of local and regional drafts, a few non alcoholic options, and a kitchen built to hold up on a plate and in a photo. Come off the ice, sit down, get handed a menu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="band">
+      <div class="wrap">
+        <p class="label">Between periods</p>
+        <h2>On a session clock? Order ahead.</h2>
+        <p class="muted" style="max-width:56ch">Skate sessions and tournament games do not wait. Order from your phone before you step off, and it is ready at the counter when you are. Full service tables the rest of the time.</p>
+        <p style="margin-top:1.4rem"><a class="btn" href="#/reserve">Reserve or order ahead</a></p>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <div class="split2">
+        <div>
+          <p class="label">The concept</p>
+          <h2>Not a sports bar</h2>
+          <p>No wall of team logos, no neon. A clean brew house that happens to have the best view of a hockey rink in Las Vegas, a short walk from Downtown Summerlin.</p>
+          <p><a class="btn btn--ghost" href="#/about">More about the room</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="the room between two NHL rinks at dusk"></div>
+      </div>
+
+      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <span class="label" style="margin:0">Brand film</span>
+          <h3>Watch the Rinkside intro</h3>
+          <p>A short brand reveal. Drop it on Instagram, a story, or the top of a reel.</p>
+          <span class="btn">Play the intro</span>
+        </span>
+        <span class="stage"><span class="seal">RB</span><span class="cap">Brand reveal</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ BEER & KITCHEN ============ -->
+  <section class="view" data-route="/menu" id="view-menu">
+    <div class="wrap pagehead">
+      <p class="label">Beer &amp; Kitchen</p>
+      <h1>What is pouring, what is cooking</h1>
+      <p class="lead">Sample categories below. The final tap list and menu are set with the kitchen before opening. No prices are locked here.</p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split2">
+        <div>
+          <h2>On tap</h2>
+          <p>A rotating draft list that leans local and regional, plus a couple of ciders, a non alcoholic pour, and wine by the glass. The board changes often. The current list lives in the house and on Untappd.</p>
+          <ul class="menu">
+            <li><h3>Local &amp; regional drafts</h3><p>A rotating handful, light to dark, updated as kegs blow.</p></li>
+            <li><h3>Cider &amp; seltzer</h3><p>At least one of each on at all times.</p></li>
+            <li><h3>Zero proof</h3><p>A non alcoholic draft or two for the drivers and the players.</p></li>
+            <li><h3>Wine &amp; the well</h3><p>A short, honest wine list and a full bar.</p></li>
+          </ul>
+        </div>
+        <div class="shot shot--tall" data-shot="a fresh pour on the bar, rink lights behind"></div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <h2>From the kitchen</h2>
+      <div class="grid grid--2" style="margin-top:1.4rem">
+        <div class="shot shot--wide" data-shot="a burger and basket, overhead, hard light"></div>
+        <div class="shot shot--wide" data-shot="the kitchen pass mid service"></div>
+      </div>
+      <ul class="menu">
+        <li><h3>Shareables &amp; baskets</h3><p>The table stuff. Wings, fries done properly, pretzels, things to pass around a booth.</p></li>
+        <li><h3>Burgers &amp; sandwiches</h3><p>A tight list, cooked to order, built to eat with one hand between periods.</p></li>
+        <li><h3>A few mains</h3><p>Two or three plates for the nights you sit down and stay a while.</p></li>
+        <li><h3>The kids plate</h3><p>This is a youth hockey building. There is always something simple and quick for the little ones.</p></li>
+        <li><h3>Between periods counter</h3><p>Fast items for a session clock, ordered ahead from your phone and ready at the counter.</p></li>
+      </ul>
+      <p class="note">Categories are a starting point for the concept. Rinkside Brew House works the real menu and tap list with its kitchen and brewers before opening. Nothing here is a promised dish or price.</p>
+      <p style="margin-top:1.8rem"><a class="btn" href="#/reserve">Reserve a table</a></p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap pagehead">
+      <p class="label">About</p>
+      <h1>The best view of the ice in Las Vegas</h1>
+      <p class="lead">A new brew house taking the restaurant space inside City National Arena in Summerlin.</p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split2">
+        <div>
+          <p>City National Arena is the Vegas Golden Knights practice facility and one of the busiest community rinks in the valley. Two full size NHL sheets, public skating and learn to skate, youth and adult leagues, tournaments most weekends. The dining room sits between the two rinks, glass on both sides, so you eat and drink with the ice in view.</p>
+          <p>Rinkside Brew House is a clean, modern take on that room. Rotating local taps, a kitchen worth photographing, full service tables, and a between periods counter for the nights you are on a clock. Not a sports bar. A brew house that happens to sit at the boards.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="wide of the bar and booths, ice through the glass"></div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <h2>What to expect</h2>
+      <div class="grid grid--3" style="margin-top:1.4rem">
+        <div><h3>Walk over from the ice</h3><p class="muted">Skate bag friendly, quick counter service when you need it, a real table when you do not.</p></div>
+        <div><h3>Local on tap</h3><p class="muted">A draft list that changes often and points at Nevada and the region first.</p></div>
+        <div><h3>Built for the whole roster</h3><p class="muted">Beer league teams, hockey parents, Downtown Summerlin regulars, and the kids. Everyone gets fed.</p></div>
+      </div>
+      <p style="margin-top:1.8rem"><a class="btn" href="#/visit">Plan a visit</a></p>
+    </div>
+  </section>
+
+  <!-- ============ RESERVE ============ -->
+  <section class="view" data-route="/reserve" id="view-reserve">
+    <div class="wrap pagehead">
+      <p class="label">Reserve &amp; order ahead</p>
+      <h1>Get a table or get it to go</h1>
+      <p class="lead">Reservations for dinner and big groups, plus order ahead pickup for the between periods rush.</p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split2">
+        <div>
+          <h2>How it works</h2>
+          <ol class="steps">
+            <li><h3>Pick a time</h3><p>Reserve a table online or by phone. Walk ins are always welcome at the bar.</p></li>
+            <li><h3>Big group or a team?</h3><p>Tell us the head count and the date. We hold booths and long tables for tournaments and league nights.</p></li>
+            <li><h3>Order ahead</h3><p>On a session clock, send the order from your phone and pick it up at the counter on your way off the ice.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Reservations</b><span>Online or by phone, hours TBC</span></li>
+            <li><b>Large parties</b><span>Teams and tournaments, call ahead</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17027430823">(702) 743-0823</a></span></li>
+            <li><b>Find us</b><span><a href="https://www.google.com/maps/search/?api=1&query=1550+S+Pavilion+Center+Dr+Las+Vegas+NV+89135" target="_blank" rel="noopener">City National Arena, Summerlin</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Request a table</h2>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Date, time, and how many</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Send request</button>
+            <p class="status" role="status">This form is part of the concept mockup and does not send yet. The real version connects to reservations and online ordering.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section class="view" data-route="/visit" id="view-visit">
+    <div class="wrap pagehead">
+      <p class="label">Visit</p>
+      <h1>Inside City National Arena</h1>
+      <p class="lead">Summerlin, off the 215 at Charleston, next to Downtown Summerlin.</p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split2">
+        <div>
+          <p>Rinkside Brew House is inside City National Arena, between the two ice rinks. Enter through the main arena doors and it is straight ahead, overlooking both sheets.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>1550 S Pavilion Center Dr, Las Vegas, NV 89135</span></li>
+            <li><b>Hours</b><span>TBC, set before opening</span></li>
+            <li><b>Parking</b><span>Free surface lot at City National Arena</span></li>
+            <li><b>Getting here</b><span>215 to Charleston, next to Downtown Summerlin</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17027430823">(702) 743-0823</a></span></li>
+          </ul>
+          <p style="margin-top:1.4rem"><a class="btn" href="#/reserve">Reserve a table</a></p>
+        </div>
+        <div class="grid" style="gap:1rem">
+          <div class="shot shot--wide" data-shot="arena exterior at blue hour"></div>
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="shot shot--square" data-shot="the bar and taps"></div>
+            <div class="shot shot--square" data-shot="a booth with the ice behind"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <a class="shot shot--map" style="text-decoration:none" href="https://www.google.com/maps/search/?api=1&query=1550+S+Pavilion+Center+Dr+Las+Vegas+NV+89135" target="_blank" rel="noopener" data-shot="map, City National Arena on S Pavilion Center Dr"></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="muted">&copy; <span id="yr"></span> Rinkside Brew House &middot; Las Vegas, NV 89135</span>
+    <nav>
+      <a href="#/menu">Beer &amp; Kitchen</a>
+      <a href="#/about">About</a>
+      <a href="#/reserve">Reserve</a>
+      <a href="#/visit">Visit</a>
+      <a href="intro.html" target="_blank" rel="noopener">Brand intro</a>
+    </nav>
+    <span class="muted">(702) 743-0823</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var views = [].slice.call(document.querySelectorAll('.view'));
+  var navLinks = [].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home = document.getElementById('view-home') || views[0];
+    var routeOf = function(v){ return v.getAttribute('data-route'); };
+    var render = function(){
+      var h = (location.hash || '').replace(/^#/, '');
+      if(h && h.charAt(0) !== '/') h = '/' + h;
+      var match = views.filter(function(v){ return routeOf(v) === h; })[0] || home;
+      views.forEach(function(v){ v.classList.toggle('is-active', v === match); });
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + routeOf(match) ? 'page' : 'false');
+      });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', render);
+    render();
+  }
+  var form = document.querySelector('.form');
+  if(form){
+    var status = form.querySelector('.status');
+    var note = status ? status.textContent : '';
+    form.addEventListener('submit', function(e){ e.preventDefault(); if(status) status.textContent = note; });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BrewPub",
+  "name":"Rinkside Brew House",
+  "telephone":"(702) 743-0823",
+  "address":{"@type":"PostalAddress","streetAddress":"1550 S Pavilion Center Dr","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89135"}
+}
+</script>
+
+</body>
+</html>
