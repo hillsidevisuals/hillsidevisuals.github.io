@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<!--
+  Concept website mockup for Lucky House Seafood Restaurant. Built by Hillside Visuals.
+  Router site, one self-contained file (+ intro.html sibling). Prospect brand only.
+  fingerprint: P4 H5 E4 S5 R4 V4
+  - genre editorial / layout menu-forward document / L pale-celadon paper / one lacquer-red accent
+  - masthead centred nameplate nav (not wordmark-left + links-right)
+  - no eyebrow/kicker tags, no hanging headers, headings roman, OKLCH tokens only
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucky House Seafood Restaurant</title>
+<meta name="description" content="Cantonese seafood, dim sum and roast on South Durango in the southwest Las Vegas valley. Oversized siu mai, whole roast duck, a real dessert list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-bg:        oklch(0.968 0.012 150);
+    --color-surface:   oklch(0.945 0.017 150);
+    --color-surface-2: oklch(0.925 0.020 150);
+    --color-fg:        oklch(0.24 0.028 162);
+    --color-heading:   oklch(0.34 0.045 162);
+    --color-muted:     oklch(0.46 0.030 162);
+    --color-border:    oklch(0.86 0.016 150);
+
+    --accent:          oklch(0.52 0.196 25);
+    --accent-hover:    oklch(0.46 0.190 25);
+    --accent-active:   oklch(0.40 0.170 25);
+    --accent-bg:       oklch(0.955 0.028 30);
+    --accent-border:   oklch(0.80 0.085 28);
+    --accent-text:     oklch(0.985 0.008 90);
+
+    --brass:           oklch(0.66 0.090 80);
+
+    --shadow: 0 1px 2px oklch(0.24 0.028 162 / 0.06), 0 14px 36px oklch(0.24 0.028 162 / 0.10);
+
+    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-body: "Karla", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --text-xs:.75rem; --text-sm:.875rem; --text-base:1rem; --text-md:1.125rem;
+    --text-lg:1.375rem; --text-xl:1.75rem; --text-2xl:2.5rem; --text-3xl:3.5rem;
+    --tracking-caps:.16em; --leading-body:1.65; --leading-tight:1.12;
+
+    --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.5rem;
+    --space-6:2rem; --space-7:3rem; --space-8:4rem; --space-9:6rem;
+
+    --radius-sm:3px; --radius-md:6px;
+    --measure:64ch; --page-max:1140px;
+    --pad:clamp(1.15rem,5vw,3rem);
+
+    --ease-out:cubic-bezier(0.22,1,0.36,1);
+    --ease-in:cubic-bezier(0.55,0,1,0.45);
+    --ease-in-out:cubic-bezier(0.65,0,0.35,1);
+    --dur-2:280ms;
+  }
+  @media (prefers-reduced-motion:reduce){ :root{ --dur-2:1ms; } }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--font-body);
+    font-size:1.0625rem;line-height:var(--leading-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{max-width:100%;display:block}
+  a{color:var(--accent-hover);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+  a:hover{color:var(--accent-active)}
+  h1,h2,h3{font-family:var(--font-display);font-style:normal;font-weight:500;color:var(--color-heading);
+    line-height:var(--leading-tight);margin:0 0 .5em;text-wrap:balance;overflow-wrap:break-word}
+  h1{font-size:clamp(2rem,5.4vw,var(--text-3xl));font-weight:500;letter-spacing:-.005em}
+  h2{font-size:clamp(1.5rem,3.6vw,var(--text-2xl))}
+  h3{font-size:var(--text-md);font-weight:600}
+  p{margin:0 0 var(--space-4);max-width:var(--measure)}
+  .wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--pad)}
+  .measure{max-width:var(--measure)}
+
+  .btn{display:inline-block;background:var(--accent-active);color:var(--accent-text);
+    padding:.72em 1.4em;border-radius:var(--radius-sm);text-decoration:none;font-weight:700;
+    font-size:var(--text-sm);letter-spacing:.02em;white-space:nowrap;
+    transition:transform var(--dur-2) var(--ease-out)}
+  .btn:hover{transform:translateY(-1px);color:var(--accent-text)}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--color-heading);border:1px solid var(--color-heading)}
+  .btn--ghost:hover{color:var(--color-heading);background:var(--color-surface)}
+
+  /* ---------- masthead ---------- */
+  .mock-banner{background:var(--color-fg);color:var(--color-bg);text-align:center;
+    font-size:.7rem;letter-spacing:var(--tracking-caps);text-transform:uppercase;padding:.5rem .8rem}
+  .masthead{border-bottom:2px solid var(--accent);background:var(--color-bg)}
+  .masthead .wrap{padding-top:var(--space-5);padding-bottom:var(--space-4);
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-3)}
+  .nameplate{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-decoration:none}
+  .nameplate .seal{width:44px;height:44px}
+  .nameplate .word{font-family:var(--font-display);font-weight:500;color:var(--color-heading);
+    font-size:clamp(1.7rem,5vw,2.4rem);line-height:1}
+  .nameplate .sub{font-family:var(--font-body);font-weight:500;font-size:.7rem;
+    letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--accent-hover)}
+  .nav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.6rem 1.4rem;
+    border-top:1px solid var(--color-border);padding-top:var(--space-3);width:100%}
+  .nav a{text-decoration:none;color:var(--color-muted);font-size:.9rem;letter-spacing:.03em;
+    padding:.2rem 0;border-bottom:2px solid transparent}
+  .nav a:hover{color:var(--color-heading)}
+  .nav a[aria-current="page"]{color:var(--color-heading);border-bottom-color:var(--accent)}
+  .nav .nav-film{color:var(--accent-hover);display:inline-flex;align-items:center;gap:.35em}
+  .nav .nav-film::before{content:"\25B6";font-size:.6em}
+  .nav .nav-order{background:var(--accent-active);color:var(--accent-text);border-radius:var(--radius-sm);
+    padding:.4em 1em;font-weight:700;font-size:.82rem}
+  .nav .nav-order:hover{color:var(--accent-text)}
+
+  /* ---------- views / router ---------- */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin var(--dur-2) var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+
+  .section{padding:var(--space-8) 0;border-top:1px solid var(--color-border)}
+  .section:first-child{border-top:0}
+  .pagehead{padding:var(--space-8) 0 var(--space-5)}
+  .standfirst{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-fg);
+    max-width:52ch;margin:0}
+
+  /* ---------- hero ---------- */
+  .hero{padding:var(--space-8) 0 var(--space-6)}
+  .hero h1{max-width:16ch}
+  .hero .standfirst{margin-bottom:var(--space-5)}
+  .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:var(--space-4)}
+  .pour{margin-top:var(--space-5);font-size:var(--text-sm);color:var(--color-muted)}
+  .pour b{color:var(--color-heading);font-weight:700}
+
+  /* ---------- image slots ---------- */
+  .shot{position:relative;overflow:hidden;border:1px solid var(--color-border);border-radius:var(--radius-sm);
+    background:
+      linear-gradient(135deg, oklch(0.945 0.017 150) 0%, oklch(0.90 0.030 150) 100%);
+    display:flex;align-items:flex-end;padding:var(--space-3);min-height:220px;color:var(--color-muted)}
+  .shot::before{content:"";position:absolute;inset:0;background-image:var(--img,none);
+    background-size:cover;background-position:center}
+  .shot::after{content:"To shoot: " attr(data-shot);position:relative;
+    font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.35;
+    background:oklch(0.24 0.028 162 / 0.78);color:var(--color-bg);padding:.3rem .5rem;border-radius:2px}
+  .shot--hero{min-height:clamp(280px,42vh,460px)}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+  figure.ref{margin:0;position:relative;overflow:hidden;border:1px solid var(--color-border);border-radius:var(--radius-sm)}
+  figure.ref img{width:100%;height:100%;object-fit:cover;display:block}
+  figure.ref figcaption{position:absolute;left:8px;bottom:8px;font-size:.6rem;letter-spacing:.12em;
+    text-transform:uppercase;background:oklch(0.24 0.028 162 / 0.82);color:var(--color-bg);padding:3px 7px;border-radius:2px}
+
+  .grid{display:grid;gap:var(--space-4)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  figure.tile{margin:0}
+  figure.tile figcaption{font-size:.8rem;color:var(--color-muted);margin-top:.5rem;
+    font-family:var(--font-display)}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,3.5rem);align-items:start}
+
+  /* ---------- brand film card ---------- */
+  .filmcard{margin-top:var(--space-7);border:1px solid var(--color-border);border-radius:var(--radius-md);
+    overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;background:var(--color-fg);color:var(--color-bg)}
+  .filmcard .txt{padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;gap:.6rem;justify-content:center}
+  .filmcard h3{color:var(--color-bg);font-size:var(--text-xl);margin:0}
+  .filmcard p{color:oklch(0.968 0.012 150 / 0.82);margin:0;max-width:34ch}
+  .filmcard .btn{align-self:flex-start;margin-top:.5rem;background:var(--accent);color:var(--accent-text)}
+  .filmcard .stage{position:relative;min-height:200px;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(60% 70% at 50% 45%, oklch(0.30 0.03 162) 0%, oklch(0.20 0.025 162) 70%)}
+  .filmcard .stage .ring{width:96px;height:96px;border-radius:50%;border:2px solid var(--brass);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);
+    color:var(--color-bg);font-size:1.5rem}
+  .filmcard .stage .cap{position:absolute;bottom:.9rem;left:0;right:0;text-align:center;font-size:.6rem;
+    letter-spacing:.2em;text-transform:uppercase;color:oklch(0.968 0.012 150 / 0.55)}
+
+  /* ---------- menu ---------- */
+  .menu-note{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius-sm);
+    padding:var(--space-4);font-size:var(--text-sm);color:var(--color-fg);max-width:56ch;margin-bottom:var(--space-6)}
+  .menu-note a{font-weight:700}
+  .course{padding:var(--space-6) 0;border-top:1px solid var(--color-border)}
+  .course:first-of-type{border-top:0;padding-top:0}
+  .course h2{margin-bottom:.2em}
+  .course .lede{color:var(--color-muted);font-size:var(--text-sm);margin:0 0 var(--space-4);max-width:52ch}
+  .dishes{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem 2.5rem}
+  .dishes li{padding:.55rem 0;border-bottom:1px solid var(--color-border);font-size:var(--text-base)}
+  .dishes li span{display:block;color:var(--color-muted);font-size:var(--text-sm);margin-top:.1rem}
+
+  /* ---------- steps / facts ---------- */
+  .steps{list-style:none;counter-reset:s;padding:0;margin:var(--space-5) 0 0;display:grid;gap:var(--space-4)}
+  .steps li{counter-increment:s;padding-left:2.8rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-.15rem;width:1.9rem;height:1.9rem;
+    border:1px solid var(--accent);color:var(--accent-hover);border-radius:50%;display:flex;
+    align-items:center;justify-content:center;font-family:var(--font-display);font-size:.9rem}
+  .steps h3{margin:0 0 .15rem}
+  .steps p{margin:0;color:var(--color-muted);font-size:var(--text-sm)}
+  .facts{list-style:none;padding:0;margin:var(--space-5) 0 0}
+  .facts li{padding:.6rem 0;border-bottom:1px solid var(--color-border);display:flex;gap:1rem;
+    justify-content:space-between;font-size:var(--text-sm)}
+  .facts li b{font-weight:700;color:var(--color-heading)}
+  .facts li span:last-child{color:var(--color-muted);text-align:right}
+  .facts li a{color:var(--accent-hover)}
+
+  .valuepoints{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);margin-top:var(--space-5)}
+  .valuepoints h3{margin:0 0 .3rem}
+  .valuepoints p{margin:0;color:var(--color-muted);font-size:var(--text-sm)}
+
+  /* ---------- concept form ---------- */
+  .form{display:grid;gap:.9rem;margin-top:var(--space-5);max-width:30rem}
+  .form label{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--color-muted);
+    display:block;margin-bottom:.3rem}
+  .form input,.form textarea{width:100%;font:inherit;font-size:var(--text-sm);padding:.7em .8em;
+    border:1px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface);color:var(--color-fg)}
+  .form textarea{min-height:5.5rem;resize:vertical}
+  .form .status{font-size:.8rem;color:var(--color-muted);margin:0}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--color-fg);color:oklch(0.968 0.012 150 / 0.82);padding:var(--space-7) 0;margin-top:0}
+  footer .wrap{display:grid;gap:var(--space-4)}
+  footer .statement{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-bg);max-width:30ch;margin:0}
+  footer nav{display:flex;gap:1rem 1.4rem;flex-wrap:wrap;font-size:var(--text-sm)}
+  footer nav a{color:oklch(0.968 0.012 150 / 0.82);text-decoration:none}
+  footer nav a:hover{color:var(--color-bg)}
+  footer .fine{font-size:.78rem;color:oklch(0.968 0.012 150 / 0.6);margin:0}
+
+  @media (max-width:900px){
+    .split{grid-template-columns:1fr;gap:var(--space-5)}
+    .grid--3{grid-template-columns:repeat(2,1fr)}
+    .filmcard{grid-template-columns:1fr}
+    .valuepoints{grid-template-columns:1fr;gap:var(--space-4)}
+  }
+  @media (max-width:600px){
+    body{font-size:1rem}
+    .grid--3,.grid--2{grid-template-columns:1fr}
+    .dishes{grid-template-columns:1fr;gap:.25rem}
+    .cta-row .btn{flex:1 1 auto;text-align:center}
+    .facts li{flex-direction:column;gap:.15rem}
+    .facts li span:last-child{text-align:left}
+    .nav{gap:.5rem 1rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Concept mockup for Lucky House Seafood Restaurant &middot; built by Hillside Visuals</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="nameplate" href="#/">
+      <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.66 0.090 80)" stroke-width="4"/>
+        <path d="M41 62 C 49 45, 79 45, 89 62 C 79 79, 49 79, 41 62 Z" fill="oklch(0.34 0.045 162)"/>
+        <path d="M41 62 L 26 51 L 30.5 62 L 26 73 Z" fill="oklch(0.34 0.045 162)"/>
+        <circle cx="76" cy="57.5" r="2.6" fill="oklch(0.52 0.196 25)"/>
+      </svg>
+      <span class="word">Lucky House</span>
+      <span class="sub">Seafood &middot; Dim Sum &middot; Roast</span>
+    </a>
+    <nav class="nav">
+      <a href="#/menu">Menu</a>
+      <a href="#/about">About</a>
+      <a href="#/reserve">Reserve</a>
+      <a href="#/visit">Visit</a>
+      <a class="nav-film" href="intro.html" target="_blank" rel="noopener">Brand film</a>
+      <a class="nav-order" href="https://order.mealkeyway.com/customer/release/index?mid=51444868724f392b78417738742b64726c466b6866513d3d#/main" target="_blank" rel="noopener">Order online</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap hero">
+      <h1>Roast duck in the window, tea on the table.</h1>
+      <p class="standfirst">A Cantonese seafood and dim sum house on South Durango. Oversized siu mai, whole roast duck carved to order, and a dessert list other rooms skip. No Chinatown drive.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/menu">See the menu</a>
+        <a class="btn btn--ghost" href="#/reserve">Reserve a table</a>
+      </div>
+      <p class="pour"><b>Now pouring.</b> Beer and wine are served in the dining room.</p>
+      <div class="shot shot--hero" data-shot="the roast-meat window at the door, ducks and char siu on the hook" style="margin-top:2rem"></div>
+
+      <div class="filmcard">
+        <span class="txt">
+          <h3>Watch the Lucky House intro</h3>
+          <p>A short brand reveal. Drop it on a story, a reel, or the top of the page.</p>
+          <a class="btn" href="intro.html" target="_blank" rel="noopener">Play the intro</a>
+        </span>
+        <span class="stage"><span class="ring">LH</span><span class="cap">Six second reveal</span></span>
+      </div>
+    </div>
+
+    <div class="wrap section">
+      <h2>At the table</h2>
+      <p class="measure" style="color:var(--color-muted)">Dim sum made to order, seafood cooked Cantonese style, and the roast counter working all day.</p>
+      <div class="grid grid--3" style="margin-top:1.6rem">
+        <figure class="tile"><div class="shot shot--square" data-shot="oversized siu mai, close"></div><figcaption>The siu mai</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="half roast duck, sliced"></div><figcaption>Roast on the hook</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="the bright dining room, round tables"></div><figcaption>The room</figcaption></figure>
+      </div>
+      <p style="margin-top:1.4rem"><a class="btn btn--ghost" href="#/menu">Read the full menu</a></p>
+    </div>
+
+    <div class="wrap section">
+      <div class="split">
+        <div>
+          <h2>A neighborhood dim sum house</h2>
+          <p>Lucky House opened on South Durango in early 2024, so the southwest valley did not have to drive to Spring Mountain for a proper dim sum lunch. Big round tables, fast carts of shrimp dumplings, and roast duck hanging in the window by the door.</p>
+          <p style="margin:0"><a class="btn btn--ghost" href="#/about">More about the room</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="the storefront on S Durango, duck window lit"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENU ============ -->
+  <section class="view" data-route="/menu" id="view-menu">
+    <div class="wrap pagehead">
+      <h1>The menu</h1>
+      <p class="standfirst">Dim sum, Cantonese barbecue, seafood, and the sweets. A short read of what the room is known for.</p>
+    </div>
+    <div class="wrap section" style="border-top:0;padding-top:0">
+      <p class="menu-note">This is a concept layout, not the full menu. The complete list and prices are in the room and on the <a href="https://order.mealkeyway.com/customer/release/index?mid=51444868724f392b78417738742b64726c466b6866513d3d#/main" target="_blank" rel="noopener">ordering app</a>. Dishes below are the ones regulars and local reviews call out.</p>
+
+      <div class="course">
+        <h2>Dim Sum</h2>
+        <p class="lede">Made to order, brought out hot. The shrimp is where to start.</p>
+        <ul class="dishes">
+          <li>Oversized siu mai <span>the dish people drive for</span></li>
+          <li>Har gow <span>shrimp dumpling</span></li>
+          <li>Shrimp and chive dumplings</li>
+          <li>Shrimp rice noodle roll</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h2>Cantonese Barbecue &amp; Roast</h2>
+        <p class="lede">Carved to order at the counter by the front door.</p>
+        <ul class="dishes">
+          <li>Half roast duck <span>the signature</span></li>
+          <li>Lucky roasted pork <span>belly, crackling skin</span></li>
+          <li>Char siu <span>honey barbecue pork</span></li>
+          <li>Roast meat over rice</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h2>Seafood</h2>
+        <p class="lede">Cooked Cantonese style, salt and pepper or in a clay pot.</p>
+        <ul class="dishes">
+          <li>Honey walnut shrimp</li>
+          <li>Salt and pepper preparations</li>
+          <li>Steamed fish, ginger and scallion</li>
+          <li>Clay pot seafood</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h2>Soup, Congee &amp; Greens</h2>
+        <ul class="dishes">
+          <li>House congee</li>
+          <li>Daily soup</li>
+          <li>Chinese broccoli, garlic sauce</li>
+          <li>Salt and pepper tofu</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h2>Noodles &amp; Rice</h2>
+        <ul class="dishes">
+          <li>Beef chow fun</li>
+          <li>Pan fried noodles</li>
+          <li>House fried rice</li>
+          <li>Chow mein</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h2>Sweets</h2>
+        <p class="lede">A rotating list of Cantonese desserts, the part other dim sum rooms skip.</p>
+        <ul class="dishes">
+          <li>Warm and cold tong sui</li>
+          <li>Steamed sponge cake</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:2rem"><a class="btn" href="#/reserve">Reserve a table</a></p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap pagehead">
+      <h1>About Lucky House</h1>
+      <p class="standfirst">A bright, busy Cantonese seafood and dim sum room for the southwest valley.</p>
+    </div>
+    <div class="wrap section" style="border-top:0;padding-top:0">
+      <div class="split">
+        <div>
+          <p>Lucky House opened on South Durango in early 2024. The idea was simple. The southwest valley is a long way from the Spring Mountain dim sum corridor, and a good neighborhood room could save everyone the drive and the parking.</p>
+          <p>Expect a full dining room most weekends, round tables built for groups, dim sum ordered off a cart and cooked to order, and a roast counter working through duck and pork belly all day. Service is quick. Beer and wine are now served in the room.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="a full round table mid-service, steamer baskets"></div>
+      </div>
+    </div>
+    <div class="wrap section">
+      <h2>What the room is about</h2>
+      <div class="valuepoints">
+        <div><h3>Made to order</h3><p>Dim sum comes out hot, not off a tray that has been sitting since ten.</p></div>
+        <div><h3>Roast on the hook</h3><p>Whole ducks and pork belly in the window, carved when you order.</p></div>
+        <div><h3>A real dessert list</h3><p>Cantonese sweets that most dim sum rooms in town do not bother with.</p></div>
+      </div>
+      <p style="margin-top:2rem"><a class="btn" href="#/reserve">Plan a visit</a></p>
+    </div>
+  </section>
+
+  <!-- ============ RESERVE ============ -->
+  <section class="view" data-route="/reserve" id="view-reserve">
+    <div class="wrap pagehead">
+      <h1>Reserve or order</h1>
+      <p class="standfirst">Walk in for two, call ahead for a group, or order online for pickup and delivery.</p>
+    </div>
+    <div class="wrap section" style="border-top:0;padding-top:0">
+      <div class="split">
+        <div>
+          <h2>Three ways in</h2>
+          <ol class="steps">
+            <li><h3>Walk in</h3><p>Most tables are first come. Dim sum is served any time the room is open.</p></li>
+            <li><h3>Call ahead for a group</h3><p>Large round tables book up on weekends. Call to hold one for six or more.</p></li>
+            <li><h3>Order online</h3><p>Pickup and delivery through the ordering app, DoorDash, Grubhub, and Uber Eats.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Hours</b><span>Daily, roughly 10:00 to 22:00 (confirm by phone)</span></li>
+            <li><b>Groups</b><span>Call ahead for parties of six or more</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17028891887">(702) 889-1887</a></span></li>
+            <li><b>Order online</b><span><a href="https://order.mealkeyway.com/customer/release/index?mid=51444868724f392b78417738742b64726c466b6866513d3d#/main" target="_blank" rel="noopener">Ordering app</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Hold a table</h2>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Date, time, and party size</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Request a table</button>
+            <p class="status" role="status">Concept form. It does not send yet. The build wires this to the phone or a booking tool.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section class="view" data-route="/visit" id="view-visit">
+    <div class="wrap pagehead">
+      <h1>Visit</h1>
+      <p class="standfirst">South Durango just below Flamingo, in the southwest valley near Rhodes Ranch.</p>
+    </div>
+    <div class="wrap section" style="border-top:0;padding-top:0">
+      <div class="split">
+        <div>
+          <p>Lucky House is an end unit in the retail plaza at Durango and Hacienda. Look for the roast ducks in the window. It is about fifteen minutes from the Strip and skips the Chinatown traffic entirely.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>4460 S Durango Dr, Ste H, Las Vegas, NV 89147</span></li>
+            <li><b>Hours</b><span>Daily, roughly 10:00 to 22:00 (confirm by phone)</span></li>
+            <li><b>Parking</b><span>Free lot in front of the plaza</span></li>
+            <li><b>Getting here</b><span>S Durango Dr, just south of Flamingo Rd</span></li>
+          </ul>
+          <p style="margin-top:1.4rem"><a class="btn" href="#/reserve">Reserve or order</a></p>
+        </div>
+        <div class="grid" style="gap:1rem">
+          <div class="shot shot--wide" data-shot="storefront on S Durango, duck window lit"></div>
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="shot shot--square" data-shot="the dining room from the door"></div>
+            <div class="shot shot--square" data-shot="a set round table, tea poured"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap section">
+      <div class="shot shot--wide" data-shot="map and storefront at Durango Dr and Hacienda Ave"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="statement">Roast duck in the window, tea on the table.</p>
+    <nav>
+      <a href="#/menu">Menu</a>
+      <a href="#/about">About</a>
+      <a href="#/reserve">Reserve</a>
+      <a href="#/visit">Visit</a>
+      <a href="intro.html" target="_blank" rel="noopener">Brand film</a>
+      <a href="https://www.yelp.com/biz/lucky-house-seafood-restaurant-las-vegas-2" target="_blank" rel="noopener">Yelp</a>
+    </nav>
+    <p class="fine">&copy; <span id="yr"></span> Lucky House Seafood Restaurant &middot; 4460 S Durango Dr, Ste H, Las Vegas, NV 89147 &middot; (702) 889-1887</p>
+    <p class="fine">Concept mockup by Hillside Visuals. Not the restaurant's current website.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var views = [].slice.call(document.querySelectorAll('.view'));
+  var navLinks = [].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home = document.getElementById('view-home') || views[0];
+    var routeOf = function(v){ return v.getAttribute('data-route'); };
+    var render = function(){
+      var h = (location.hash || '').replace(/^#/, '');
+      if(h && h.charAt(0) !== '/') h = '/' + h;
+      var match = views.filter(function(v){ return routeOf(v) === h; })[0] || home;
+      views.forEach(function(v){ v.classList.toggle('is-active', v === match); });
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + routeOf(match) ? 'page' : 'false');
+      });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', render);
+    render();
+  }
+  var form = document.querySelector('.form');
+  if(form){
+    var status = form.querySelector('.status');
+    var note = status ? status.textContent : '';
+    form.addEventListener('submit', function(e){ e.preventDefault(); if(status) status.textContent = note; });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Lucky House Seafood Restaurant",
+  "servesCuisine":["Cantonese","Dim Sum","Seafood"],
+  "telephone":"(702) 889-1887",
+  "address":{"@type":"PostalAddress","streetAddress":"4460 S Durango Dr, Ste H","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89147"}
+}
+</script>
+
+</body>
+</html>

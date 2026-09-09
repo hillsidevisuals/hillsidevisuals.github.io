@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+  Lucky House Seafood Restaurant — brand intro. Bespoke, built on the concept design system.
+  Motif: a brushed-brass ring (the round banquet plate / a fortune seal) draws once clockwise,
+  settles; "Lucky House" fades up inside it; one thin lacquer-red rule underlines the tagline
+  and holds. transform / opacity only. Fluid (cqw); frame goes portrait on narrow screens so
+  nothing clips. Prospect brand only, no Hillside marks.
+  fingerprint: P4 H5 E4 S4 R5 V4
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lucky House Seafood Restaurant | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: oklch(0.20 0.024 162);
+    --raised: oklch(0.28 0.030 162);
+    --paper: oklch(0.968 0.012 150);
+    --muted: oklch(0.968 0.012 150 / 0.76);
+    --faint: oklch(0.968 0.012 150 / 0.58);
+    --line: oklch(0.968 0.012 150 / 0.16);
+    --accent: oklch(0.60 0.190 25);
+    --brass: oklch(0.72 0.095 85);
+    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-body: "Karla", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --ease-out: cubic-bezier(0.22,1,0.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg)}
+  body{color:var(--paper);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:16px;padding:clamp(14px,4vw,32px)}
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    background:var(--bg);overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.5)}
+  .frame-bg{position:absolute;inset:0;background:radial-gradient(58% 68% at 50% 44%,var(--raised) 0%,var(--bg) 64%)}
+  .frame::before{content:"";position:absolute;inset:3.2cqw;border:1px solid var(--line);pointer-events:none;z-index:3}
+  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:6cqw;text-align:center}
+
+  .ring{width:clamp(88px,22cqw,240px);height:clamp(88px,22cqw,240px);margin-bottom:3cqw}
+  .ring circle.band{fill:none;stroke:var(--brass);stroke-width:2.5;transform-origin:50% 50%;transform:rotate(-90deg);
+    stroke-dasharray:302;stroke-dashoffset:302;animation:draw .9s var(--ease-out) .12s both}
+  .ring .fish{fill:var(--paper);opacity:0;animation:pop .45s var(--ease-out) .74s both}
+  .ring .eye{fill:var(--accent);opacity:0;animation:pop .4s var(--ease-out) .9s both}
+
+  .wordmark{font-family:var(--font-display);font-weight:500;font-size:clamp(30px,8.4cqw,104px);
+    line-height:1;color:var(--paper);opacity:0;transform:translateY(.5em);
+    animation:rise .6s var(--ease-out) .92s both}
+  .tagwrap{margin-top:3cqw;display:inline-flex;flex-direction:column;align-items:center;gap:1.8cqw;max-width:92%}
+  .tagline{font-family:var(--font-body);font-size:clamp(13px,2cqw,26px);color:var(--muted);
+    opacity:0;animation:rise .5s var(--ease-out) 1.16s both}
+  .rule{width:100%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:50% 50%;
+    animation:wipe .5s var(--ease-out) 1.28s both}
+  .meta{margin-top:4cqw;font-size:clamp(10px,1.5cqw,18px);font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--faint);opacity:0;animation:rise .5s var(--ease-out) 1.44s both;
+    max-width:92%;line-height:1.5}
+
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @keyframes wipe{to{transform:scaleX(1)}}
+  @keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+  @media (prefers-reduced-motion:reduce){
+    .ring circle.band{animation:none;stroke-dashoffset:0}
+    .ring .fish,.ring .eye,.wordmark,.tagline,.meta{animation:none;opacity:1;transform:none}
+    .rule{animation:none;transform:scaleX(1)}
+  }
+  .replaying .ring circle.band,.replaying .ring .fish,.replaying .ring .eye,
+  .replaying .wordmark,.replaying .tagline,.replaying .rule,.replaying .meta{animation:none}
+
+  /* narrow screens: the frame goes portrait so the stacked lockup never clips */
+  @media (max-width:680px){
+    .frame{aspect-ratio:3/4}
+    .ring{margin-bottom:5cqw}
+    .tagwrap{margin-top:5cqw}
+    .meta{margin-top:7cqw}
+  }
+
+  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+  .page-meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--paper);background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer}
+  .replay:hover{border-color:var(--paper)}
+  .visit{color:var(--faint);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+  .visit:hover{color:var(--paper)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="frame" aria-label="Lucky House Seafood Restaurant brand intro, six second reveal">
+    <div class="frame-bg" aria-hidden="true"></div>
+    <div class="inner">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="band" cx="60" cy="60" r="48"/>
+        <path class="fish" d="M44 62 C 51 47, 77 47, 86 62 C 77 77, 51 77, 44 62 Z"/>
+        <path class="fish" d="M44 62 L 31 52 L 35 62 L 31 72 Z"/>
+        <circle class="eye" cx="74" cy="58" r="2.4"/>
+      </svg>
+      <h1 class="wordmark">Lucky House</h1>
+      <span class="tagwrap">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="tagline">Roast duck in the window, tea on the table.</span>
+      </span>
+      <div class="meta">Seafood &middot; Dim Sum &middot; Roast<br>Las Vegas, NV</div>
+    </div>
+  </section>
+  <div class="row">
+    <span class="page-meta">Lucky House &middot; brand intro &middot; 6s</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./index.html">Visit the site</a>
+  </div>
+</main>
+<script>
+(function(){
+  var frame = document.querySelector('.frame');
+  var btn = document.querySelector('.replay');
+  if(btn && frame){
+    btn.addEventListener('click', function(){
+      frame.classList.add('replaying');
+      void frame.offsetWidth;
+      frame.classList.remove('replaying');
+    });
+  }
+})();
+</script>
+</body>
+</html>
