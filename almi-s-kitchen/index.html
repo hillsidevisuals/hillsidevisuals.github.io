@@ -13,7 +13,7 @@
 <meta name="description" content="Almi's Kitchen. A warm Ethiopian and American kitchen on Arville St in Las Vegas. One platter, shared. Reserve a table or order online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@500;600;700&family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --color-bg:oklch(0.81 0.040 74);
@@ -27,9 +27,10 @@
     --accent-active:oklch(0.37 0.090 150);
     --accent-bg:oklch(0.93 0.030 150);
     --accent-text:oklch(0.98 0.010 150);
+    --accent-deep:oklch(0.40 0.090 150);
     --ph:oklch(0.76 0.036 74);
     --font-display:"Eczar",Georgia,"Times New Roman",serif;
-    --font-body:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --font-body:"Familjen Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     --maxw:1080px;
     --pad:clamp(1.15rem,5vw,3rem);
     --radius:3px;
@@ -86,7 +87,7 @@
   .nav a[aria-current="page"]{color:var(--color-fg);font-weight:600;box-shadow:inset 0 -2px 0 var(--accent)}
   .nav a.cta{color:var(--accent-text);background:var(--accent);padding:.55em 1.15em;border-radius:2px;font-weight:600;font-size:.86rem}
   .nav a.cta:hover{background:var(--accent-hover);color:var(--accent-text)}
-  .nav a.nav-intro{color:var(--color-accent);font-weight:600;display:inline-flex;align-items:center;gap:.4em}
+  .nav a.nav-intro{color:var(--accent-deep);font-weight:600;display:inline-flex;align-items:center;gap:.4em}
   .nav a.nav-intro::before{content:"\25B6";font-size:.66em}
 
   /* router */
@@ -143,7 +144,7 @@
   .facts li{padding:.6rem 0;border-bottom:var(--line);display:flex;gap:1rem;justify-content:space-between}
   .facts li b{font-weight:600}
   .facts li span:last-child{color:var(--color-muted);text-align:right}
-  .facts a{color:var(--color-accent);text-decoration:none}
+  .facts a{color:var(--accent-deep);text-decoration:none}
   .facts a:hover{text-decoration:underline}
 
   .form{display:grid;gap:.9rem;margin-top:1.4rem;max-width:32rem}
@@ -157,7 +158,7 @@
   .introcard{margin-top:2.6rem;border:var(--line);border-radius:4px;overflow:hidden;
     display:grid;grid-template-columns:1.1fr .9fr;background:var(--color-fg);color:var(--color-bg);text-decoration:none}
   .introcard .txt{padding:clamp(1.5rem,4vw,2.4rem);display:flex;flex-direction:column;gap:.55rem;justify-content:center}
-  .introcard h3{font-size:clamp(1.35rem,3vw,1.9rem);margin:0;color:var(--color-bg)}
+  .introcard .ih{font-family:var(--font-display);font-weight:600;font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.12;margin:0;color:var(--color-bg)}
   .introcard p{color:color-mix(in srgb,var(--color-bg) 88%,transparent);margin:0;font-size:.95rem}
   .introcard .k{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--color-bg) 78%,transparent)}
   .introcard .go{align-self:flex-start;margin-top:.5rem;background:var(--accent);color:var(--accent-text);
@@ -181,7 +182,7 @@
   footer a:hover{color:var(--color-bg)}
 
   .mock-banner{background:var(--color-fg);color:var(--color-bg);text-align:center;
-    font-size:clamp(.62rem,2vw,.74rem);letter-spacing:.14em;text-transform:uppercase;padding:.5rem .8rem}
+    font-size:clamp(.66rem,2vw,.78rem);letter-spacing:.02em;padding:.5rem .8rem}
 
   @media (max-width:900px){
     .split{grid-template-columns:1fr;gap:1.8rem}
@@ -206,7 +207,7 @@
 </head>
 <body>
 
-<div class="mock-banner">Concept mockup for Almi&rsquo;s Kitchen &mdash; built by Hillside Visuals</div>
+<div class="mock-banner">Concept mockup for Almi&rsquo;s Kitchen, built by Hillside Visuals</div>
 
 <header class="nav">
   <div class="wrap">
@@ -241,7 +242,7 @@
       <a class="introcard" href="intro.html" target="_blank" rel="noopener">
         <span class="txt">
           <span class="k">Brand film</span>
-          <h3>Watch the Almi&rsquo;s Kitchen intro</h3>
+          <p class="ih">Watch the Almi&rsquo;s Kitchen intro</p>
           <p>A short brand reveal built on the identity. Drop it on Instagram, a story, or the top of a reel.</p>
           <span class="go">Play the intro</span>
         </span>
