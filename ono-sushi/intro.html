@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ono Sushi, brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /*
+   * Ono Sushi brand intro — bespoke, built on the Phase-A system (../brand/DESIGN.md + variables.css).
+   * A Vignelli reveal, re-composed for this brand: a strict grid, one heavy indigo rule draws
+   * across, the nigiri mark assembles (rice block, then the indigo bar slides on), the wordmark
+   * resolves in Zen Old Mincho above the rule, a hairline and the meta settle, then it holds.
+   * Nothing like a generic brush-sweep sting. Container-query fluid, scales as one unit.
+   *
+   * fingerprint self-critique: P5 H4 E4 S4 R5 V4
+   *   Philosophy 5 — Unimark/Vignelli grid discipline for a strip-mall sushi bar, the anti-cliche
+   *   Hierarchy 4  — the rule and the wordmark own the frame, everything else is quiet
+   *   Execution 4  — OKLCH tokens only, cqw units, holds the final lockup, #still capture mode
+   *   Specificity 4 — the nigiri mark is the hero element, real tagline, real handle
+   *   Restraint 5  — one accent (indigo), transform/opacity only, 3 primitives
+   *   Variety 4    — modernist grid reveal, shares 0 axes with the eddies glitch-title intro
+   */
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--bg); }
+  img,svg{ display:block; }
+  h1,p{ margin:0; }
+  button{ font:inherit; }
+
+  :root{
+    --bg:            oklch(0.976 0.004 250);
+    --fg:            oklch(0.23 0.02 265);
+    --muted:         oklch(0.44 0.015 265);
+    --hairline:      oklch(0.86 0.008 262);
+    --accent:        oklch(0.45 0.148 264);
+    --accent-hover:  oklch(0.40 0.146 264);
+    --font-display:  "Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+    --font-body:     "IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --ease-out:      cubic-bezier(0.2,0.7,0.3,1);
+    --draw:          cubic-bezier(0.16,1,0.3,1);
+  }
+
+  body{ font-family:var(--font-body); display:flex; align-items:center; justify-content:center; min-height:100vh; }
+
+  .frame{
+    container-type:inline-size;
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    background:var(--bg);
+  }
+  @media (max-width:760px){ .frame{ aspect-ratio:1/1; } }
+  @media (max-width:430px){ .frame{ aspect-ratio:4/5; } }
+
+  .stage{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    padding:clamp(16px,6cqw,84px) clamp(18px,7cqw,104px);
+  }
+
+  /* ===== top label ===== */
+  .toplabel{
+    font-family:var(--font-body); font-weight:600;
+    font-size:clamp(9px,1.4cqw,17px); letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--muted); white-space:nowrap;
+    opacity:0; animation:fadeIn 0.4s var(--ease-out) 0.2s both;
+  }
+
+  /* ===== center: mark + wordmark + the heavy rule ===== */
+  .center{
+    flex:1; display:flex; flex-direction:column; justify-content:center;
+    gap:clamp(10px,1.8cqw,26px);
+  }
+
+  .lockup{ display:flex; align-items:center; gap:clamp(12px,2.6cqw,40px); }
+
+  .mark{ width:clamp(48px,12cqw,150px); height:auto; flex:none; }
+  .mark .rice{
+    opacity:0; transform:translateY(0.5em);
+    animation:riseIn 0.5s var(--draw) 0.5s both;
+  }
+  .mark .neta{
+    transform-origin:left center; transform:scaleX(0);
+    animation:barIn 0.55s var(--draw) 0.9s both;
+  }
+  @keyframes barIn{ to{ transform:scaleX(1); } }
+
+  .wordmark{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(30px,9.5cqw,118px); line-height:0.9;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--fg);
+    opacity:0; transform:translateY(0.4em);
+    animation:riseIn 0.6s var(--draw) 1.15s both;
+  }
+
+  .heavyrule{
+    height:clamp(4px,0.7cqw,10px); background:var(--accent);
+    transform-origin:left center; transform:scaleX(0);
+    animation:ruleX 0.7s var(--draw) 0.85s both;
+  }
+  @keyframes ruleX{ to{ transform:scaleX(1); } }
+
+  .tagline{
+    font-family:var(--font-body); font-weight:500;
+    font-size:clamp(12px,2cqw,25px); color:var(--muted);
+    opacity:0; transform:translateY(0.4em);
+    animation:riseIn 0.5s var(--ease-out) 1.5s both;
+  }
+
+  /* ===== footer ===== */
+  .footer{ position:relative; }
+  .footer-rule{
+    height:1px; background:var(--hairline);
+    transform-origin:left center; transform:scaleX(0);
+    animation:ruleX 0.5s var(--draw) 1.75s both;
+  }
+  .footer-row{
+    margin-top:clamp(8px,1.4cqw,18px);
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:clamp(8px,1.6cqw,22px);
+  }
+  @container (max-width:540px){ .footer-row{ flex-direction:column; align-items:flex-start; gap:12px; } }
+  .footer-meta{
+    display:flex; align-items:center; gap:clamp(6px,1cqw,14px);
+    font-family:var(--font-body); font-weight:600;
+    font-size:clamp(10px,1.5cqw,19px); letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--muted); opacity:0;
+    animation:fadeIn 0.45s var(--ease-out) 2s both;
+  }
+  .footer-meta .dot{ color:var(--accent); }
+
+  .controls{ display:flex; align-items:center; gap:clamp(10px,1.6cqw,22px);
+    opacity:0; animation:fadeIn 0.4s var(--ease-out) 2.2s both; }
+  .replay-btn{
+    display:inline-flex; align-items:center; gap:clamp(4px,0.7cqw,8px);
+    background:transparent; border:1px solid var(--hairline); border-radius:2px; cursor:pointer;
+    padding:clamp(5px,0.9cqw,10px) clamp(10px,1.7cqw,18px);
+    font-family:var(--font-body); font-weight:600;
+    font-size:clamp(9px,1.15cqw,13px); letter-spacing:0.08em; text-transform:uppercase; color:var(--fg);
+    transition:border-color .15s ease,color .15s ease;
+  }
+  .replay-btn svg{ width:clamp(8px,1cqw,13px); height:clamp(8px,1cqw,13px); }
+  .replay-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .replay-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .visit-link{
+    font-family:var(--font-body); font-weight:600;
+    font-size:clamp(9px,1.15cqw,13px); letter-spacing:0.06em;
+    color:var(--fg); text-decoration:none; border-bottom:1px solid var(--accent);
+  }
+  .visit-link:hover{ color:var(--accent); }
+  .visit-link:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+  @keyframes fadeIn{ to{ opacity:1; } }
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+
+  /* still frame */
+  .frame.still .toplabel,
+  .frame.still .mark .rice,
+  .frame.still .wordmark,
+  .frame.still .tagline,
+  .frame.still .footer-meta,
+  .frame.still .controls{ animation:none!important; opacity:1; transform:none; }
+  .frame.still .mark .neta,
+  .frame.still .heavyrule,
+  .frame.still .footer-rule{ animation:none!important; transform:scaleX(1); }
+
+  @media (prefers-reduced-motion:reduce){
+    .toplabel,.mark .rice,.mark .neta,.wordmark,.heavyrule,.tagline,.footer-rule,.footer-meta,.controls{
+      animation:none!important;
+    }
+    .toplabel,.mark .rice,.wordmark,.tagline,.footer-meta,.controls{ opacity:1; transform:none; }
+    .mark .neta,.heavyrule,.footer-rule{ transform:scaleX(1); }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame" id="frame">
+  <div class="stage">
+    <span class="toplabel">Las Vegas &nbsp;&middot;&nbsp; Sushi bar</span>
+
+    <div class="center">
+      <div class="lockup">
+        <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+          <rect class="rice" x="16" y="41" width="68" height="33" rx="6" fill="var(--fg)"/>
+          <rect class="neta" x="10" y="30" width="80" height="16" rx="8" fill="var(--accent)"/>
+        </svg>
+        <h1 class="wordmark">Ono&nbsp;Sushi</h1>
+      </div>
+      <div class="heavyrule"></div>
+      <p class="tagline">All you can eat, cut to order.</p>
+    </div>
+
+    <div class="footer">
+      <div class="footer-rule"></div>
+      <div class="footer-row">
+        <div class="footer-meta">
+          <span>Las Vegas, NV</span>
+          <span class="dot">&middot;</span>
+          <span>@onosushilv</span>
+        </div>
+        <div class="controls">
+          <button class="replay-btn" id="replayBtn" type="button" aria-label="Replay the intro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+            Replay
+          </button>
+          <a class="visit-link" href="./">Visit the site</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var frame=document.getElementById('frame');
+    var replayBtn=document.getElementById('replayBtn');
+    function applyStill(){
+      if(location.hash==='#still') frame.classList.add('still');
+      else frame.classList.remove('still');
+    }
+    applyStill();
+    window.addEventListener('hashchange',applyStill);
+    replayBtn.addEventListener('click',function(){
+      frame.classList.remove('still');
+      if(location.hash==='#still'){ history.replaceState(null,'',location.pathname); }
+      var els=frame.querySelectorAll('.toplabel,.rice,.neta,.wordmark,.heavyrule,.tagline,.footer-rule,.footer-meta,.controls');
+      els.forEach(function(el){ el.style.animation='none'; });
+      void frame.offsetWidth;
+      els.forEach(function(el){ el.style.animation=''; });
+    });
+  })();
+</script>
+
+</body>
+</html>

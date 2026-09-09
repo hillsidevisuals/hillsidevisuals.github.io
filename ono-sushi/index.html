@@ -1,19 +1,536 @@
 <!DOCTYPE html>
+<!--
+  Ono Sushi — concept website mockup by Hillside Visuals. Router site, one self-contained file.
+  Built on the Phase-A design system in ../brand/ (DESIGN.md + variables.css + logos).
+  Fingerprint row 15: modern-minimal / grid, precise modernist / light paper (band L) /
+  one indigo stroke / Zen Old Mincho + IBM Plex Sans / minimal 2-link nav.
+  Content is drawn only from ../research.md and ../brand.md. Unknowns are TBC / "confirm by phone",
+  never invented. No prices, no roll names, no review counts (task rule).
+
+  fingerprint self-critique: P5 H4 E4 S5 R5 V4
+    Philosophy 5  — a Vignelli grid for a strip-mall sushi bar, the opposite of the red-lacquer template
+    Hierarchy 4   — one headline + one indigo rule per view, menu is a strict two-column register
+    Execution 4   — OKLCH tokens only, router tested at 390/768/1280, AA checked on real grounds
+    Specificity 5 — real corner, real menu categories, real IG, real delivery links, new-ownership fact
+    Restraint 5   — one accent (indigo), one stroke per view, under 3 motion primitives
+    Variety 4     — grid/modernist + light paper + 2-link nav; shares 0 axes with eddies (poster/newsprint/slab)
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-    <title>Ono Sushi</title>
-    <style>
-        body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; margin: 0; }
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1a1a; color: #fff; }
-        h1 { font-family: 'Playfair Display', serif; }
-    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ono Sushi</title>
+<meta name="description" content="Concept website mockup for Ono Sushi, a neighborhood sushi bar on the Flamingo and Eastern corner in Las Vegas. All you can eat and a la carte. By Hillside Visuals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---- Phase-A tokens, re-declared from ../brand/variables.css (reference by name only below) ---- */
+  :root{
+    --bg: oklch(0.976 0.004 250);
+    --fg: oklch(0.23 0.02 265);
+    --surface: oklch(0.945 0.006 255);
+    --muted: oklch(0.44 0.015 265);
+    --border: oklch(0.23 0.02 265);
+    --hairline: oklch(0.86 0.008 262);
+    --ink-deep: oklch(0.17 0.02 265);
+    --accent: oklch(0.45 0.148 264);
+    --accent-hover: oklch(0.40 0.146 264);
+    --accent-active: oklch(0.35 0.13 264);
+    --accent-bg: oklch(0.95 0.028 265);
+    --accent-border: oklch(0.80 0.06 265);
+    --accent-text: oklch(0.985 0.004 250);
+    --ring: oklch(0.45 0.148 264);
+    --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+    --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --step--1: clamp(0.80rem, 0.77rem + 0.15vw, 0.88rem);
+    --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.08rem);
+    --step-1: clamp(1.15rem, 1.08rem + 0.4vw, 1.35rem);
+    --step-2: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+    --step-3: clamp(2rem, 1.6rem + 1.9vw, 3rem);
+    --step-4: clamp(2.6rem, 1.9rem + 3.4vw, 4.4rem);
+    --step-5: clamp(3.1rem, 2rem + 5.4vw, 5.6rem);
+    --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
+    --space-6:1.5rem; --space-8:2rem; --space-12:3rem; --space-16:4rem; --space-24:6rem;
+    --radius:2px; --radius-lg:3px;
+    --shadow:0 16px 40px -18px oklch(0.23 0.02 265 / 0.4);
+    --ease-out:cubic-bezier(0.2,0.7,0.3,1);
+    --ease-in:cubic-bezier(0.5,0,0.9,0.3);
+    --ease-in-out:cubic-bezier(0.7,0,0.3,1);
+    --maxw:1120px;
+    --pad:clamp(1.15rem,5vw,3rem);
+    /* photo-slot pattern: unset for new-brand -> every image region falls back to a labelled panel */
+    --img-hero:none; --img-menu:none; --img-about:none; --img-room:none;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);
+    font-size:var(--step-0);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;font-style:normal;line-height:1.08;
+    margin:0 0 var(--space-4);letter-spacing:0.01em;overflow-wrap:break-word}
+  h1{font-size:var(--step-4)}
+  h2{font-size:var(--step-3)}
+  h3{font-size:var(--step-1);font-weight:600}
+  p{margin:0 0 var(--space-4);max-width:68ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .block{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(2.2rem,6vw,4rem);border-top:1px solid var(--hairline)}
+  .block:first-child{border-top:0}
+  .pagehead + .block{border-top:0;padding-top:var(--space-4)}
+
+  /* ---- the one indigo stroke ---- */
+  .rule{height:4px;background:var(--accent);border:0;margin:0 0 var(--space-6);width:min(200px,42vw)}
+  .rule--full{width:100%}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--accent);
+    color:var(--accent-text);padding:0.85em 1.6em;border-radius:var(--radius);text-decoration:none;
+    font-weight:600;font-size:var(--step--1);letter-spacing:0.08em;text-transform:uppercase;
+    border:1.5px solid var(--accent);
+    transition:transform .16s var(--ease-out),background .16s var(--ease-out)}
+  .btn:hover{background:var(--accent-hover);border-color:var(--accent-hover);transform:translateY(-2px)}
+  .btn:active{background:var(--accent-active)}
+  .btn--ghost{background:transparent;color:var(--accent);border-color:var(--accent)}
+  .btn--ghost:hover{background:transparent;border-color:var(--accent-hover);color:var(--accent-hover);transform:translateY(-2px)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ring);outline-offset:3px}
+
+  /* ---- minimal 2-link nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(8px);border-bottom:2px solid var(--border)}
+  .nav .wrap{display:flex;align-items:center;gap:var(--space-6);padding-top:var(--space-3);padding-bottom:var(--space-3);flex-wrap:wrap}
+  .brandmark{display:inline-flex;align-items:center;gap:0.6rem;text-decoration:none;margin-right:auto;white-space:nowrap}
+  .brandmark svg{width:34px;height:34px;flex:none}
+  .brandmark span{font-family:var(--font-display);font-weight:600;font-size:clamp(1.05rem,3vw,1.3rem);
+    letter-spacing:0.12em;text-transform:uppercase;color:var(--fg)}
+  .nav ul{display:flex;gap:var(--space-6);list-style:none;margin:0;padding:0;font-size:var(--step--1);
+    text-transform:uppercase;letter-spacing:0.1em;font-weight:500}
+  .nav ul a{text-decoration:none;color:var(--muted)}
+  .nav ul a:hover{color:var(--fg)}
+  .nav ul a[aria-current="page"]{color:var(--accent)}
+  .nav .nav-intro{color:var(--accent)}
+  .nav .nav-intro:hover{color:var(--accent-hover)}
+  .nav a.btn{color:var(--accent-text)}
+  .nav a.btn:hover{color:var(--accent-text)}
+
+  /* ---- router ---- */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .32s var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto}
+  }
+
+  /* ---- modernist hero ---- */
+  .hero{padding-top:clamp(2.6rem,7vw,5rem);padding-bottom:clamp(2rem,5vw,3.5rem)}
+  .hero h1{font-size:var(--step-5);line-height:1;max-width:16ch;margin-bottom:var(--space-6)}
+  .hero .lead{font-size:var(--step-1);color:var(--muted);max-width:46ch}
+  .hero .cta-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-8)}
+
+  .pagehead{padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:var(--space-4)}
+  .pagehead .lead{font-size:var(--step-1);color:var(--muted);max-width:56ch}
+  .lead{font-size:var(--step-1)}
+
+  /* ---- shot placeholders (photo-slot fallback for new-brand) ---- */
+  .shot{position:relative;overflow:hidden;border:1px solid var(--hairline);border-radius:var(--radius);
+    background:var(--surface);display:flex;align-items:flex-end;padding:var(--space-3);min-height:210px;
+    color:var(--muted);font-size:var(--step--1);letter-spacing:0.04em}
+  .shot::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg, oklch(0.45 0.148 264 / 0.06), transparent 60%)}
+  .shot::after{content:"\25C6  " attr(data-shot);position:relative;z-index:1;line-height:1.35;max-width:28ch;text-transform:uppercase}
+  .shot--hero{min-height:min(46vh,380px)}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+
+  .grid{display:grid;gap:var(--space-4)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  figure.tile{margin:0}
+  .tile figcaption{margin-top:var(--space-2);font-size:var(--step--1);letter-spacing:0.03em;color:var(--muted)}
+
+  .split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(1.6rem,5vw,4rem);align-items:start}
+
+  /* ---- the menu register (strict two-column modernist list) ---- */
+  .register{list-style:none;padding:0;margin:var(--space-6) 0 0}
+  .register li{display:grid;grid-template-columns:minmax(0,15rem) 1fr;gap:var(--space-3) var(--space-8);
+    padding:var(--space-6) 0;border-top:1px solid var(--hairline)}
+  .register li:last-child{border-bottom:1px solid var(--hairline)}
+  .register h2{font-size:var(--step-2);margin:0;color:var(--fg)}
+  .register p{margin:0;color:var(--muted)}
+  .register-note{margin-top:var(--space-8);font-weight:500;color:var(--fg)}
+
+  /* ---- steps ---- */
+  .steps{list-style:none;counter-reset:s;padding:0;margin:var(--space-8) 0 0;display:grid;gap:var(--space-6)}
+  .steps li{counter-increment:s;padding-left:3.6rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-0.1rem;width:2.6rem;height:2.6rem;
+    background:var(--accent);color:var(--accent-text);border-radius:var(--radius);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:var(--step-0)}
+  .steps h2{margin:0 0 var(--space-1);font-size:var(--step-1)}
+  .steps p{margin:0;color:var(--muted)}
+
+  /* ---- facts ---- */
+  .facts{list-style:none;padding:0;margin:var(--space-6) 0 0}
+  .facts li{padding:var(--space-3) 0;border-top:1px solid var(--hairline);display:flex;
+    justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
+  .facts li:last-child{border-bottom:1px solid var(--hairline)}
+  .facts b{font-weight:600;text-transform:uppercase;letter-spacing:0.1em;font-size:var(--step--1)}
+  .facts span{color:var(--muted);text-align:right}
+  .facts a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+  .facts a:hover{color:var(--accent-hover)}
+
+  /* ---- points ---- */
+  .points{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);margin-top:var(--space-6)}
+  .points h3{color:var(--fg);margin-bottom:var(--space-2)}
+  .points p{color:var(--muted);margin:0;font-size:var(--step--1)}
+
+  /* ---- concept form ---- */
+  .form{display:grid;gap:var(--space-4);margin-top:var(--space-6);max-width:34rem}
+  .form label{display:block;font-size:var(--step--1);text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:var(--space-2)}
+  .form input,.form textarea{width:100%;font:inherit;padding:0.7em 0.85em;border:1px solid var(--border);
+    border-radius:var(--radius);background:var(--bg);color:var(--fg)}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:var(--step--1);color:var(--muted);margin:0}
+
+  /* ---- links list ---- */
+  .linklist{list-style:none;padding:0;margin:var(--space-6) 0 0;display:grid;gap:var(--space-3)}
+  .linklist a{display:inline-flex;align-items:center;gap:var(--space-2);color:var(--accent);
+    text-decoration:underline;text-underline-offset:3px;font-weight:500}
+  .linklist a:hover{color:var(--accent-hover)}
+
+  /* ---- brand intro card ---- */
+  .introcard{margin-top:var(--space-12);border:1px solid var(--accent-border);border-radius:var(--radius-lg);
+    overflow:hidden;display:grid;grid-template-columns:1.1fr 0.9fr;background:var(--ink-deep);
+    text-decoration:none;color:var(--accent-text)}
+  .introcard .txt{padding:clamp(1.5rem,4vw,2.6rem);display:flex;flex-direction:column;gap:var(--space-3);justify-content:center}
+  .introcard h3{font-size:var(--step-2);margin:0;color:var(--accent-text)}
+  .introcard p{color:color-mix(in srgb, var(--accent-text) 78%, transparent);margin:0}
+  .introcard .btn{align-self:flex-start;margin-top:var(--space-2)}
+  .introcard .stage{position:relative;min-height:210px;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(60% 70% at 50% 45%, var(--accent-bg), var(--ink-deep) 72%)}
+  .introcard .stage svg{width:46%;height:auto}
+  .introcard .stage .cap{position:absolute;bottom:var(--space-3);left:0;right:0;text-align:center;
+    font-size:var(--step--1);letter-spacing:0.12em;text-transform:uppercase;
+    color:color-mix(in srgb, var(--accent-text) 66%, transparent)}
+
+  /* ---- footer ---- */
+  footer{background:var(--ink-deep);color:var(--accent-text);padding:var(--space-12) 0 var(--space-8);border-top:4px solid var(--accent)}
+  footer .wrap{display:grid;gap:var(--space-6)}
+  .foot-mark{font-family:var(--font-display);text-transform:uppercase;font-size:var(--step-2);letter-spacing:0.12em}
+  footer nav{display:flex;gap:var(--space-4) var(--space-6);flex-wrap:wrap;font-size:var(--step--1);
+    text-transform:uppercase;letter-spacing:0.1em}
+  footer nav a{color:color-mix(in srgb, var(--accent-text) 80%, transparent);text-decoration:none}
+  footer nav a:hover{color:var(--accent-text)}
+  .foot-meta{color:color-mix(in srgb, var(--accent-text) 78%, transparent);font-size:var(--step--1);display:grid;gap:var(--space-1)}
+
+  .mock-banner{background:var(--accent);color:var(--accent-text);text-align:center;
+    font-size:var(--step--1);letter-spacing:0.06em;font-weight:500;padding:0.5rem 0.8rem}
+
+  @media (max-width:900px){
+    .grid--3,.points{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr;gap:var(--space-8)}
+    .introcard{grid-template-columns:1fr}
+    .introcard .stage{min-height:170px}
+    .register li{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    .nav .wrap{gap:var(--space-2) var(--space-4)}
+    .nav ul{width:100%;order:3;gap:var(--space-4);font-size:0.74rem}
+    .nav a.btn{order:2}
+    .grid--3,.grid--2,.points{grid-template-columns:1fr}
+    .hero .cta-row .btn{flex:1 1 100%;justify-content:center}
+    .facts li{flex-direction:column;gap:var(--space-1)}
+    .facts span{text-align:left}
+  }
+</style>
 </head>
 <body>
-    <div class="hero">
-        <h1>Ono Sushi</h1>
+
+<div class="mock-banner">Concept mockup for Ono Sushi &nbsp;&bull;&nbsp; built by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="16" y="41" width="68" height="33" rx="6" fill="var(--fg)"/>
+        <rect x="10" y="30" width="80" height="16" rx="8" fill="var(--accent)"/>
+      </svg>
+      <span>Ono Sushi</span>
+    </a>
+    <ul>
+      <li><a href="#/menu">Menu</a></li>
+      <li><a href="#/visit">Visit</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">&#9654; Brand intro</a></li>
+    </ul>
+    <a class="btn" href="#/order">Reserve</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HOME ================= -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap hero">
+      <hr class="rule">
+      <h1>All you can eat, cut to order.</h1>
+      <p class="lead">A neighborhood sushi bar on the Flamingo and Eastern corner. All you can eat
+        and a la carte on the same menu, fish cut to order at the counter.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/order">Reserve a table</a>
+        <a class="btn btn--ghost" href="#/menu">See the menu</a>
+      </div>
+      <div class="shot shot--hero" data-shot="Sushi counter, fish cut to order" style="margin-top:var(--space-8)"></div>
     </div>
-    <!-- 5 Views mocked -->
+
+    <div class="wrap block">
+      <hr class="rule">
+      <h2>On the menu</h2>
+      <p style="color:var(--muted);max-width:52ch">All you can eat covers the sushi menu for lunch
+        and dinner. A la carte is on the same page. Current prices are on the menu in the room and
+        on the ordering apps.</p>
+      <ul class="register">
+        <li><h2>Nigiri &amp; sashimi</h2><p>Cut to order at the counter. Salmon nigiri is the one regulars ask for by name.</p></li>
+        <li><h2>Signature &amp; hand rolls</h2><p>House rolls and hand rolls, made when you order them.</p></li>
+        <li><h2>Baked &amp; grilled</h2><p>Baked mussels, baked scallop, and grilled plates from the kitchen.</p></li>
+        <li><h2>From the kitchen</h2><p>Tempura, karaage, gyoza, seaweed salad, edamame. Sake, beer, and wine.</p></li>
+      </ul>
+      <p style="margin-top:var(--space-8)"><a class="btn btn--ghost" href="#/menu">Full menu</a></p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <hr class="rule">
+          <h2>A small room, kept clean</h2>
+          <p>Ono Sushi has been on this corner since 2018. New owners took over in 2025 and kept
+            the kitchen, the chef, and the fish. What was missing was a place to read the menu and
+            book a table that is not a delivery app.</p>
+          <p><a class="btn btn--ghost" href="#/about">More about us</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="The dining room and the counter"></div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <h3>Watch the Ono Sushi intro</h3>
+          <p>A short brand reveal. Drop it on Instagram, a story, or the top of a reel.</p>
+          <span class="btn">Play the intro</span>
+        </span>
+        <span class="stage">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect x="16" y="41" width="68" height="33" rx="6" fill="var(--accent-text)"/>
+            <rect x="10" y="30" width="80" height="16" rx="8" fill="var(--accent-border)"/>
+          </svg>
+          <span class="cap">Brand film</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= MENU ================= -->
+  <section class="view" data-route="/menu" id="view-menu">
+    <div class="wrap pagehead">
+      <hr class="rule">
+      <h1>The menu</h1>
+      <p class="lead">All you can eat covers the sushi menu at lunch and dinner. A la carte is on
+        the same menu. Everything is made when you order it.</p>
+    </div>
+    <div class="wrap block">
+      <ul class="register">
+        <li><h2>Nigiri</h2><p>Cut to order at the counter. Salmon nigiri is the one regulars ask for by name.</p></li>
+        <li><h2>Sashimi</h2><p>Salmon, yellowtail, salmon belly, and the day's cuts.</p></li>
+        <li><h2>Signature rolls</h2><p>House rolls, built and cut when you order.</p></li>
+        <li><h2>Hand rolls</h2><p>Rolled to order so the nori stays crisp.</p></li>
+        <li><h2>Baked &amp; grilled</h2><p>Baked mussels, baked scallop, and grilled plates. Baked mussels is the second thing regulars come back for.</p></li>
+        <li><h2>From the kitchen</h2><p>Shrimp tempura, karaage, gyoza, seaweed salad, edamame, miso soup.</p></li>
+        <li><h2>Dessert</h2><p>Mochi ice cream and sorbet.</p></li>
+        <li><h2>To drink</h2><p>Sake, beer, and wine. Happy hour on weekdays, ask for the current times.</p></li>
+      </ul>
+      <p class="register-note">Prices are set on the menu in the room and on the ordering apps, and
+        are not listed here.</p>
+      <p style="margin-top:var(--space-6)"><a class="btn" href="#/order">Reserve or order online</a></p>
+    </div>
+    <div class="wrap block">
+      <div class="grid grid--3">
+        <figure class="tile"><div class="shot shot--square" data-shot="Salmon nigiri, close"></div><figcaption>Cut to order</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Baked mussels"></div><figcaption>From the kitchen</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="A hand roll, just rolled"></div><figcaption>Rolled to order</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap pagehead">
+      <hr class="rule">
+      <h1>About Ono Sushi</h1>
+      <p class="lead">A neighborhood sushi bar in the Flamingo Eastern retail center, on the
+        southeast side of the Flamingo and Eastern intersection.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>The room is small and it is kept clean. There is a sushi counter, a few tables, and a
+            short list of things the kitchen does well. Fish is cut to order rather than held on a
+            belt, which is the reason the all you can eat has a reputation.</p>
+          <p>Ono Sushi opened on this corner in 2018. New owners took over in 2025 and kept the
+            chef, the menu, and the standard for the fish. The plan is to keep it the same and put
+            a proper face on it.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="The counter and the room"></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <hr class="rule">
+      <h2>What to expect</h2>
+      <div class="points">
+        <div><h3>Cut to order</h3><p>Nigiri, sashimi, and rolls are made when you order them, not stacked ahead.</p></div>
+        <div><h3>All you can eat or a la carte</h3><p>Same menu either way. A la carte if you want two things, all you can eat if you want ten.</p></div>
+        <div><h3>A quick weeknight</h3><p>Reserve a table, sit at the counter, or order online for pickup and delivery.</p></div>
+      </div>
+      <p style="margin-top:var(--space-8)"><a class="btn" href="#/menu">See the menu</a></p>
+    </div>
+  </section>
+
+  <!-- ================= ORDER / RESERVE ================= -->
+  <section class="view" data-route="/order" id="view-order">
+    <div class="wrap pagehead">
+      <hr class="rule">
+      <h1>Reserve or order online</h1>
+      <p class="lead">Book a table for lunch or dinner, or send an order out for pickup and
+        delivery. All of it is quick.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <ol class="steps">
+            <li><h2>Reserve a table</h2><p>Send a party size and a time and the host will confirm. For same-day, calling is faster.</p></li>
+            <li><h2>Sit at the counter</h2><p>Counter seats are first come. Good for one or two people on a lunch break.</p></li>
+            <li><h2>Order online</h2><p>Pickup and delivery through the apps below. The full menu is on each one.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Hours</b><span>Open daily for lunch and dinner. Confirm today's hours by phone.</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17022187033">(702) 218-7033</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/onosushilv/" target="_blank" rel="noopener">@onosushilv</a></span></li>
+          </ul>
+          <ul class="linklist">
+            <li><a href="https://www.doordash.com/store/ono-sushi-las-vegas-32784354/" target="_blank" rel="noopener">Order on DoorDash &#8599;</a></li>
+            <li><a href="https://www.grubhub.com/restaurant/ono-sushi-4161-s-eastern-ave-las-vegas/809196" target="_blank" rel="noopener">Order on Grubhub &#8599;</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Request a table</h2>
+          <p style="color:var(--muted)">Send the details and the host will call or text back to confirm.</p>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Party size, day, and time</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Send the request</button>
+            <p class="status" role="status">This form is part of a concept mockup. It does not send yet. To book now, call the restaurant at (702) 218-7033.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VISIT ================= -->
+  <section class="view" data-route="/visit" id="view-visit">
+    <div class="wrap pagehead">
+      <hr class="rule">
+      <h1>Visit</h1>
+      <p class="lead">In the Flamingo Eastern retail center, at the Flamingo Road and Eastern Avenue
+        corner, anchored by Mariana's Supermarket.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>Ono Sushi is an inline bay in the retail center on the corner of Flamingo and Eastern.
+            Park in the shared lot and walk up. It is about three miles east of the Strip.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>4161 S Eastern Ave, Las Vegas, NV 89119</span></li>
+            <li><b>Hours</b><span>Open daily for lunch and dinner. Confirm by phone.</span></li>
+            <li><b>Parking</b><span>Free shared lot, Flamingo Eastern retail center</span></li>
+            <li><b>Getting here</b><span>Flamingo Rd and Eastern Ave, about 3 miles east of the Strip</span></li>
+          </ul>
+          <p style="margin-top:var(--space-8)"><a class="btn" href="#/order">Reserve a table</a></p>
+        </div>
+        <div class="grid" style="gap:var(--space-4)">
+          <div class="shot shot--wide" data-shot="Storefront on S Eastern Ave"></div>
+          <div class="grid grid--2" style="gap:var(--space-4)">
+            <div class="shot shot--square" data-shot="The sushi counter"></div>
+            <div class="shot shot--square" data-shot="A table set for two"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <div class="shot shot--wide" data-shot="Map and storefront on S Eastern Ave"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-mark">Ono Sushi</span>
+    <nav>
+      <a href="#/menu">Menu</a>
+      <a href="#/about">About</a>
+      <a href="#/order">Reserve</a>
+      <a href="#/visit">Visit</a>
+      <a href="intro.html" target="_blank" rel="noopener">Brand intro</a>
+      <a href="https://www.instagram.com/onosushilv/" target="_blank" rel="noopener">@onosushilv</a>
+    </nav>
+    <div class="foot-meta">
+      <span>4161 S Eastern Ave, Las Vegas, NV 89119 &nbsp;&bull;&nbsp; (702) 218-7033</span>
+      <span>&copy; <span id="yr"></span> Ono Sushi. All you can eat, cut to order.</span>
+      <span>Concept website mockup by Hillside Visuals.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(!views.length) return;
+  document.body.classList.add('routed');
+  var home=document.getElementById('view-home')||views[0];
+  var routeOf=function(v){return v.getAttribute('data-route');};
+  var render=function(){
+    var h=(location.hash||'').replace(/^#/,'');
+    if(h && h.charAt(0)!=='/') h='/'+h;
+    var match=views.filter(function(v){return routeOf(v)===h;})[0]||home;
+    views.forEach(function(v){v.classList.toggle('is-active',v===match);});
+    navLinks.forEach(function(a){
+      a.setAttribute('aria-current', a.getAttribute('href')==='#'+routeOf(match)?'page':'false');
+    });
+    window.scrollTo(0,0);
+  };
+  window.addEventListener('hashchange',render);
+  render();
+  var form=document.querySelector('.form');
+  if(form){
+    var s=form.querySelector('.status'); var note=s?s.textContent:'';
+    form.addEventListener('submit',function(e){e.preventDefault(); if(s) s.textContent=note;});
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Ono Sushi",
+  "servesCuisine":"Japanese",
+  "telephone":"(702) 218-7033",
+  "address":{"@type":"PostalAddress","streetAddress":"4161 S Eastern Ave Ste A1A2","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89119"}
+}
+</script>
+
 </body>
 </html>
