@@ -17,7 +17,7 @@
     --color-bg:oklch(0.972 0.004 200);
     --color-surface:oklch(0.995 0.002 200);
     --color-ink:oklch(0.24 0.018 210);
-    --color-muted:oklch(0.46 0.016 210);
+    --color-muted:oklch(0.44 0.015 210);
     --color-border:oklch(0.88 0.008 205);
     --color-accent:oklch(0.42 0.062 205);
     --accent-hover:oklch(0.37 0.066 205);
@@ -30,10 +30,10 @@
     --font-body:"Sora",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     --step--1:0.82rem;--step-0:1rem;--step-1:1.25rem;--step-2:1.6rem;
     --step-3:2.25rem;--step-4:clamp(2.3rem,5vw,3.5rem);
-    --label:0.74rem;
+    --label:0.75rem;
     --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
     --space-5:1.5rem;--space-6:2rem;--space-7:3rem;--space-8:4rem;--space-10:6rem;
-    --measure:60ch;--rail:15rem;--radius:2px;
+    --measure:60ch;--rail:16rem;--radius:2px;
     --shadow:0 1px 2px oklch(0.24 0.018 210 / 0.06),0 10px 30px oklch(0.24 0.018 210 / 0.05);
     --ease-out:cubic-bezier(.2,.7,.3,1);
     --ease-in-out:cubic-bezier(.6,0,.3,1);
@@ -45,13 +45,13 @@
     -webkit-font-smoothing:antialiased;overflow-x:hidden}
   img,svg{max-width:100%;display:block}
   a{color:inherit}
-  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.12;margin:0 0 .5em;
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.18;margin:0 0 .5em;
     letter-spacing:.005em;text-wrap:balance;overflow-wrap:break-word}
-  h1{font-size:var(--step-4)}
+  h1{font-size:var(--step-4);line-height:1.14}
   h2{font-size:var(--step-3)}
   h3{font-size:var(--step-1)}
   p{margin:0 0 var(--space-4);max-width:var(--measure)}
-  .label{font-family:var(--font-body);font-weight:500;font-size:var(--label);letter-spacing:.18em;
+  .label{font-family:var(--font-body);font-weight:500;font-size:var(--label);letter-spacing:.16em;
     text-transform:uppercase;color:var(--color-muted);margin:0 0 var(--space-4)}
 
   /* ---- layout: left rail + document column ---- */
@@ -61,9 +61,9 @@
     background:var(--color-bg)}
   .rail .id{display:flex;align-items:center;gap:var(--space-3);text-decoration:none}
   .rail .id svg{width:34px;height:34px;flex:none}
-  .rail .id .nm{font-family:var(--font-display);font-size:var(--step-1);line-height:1.1}
-  .rail .id .ds{display:block;font-family:var(--font-body);font-weight:400;font-size:0.62rem;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--color-muted);margin-top:2px}
+  .rail .id .nm{font-family:var(--font-display);font-size:var(--step-1);line-height:1.2}
+  .rail .id .ds{display:block;font-family:var(--font-body);font-weight:400;font-size:0.72rem;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--color-muted);margin-top:3px;white-space:nowrap}
   .rail nav{display:flex;flex-direction:column;gap:var(--space-1)}
   .rail nav a{text-decoration:none;color:var(--color-muted);font-size:var(--step-0);
     padding:var(--space-2) 0;letter-spacing:.01em;transition:color .18s var(--ease-out)}
@@ -116,7 +116,7 @@
   .services li{padding:var(--space-4) 0;border-top:1px solid var(--color-border);
     display:grid;grid-template-columns:1fr auto;gap:var(--space-2) var(--space-5);align-items:baseline}
   .services li:last-child{border-bottom:1px solid var(--color-border)}
-  .services h3{margin:0;font-size:var(--step-1)}
+  .services .svc-name{margin:0;font-family:var(--font-display);font-weight:400;font-size:var(--step-1);line-height:1.2;max-width:none}
   .services .note{grid-column:1/-1;color:var(--color-muted);font-size:var(--step--1);margin:0;max-width:52ch}
   .services .meta{font-family:var(--font-body);font-weight:400;font-size:var(--step--1);
     color:var(--accent-text);white-space:nowrap}
@@ -142,38 +142,37 @@
   .facts a{color:var(--accent-text);text-decoration:none}
 
   .form{display:grid;gap:var(--space-4);margin-top:var(--space-5);max-width:30rem}
-  .form label{display:block;font-size:var(--label);letter-spacing:.08em;text-transform:uppercase;
-    color:var(--color-muted);margin-bottom:var(--space-2)}
+  .form label{display:block;font-size:var(--step--1);font-weight:500;color:var(--color-ink);
+    margin-bottom:var(--space-2)}
   .form input,.form textarea{width:100%;font:inherit;font-size:var(--step--1);padding:.65em .8em;
     border:1px solid var(--color-border);border-radius:var(--radius);
     background:var(--color-surface);color:var(--color-ink)}
   .form textarea{min-height:5.5rem;resize:vertical}
   .form input:focus-visible,.form textarea:focus-visible{outline:2px solid var(--color-accent);outline-offset:1px}
-  .form .status{font-size:var(--step--1);color:var(--color-muted);margin:0}
+  .form .status{font-size:var(--step--1);color:var(--color-muted);margin:0;line-height:1.6}
 
   .introcard{margin-top:var(--space-7);border:1px solid var(--color-border);border-radius:var(--radius);
     overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;background:var(--color-ink);color:var(--color-bg)}
   .introcard .txt{padding:clamp(1.4rem,3vw,2.2rem);display:flex;flex-direction:column;gap:var(--space-3);justify-content:center}
-  .introcard h3{margin:0;color:var(--color-bg);font-size:var(--step-2)}
-  .introcard p{margin:0;color:oklch(0.972 0.004 200 / .78);font-size:var(--step--1);max-width:34ch}
+  .introcard .ic-title{margin:0;font-family:var(--font-display);font-weight:400;color:var(--color-bg);font-size:var(--step-2);line-height:1.2}
+  .introcard p{margin:0;color:oklch(0.972 0.004 200 / .82);font-size:var(--step--1);max-width:34ch;line-height:1.6}
   .introcard .btn{align-self:flex-start;margin-top:var(--space-2)}
   .introcard .stage{position:relative;min-height:190px;display:flex;align-items:center;justify-content:center;
     background:radial-gradient(60% 70% at 50% 45%,var(--accent-active) 0%,var(--color-ink) 68%)}
   .introcard .stage svg{width:64px;height:64px}
   .introcard .stage .cap{position:absolute;bottom:var(--space-3);left:0;right:0;text-align:center;
-    font-size:0.64rem;letter-spacing:.2em;text-transform:uppercase;color:oklch(0.972 0.004 200 / .55)}
+    font-size:0.72rem;letter-spacing:.16em;text-transform:uppercase;color:oklch(0.972 0.004 200 / .62)}
 
   footer.pagefoot{margin-top:var(--space-10);padding-top:var(--space-6);border-top:1px solid var(--color-border);
     display:flex;flex-wrap:wrap;gap:var(--space-4) var(--space-6);font-size:var(--step--1);color:var(--color-muted)}
   footer.pagefoot a{color:var(--color-muted);text-decoration:none}
   footer.pagefoot a:hover{color:var(--color-ink)}
 
-  .mock-banner{background:var(--color-ink);color:var(--color-bg);text-align:center;
-    font-size:0.68rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
+  .mock-banner{background:var(--color-ink);color:oklch(0.972 0.004 200 / .92);text-align:center;
+    font-size:0.75rem;letter-spacing:.02em;padding:.55rem .8rem}
 
   .cta-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-5)}
-  .lead{font-size:var(--step-1);color:var(--color-muted);max-width:38ch}
-  .kicker-nope{}
+  .lead{font-size:var(--step-1);color:var(--color-muted);max-width:38ch;line-height:1.5}
 
   /* router */
   .view{display:block}
@@ -215,7 +214,7 @@
 </head>
 <body>
 
-<div class="mock-banner">Concept mockup for Trinity Nugent &middot; built by Hillside Visuals</div>
+<div class="mock-banner">Concept mockup for Trinity Nugent, built by Hillside Visuals</div>
 
 <div class="shell">
   <aside class="rail">
@@ -255,7 +254,7 @@
 
         <div class="introcard">
           <div class="txt">
-            <h3>A short brand intro</h3>
+            <p class="ic-title">A short brand intro</p>
             <p>A six second reveal for a story, a reel, or the top of a booking page.</p>
             <a class="btn" href="intro.html" target="_blank" rel="noopener">Play the intro</a>
           </div>
@@ -297,17 +296,17 @@
           book. Pricing is consultation based, not a fixed price sheet.</p>
 
         <ul class="services">
-          <li><h3>Consultation and skin reading</h3><span class="meta">Start here</span>
+          <li><p class="svc-name">Consultation and skin reading</p><span class="meta">Start here</span>
             <p class="note">A full look at your skin, your history, and your routine, ending with a written plan and a realistic timeline.</p></li>
-          <li><h3>Signature treatment facial</h3><span class="meta">Consultation based</span>
+          <li><p class="svc-name">Signature treatment facial</p><span class="meta">Consultation based</span>
             <p class="note">Cleanse, exfoliation, extractions as needed, a treatment mask, and finishing care, chosen for your skin that day.</p></li>
-          <li><h3>Targeted treatment course</h3><span class="meta">Planned in a series</span>
+          <li><p class="svc-name">Targeted treatment course</p><span class="meta">Planned in a series</span>
             <p class="note">For texture, congestion, or tone that needs more than one visit. Spaced and tracked over several weeks.</p></li>
-          <li><h3>Brow shaping and tint</h3><span class="meta">Add on or standalone</span>
+          <li><p class="svc-name">Brow shaping and tint</p><span class="meta">Add on or standalone</span>
             <p class="note">Shape mapped to your face, cleaned up, and tinted to match. Kept natural.</p></li>
-          <li><h3>Lash lift and tint</h3><span class="meta">Add on or standalone</span>
+          <li><p class="svc-name">Lash lift and tint</p><span class="meta">Add on or standalone</span>
             <p class="note">A lift and tint on your own lashes. No extensions, no adhesive weight.</p></li>
-          <li><h3>Event preparation</h3><span class="meta">Booked to a date</span>
+          <li><p class="svc-name">Event preparation</p><span class="meta">Booked to a date</span>
             <p class="note">A short plan of visits timed to a wedding, a shoot, or a milestone, so your skin peaks on the right day.</p></li>
         </ul>
         <p style="margin-top:var(--space-6)"><a class="btn" href="#/booking">Request an appointment</a></p>
