@@ -17,13 +17,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter+Tight:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   :root{
-    --background:oklch(0.94 0.012 84);
+    --background:oklch(0.928 0.004 96);
     --foreground:oklch(0.21 0.012 66);
-    --surface:oklch(0.87 0.015 82);
+    --surface:oklch(0.865 0.006 96);
     --muted:oklch(0.44 0.013 74);
     --border:oklch(0.83 0.016 85);
     --accent:oklch(0.63 0.072 74);
-    --accent-hover:oklch(0.57 0.070 72);
+    --accent-hover:oklch(0.48 0.060 68);
     --accent-text:oklch(0.49 0.065 72);
     --accent-ink:oklch(0.96 0.008 90);
     --forest:oklch(0.35 0.028 150);
@@ -63,13 +63,13 @@
   .narrow{max-width:760px}
   .lede{font-family:var(--font-body);font-size:var(--step-1);line-height:1.5;color:var(--muted);
     font-weight:300;max-width:46ch}
-  .btn{display:inline-block;background:var(--foreground);color:var(--background);padding:0.85em 1.7em;
+  .btn{display:inline-block;background:var(--foreground);color:var(--accent-ink);padding:0.85em 1.7em;
     border-radius:var(--radius);text-decoration:none;font-size:0.82rem;font-weight:500;
     letter-spacing:0.14em;text-transform:uppercase;transition:transform 0.18s var(--ease-out),background 0.18s var(--ease-out)}
   .btn:hover{transform:translateY(-1px);background:var(--accent-hover);color:var(--accent-ink)}
   .btn:focus-visible{outline:2px solid var(--accent-text);outline-offset:3px}
   .btn--ghost{background:transparent;color:var(--foreground);border:1px solid var(--foreground)}
-  .btn--ghost:hover{background:var(--foreground);color:var(--background)}
+  .btn--ghost:hover{background:var(--foreground);color:var(--accent-ink)}
   @media (prefers-reduced-motion:reduce){*{transition-duration:0.12s!important;animation:none!important;scroll-behavior:auto}}
 
   /* ---- masthead nav (wordmark centred) ---- */
@@ -84,7 +84,7 @@
   .nav .wordmark{font-family:var(--font-script);font-size:2.1rem;line-height:0.8;color:var(--foreground)}
   .nav ul{display:flex;flex-wrap:wrap;justify-content:center;gap:0.7rem 1.5rem;list-style:none;margin:0.15rem 0 0;padding:0}
   .nav li{margin:0}
-  .nav a.lnk{text-decoration:none;color:var(--muted);font-size:0.74rem;letter-spacing:0.2em;
+  .nav a.lnk{text-decoration:none;color:var(--muted);font-size:0.76rem;letter-spacing:0.16em;
     text-transform:uppercase;padding:0.2rem 0;border-bottom:1px solid transparent;transition:color 0.15s var(--ease-out),border-color 0.15s var(--ease-out)}
   .nav a.lnk:hover{color:var(--foreground)}
   .nav a.lnk[aria-current="page"]{color:var(--foreground);border-color:var(--accent)}
@@ -105,7 +105,7 @@
 
   /* ---- quote-led hero ---- */
   .hero{text-align:center;padding-top:var(--space-24);padding-bottom:var(--space-16)}
-  .hero .quote{font-family:var(--font-display);font-weight:400;font-size:var(--step-4);line-height:1.08;
+  .hero h1.quote{font-family:var(--font-display);font-weight:400;font-size:var(--step-4);line-height:1.08;
     letter-spacing:-0.01em;margin:0 auto 1rem;max-width:16ch}
   .hero .sub{color:var(--muted);font-weight:300;font-size:var(--step-1);max-width:42ch;margin:0 auto 2rem}
   .hero .cta{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap}
@@ -114,39 +114,38 @@
 
   .statement{text-align:center;max-width:28ch;margin:0 auto;font-family:var(--font-display);
     font-size:var(--step-2);line-height:1.3;font-weight:400}
-  .statement + .attill{text-align:center;color:var(--muted);font-size:0.8rem;letter-spacing:0.16em;
-    text-transform:uppercase;margin-top:1.6rem}
+  .statement + .attill{text-align:center;color:var(--muted);font-size:0.92rem;margin-top:1.6rem}
 
   /* ---- intro card ---- */
   .introcard{margin-top:var(--space-8);border:1px solid var(--border);border-radius:var(--radius);
     overflow:hidden;display:grid;grid-template-columns:1.05fr 0.95fr;background:var(--foreground);color:var(--background);text-decoration:none}
   .introcard .txt{padding:clamp(1.6rem,4vw,2.6rem);display:flex;flex-direction:column;gap:0.7rem;justify-content:center;text-align:left}
-  .introcard .k{font-size:0.7rem;letter-spacing:0.24em;text-transform:uppercase;color:color-mix(in oklch,var(--background) 62%,transparent);margin:0}
-  .introcard h3{margin:0;color:var(--background)}
-  .introcard p{margin:0;color:color-mix(in oklch,var(--background) 82%,transparent);max-width:38ch}
-  .introcard .go{margin-top:0.5rem;font-size:0.76rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent)}
+  .introcard .k{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:color-mix(in oklch,var(--background) 66%,transparent);margin:0}
+  .introcard .ic-h{font-family:var(--font-display);font-size:var(--step-1);line-height:1.15;margin:0;color:var(--background)}
+  .introcard p{margin:0;color:color-mix(in oklch,var(--background) 84%,transparent);max-width:38ch;font-size:0.95rem}
+  .introcard .go{margin-top:0.5rem;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
   .introcard .stage{position:relative;min-height:210px;display:flex;align-items:center;justify-content:center;
     background:radial-gradient(60% 70% at 50% 45%,color-mix(in oklch,var(--accent) 26%,var(--foreground)) 0%,var(--foreground) 66%)}
   .introcard .stage .seal{width:78px;height:78px;border-radius:50%;background:var(--accent);color:var(--foreground);
     display:flex;align-items:center;justify-content:center;font-family:var(--font-script);font-size:2.4rem}
-  .introcard .stage .cap{position:absolute;bottom:0.9rem;left:0;right:0;text-align:center;font-size:0.58rem;
-    letter-spacing:0.2em;text-transform:uppercase;color:color-mix(in oklch,var(--background) 58%,transparent)}
+  .introcard .stage .cap{position:absolute;bottom:0.9rem;left:0;right:0;text-align:center;font-size:0.72rem;
+    letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in oklch,var(--background) 62%,transparent)}
 
   /* ---- catalogue list (menu formats) ---- */
   .catalogue{list-style:none;padding:0;margin:var(--space-8) 0 0;counter-reset:c}
   .catalogue li{counter-increment:c;display:grid;grid-template-columns:2.4rem 1fr;gap:1.2rem;
     padding:1.5rem 0;border-top:1px solid var(--border)}
   .catalogue li::before{content:counter(c,decimal-leading-zero);font-family:var(--font-display);
-    font-size:1rem;color:var(--accent-text);padding-top:0.35rem}
-  .catalogue h3{margin:0 0 0.3rem}
+    font-size:1rem;color:var(--accent-text);padding-top:0.4rem}
+  .catalogue h2.cat-h{font-family:var(--font-display);font-weight:400;font-size:var(--step-1);margin:0 0 0.3rem;line-height:1.15}
   .catalogue p{margin:0;color:var(--muted);font-size:0.94rem;max-width:52ch}
 
   /* ---- dish strip ---- */
   .dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:var(--space-8)}
   .dish figure{margin:0}
   .dish img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius);filter:saturate(0.96)}
-  .dish figcaption{margin-top:0.6rem;font-size:0.94rem}
-  .dish .cur{display:block;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.2rem}
+  .dish figcaption{margin-top:0.6rem;font-size:0.96rem}
+  .dish .cur{display:block;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-top:0.25rem}
 
   /* ---- two-up ---- */
   .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,5vw,4rem);align-items:center}
@@ -165,7 +164,7 @@
 
   /* ---- concept form ---- */
   .form{display:grid;gap:0.9rem;margin-top:var(--space-6);max-width:32rem}
-  .form label{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.3rem}
+  .form label{font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.3rem}
   .form input,.form textarea{width:100%;font:inherit;font-size:0.95rem;padding:0.7em 0.85em;border:1px solid var(--border);
     border-radius:2px;background:color-mix(in oklch,var(--foreground) 3%,var(--background));color:var(--foreground)}
   .form textarea{min-height:6rem;resize:vertical}
@@ -173,20 +172,19 @@
 
   .mapph{width:100%;height:280px;border:1px solid var(--border);border-radius:var(--radius);
     background:var(--surface);display:flex;align-items:center;justify-content:center;text-align:center;
-    color:var(--muted);font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;padding:1rem}
+    color:var(--muted);font-size:0.9rem;padding:1rem}
 
-  footer{background:var(--foreground);color:color-mix(in oklch,var(--background) 84%,transparent);
+  footer{background:var(--foreground);color:color-mix(in oklch,var(--background) 86%,transparent);
     padding:var(--space-16) 0 var(--space-12);margin-top:var(--space-16)}
   footer .wrap{display:flex;flex-direction:column;align-items:center;gap:1.1rem;text-align:center}
   footer .fw{font-family:var(--font-script);font-size:2.4rem;color:var(--background);line-height:0.8}
-  footer .fline{max-width:42ch;color:color-mix(in oklch,var(--background) 76%,transparent);font-size:0.92rem}
-  footer nav{display:flex;gap:1rem 1.4rem;flex-wrap:wrap;justify-content:center;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase}
-  footer a{text-decoration:none;color:color-mix(in oklch,var(--background) 76%,transparent)}
+  footer .fline{max-width:42ch;color:color-mix(in oklch,var(--background) 78%,transparent);font-size:0.92rem}
+  footer nav{display:flex;gap:1rem 1.4rem;flex-wrap:wrap;justify-content:center;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase}
+  footer a{text-decoration:none;color:color-mix(in oklch,var(--background) 78%,transparent)}
   footer a:hover{color:var(--background)}
-  footer .fine{font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:color-mix(in oklch,var(--background) 52%,transparent)}
+  footer .fine{font-size:0.8rem;color:color-mix(in oklch,var(--background) 60%,transparent);max-width:52ch}
 
-  .mock-banner{background:var(--foreground);color:var(--background);text-align:center;
-    font-size:clamp(0.6rem,2vw,0.72rem);letter-spacing:0.18em;text-transform:uppercase;padding:0.5rem 0.8rem}
+  .mock-banner{background:var(--foreground);color:color-mix(in oklch,var(--background) 82%,transparent);text-align:center;font-size:0.8rem;letter-spacing:0.02em;padding:0.55rem 0.8rem}
 
   @media (max-width:900px){
     .introcard{grid-template-columns:1fr}
@@ -205,7 +203,7 @@
 </head>
 <body>
 
-<div class="mock-banner">Concept mockup for Lilli &middot; built by Hillside Visuals</div>
+<div class="mock-banner">Concept mockup for Lilli, built by Hillside Visuals</div>
 
 <header class="nav">
   <div class="wrap">
@@ -230,7 +228,7 @@
   <section class="view is-active" data-route="/" id="view-home">
     <section class="band hero">
       <div class="wrap">
-        <p class="quote">American ingredients,<br>French technique.</p>
+        <h1 class="quote">American ingredients,<br>French technique.</h1>
         <p class="sub">A dining room and a lounge on Spring Mountain Road, in Chinatown. Seasonal menus, a curated wine list, and cooking built on the people who grow and catch the food.</p>
         <div class="cta">
           <a class="btn" href="https://resy.com/cities/las-vegas-nv/venues/lilli" target="_blank" rel="noopener">Reserve a table</a>
@@ -256,7 +254,7 @@
         <a class="introcard" href="intro.html" target="_blank" rel="noopener">
           <span class="txt">
             <span class="k">Brand film</span>
-            <h3>Watch the Lilli intro</h3>
+            <span class="ic-h">Watch the Lilli intro</span>
             <p>A short brand reveal in Lilli's own hand. For Instagram, a story, or the top of a reel.</p>
             <span class="go">Play the intro &rarr;</span>
           </span>
@@ -288,11 +286,11 @@
       </div>
       <div class="wrap narrow">
         <ol class="catalogue">
-          <li><div><h3>Four course prix fixe</h3><p>The dining room's shorter menu. A seasonal progression from the raw bar through to a sweet.</p></div></li>
-          <li><div><h3>Eight course tasting</h3><p>The full tasting. The kitchen's complete read on the week's ingredients, paired if you like.</p></div></li>
-          <li><div><h3>The kitchen counter</h3><p>Six seats looking straight into the pass. The tasting menu with the cooks talking you through each course.</p></div></li>
-          <li><div><h3>The Spring Mountain Table</h3><p>A private table for up to twelve. A dedicated menu for a celebration or a working dinner.</p></div></li>
-          <li><div><h3>The wine list</h3><p>Old World and New World, recognisable houses alongside smaller estates chosen for character. A full wine by the glass program.</p></div></li>
+          <li><div><h2 class="cat-h">Four course prix fixe</h2><p>The dining room's shorter menu. A seasonal progression from the raw bar through to a sweet.</p></div></li>
+          <li><div><h2 class="cat-h">Eight course tasting</h2><p>The full tasting. The kitchen's complete read on the week's ingredients, paired if you like.</p></div></li>
+          <li><div><h2 class="cat-h">The kitchen counter</h2><p>Six seats looking straight into the pass. The tasting menu with the cooks talking you through each course.</p></div></li>
+          <li><div><h2 class="cat-h">The Spring Mountain Table</h2><p>A private table for up to twelve. A dedicated menu for a celebration or a working dinner.</p></div></li>
+          <li><div><h2 class="cat-h">The wine list</h2><p>Old World and New World, recognisable houses alongside smaller estates chosen for character. A full wine by the glass program.</p></div></li>
         </ol>
         <p class="pillrow" style="margin-top:2.4rem">
           <a class="btn" href="https://resy.com/cities/las-vegas-nv/venues/lilli" target="_blank" rel="noopener">Reserve the dining room</a>
@@ -424,7 +422,7 @@
       <a href="https://resy.com/cities/las-vegas-nv/venues/lilli" target="_blank" rel="noopener">Reserve</a>
       <a href="https://www.instagram.com/lilli.vegas/" target="_blank" rel="noopener">@lilli.vegas</a>
     </nav>
-    <span class="fine">&copy; <span id="yr"></span> Lilli &middot; 3616 Spring Mountain Rd, Las Vegas NV 89102 &middot; concept mockup by Hillside Visuals</span>
+    <span class="fine">&copy; <span id="yr"></span> Lilli. 3616 Spring Mountain Rd, Las Vegas NV 89102. Concept mockup by Hillside Visuals.</span>
   </div>
 </footer>
 
