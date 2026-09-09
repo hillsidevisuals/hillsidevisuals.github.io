@@ -20,9 +20,9 @@
     --line:oklch(0.19 0.008 60 / 0.14); --line-strong:oklch(0.19 0.008 60 / 0.30);
     --sea:oklch(0.71 0.109 191); --sea-deep:oklch(0.52 0.086 199);
     --sea-bg:oklch(0.71 0.109 191 / 0.12); --on-sea:oklch(0.99 0.005 90);
-    --accent:oklch(0.60 0.192 27); --accent-hover:oklch(0.55 0.190 27);
-    --accent-active:oklch(0.49 0.175 27); --accent-text:oklch(0.47 0.170 27);
-    --on-accent:oklch(0.99 0.005 90);
+    --accent:oklch(0.54 0.17 27); --accent-hover:oklch(0.485 0.155 27);
+    --accent-active:oklch(0.43 0.14 27); --accent-text:oklch(0.47 0.170 27);
+    --on-accent:oklch(1 0 0);
     --lime:oklch(0.78 0.163 129); --purple:oklch(0.51 0.038 318);
     --font-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
     --font-body:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -59,13 +59,14 @@
     padding:.72em 1.4em;border-radius:var(--radius);text-decoration:none;font-family:var(--font-display);
     font-weight:700;letter-spacing:.01em;white-space:nowrap;border:0;cursor:pointer;font-size:var(--step-0);
     transition:transform .16s var(--ease-out),background-color .16s var(--ease-out)}
-  .btn:hover{transform:translateY(-2px);background:var(--accent-hover)}
+  .btn:not(.btn--ghost):not(.btn--sea):hover{background:var(--accent-hover)}
+  .btn:hover{transform:translateY(-2px)}
   .btn:active{background:var(--accent-active)}
   .btn:focus-visible{outline:3px solid var(--sea-deep);outline-offset:3px}
   .btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
   .btn--ghost:hover{background:var(--ink);color:var(--sand)}
   .btn--sea{background:var(--sea-deep)}
-  .btn--sea:hover{background:oklch(0.46 0.082 199)}
+  .btn--sea:hover{background:oklch(0.44 0.078 199)}
   @media (prefers-reduced-motion:reduce){*{transition-duration:.001ms!important;animation-duration:.001ms!important;scroll-behavior:auto}}
 
   /* ---- edge-aligned nav ---- */
@@ -76,7 +77,7 @@
   .brandmark img{width:38px;height:38px;border-radius:50%}
   .brandmark b{font-family:var(--font-display);font-weight:800;font-size:1.05rem;letter-spacing:.02em;line-height:1}
   .brandmark s{display:block;text-decoration:none;font-family:var(--font-display);font-weight:700;
-    font-size:.62rem;letter-spacing:.18em;color:var(--accent-text);margin-top:2px}
+    font-size:.72rem;letter-spacing:.16em;color:var(--accent-text);margin-top:2px}
   .nav ul{display:flex;align-items:center;gap:1.15rem;list-style:none;margin:0;padding:0;
     font-family:var(--font-display);font-weight:600;font-size:.92rem}
   .nav a{text-decoration:none;color:var(--ink-soft);letter-spacing:.01em}
@@ -84,6 +85,7 @@
   .nav a[aria-current="page"]{color:var(--ink);border-bottom:2px solid var(--sea)}
   .nav-intro{color:var(--sea-deep)!important;display:inline-flex;align-items:center;gap:.35em}
   .nav-intro::before{content:"\25B6";font-size:.62em}
+  .nav a.btn,.nav a.btn:hover{color:var(--on-accent)}
   .nav .btn{padding:.5em 1.05em;font-size:.9rem}
   .navtoggle{display:none;background:transparent;border:1.5px solid var(--ink);border-radius:var(--radius);
     font-family:var(--font-display);font-weight:700;font-size:.85rem;padding:.4em .8em;color:var(--ink);cursor:pointer}
@@ -118,11 +120,11 @@
     font-size:clamp(.68rem,1.5vw,.82rem);letter-spacing:.04em;padding:1rem;min-height:180px}
   .shot::after{content:"Hillside shoot · " attr(data-shot);max-width:26ch;line-height:1.4}
   .shot--sq{aspect-ratio:1/1;min-height:0}
-  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--wide{aspect-ratio:16/10;min-height:0;max-height:460px}
   figure.ref{margin:0;border-radius:6px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
   figure.ref img{width:100%;height:100%;object-fit:cover;display:block}
   figure.ref figcaption{position:absolute;left:10px;bottom:10px;font-family:var(--font-display);
-    font-weight:700;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
     background:oklch(0.19 0.008 60 / 0.72);color:var(--sand);padding:4px 8px;border-radius:2px}
 
   /* ---- menu teaser row ---- */
@@ -146,7 +148,7 @@
   .introcard .seal{width:78px;height:78px;background:var(--sea);color:var(--ink);border-radius:6px;
     font-family:var(--font-display);font-weight:800;font-size:2.2rem;display:flex;align-items:center;justify-content:center}
   .introcard .cap{position:absolute;bottom:.9rem;left:0;right:0;text-align:center;font-family:var(--font-display);
-    font-weight:700;font-size:.58rem;letter-spacing:.2em;color:oklch(0.94 0.021 82 / 0.66)}
+    font-weight:700;font-size:.72rem;letter-spacing:.14em;color:oklch(0.94 0.021 82 / 0.72)}
 
   /* ---- generic layout ---- */
   .pagehead{padding:clamp(2.4rem,6vw,4rem) 0 clamp(1rem,3vw,1.6rem)}
@@ -156,7 +158,7 @@
 
   /* ---- menu ---- */
   .menu-sec{margin-top:2.4rem}
-  .menu-sec > h3{font-size:var(--step-2);border-bottom:2px solid var(--sea);padding-bottom:.3rem;display:inline-block}
+  .menu-sec > h2{font-size:var(--step-2);border-bottom:2px solid var(--sea);padding-bottom:.3rem;display:inline-block;margin-bottom:0}
   .menu-list{list-style:none;padding:0;margin:1rem 0 0;column-gap:2.6rem}
   .menu-list li{padding:.5rem 0;border-bottom:1px solid var(--line);font-family:var(--font-display);
     font-weight:700;font-size:1.02rem;break-inside:avoid}
@@ -196,7 +198,7 @@
   .loc{background:var(--shell);border:1px solid var(--line);border-radius:6px;padding:1.3rem}
   .loc.here{border:2px solid var(--sea);background:var(--sea-bg)}
   .loc h3{margin:0 0 .3rem;font-size:1.15rem}
-  .loc .badge{font-family:var(--font-display);font-weight:800;font-size:.62rem;letter-spacing:.14em;
+  .loc .badge{font-family:var(--font-display);font-weight:800;font-size:.72rem;letter-spacing:.1em;
     color:var(--accent-text);display:block;margin-bottom:.5rem}
   .loc p{margin:0;font-size:.92rem;color:var(--ink-soft)}
 
@@ -211,8 +213,8 @@
   footer .legal{width:100%;font-size:.74rem;color:oklch(0.94 0.021 82 / 0.66);border-top:1px solid oklch(0.94 0.021 82 / 0.14);padding-top:1.1rem}
 
   .mock-banner{background:var(--ink);color:var(--sand);text-align:center;
-    font-family:var(--font-display);font-weight:700;font-size:clamp(.62rem,2vw,.72rem);
-    letter-spacing:.14em;text-transform:uppercase;padding:.5rem .8rem}
+    font-family:var(--font-display);font-weight:600;font-size:clamp(.74rem,2vw,.82rem);
+    letter-spacing:.02em;padding:.55rem .8rem}
 
   @media (max-width:900px){
     .poster .grid,.cols,.points,.locs{grid-template-columns:1fr}
@@ -327,7 +329,7 @@
       </figure>
 
       <div class="menu-sec">
-        <h3>Chef Favorites</h3>
+        <h2>Chef Favorites</h2>
         <ul class="menu-list menu-2col">
           <li>Aguachile Bajamar</li><li>Aguachile Red</li><li>Aguachile Green</li>
           <li>Surf N Turf Fries</li><li>Buffalo Shrimp Fries</li><li>Loreto Shrimp</li>
@@ -336,7 +338,7 @@
       </div>
 
       <div class="menu-sec">
-        <h3>Tacos</h3>
+        <h2>Tacos</h2>
         <ul class="menu-list menu-2col">
           <li>La Paz Taco <span>taco of the month</span></li>
           <li>Bajamar Fish Taco</li><li>Spicy Shrimp Taco</li><li>Spicy Octopus Taco</li>
@@ -347,7 +349,7 @@
       </div>
 
       <div class="menu-sec">
-        <h3>Ceviche Tostadas</h3>
+        <h2>Ceviche Tostadas</h2>
         <ul class="menu-list menu-2col">
           <li>Ceviche Sampler</li><li>Baja Tour</li><li>Shrimp Tostada</li><li>Cortez Tostada</li>
           <li>La Playa Tostada</li><li>Fish Tostada</li><li>Wipeout Tostada</li><li>Octopus Tostada</li>
@@ -358,7 +360,7 @@
       </div>
 
       <div class="menu-sec">
-        <h3>Soups &amp; Seafood Cocktails</h3>
+        <h2>Soups &amp; Seafood Cocktails</h2>
         <ul class="menu-list menu-2col">
           <li>Shrimp Cocktail</li><li>Octopus Cocktail</li><li>Campechana</li>
           <li>Fish Soup</li><li>Mixed Soup</li>
@@ -366,7 +368,7 @@
       </div>
 
       <div class="menu-sec">
-        <h3>Sides, Kids &amp; Dessert</h3>
+        <h2>Sides, Kids &amp; Dessert</h2>
         <ul class="menu-list menu-2col">
           <li>Guacamole + Chips</li><li>Beans + Chips</li><li>Spanish Rice</li><li>House Salad</li>
           <li>Fries</li><li>Quesadilla <span>add shrimp or carne asada +$10</span></li>
@@ -463,9 +465,10 @@
   <section class="view" data-route="/locations" id="view-locations">
     <div class="wrap pagehead">
       <h1>Every Bajamar</h1>
-      <p class="lede">Three across the valley. Same menu, same salsas, same octopus.</p>
+      <p class="lede">Same menu, same salsas, same octopus, at every one.</p>
     </div>
     <div class="wrap block" style="border-top:0;padding-top:0">
+      <h2>Three across the valley</h2>
       <div class="locs">
         <div class="loc here">
           <span class="badge">YOU ARE HERE</span>
