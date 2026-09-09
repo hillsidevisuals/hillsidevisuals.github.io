@@ -1,147 +1,529 @@
 <!DOCTYPE html>
+<!--
+  Taco Boom — concept website mockup by Hillside Visuals.  Router site, one self-contained file.
+  Built on the Phase-A design system in ../brand/ (DESIGN.md + variables.css + logos).
+  Fingerprint row 16: playful / poster, detonating headline / chili-brown paper (band M) /
+  marigold + turquoise / Anton + Work Sans / slab nav.
+  Content is drawn only from ../research.md and ../brand/brand.md. Unknowns are TBC, never invented.
+
+  fingerprint self-critique: P4 H4 E4 S5 R4 V4
+    Philosophy 4  — screen-print poster taqueria, reads as a person's flyer not a template
+    Hierarchy 4   — one huge headline per view, everything else small and quiet
+    Execution 4   — OKLCH tokens only, router tested at 390/768/1280, AA checked
+    Specificity 5 — real address, real menu categories, real slogan, real IG, no invented items
+    Restraint 4   — one working accent (marigold), turquoise decorative only, <3 motion primitives
+    Variety 4     — poster layout + slab nav + brown paper, shares 0 axes with sibling packages
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taco Boom | Las Vegas</title>
-    <style>
-        :root {
-            --primary: #FF4500;
-            --secondary: #FFD700;
-            --bg: #121212;
-            --text: #F3F4F6;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; }
-        
-        nav { position: fixed; top: 0; width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; }
-        .logo { font-size: 2rem; font-family: 'Anton'; color: var(--primary); }
-        .nav-links a { color: var(--text); text-decoration: none; margin-left: 20px; font-weight: 600; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-        
-        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 100px 5%; }
-        
-        /* Hero View */
-        #hero { align-items: center; text-align: center; background: radial-gradient(circle, rgba(255,69,0,0.2) 0%, rgba(18,18,18,1) 70%); }
-        .hero-title { font-size: clamp(4rem, 10vw, 8rem); line-height: 1; margin-bottom: 20px; color: var(--primary); text-shadow: 4px 4px 0px var(--secondary); }
-        .hero-sub { font-size: 1.5rem; margin-bottom: 40px; max-width: 600px; }
-        .cta-btn { display: inline-block; background: var(--primary); color: #000; padding: 15px 40px; font-size: 1.2rem; font-family: 'Anton'; text-decoration: none; border-radius: 4px; transition: transform 0.3s; }
-        .cta-btn:hover { transform: scale(1.05); }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taco Boom</title>
+<meta name="description" content="Concept website mockup for Taco Boom, a counter-service taqueria on South Jones Boulevard in Las Vegas. By Hillside Visuals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: oklch(0.40 0.058 45);
+    --bg-deep: oklch(0.33 0.05 42);
+    --fg: oklch(0.96 0.018 85);
+    --surface: oklch(0.355 0.052 43);
+    --surface-2: oklch(0.46 0.055 48);
+    --muted: oklch(0.85 0.032 80);
+    --border: oklch(0.55 0.045 46);
+    --accent: oklch(0.81 0.155 79);
+    --accent-hover: oklch(0.76 0.15 77);
+    --accent-active: oklch(0.71 0.145 75);
+    --accent-bg: oklch(0.44 0.062 66);
+    --accent-border: oklch(0.63 0.12 77);
+    --accent-text: oklch(0.24 0.05 52);
+    --pop: oklch(0.77 0.10 196);
+    --ring: oklch(0.81 0.155 79);
+    --font-display: "Anton", "Arial Narrow", "Oswald", sans-serif;
+    --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --step--1: clamp(0.78rem, 0.74rem + 0.2vw, 0.86rem);
+    --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+    --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.4rem);
+    --step-2: clamp(1.6rem, 1.35rem + 1.1vw, 2.2rem);
+    --step-3: clamp(2.1rem, 1.7rem + 2vw, 3.3rem);
+    --step-4: clamp(2.9rem, 2rem + 4.4vw, 5.6rem);
+    --step-5: clamp(3.4rem, 2rem + 7.2vw, 8rem);
+    --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
+    --space-6:1.5rem; --space-8:2rem; --space-12:3rem; --space-16:4rem; --space-24:6rem;
+    --radius:2px; --radius-lg:4px;
+    --shadow:0 18px 40px -14px oklch(0.14 0.03 40 / 0.55);
+    --ease-out:cubic-bezier(0.2,0.7,0.3,1);
+    --ease-in:cubic-bezier(0.5,0,0.9,0.3);
+    --ease-in-out:cubic-bezier(0.7,0,0.3,1);
+    --maxw:1120px;
+    --pad:clamp(1.15rem,5vw,3rem);
+    /* photo-slot pattern: unset for new-brand -> labelled gradient fallback everywhere */
+    --img-hero: none;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);
+    font-size:var(--step-0);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;font-style:normal;line-height:0.94;
+    margin:0 0 var(--space-4);text-transform:uppercase;letter-spacing:-0.01em;overflow-wrap:break-word}
+  h1{font-size:var(--step-4)}
+  h2{font-size:var(--step-3)}
+  h3{font-size:var(--step-1);letter-spacing:0.01em}
+  p{margin:0 0 var(--space-4);max-width:68ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .block{padding-top:clamp(2.2rem,6vw,4rem);padding-bottom:clamp(2.2rem,6vw,4rem);
+    border-top:1px solid var(--border)}
+  .block:first-child{border-top:0}
+  .pagehead + .block{border-top:0;padding-top:var(--space-6)}
 
-        /* Menu View */
-        #menu .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .menu-item { background: #1a1a1a; padding: 30px; border-left: 5px solid var(--primary); }
-        .menu-item h3 { font-size: 2rem; margin-bottom: 10px; color: var(--secondary); }
-        .menu-item p { color: #aaa; margin-bottom: 15px; }
-        .price { font-weight: bold; font-size: 1.2rem; color: var(--primary); }
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--accent);
+    color:var(--accent-text);padding:0.85em 1.5em;border-radius:var(--radius);text-decoration:none;
+    font-weight:700;font-size:var(--step--1);letter-spacing:0.06em;text-transform:uppercase;
+    border:2px solid var(--accent);transition:transform .16s var(--ease-out),background .16s var(--ease-out)}
+  .btn:hover{background:var(--accent-hover);border-color:var(--accent-hover);transform:translateY(-2px)}
+  .btn:active{background:var(--accent-active)}
+  .btn--ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+  .btn--ghost:hover{background:transparent;border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ring);outline-offset:3px}
 
-        /* About View */
-        #about { background: #0a0a0a; }
-        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
-        .about-content p { font-size: 1.2rem; line-height: 1.8; margin-top: 30px; }
+  /* ---- burst motif ---- */
+  .burst{position:absolute;pointer-events:none;z-index:0}
+  .burst .a{fill:var(--accent)}
+  .burst .b{fill:var(--pop)}
 
-        /* Location View */
-        #location { align-items: center; }
-        .address-box { border: 2px solid var(--primary); padding: 50px; text-align: center; }
-        .address-box h2 { font-size: 3rem; margin-bottom: 20px; }
-        .address-box p { font-size: 1.5rem; margin-bottom: 10px; }
+  /* ---- slab nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:var(--bg-deep);border-bottom:3px solid var(--accent)}
+  .nav .wrap{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;
+    padding-top:var(--space-3);padding-bottom:var(--space-3)}
+  .brandmark{display:inline-flex;align-items:center;gap:0.55rem;text-decoration:none;
+    font-family:var(--font-display);text-transform:uppercase;letter-spacing:0.02em;
+    font-size:clamp(1.15rem,3.4vw,1.5rem);color:var(--fg);margin-right:auto;white-space:nowrap}
+  .brandmark svg{width:1.7em;height:1.7em;flex:none;position:static}
+  .brandmark .bm-boom{color:var(--accent)}
+  .nav ul{display:flex;gap:var(--space-4) var(--space-6);list-style:none;margin:0;padding:0;
+    font-size:var(--step--1);flex-wrap:wrap;text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  .nav a{text-decoration:none;color:var(--muted)}
+  .nav a:hover{color:var(--fg)}
+  .nav a[aria-current="page"]{color:var(--accent)}
+  .nav .nav-intro{color:var(--accent)}
+  .nav .nav-intro:hover{color:var(--fg)}
+  .nav a.btn{color:var(--accent-text)}
+  .nav a.btn:hover{color:var(--accent-text)}
 
-        /* Contact View */
-        #contact { background: var(--primary); color: #000; text-align: center; }
-        #contact h2 { font-size: 4rem; }
-        #contact p { font-size: 1.5rem; margin-top: 20px; }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  /* ---- router ---- */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .34s var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto}
+  }
+
+  /* ---- poster hero ---- */
+  .hero{position:relative;padding-top:clamp(2.6rem,7vw,5rem);padding-bottom:clamp(2.6rem,7vw,4.5rem)}
+  .hero__burst{width:min(78vw,620px);height:min(78vw,620px);top:-8%;right:-14%;
+    transform:rotate(-9deg);opacity:1}
+  @media (prefers-reduced-motion:no-preference){
+    .hero__burst{animation:settle .9s var(--ease-out) both}
+  }
+  @keyframes settle{from{opacity:0;transform:rotate(-24deg) scale(.6)}to{opacity:1;transform:rotate(-9deg) scale(1)}}
+  .hero__inner{position:relative;z-index:1}
+  .hero h1{font-size:var(--step-5);line-height:0.86;margin-bottom:var(--space-6)}
+  .hero .lead{font-size:var(--step-1);color:var(--fg);max-width:30ch;font-weight:500}
+  .hero .cta-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-8)}
+
+  /* ---- generic section head ---- */
+  .pagehead{padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:var(--space-4)}
+  .pagehead .lead{font-size:var(--step-1);color:var(--muted);max-width:52ch;font-weight:400}
+  .lead{font-size:var(--step-1)}
+
+  /* ---- shot placeholders ---- */
+  .shot{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius);
+    background:
+      repeating-linear-gradient(45deg, oklch(0.36 0.05 44) 0 14px, oklch(0.38 0.052 46) 14px 28px);
+    display:flex;align-items:flex-end;padding:var(--space-3);min-height:210px;color:var(--muted);
+    font-size:var(--step--1);letter-spacing:0.06em;text-transform:uppercase}
+  .shot::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(70% 60% at 78% 20%, oklch(0.81 0.155 79 / 0.14), transparent 70%)}
+  .shot::after{content:"◈ " attr(data-shot);position:relative;z-index:1;line-height:1.3;max-width:26ch}
+  .shot--hero{min-height:min(52vh,440px)}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+
+  .grid{display:grid;gap:var(--space-4)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  figure.tile{margin:0}
+  .tile figcaption{margin-top:var(--space-2);font-size:var(--step--1);letter-spacing:0.04em;
+    text-transform:uppercase;color:var(--muted)}
+
+  .split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(1.6rem,5vw,4rem);align-items:start}
+
+  /* ---- menu ---- */
+  .menu-list{list-style:none;padding:0;margin:var(--space-4) 0 0;display:grid;gap:0}
+  .menu-list li{padding:var(--space-6) 0;border-top:1px solid var(--border);display:grid;
+    grid-template-columns:minmax(0,14rem) 1fr;gap:var(--space-3) var(--space-8)}
+  .menu-list li:last-child{border-bottom:1px solid var(--border)}
+  .menu-list h3{font-size:var(--step-2);margin:0;color:var(--accent)}
+  .menu-list p{margin:0;color:var(--muted)}
+  .menu-note{margin-top:var(--space-8);font-weight:600;color:var(--fg)}
+
+  /* ---- steps ---- */
+  .steps{list-style:none;counter-reset:s;padding:0;margin:var(--space-8) 0 0;display:grid;gap:var(--space-6)}
+  .steps li{counter-increment:s;padding-left:3.6rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-0.15rem;width:2.6rem;height:2.6rem;
+    background:var(--accent);color:var(--accent-text);border-radius:var(--radius);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:var(--step-0)}
+  .steps h3{margin:0 0 var(--space-1)}
+  .steps p{margin:0;color:var(--muted)}
+
+  /* ---- facts ---- */
+  .facts{list-style:none;padding:0;margin:var(--space-6) 0 0}
+  .facts li{padding:var(--space-3) 0;border-top:1px solid var(--border);display:flex;
+    justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
+  .facts li:last-child{border-bottom:1px solid var(--border)}
+  .facts b{font-weight:700;text-transform:uppercase;letter-spacing:0.05em;font-size:var(--step--1)}
+  .facts span{color:var(--muted);text-align:right}
+  .facts a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+  .facts a:hover{color:var(--accent)}
+
+  /* ---- concept form ---- */
+  .form{display:grid;gap:var(--space-4);margin-top:var(--space-6);max-width:34rem}
+  .form label{display:block;font-size:var(--step--1);text-transform:uppercase;letter-spacing:0.06em;
+    color:var(--muted);margin-bottom:var(--space-2)}
+  .form input,.form textarea{width:100%;font:inherit;padding:0.7em 0.85em;border:1px solid var(--border);
+    border-radius:var(--radius);background:var(--surface);color:var(--fg)}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:var(--step--1);color:var(--muted);margin:0}
+
+  /* ---- points ---- */
+  .points{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-6)}
+  .points h3{color:var(--fg);margin-bottom:var(--space-2)}
+  .points p{color:var(--muted);margin:0;font-size:var(--step--1)}
+
+  /* ---- intro card ---- */
+  .introcard{margin-top:var(--space-12);border:1px solid var(--accent-border);border-radius:var(--radius-lg);
+    overflow:hidden;display:grid;grid-template-columns:1.1fr 0.9fr;background:var(--bg-deep);text-decoration:none;color:var(--fg)}
+  .introcard .txt{padding:clamp(1.5rem,4vw,2.6rem);display:flex;flex-direction:column;gap:var(--space-3);justify-content:center}
+  .introcard h3{font-size:var(--step-2);margin:0}
+  .introcard p{color:var(--muted);margin:0}
+  .introcard .btn{align-self:flex-start;margin-top:var(--space-2)}
+  .introcard .stage{position:relative;min-height:220px;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(60% 70% at 50% 45%, var(--accent-bg), var(--bg-deep) 70%);overflow:hidden}
+  .introcard .stage svg{width:56%;height:56%;position:static}
+  .introcard .stage .cap{position:absolute;bottom:var(--space-3);left:0;right:0;text-align:center;
+    font-size:var(--step--1);letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---- footer ---- */
+  footer{background:var(--bg-deep);border-top:3px solid var(--accent);padding:var(--space-12) 0 var(--space-8)}
+  footer .wrap{display:grid;gap:var(--space-6)}
+  .foot-mark{font-family:var(--font-display);text-transform:uppercase;font-size:var(--step-2);letter-spacing:0.02em}
+  .foot-mark .bm-boom{color:var(--accent)}
+  footer nav{display:flex;gap:var(--space-4) var(--space-6);flex-wrap:wrap;font-size:var(--step--1);
+    text-transform:uppercase;letter-spacing:0.06em}
+  footer nav a{color:var(--muted);text-decoration:none}
+  footer nav a:hover{color:var(--fg)}
+  .foot-meta{color:var(--muted);font-size:var(--step--1);display:grid;gap:var(--space-1)}
+
+  .mock-banner{background:var(--accent);color:var(--accent-text);text-align:center;
+    font-size:var(--step--1);letter-spacing:0.12em;text-transform:uppercase;font-weight:700;padding:0.5rem 0.8rem}
+
+  /* ================= TABLET ================= */
+  @media (max-width:900px){
+    .grid--3,.points{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr;gap:var(--space-8)}
+    .introcard{grid-template-columns:1fr}
+    .introcard .stage{min-height:180px}
+    .menu-list li{grid-template-columns:1fr}
+  }
+  /* ================= MOBILE ================= */
+  @media (max-width:600px){
+    .nav .wrap{gap:var(--space-2) var(--space-4)}
+    .nav ul{width:100%;order:3;gap:var(--space-2) var(--space-4);font-size:0.72rem}
+    .nav a.btn{order:2}
+    .grid--3,.grid--2,.points{grid-template-columns:1fr}
+    .hero .cta-row .btn{flex:1 1 100%;justify-content:center}
+    .hero__burst{display:none}
+    .facts li{flex-direction:column;gap:var(--space-1)}
+    .facts span{text-align:left}
+  }
+</style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="burst-path" d="M50.00,4.00 L54.23,31.48 L69.09,10.36 L63.72,32.80 L86.75,20.70 L66.22,42.19 L91.92,40.43 L71.00,50.00 L93.87,60.01 L68.02,58.68 L85.96,78.68 L61.85,64.85 L69.09,89.64 L55.12,72.42 L50.00,97.00 L45.99,67.55 L31.34,88.74 L36.91,66.42 L14.04,78.68 L32.88,58.24 L6.13,60.01 L28.00,50.00 L7.10,40.21 L31.98,41.32 L13.25,20.70 L38.78,35.93 L30.48,9.46 L45.33,29.53 Z"/>
+  </defs>
+</svg>
+
+<div class="mock-banner">Concept mockup for Taco Boom &nbsp;&bull;&nbsp; built by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#burst-path" x="4" y="4" fill="var(--pop)"/><use href="#burst-path" fill="var(--accent)"/></svg>
+      <span>Taco <span class="bm-boom">Boom</span></span>
+    </a>
+    <ul>
+      <li><a href="#/menu">Menu</a></li>
+      <li><a href="#/about">About</a></li>
+      <li><a href="#/order">Order</a></li>
+      <li><a href="#/visit">Visit</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">&#9654; Brand intro</a></li>
+    </ul>
+    <a class="btn" href="#/order">Order</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HOME ================= -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap hero">
+      <svg class="burst hero__burst" viewBox="0 0 108 108" aria-hidden="true">
+        <use href="#burst-path" x="8" y="8" class="b"/>
+        <use href="#burst-path" x="2" y="2" class="a"/>
+      </svg>
+      <div class="hero__inner">
+        <h1>Fast tacos.<br>Big flavor.</h1>
+        <p class="lead">A counter-service taqueria on the west side of Las Vegas. Carne asada, tripa, capeados, and a salsa bar you build yourself.</p>
+        <div class="cta-row">
+          <a class="btn" href="#/menu">See the menu</a>
+          <a class="btn btn--ghost" href="#/order">How to order</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <h2>What is on the board</h2>
+      <p style="color:var(--muted);max-width:52ch">Pick your fillings, build your plate at the self-serve salsa bar, and eat. Prices are on the board at the counter.</p>
+      <ul class="menu-list">
+        <li><h3>Tacos</h3><p>Carne asada, tripa, cabeza, pastor, pollo, and capeados. Corn tortillas, onion, cilantro.</p></li>
+        <li><h3>Capeados</h3><p>Battered fish and shrimp, Mexican street style. The thing to try if you have not.</p></li>
+        <li><h3>Burritos &amp; quesadillas</h3><p>The same fillings, wrapped or griddled with cheese.</p></li>
+        <li><h3>Guacamole</h3><p>Made fresh. 100% natural.</p></li>
+      </ul>
+      <p style="margin-top:var(--space-8)"><a class="btn btn--ghost" href="#/menu">Full menu</a></p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <h2>A small, new spot</h2>
+          <p>Taco Boom just opened on South Jones Boulevard. Fast tacos, big flavor, no dine-in fuss. Order at the counter, call ahead, or get it on Uber Eats.</p>
+          <p><a class="btn btn--ghost" href="#/about">More about us</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="Three tacos on a tray"></div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <h3>Watch the Taco Boom intro</h3>
+          <p>A short brand reveal. Drop it on Instagram, a story, or the top of a reel.</p>
+          <span class="btn">Play the intro</span>
+        </span>
+        <span class="stage">
+          <svg viewBox="0 0 108 108" aria-hidden="true" class="burst" style="position:static">
+            <use href="#burst-path" x="8" y="8" class="b"/>
+            <use href="#burst-path" x="2" y="2" class="a"/>
+          </svg>
+          <span class="cap">Brand film</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= MENU ================= -->
+  <section class="view" data-route="/menu" id="view-menu">
+    <div class="wrap pagehead">
+      <h1>The menu</h1>
+      <p class="lead">Everything is made to order. Corn tortillas, real fillings, and a salsa bar you mix yourself. Full menu and current prices are on the board at the counter.</p>
+    </div>
+    <div class="wrap block">
+      <ul class="menu-list">
+        <li><h3>Tacos</h3><p>Carne asada, tripa, cabeza, pastor, pollo, fish, and shrimp. Served on corn tortillas with onion and cilantro.</p></li>
+        <li><h3>Capeados</h3><p>Battered fish and shrimp, Mexican street style. A house specialty.</p></li>
+        <li><h3>Burritos</h3><p>The same fillings, wrapped and handheld.</p></li>
+        <li><h3>Quesadillas</h3><p>Griddled flour tortilla, melted cheese, your choice of filling.</p></li>
+        <li><h3>Guacamole</h3><p>Made fresh in the shop. 100% natural.</p></li>
+        <li><h3>The salsa and sides bar</h3><p>Self-serve and included with every order. Salsas, onion, lime, radish, and pickled jalapenos.</p></li>
+        <li><h3>The Taco Boom</h3><p>The house special the shop is named for. Ask at the counter.</p></li>
+        <li><h3>Drinks</h3><p>Soft drinks and bottled options. Full list at the counter.</p></li>
+      </ul>
+      <p class="menu-note">Prices are set on the board in the shop and are not listed here.</p>
+      <p style="margin-top:var(--space-8)"><a class="btn" href="#/order">How to order</a></p>
+    </div>
+    <div class="wrap block">
+      <div class="grid grid--3">
+        <figure class="tile"><div class="shot shot--square" data-shot="Capeados taco, close"></div><figcaption>Battered fish and shrimp</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="The salsa bar"></div><figcaption>Self-serve, every order</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="Fresh guacamole"></div><figcaption>Made in-house</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap pagehead">
+      <h1>About Taco Boom</h1>
+      <p class="lead">A counter-service taqueria on South Jones Boulevard, west side of Las Vegas.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>The order is simple. Pick your fillings, build your plate at the self-serve salsa bar, and eat. Carne asada and tripa are what regulars come back for. Capeados, battered fish and shrimp done Mexican street style, are the thing to try if you have not.</p>
+          <p>It is a small, new spot in a strip-mall bay with a shared lot. Fast tacos, big flavor, no dine-in fuss. Walk in, call your order ahead, or order on Uber Eats for delivery across the west side.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="Counter and menu board"></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <h2>What to expect</h2>
+      <div class="points">
+        <div><h3>Street style, made to order</h3><p>Corn tortillas, real fillings, and salsa you mix yourself at the bar.</p></div>
+        <div><h3>Built for a quick lunch</h3><p>Order at the counter and go, or sit down in a clean room.</p></div>
+        <div><h3>Delivery too</h3><p>On Uber Eats across the west side of Las Vegas.</p></div>
+      </div>
+      <p style="margin-top:var(--space-8)"><a class="btn" href="#/menu">See the menu</a></p>
+    </div>
+  </section>
+
+  <!-- ================= ORDER ================= -->
+  <section class="view" data-route="/order" id="view-order">
+    <div class="wrap pagehead">
+      <h1>How to order</h1>
+      <p class="lead">Three ways to get Taco Boom. All of them are quick.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <ol class="steps">
+            <li><h3>Order at the counter</h3><p>Walk in, read the board, and build your order. Cash and cards.</p></li>
+            <li><h3>Call ahead</h3><p>Phone your order in and skip the wait. Call or text (702) 466-2871.</p></li>
+            <li><h3>Get it delivered</h3><p>Order on Uber Eats for delivery across the west side of Las Vegas.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Hours</b><span>TBC</span></li>
+            <li><b>Prices</b><span>On the board at the counter</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17024662871">(702) 466-2871</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/tacoboomlv/" target="_blank" rel="noopener">@tacoboomlv</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Catering or a large order</h2>
+          <p style="color:var(--muted)">Planning something bigger? Send the details and the shop will call you back.</p>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Headcount, date, and what you want</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Send the request</button>
+            <p class="status" role="status">This form is part of a concept mockup. It does not send yet. For catering, call the shop at (702) 466-2871.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VISIT ================= -->
+  <section class="view" data-route="/visit" id="view-visit">
+    <div class="wrap pagehead">
+      <h1>Visit</h1>
+      <p class="lead">South Jones Boulevard, between Sahara Avenue and Desert Inn Road, west side of Las Vegas.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>Taco Boom is a small counter-service bay in the strip mall at 2555 South Jones Boulevard. Park in the shared lot, walk up, and order.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>2555 S Jones Blvd Ste F3, Las Vegas, NV 89146</span></li>
+            <li><b>Hours</b><span>TBC</span></li>
+            <li><b>Parking</b><span>Shared strip-mall lot off South Jones Boulevard</span></li>
+            <li><b>Getting here</b><span>West side, between Sahara Ave and Desert Inn Rd</span></li>
+          </ul>
+          <p style="margin-top:var(--space-8)"><a class="btn" href="#/order">How to order</a></p>
+        </div>
+        <div class="grid" style="gap:var(--space-4)">
+          <div class="shot shot--wide" data-shot="Storefront on S Jones Blvd"></div>
+          <div class="grid grid--2" style="gap:var(--space-4)">
+            <div class="shot shot--square" data-shot="The salsa and sides bar"></div>
+            <div class="shot shot--square" data-shot="Dining room"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <div class="shot shot--wide" data-shot="Map / storefront on S Jones Blvd"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-mark">Taco <span class="bm-boom">Boom</span></span>
     <nav>
-        <div class="logo">TACO BOOM</div>
-        <div class="nav-links">
-            <a href="#hero">HOME</a>
-            <a href="#menu">MENU</a>
-            <a href="#about">ABOUT</a>
-            <a href="#location">VISIT</a>
-        </div>
+      <a href="#/menu">Menu</a>
+      <a href="#/about">About</a>
+      <a href="#/order">Order</a>
+      <a href="#/visit">Visit</a>
+      <a href="intro.html" target="_blank" rel="noopener">Brand intro</a>
+      <a href="https://www.instagram.com/tacoboomlv/" target="_blank" rel="noopener">@tacoboomlv</a>
     </nav>
+    <div class="foot-meta">
+      <span>2555 S Jones Blvd Ste F3, Las Vegas, NV 89146 &nbsp;&bull;&nbsp; (702) 466-2871</span>
+      <span>&copy; <span id="yr"></span> Taco Boom. Fast tacos, big flavor.</span>
+      <span>Concept website mockup by Hillside Visuals.</span>
+    </div>
+  </div>
+</footer>
 
-    <section id="hero">
-        <h1 class="hero-title">Explosive Flavor.</h1>
-        <p class="hero-sub">Vegas' newest obsession. Unapologetic tacos, bold margaritas, zero compromises.</p>
-        <a href="#menu" class="cta-btn">SEE THE MENU</a>
-    </section>
+<script>
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(!views.length) return;
+  document.body.classList.add('routed');
+  var home=document.getElementById('view-home')||views[0];
+  var routeOf=function(v){return v.getAttribute('data-route');};
+  var render=function(){
+    var h=(location.hash||'').replace(/^#/,'');
+    if(h && h.charAt(0)!=='/') h='/'+h;
+    var match=views.filter(function(v){return routeOf(v)===h;})[0]||home;
+    views.forEach(function(v){v.classList.toggle('is-active',v===match);});
+    navLinks.forEach(function(a){
+      a.setAttribute('aria-current', a.getAttribute('href')==='#'+routeOf(match)?'page':'false');
+    });
+    window.scrollTo(0,0);
+  };
+  window.addEventListener('hashchange',render);
+  render();
+  var form=document.querySelector('.form');
+  if(form){
+    var s=form.querySelector('.status'); var note=s?s.textContent:'';
+    form.addEventListener('submit',function(e){e.preventDefault(); if(s) s.textContent=note;});
+  }
+})();
+</script>
 
-    <section id="menu">
-        <h2>The Lineup</h2>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <h3>Boom Al Pastor</h3>
-                <p>Marinated pork, roasted pineapple, salsa roja, micro cilantro.</p>
-                <span class="price">$4.50</span>
-            </div>
-            <div class="menu-item">
-                <h3>Asada Crunch</h3>
-                <p>Crispy shell wrapped in soft tortilla, grilled steak, guacamole, cotija.</p>
-                <span class="price">$5.00</span>
-            </div>
-            <div class="menu-item">
-                <h3>Fire Mushroom</h3>
-                <p>Charred local mushrooms, jalapeño crema, pickled red onions.</p>
-                <span class="price">$4.00</span>
-            </div>
-        </div>
-    </section>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Taco Boom",
+  "servesCuisine":"Mexican",
+  "telephone":"(702) 466-2871",
+  "address":{"@type":"PostalAddress","streetAddress":"2555 S Jones Blvd Ste F3","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89146"}
+}
+</script>
 
-    <section id="about">
-        <div class="about-content">
-            <h2>We don't do quiet.</h2>
-            <p>Born in Las Vegas, Taco Boom is here to shake up the local food scene. We source loud ingredients, blast loud music, and serve up an experience you won't forget. This isn't your average taqueria.</p>
-        </div>
-    </section>
-
-    <section id="location">
-        <div class="address-box">
-            <h2>Find Us</h2>
-            <p>3455 S DURANGO DR</p>
-            <p>LAS VEGAS, NV 89117</p>
-            <p style="margin-top:20px; color:var(--secondary);">702-555-0107</p>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Ready for the Boom?</h2>
-        <p>Order online or drop by the shop.</p>
-        <a href="#" class="cta-btn" style="background:#000; color:var(--primary); margin-top:30px;">ORDER NOW</a>
-    </section>
-
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Hero animation
-        gsap.from(".hero-title", { duration: 1, y: 100, opacity: 0, ease: "power4.out" });
-        gsap.from(".hero-sub", { duration: 1, y: 50, opacity: 0, ease: "power3.out", delay: 0.3 });
-        gsap.from(".cta-btn", { duration: 1, scale: 0, opacity: 0, ease: "back.out(1.7)", delay: 0.6 });
-
-        // Menu items stagger
-        gsap.from(".menu-item", {
-            scrollTrigger: { trigger: "#menu", start: "top 70%" },
-            y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
-        });
-
-        // About section
-        gsap.from(".about-content", {
-            scrollTrigger: { trigger: "#about", start: "top 70%" },
-            scale: 0.9, opacity: 0, duration: 1, ease: "power2.out"
-        });
-
-        // Location section
-        gsap.from(".address-box", {
-            scrollTrigger: { trigger: "#location", start: "top 70%" },
-            x: -50, opacity: 0, duration: 1, ease: "power3.out"
-        });
-    </script>
 </body>
 </html>
