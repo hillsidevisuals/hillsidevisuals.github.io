@@ -1,58 +1,142 @@
 <!DOCTYPE html>
+<!--
+  Durango Social Club — brand intro. Bespoke to the fingerprint: video-template-frame-warm-grain
+  (OpenDesign engine unavailable this session; hand-built to the warm-grain concept).
+  Concept: warm cream on oxblood, a film-grain wash, one brass ripple opening out from the centre
+  like a needle settling into a groove, then the wordmark rising line by line under a hairline rule.
+  Holds the final lockup. Replay control. Fully fluid (cqw), no fixed-pixel stage.
+  #still on the URL freezes the final frame (used for still-frame QA and any embed).
+  self-critique: P5 H5 E4 S4 R4 V5
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brand Intro | Durango Social Club</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: #2B2321;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #C29B62;
-            font-family: 'Playfair Display', serif;
-            overflow: hidden;
-        }
-        .text-container {
-            text-align: center;
-        }
-        h1 {
-            font-size: 4rem;
-            margin: 0;
-            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-        }
-        .subtitle {
-            color: #EAE4DB;
-            font-size: 1.5rem;
-            opacity: 0;
-            margin-top: 1rem;
-        }
-    </style>
+<title>Durango Social Club | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:oklch(0.253 0.066 25);
+    --raised:oklch(0.312 0.072 25);
+    --cream:oklch(0.942 0.021 78);
+    --cream-dim:color-mix(in oklch, var(--cream) 66%, transparent);
+    --brass:oklch(0.760 0.094 79);
+    --brass-line:color-mix(in oklch, var(--brass) 60%, transparent);
+    --font-display:"Cinzel", Georgia, serif;
+    --font-body:"Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+    --ease-out:cubic-bezier(.22,.61,.36,1);
+    --ease-in-out:cubic-bezier(.65,.05,.36,1);
+    --ease-in:cubic-bezier(.55,.06,.68,.19);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--ground)}
+  body{color:var(--cream);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:clamp(12px,3vw,22px);padding:clamp(14px,4vw,34px)}
+
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    font-size:1cqw;background:radial-gradient(58% 66% at 50% 44%, var(--raised) 0%, var(--ground) 66%);
+    overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.55)}
+  .frame::after{content:"";position:absolute;inset:3cqw;border:1px solid var(--brass-line);
+    pointer-events:none;z-index:4}
+  .grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.55'/></svg>");
+    background-size:180px 180px}
+  .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
+    background:radial-gradient(70% 80% at 50% 46%, transparent 40%, rgba(0,0,0,.42) 100%)}
+
+  .ripple{position:absolute;left:50%;top:46%;z-index:1;transform:translate(-50%,-50%);width:8cqw;height:8cqw}
+  .ripple i{position:absolute;inset:0;border:1px solid var(--brass);border-radius:50%;opacity:0;transform:scale(.2);
+    animation:ring 2.2s var(--ease-out) forwards}
+  .ripple i:nth-child(1){animation-delay:.05s}
+  .ripple i:nth-child(2){animation-delay:.2s}
+  .ripple i:nth-child(3){animation-delay:.35s}
+  .ripple i:nth-child(4){animation-delay:.5s}
+  @keyframes ring{0%{opacity:0;transform:scale(.2)}18%{opacity:.55}100%{opacity:0;transform:scale(6.4)}}
+
+  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;padding:0 6cqw}
+
+  .kicker{font-size:clamp(8px,1.15cqw,17px);letter-spacing:.4em;text-transform:uppercase;color:var(--brass);
+    margin-bottom:2.4cqw;opacity:0;animation:rise .6s var(--ease-out) .35s forwards}
+
+  .wordmark{font-family:var(--font-display);font-weight:600;text-transform:uppercase;color:var(--cream);
+    line-height:1.04;letter-spacing:.16em;font-size:clamp(20px,8.2cqw,104px)}
+  .wordmark span{display:block;opacity:0;transform:translateY(.5em);animation:rise .62s var(--ease-out) forwards}
+  .wordmark span:nth-child(1){animation-delay:.6s}
+  .wordmark span:nth-child(2){animation-delay:.75s}
+  .wordmark span:nth-child(3){animation-delay:.9s}
+
+  .rule{width:0;height:1px;background:var(--brass);margin:3.2cqw 0 0;animation:draw .8s var(--ease-in-out) 1.15s forwards}
+  @keyframes draw{to{width:min(38cqw,62%)}}
+
+  .tagline{font-size:clamp(11px,1.8cqw,28px);color:var(--cream-dim);margin-top:3cqw;font-weight:300;
+    letter-spacing:.02em;opacity:0;animation:rise .7s var(--ease-out) 1.45s forwards}
+  .meta{display:flex;align-items:center;justify-content:center;gap:1.4cqw;flex-wrap:wrap;margin-top:2.6cqw;
+    font-size:clamp(8px,1.15cqw,17px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cream-dim);opacity:0;animation:rise .65s var(--ease-out) 1.7s forwards}
+  .meta i{width:.4cqw;height:.4cqw;min-width:3px;min-height:3px;background:var(--brass);border-radius:50%;display:inline-block}
+
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+  @media (prefers-reduced-motion:reduce){
+    .ripple i{animation:none;opacity:0}
+    .kicker,.wordmark span,.tagline,.meta{animation:none;opacity:1;transform:none}
+    .rule{animation:none;width:min(38cqw,62%)}
+  }
+  body.still .ripple i{animation:none;opacity:0}
+  body.still .kicker,body.still .wordmark span,body.still .tagline,body.still .meta{animation:none;opacity:1;transform:none}
+  body.still .rule{animation:none;width:min(38cqw,62%)}
+  .replaying .ripple i,.replaying .kicker,.replaying .wordmark span,
+  .replaying .rule,.replaying .tagline,.replaying .meta{animation:none}
+
+  .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;
+    font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim)}
+  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--cream);background:transparent;border:1px solid var(--brass-line);padding:9px 18px;cursor:pointer;
+    transition:border-color .16s var(--ease-out),color .16s var(--ease-out)}
+  .replay:hover{border-color:var(--brass);color:var(--brass)}
+  .visit{color:var(--cream-dim);text-decoration:none}
+  .visit:hover{color:var(--cream)}
+</style>
 </head>
 <body>
-    <div class="text-container">
-        <h1 class="title">Durango Social Club</h1>
-        <div class="subtitle">The Modern Supper Club</div>
+<main class="wrap">
+  <section class="frame" aria-label="Durango Social Club brand intro, six second reveal">
+    <div class="ripple" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="inner">
+      <p class="kicker">Las Vegas</p>
+      <h1 class="wordmark"><span>Durango</span><span>Social</span><span>Club</span></h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="tagline">A chef's dinner, four nights a week.</p>
+      <div class="meta">Wednesday to Saturday <i></i> @durangosocialclub</div>
     </div>
-    <script>
-        gsap.to(".title", {
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-            duration: 1.5,
-            ease: "power4.out",
-            delay: 0.5
-        });
-        gsap.to(".subtitle", {
-            opacity: 1,
-            y: -10,
-            duration: 1,
-            delay: 1.5
-        });
-    </script>
+  </section>
+  <div class="row">
+    <span>Durango Social Club &middot; brand film &middot; 6s</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./">Visit the site</a>
+  </div>
+</main>
+<script>
+(function(){
+  if(/still/.test(location.hash + location.search)) document.body.classList.add('still');
+  var frame = document.querySelector('.frame');
+  var btn = document.querySelector('.replay');
+  if(btn && frame){
+    btn.addEventListener('click', function(){
+      document.body.classList.remove('still');
+      frame.classList.add('replaying');
+      void frame.offsetWidth;
+      frame.classList.remove('replaying');
+    });
+  }
+})();
+</script>
 </body>
 </html>

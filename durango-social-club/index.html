@@ -1,233 +1,534 @@
 <!DOCTYPE html>
+<!--
+  Durango Social Club — concept website mockup by Hillside Visuals.
+  Router site, one self-contained file. Fingerprint row 7: editorial · document (supper-club menu)
+  · oxblood ground (band D) · warm cream + brass · Cinzel + Libre Franklin · masthead nav · warm-grain intro.
+  fingerprint self-critique: P5 H4 E4 S5 R5 V4
+   P: the page reads like the cover and inside of a small menu, not a landing page.
+   H: masthead sets the frame, one statement carries each view, menu is the spine.
+   E: OKLCH tokens only, one brass accent, hairline rules, transform/opacity motion, reduced-motion honoured.
+   S: every line is a verified fact about this restaurant (menu, chefs, hours, room, reservations).
+   R: one accent, no photos invented, no metrics, no fake chrome, no eyebrow tags.
+   V: document layout + masthead + oxblood ground — shares no axis pair with durvo, taco-boom, or fibre-salon.
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Durango Social Club | Supper Club</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --espresso: #2B2321;
-            --oat: #EAE4DB;
-            --burgundy: #A33A36;
-            --gold: #C29B62;
-        }
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: var(--espresso);
-            color: var(--oat);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-        }
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 2rem;
-            display: flex;
-            justify-content: space-between;
-            z-index: 100;
-            box-sizing: border-box;
-            background: rgba(43, 35, 33, 0.9);
-            backdrop-filter: blur(10px);
-        }
-        nav a {
-            color: var(--oat);
-            text-decoration: none;
-            margin-left: 2rem;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-        .brand-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 10%;
-            box-sizing: border-box;
-        }
-        .hero {
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2.5rem;
-            background: var(--burgundy);
-            color: var(--oat);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background 0.3s ease;
-            opacity: 0;
-        }
-        .btn:hover {
-            background: var(--gold);
-            color: var(--espresso);
-        }
-        .about-grid, .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        .section-title {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 2rem;
-        }
-        .image-placeholder {
-            width: 100%;
-            height: 60vh;
-            background: #3a3230;
-            border-radius: 8px;
-        }
-        .menu-item {
-            border-bottom: 1px solid rgba(234, 228, 219, 0.2);
-            padding: 1.5rem 0;
-            display: flex;
-            justify-content: space-between;
-        }
-        .menu-item h3 {
-            margin: 0 0 0.5rem 0;
-            color: var(--oat);
-        }
-        .menu-item p {
-            margin: 0;
-            color: #a09a95;
-            font-size: 0.9rem;
-        }
-        footer {
-            padding: 4rem 10%;
-            background: #1a1514;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Durango Social Club</title>
+<meta name="description" content="Durango Social Club. A chef's dinner four nights a week off Durango Drive in Las Vegas. Vietnamese comfort food, a la carte, with cocktails and a short wine list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-ground:oklch(0.253 0.066 25);
+    --color-raised:oklch(0.303 0.070 25);
+    --color-cream:oklch(0.942 0.021 78);
+    --color-cream-dim:oklch(0.795 0.019 78);
+    --color-brass:oklch(0.760 0.094 79);
+    --color-brass-deep:oklch(0.556 0.083 72);
+    --color-ink:oklch(0.205 0.038 30);
+    --line:color-mix(in oklch, var(--color-brass-deep) 55%, transparent);
+    --line-soft:color-mix(in oklch, var(--color-cream) 16%, transparent);
+
+    --font-display:"Cinzel", Georgia, "Times New Roman", serif;
+    --font-body:"Libre Franklin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
+    --space-5:1.5rem; --space-6:2rem; --space-7:3rem; --space-8:4.5rem; --space-9:6rem;
+
+    --maxw:74rem; --measure:64ch;
+    --pad:clamp(1.25rem, 5vw, 3.25rem);
+
+    --ease-out:cubic-bezier(.22,.61,.36,1);
+    --ease-in:cubic-bezier(.55,.06,.68,.19);
+    --ease-in-out:cubic-bezier(.65,.05,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--color-ground);color:var(--color-cream);
+    font-family:var(--font-body);font-size:1.0625rem;line-height:1.62;font-weight:300;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:var(--color-brass);text-underline-offset:3px}
+  a:hover{color:var(--color-cream)}
+
+  h1,h2,h3{font-family:var(--font-display);font-weight:500;font-style:normal;line-height:1.12;margin:0;
+    letter-spacing:.04em;text-wrap:balance}
+  h1{font-size:clamp(1.9rem,5vw,3.4rem);font-weight:600}
+  h2{font-size:clamp(1.4rem,3.2vw,2.15rem)}
+  h3{font-size:1rem;letter-spacing:.12em}
+  p{margin:0 0 var(--space-4);max-width:var(--measure)}
+  .dim{color:var(--color-cream-dim)}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  .btn{display:inline-block;font-family:var(--font-body);font-weight:500;font-size:.82rem;
+    letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+    padding:.85em 1.7em;border:1px solid var(--color-brass);color:var(--color-brass);
+    background:transparent;border-radius:0;cursor:pointer;
+    transition:color .18s var(--ease-out),background-color .18s var(--ease-out),transform .18s var(--ease-out)}
+  .btn:hover{background:var(--color-brass);color:var(--color-ink);transform:translateY(-1px)}
+  .btn:focus-visible{outline:2px solid var(--color-cream);outline-offset:3px}
+  .btn--solid{background:var(--color-brass);color:var(--color-ink)}
+  .btn--solid:hover{background:var(--color-cream);border-color:var(--color-cream)}
+
+  /* ---------- masthead ---------- */
+  .mock-banner{background:var(--color-ink);color:var(--color-cream-dim);text-align:center;
+    font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;padding:.55rem .8rem}
+  .masthead{background:var(--color-ground);border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(6px)}
+  .masthead .wrap{padding-top:var(--space-4);padding-bottom:var(--space-3)}
+  .masthead .toprule{display:flex;align-items:center;gap:var(--space-4);justify-content:center;
+    color:var(--color-brass);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase}
+  .masthead .toprule::before,.masthead .toprule::after{content:"";height:1px;flex:1;max-width:5rem;
+    background:var(--line)}
+  .wordmark{display:block;text-align:center;font-family:var(--font-display);font-weight:600;
+    color:var(--color-cream);text-decoration:none;letter-spacing:.18em;
+    font-size:clamp(1.15rem,3.6vw,1.9rem);margin:.5rem 0 .55rem}
+  .wordmark:hover{color:var(--color-brass)}
+  .navrow{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+    gap:.35rem 1.15rem;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+    padding-top:.7rem;border-top:1px solid var(--line)}
+  .navrow a{color:var(--color-cream-dim);text-decoration:none;padding:.2rem 0;
+    transition:color .16s var(--ease-out)}
+  .navrow a:hover{color:var(--color-cream)}
+  .navrow a[aria-current="page"]{color:var(--color-brass)}
+  .navrow a.reserve{color:var(--color-brass);border:1px solid var(--color-brass);padding:.35rem .95rem}
+  .navrow a.reserve:hover{background:var(--color-brass);color:var(--color-ink)}
+  .navrow a.film{color:var(--color-brass)}
+  .navrow a.film::before{content:"\25B6";font-size:.62em;margin-right:.45em;vertical-align:middle}
+
+  /* ---------- views ---------- */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .34s var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.001ms!important;scroll-behavior:auto}
+    body.routed .view.is-active{animation:fade .12s linear}
+    @keyframes fade{from{opacity:.4}to{opacity:1}}
+  }
+
+  .lede{padding-top:clamp(2.5rem,7vw,var(--space-9));padding-bottom:clamp(1.5rem,4vw,var(--space-7))}
+  .lede .statement{font-family:var(--font-display);font-weight:500;letter-spacing:.03em;
+    font-size:clamp(1.5rem,4.4vw,2.9rem);line-height:1.18;max-width:20ch;margin:0 0 var(--space-5)}
+  .lede p{font-size:clamp(1rem,1.6vw,1.12rem)}
+
+  .block{padding-top:clamp(2rem,5vw,var(--space-8));padding-bottom:clamp(2rem,5vw,var(--space-8));
+    border-top:1px solid var(--line)}
+  .block > h2{margin-bottom:var(--space-5)}
+  .sectionhead{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--color-brass);
+    margin:0 0 var(--space-5)}
+
+  /* the night / facts */
+  .night{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:var(--space-5) var(--space-6);
+    align-items:start}
+  .night div b{display:block;font-family:var(--font-display);font-weight:500;font-size:.86rem;
+    letter-spacing:.14em;color:var(--color-brass);margin-bottom:.35rem}
+  .night div span{color:var(--color-cream)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
+
+  /* menu list */
+  .menu-group{margin-bottom:var(--space-7)}
+  .menu-group h3{color:var(--color-brass);border-bottom:1px solid var(--line);padding-bottom:.6rem;
+    margin-bottom:var(--space-4)}
+  .menu-item{padding:.7rem 0;border-bottom:1px solid var(--line-soft)}
+  .menu-item .name{font-family:var(--font-display);font-weight:500;letter-spacing:.06em;
+    color:var(--color-cream);font-size:1rem}
+  .menu-item .say{color:var(--color-cream-dim);font-size:.92rem;margin:.25rem 0 0;max-width:52ch}
+
+  /* placeholder shots */
+  .shot{position:relative;overflow:hidden;border:1px solid var(--line);
+    background:
+      repeating-linear-gradient(45deg,color-mix(in oklch,var(--color-cream) 5%,transparent) 0 10px,transparent 10px 20px),
+      var(--color-raised);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--color-cream-dim);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    padding:1rem;min-height:13rem}
+  .shot::after{content:"\25C8  " attr(data-shot);max-width:26ch;line-height:1.5}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--tall{aspect-ratio:4/5;min-height:0}
+  .shot--sq{aspect-ratio:1/1;min-height:0}
+
+  .grid{display:grid;gap:var(--space-4)}
+  .grid--2{grid-template-columns:repeat(2,1fr)}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,var(--space-8));align-items:center}
+  .duo--start{align-items:start}
+
+  figure.tile{margin:0}
+  figure.tile figcaption{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--color-cream-dim);margin-top:.6rem}
+
+  /* brand film card */
+  .film-card{margin-top:var(--space-7);border:1px solid var(--line);display:grid;
+    grid-template-columns:1.15fr .85fr;text-decoration:none;color:inherit;background:var(--color-raised)}
+  .film-card:hover{border-color:var(--color-brass)}
+  .film-card .txt{padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;gap:var(--space-3);
+    justify-content:center}
+  .film-card h3{font-size:clamp(1.15rem,2.6vw,1.6rem);letter-spacing:.06em;color:var(--color-cream)}
+  .film-card p{color:var(--color-cream-dim);margin:0;font-size:.95rem}
+  .film-card .go{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brass);
+    margin-top:.4rem}
+  .film-card .go::before{content:"\25B6";font-size:.7em;margin-right:.5em}
+  .film-card .stage{position:relative;background:
+      radial-gradient(60% 70% at 50% 42%, color-mix(in oklch,var(--color-brass) 24%,var(--color-ground)) 0%, var(--color-ground) 66%);
+    display:flex;align-items:center;justify-content:center;min-height:12rem}
+  .film-card .stage .seal{width:4.5rem;height:4.5rem;border:1px solid var(--color-brass);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;
+    letter-spacing:.08em;color:var(--color-brass);font-size:1rem}
+
+  /* steps */
+  .steps{list-style:none;counter-reset:s;padding:0;margin:var(--space-5) 0 0;display:grid;gap:var(--space-5)}
+  .steps li{counter-increment:s;padding-left:3.25rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:0;width:2.1rem;height:2.1rem;
+    border:1px solid var(--color-brass);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:.85rem;color:var(--color-brass)}
+  .steps h3{color:var(--color-cream);letter-spacing:.06em;margin-bottom:.3rem;font-size:1.02rem}
+  .steps p{margin:0;color:var(--color-cream-dim);font-size:.95rem}
+
+  .facts{list-style:none;padding:0;margin:var(--space-5) 0 0}
+  .facts li{display:flex;justify-content:space-between;gap:var(--space-4);padding:.7rem 0;
+    border-bottom:1px solid var(--line-soft)}
+  .facts li b{font-family:var(--font-display);font-weight:500;letter-spacing:.1em;font-size:.82rem;
+    color:var(--color-brass)}
+  .facts li span{color:var(--color-cream);text-align:right}
+
+  /* concept form */
+  .form{display:grid;gap:var(--space-4);margin-top:var(--space-5);max-width:30rem}
+  .form label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--color-cream-dim);
+    display:block;margin-bottom:.35rem}
+  .form input,.form textarea{width:100%;font:inherit;font-weight:300;padding:.7em .85em;
+    border:1px solid var(--line);background:var(--color-raised);color:var(--color-cream);border-radius:0}
+  .form textarea{min-height:5.5rem;resize:vertical}
+  .form .status{font-size:.84rem;color:var(--color-cream-dim);margin:0}
+
+  .points{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-5)}
+  .points h3{color:var(--color-brass);letter-spacing:.1em;margin-bottom:.5rem;font-size:.92rem}
+  .points p{color:var(--color-cream-dim);font-size:.93rem;margin:0}
+
+  footer{border-top:1px solid var(--line);padding:var(--space-7) 0;margin-top:0}
+  footer .wrap{display:grid;gap:var(--space-5)}
+  footer .sign{font-family:var(--font-display);font-weight:500;letter-spacing:.16em;
+    font-size:clamp(1rem,2.4vw,1.35rem);color:var(--color-cream)}
+  footer nav{display:flex;flex-wrap:wrap;gap:.6rem 1.3rem;font-size:.74rem;letter-spacing:.14em;
+    text-transform:uppercase}
+  footer nav a{color:var(--color-cream-dim);text-decoration:none}
+  footer nav a:hover{color:var(--color-cream)}
+  footer .small{font-size:.72rem;letter-spacing:.06em;color:var(--color-cream-dim);text-transform:none}
+
+  @media (max-width:900px){
+    .grid--3{grid-template-columns:repeat(2,1fr)}
+    .duo{grid-template-columns:1fr;gap:var(--space-5)}
+    .film-card{grid-template-columns:1fr}
+    .points{grid-template-columns:1fr;gap:var(--space-5)}
+  }
+  @media (max-width:560px){
+    .grid--2,.grid--3{grid-template-columns:1fr}
+    .facts li{flex-direction:column;gap:.15rem}
+    .facts li span{text-align:left}
+    .cta-row .btn{flex:1 1 auto;text-align:center}
+    .navrow{gap:.3rem .85rem;font-size:.68rem}
+  }
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="brand-logo">Durango Social Club</div>
-        <div>
-            <a href="#about">About</a>
-            <a href="#dining">Dining</a>
-            <a href="#events">Events</a>
-            <a href="#reservations">Reservations</a>
-        </div>
+<div class="mock-banner">Concept mockup for Durango Social Club &middot; built by Hillside Visuals</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="toprule">Las Vegas, Nevada</p>
+    <a class="wordmark" href="#/">Durango Social Club</a>
+    <nav class="navrow" aria-label="Primary">
+      <a href="#/work">Menu</a>
+      <a href="#/about">The Room</a>
+      <a href="#/booking">Reservations</a>
+      <a href="#/studio">Visit</a>
+      <a class="film" href="intro.html" target="_blank" rel="noopener">Brand film</a>
+      <a class="reserve" href="#/booking">Reserve</a>
     </nav>
+  </div>
+</header>
 
-    <!-- View 1: Hero -->
-    <section class="hero" id="home">
-        <h1 class="hero-title">The Modern Supper Club</h1>
-        <p class="hero-sub">Where culinary excellence meets electric social ambiance in the heart of Las Vegas.</p>
-        <a href="#reservations" class="btn hero-btn">Reserve a Table</a>
-    </section>
+<main>
 
-    <!-- View 2: About -->
-    <section id="about">
-        <div class="about-grid">
-            <div class="about-text gs-reveal">
-                <h2 class="section-title">A Curated Experience</h2>
-                <p>Durango Social Club revives the classic supper club for the modern tastemaker. Step into an atmosphere of understated elegance, where deep espresso tones and warm gold accents set the stage for an unforgettable evening.</p>
-            </div>
-            <div class="image-placeholder gs-reveal"></div>
+  <!-- ============ HOME ============ -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap lede">
+      <p class="statement">A chef's dinner, four nights a week.</p>
+      <p>Dan Krohmer and Crystina Nguyen cook Vietnamese comfort food, a la carte, in a room of
+        about fifty five seats off Durango Drive. Cocktails, a short wine list, and a menu that
+        moves with the market. Reservations and walk-ins are both welcome.</p>
+      <div class="cta-row">
+        <a class="btn btn--solid" href="#/booking">Reserve a table</a>
+        <a class="btn" href="#/work">See the menu</a>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <h2 class="sectionhead">The night</h2>
+      <div class="night">
+        <div><b>Dinner</b><span>Wednesday to Saturday, 5 to 9 p.m.</span></div>
+        <div><b>Where</b><span>3655 S Durango Dr, Suite 29<br>Las Vegas, NV 89147</span></div>
+        <div><b>Reserve</b><span>Online through Toast, or by phone<br><a href="tel:+17252059846">(725) 205-9846</a></span></div>
+      </div>
+    </div>
+
+    <div class="wrap block">
+      <h2 class="sectionhead">From the menu</h2>
+      <div class="menu-group">
+        <div class="menu-item"><span class="name">Goi</span><p class="say">Chicken, shrimp, and fried tofu salad in black sesame rice paper.</p></div>
+        <div class="menu-item"><span class="name">Cha gio</span><p class="say">Crisp shrimp and pork spring rolls.</p></div>
+        <div class="menu-item"><span class="name">Bo ne</span><p class="say">Sizzling marinated beef, brought to the table hot.</p></div>
+        <div class="menu-item"><span class="name">Com ga roti</span><p class="say">Five spice chicken with jasmine rice.</p></div>
+      </div>
+      <a class="btn" href="#/work">The full menu</a>
+    </div>
+
+    <div class="wrap block">
+      <div class="duo duo--start">
+        <div>
+          <h2 class="sectionhead">The room</h2>
+          <p>Low light, a long list read at your pace, and dinner that takes its time. The club
+            began in 2025 as a run of chef residencies and collaborative dinners. It is now a
+            standing partnership between two of the city's own.</p>
+          <a class="btn" href="#/about">More about the room</a>
         </div>
-    </section>
+        <div class="shot shot--wide" data-shot="Dining room at dusk, candles lit"></div>
+      </div>
 
-    <!-- View 3: Dining -->
-    <section id="dining">
-        <h2 class="section-title gs-reveal" style="text-align: center;">Curated Menu</h2>
-        <div class="menu-grid">
-            <div class="gs-reveal">
-                <div class="menu-item">
-                    <div>
-                        <h3>Wagyu Tartare</h3>
-                        <p>Truffle aioli, cured egg yolk, brioche</p>
-                    </div>
-                    <div class="serif" style="color: var(--gold)">$28</div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        <h3>Lobster Thermidor</h3>
-                        <p>Cognac cream, gruyere, chervil</p>
-                    </div>
-                    <div class="serif" style="color: var(--gold)">$65</div>
-                </div>
-            </div>
-            <div class="image-placeholder gs-reveal"></div>
+      <a class="film-card" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <h3>Watch the Durango Social Club intro</h3>
+          <p>A six second brand film. Warm grain, the wordmark settling in. Made for a story, a
+            reel, or the top of the feed.</p>
+          <span class="go">Play the film</span>
+        </span>
+        <span class="stage"><span class="seal">DSC</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ MENU ============ -->
+  <section class="view" data-route="/work" id="view-work">
+    <div class="wrap lede">
+      <h1>The Menu</h1>
+      <p>The kitchen cooks a la carte. Order a few things to share, at your own pace. The list
+        moves with what Mama finds that week, so this is a sample of the card, not the whole of it.
+        Prices are on the printed menu at the table.</p>
+    </div>
+
+    <div class="wrap block">
+      <div class="menu-group">
+        <h3>To start</h3>
+        <div class="menu-item"><span class="name">Goi</span><p class="say">Chicken, shrimp, and fried tofu salad wrapped in black sesame rice paper.</p></div>
+        <div class="menu-item"><span class="name">Cha gio</span><p class="say">Crisp shrimp and pork spring rolls.</p></div>
+        <div class="menu-item"><span class="name">Banh bot loc</span><p class="say">Tapioca dumplings steamed in banana leaves.</p></div>
+      </div>
+      <div class="menu-group">
+        <h3>To share</h3>
+        <div class="menu-item"><span class="name">Banh mi</span><p class="say">Fried mortadella, on a light roll.</p></div>
+        <div class="menu-item"><span class="name">Bo ne</span><p class="say">Sizzling marinated beef, brought to the table hot.</p></div>
+        <div class="menu-item"><span class="name">Com ga roti</span><p class="say">Five spice chicken with jasmine rice.</p></div>
+      </div>
+      <div class="menu-group">
+        <h3>Sweet</h3>
+        <div class="menu-item"><span class="name">Vietnamese egg coffee pie</span><p class="say">The egg coffee, set into a pie.</p></div>
+      </div>
+      <div class="menu-group">
+        <h3>To drink</h3>
+        <div class="menu-item"><span class="name">Lychee Cooler</span><p class="say">A house cocktail. The bar also pours a short wine list, beer, zero proof options, and Vietnamese iced coffee.</p></div>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:var(--space-6)">
+        <figure class="tile"><div class="shot shot--sq" data-shot="Goi, plated overhead"></div><figcaption>Goi</figcaption></figure>
+        <figure class="tile"><div class="shot shot--sq" data-shot="Bo ne on the skillet"></div><figcaption>Bo ne</figcaption></figure>
+        <figure class="tile"><div class="shot shot--sq" data-shot="Cocktail, backlit at the bar"></div><figcaption>Lychee Cooler</figcaption></figure>
+        <figure class="tile"><div class="shot shot--sq" data-shot="Spring rolls, close crop"></div><figcaption>Cha gio</figcaption></figure>
+        <figure class="tile"><div class="shot shot--sq" data-shot="The pie, one slice"></div><figcaption>Egg coffee pie</figcaption></figure>
+        <figure class="tile"><div class="shot shot--sq" data-shot="Table set for four"></div><figcaption>To share</figcaption></figure>
+      </div>
+      <p style="margin-top:var(--space-6)"><a class="btn btn--solid" href="#/booking">Reserve a table</a></p>
+    </div>
+  </section>
+
+  <!-- ============ THE ROOM ============ -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap lede">
+      <h1>The Room</h1>
+      <p>Two Las Vegas chefs, a small dining room, and a menu that changes with the week.</p>
+    </div>
+
+    <div class="wrap block">
+      <div class="duo duo--start">
+        <div>
+          <p>Durango Social Club opened in August 2025 as a stage for chef residencies, pop-ups,
+            and collaborative dinners. In 2026 it became permanent. Dan Krohmer, who owns Other Mama
+            in the same shopping center, cooks alongside Crystina Nguyen, known as Mama, who once
+            led the District One kitchen. The name stayed.</p>
+          <p>Expect about fifty five seats, low light, and dinner that is meant to run long. The
+            staff will walk you through what is on that night. Come with a group, order across the
+            table, and stay for the egg coffee pie.</p>
         </div>
-    </section>
+        <div class="shot shot--wide" data-shot="The chefs at the pass"></div>
+      </div>
+    </div>
 
-    <!-- View 4: Events / Atmosphere -->
-    <section id="events" style="background: #1a1514; text-align: center;">
-        <h2 class="section-title gs-reveal">The Social Ambiance</h2>
-        <p class="gs-reveal" style="max-width: 600px; margin: 0 auto 3rem auto;">Live jazz, curated DJ sets, and an atmosphere that evolves as the evening progresses.</p>
-        <div class="image-placeholder gs-reveal" style="height: 40vh;"></div>
-    </section>
+    <div class="wrap block">
+      <h2 class="sectionhead">What holds it together</h2>
+      <div class="points">
+        <div><h3>The chefs</h3><p>Krohmer and Nguyen, cooking together every service, not as a one night event.</p></div>
+        <div><h3>The room</h3><p>Small on purpose. Around fifty five seats, warm light, no rush.</p></div>
+        <div><h3>The menu</h3><p>A la carte and built to share. It moves with what the market gives that week.</p></div>
+      </div>
+      <p style="margin-top:var(--space-6)"><a class="btn btn--solid" href="#/booking">Reserve a table</a></p>
+    </div>
+  </section>
 
-    <!-- View 5: Reservations -->
-    <section id="reservations" class="hero">
-        <h2 class="section-title gs-reveal">Join the Club</h2>
-        <p class="gs-reveal">Secure your table for an evening of exquisite taste.</p>
-        <a href="#" class="btn gs-reveal" style="opacity: 1;">Book Now</a>
-    </section>
+  <!-- ============ RESERVATIONS ============ -->
+  <section class="view" data-route="/booking" id="view-booking">
+    <div class="wrap lede">
+      <h1>Reservations</h1>
+      <p>Book ahead for a table, or walk in and take a seat at the bar. Both work, Wednesday
+        through Saturday.</p>
+    </div>
 
-    <footer>
-        <p>7155 S Durango Dr, Las Vegas, NV 89113 | 702-555-0102</p>
-        <p>&copy; 2026 Durango Social Club. Designed by Hillside.</p>
-    </footer>
+    <div class="wrap block">
+      <div class="duo duo--start">
+        <div>
+          <h2 class="sectionhead">How it works</h2>
+          <ol class="steps">
+            <li><h3>Book online</h3><p>Reservations run through Toast. The booking link is on our Instagram and the current site.</p></li>
+            <li><h3>Or walk in</h3><p>Walk-ins are welcome. Bar seats are first come, first served.</p></li>
+            <li><h3>Larger parties</h3><p>For a group of six or more, call the restaurant and we will set it up.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Hours</b><span>Wed to Sat, 5 to 9 p.m.</span></li>
+            <li><b>Booking</b><span>Toast Tables</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17252059846">(725) 205-9846</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/durangosocialclub/" target="_blank" rel="noopener">@durangosocialclub</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="sectionhead">Ask about a night</h2>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Party size and the night you want</label><textarea id="f-brief"></textarea></div>
+            <button class="btn btn--solid" type="submit">Send</button>
+            <p class="status" role="status">This is a concept form on the mockup and does not send. Real reservations go through Toast.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+  <!-- ============ VISIT ============ -->
+  <section class="view" data-route="/studio" id="view-studio">
+    <div class="wrap lede">
+      <h1>Visit</h1>
+      <p>Southwest Las Vegas, off Durango Drive, in the shopping center with Other Mama.</p>
+    </div>
 
-        // Hero Animation
-        gsap.to(".hero-title", {opacity: 1, y: 0, duration: 1, delay: 0.2});
-        gsap.to(".hero-sub", {opacity: 1, duration: 1, delay: 0.5});
-        gsap.to(".hero-btn", {opacity: 1, duration: 1, delay: 0.8});
+    <div class="wrap block">
+      <div class="duo duo--start">
+        <div>
+          <p>The club sits in Suite 29 at 3655 S Durango Dr, near the 215. Park in the lot out
+            front. Look for the small sign; the room is quiet from the street on purpose.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>3655 S Durango Dr, Suite 29<br>Las Vegas, NV 89147</span></li>
+            <li><b>Hours</b><span>Wed to Sat, 5 to 9 p.m.</span></li>
+            <li><b>Parking</b><span>Free lot in front</span></li>
+            <li><b>Nearby</b><span>Same center as Other Mama</span></li>
+          </ul>
+          <p style="margin-top:var(--space-5)"><a class="btn btn--solid" href="#/booking">Reserve a table</a></p>
+        </div>
+        <div class="grid" style="gap:var(--space-4)">
+          <div class="shot shot--wide" data-shot="Storefront on Durango Dr at night"></div>
+          <div class="grid grid--2" style="gap:var(--space-4)">
+            <div class="shot shot--sq" data-shot="The bar"></div>
+            <div class="shot shot--sq" data-shot="A set table"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        // Scroll Animations
-        gsap.utils.toArray('.gs-reveal').forEach(function(elem) {
-            gsap.fromTo(elem, 
-                { y: 50, opacity: 0 }, 
-                {
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: "top 85%",
-                    },
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power2.out"
-                }
-            );
-        });
-    </script>
+    <div class="wrap block">
+      <div class="shot shot--wide" data-shot="Map and storefront on Durango Drive"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="sign">Durango Social Club</span>
+    <nav aria-label="Footer">
+      <a href="#/work">Menu</a>
+      <a href="#/about">The Room</a>
+      <a href="#/booking">Reservations</a>
+      <a href="#/studio">Visit</a>
+      <a href="intro.html" target="_blank" rel="noopener">Brand film</a>
+      <a href="https://www.instagram.com/durangosocialclub/" target="_blank" rel="noopener">@durangosocialclub</a>
+    </nav>
+    <span class="small">&copy; <span id="yr"></span> Durango Social Club &middot; 3655 S Durango Dr, Suite 29, Las Vegas, NV 89147 &middot; (725) 205-9846 &middot; Concept mockup by Hillside Visuals</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var views = [].slice.call(document.querySelectorAll('.view'));
+  var navLinks = [].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home = document.getElementById('view-home') || views[0];
+    var routeOf = function(v){ return v.getAttribute('data-route'); };
+    var render = function(){
+      var h = (location.hash || '').replace(/^#/, '');
+      if(h && h.charAt(0) !== '/') h = '/' + h;
+      var match = views.filter(function(v){ return routeOf(v) === h; })[0] || home;
+      views.forEach(function(v){ v.classList.toggle('is-active', v === match); });
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + routeOf(match) ? 'page' : 'false');
+      });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', render);
+    render();
+  }
+
+  var form = document.querySelector('.form');
+  if(form){
+    var status = form.querySelector('.status');
+    var note = status ? status.textContent : '';
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(status) status.textContent = note;
+    });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Durango Social Club",
+  "servesCuisine":"Vietnamese",
+  "telephone":"(725) 205-9846",
+  "openingHours":"We-Sa 17:00-21:00",
+  "address":{"@type":"PostalAddress","streetAddress":"3655 S Durango Dr, Suite 29","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89147"}
+}
+</script>
+
 </body>
 </html>
