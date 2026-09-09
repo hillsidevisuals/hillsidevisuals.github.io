@@ -1,42 +1,137 @@
 <!DOCTYPE html>
-<html>
+<!--
+  Eddie's Oldschool Barbershop — brand intro (bespoke, template-recomposed).
+  Fingerprint plugin was video-template-frame-glitch-title; OpenDesign was unreachable this run, so
+  built by hand to the fingerprint note "1961 chrome, not a glitchy meme": a shop sign being bolted
+  up on newsprint. The razor swings open, EDDIE'S stamps in slab by slab, a blue+red pinstripe
+  pair rules under it, the tagline rises. Held final lockup, no fade out. Transform/opacity only.
+  fingerprint self-critique: P5 H4 E4 S4 R4 V5
+-->
+<html lang="en">
 <head>
-    <title>Brand Intro - Eddie's</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        body { margin: 0; background: #1A1A1A; color: #F5F5F0; font-family: 'Oswald', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
-        h1 { font-size: 8vw; text-transform: uppercase; text-align: center; line-height: 1; }
-        .word { display: inline-block; overflow: hidden; }
-        .char { display: inline-block; transform: translateY(100%); }
-        .accent { color: #D43A2C; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Eddie's Oldschool Barbershop | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --background: oklch(92.5% 0.004 235);
+    --foreground: oklch(21% 0.006 70);
+    --muted: oklch(38% 0.006 240);
+    --accent: oklch(48% 0.11 245);
+    --accent-text: oklch(99% 0 0);
+    --red: oklch(52% 0.20 26);
+    --font-display: "Alfa Slab One", Georgia, serif;
+    --font-body: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ease-out: cubic-bezier(0.16,1,0.3,1);
+    --ease-in-out: cubic-bezier(0.65,0,0.35,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--background)}
+  body{min-height:100vh;color:var(--foreground);font-family:var(--font-body);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+    padding:clamp(14px,4vw,32px);-webkit-font-smoothing:antialiased}
+
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    font-size:1cqw;background:var(--background);overflow:hidden;
+    box-shadow:0 20px 60px oklch(21% 0.006 70 / .28);
+}
+  .frame::before{content:"";position:absolute;inset:3cqw;border:1px solid oklch(21% 0.006 70 / .25);z-index:4;pointer-events:none}
+
+  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:0 6cqw;text-align:center}
+
+  .razor{width:16cqw;height:16cqw;margin-bottom:2.4cqw;transform-box:fill-box;transform-origin:28% 72%;
+    animation:swing 0.6s var(--ease-out) 0.1s both}
+
+  .wordmark{font-family:var(--font-display);font-size:14cqw;line-height:.9;text-transform:uppercase;
+    color:var(--foreground);white-space:nowrap;display:flex}
+  .wordmark .l{display:inline-block;opacity:0;transform:translateY(.5em) scale(.9);
+    animation:stamp .3s var(--ease-out) both;animation-delay:calc(.7s + var(--i) * .07s)}
+
+  .rule{width:0;height:1.1cqw;margin-top:1.8cqw;
+    background:linear-gradient(var(--accent) 0 50%, var(--red) 50% 100%);
+    animation:draw .45s var(--ease-in-out) 1.2s both}
+
+  .tagline{margin-top:2.4cqw;font-size:2.4cqw;font-weight:500;letter-spacing:.02em;color:var(--foreground);
+    opacity:0;transform:translateY(.6em);animation:rise .5s var(--ease-out) 1.5s both}
+  .meta{margin-top:2.4cqw;font-size:1.6cqw;font-weight:600;letter-spacing:.03em;
+    color:var(--muted);opacity:0;transform:translateY(.5em);animation:rise .5s var(--ease-out) 1.75s both}
+
+  @keyframes swing{from{opacity:0;transform:rotate(-24deg) translateY(-8%)}to{opacity:1;transform:rotate(0) translateY(0)}}
+  @keyframes stamp{from{opacity:0;transform:translateY(.5em) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes draw{from{width:0}to{width:min(52cqw,74%)}}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  
+  .replaying .razor,.replaying .wordmark .l,.replaying .rule,
+  .replaying .tagline,.replaying .meta{animation:none}
+
+  @media (prefers-reduced-motion:reduce){
+    .razor,.wordmark .l,.rule,.tagline,.meta{animation:none;opacity:1;transform:none;width:min(52cqw,74%)}
+    .wordmark .l{opacity:1;transform:none}
+  }
+
+  .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;
+    font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--muted)}
+  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--foreground);background:transparent;border:1px solid var(--muted);padding:9px 16px;
+    border-radius:4px;cursor:pointer}
+  .replay:hover{border-color:var(--foreground)}
+  .replay:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .visit{color:var(--accent);text-decoration:none}
+  .visit:hover{text-decoration:underline}
+</style>
 </head>
 <body>
-    <h1 id="title">
-        <div><span class="word char-wrap">EDDIE'S</span></div>
-        <div><span class="word char-wrap accent">OLD SCHOOL</span></div>
-        <div><span class="word char-wrap">BARBERSHOP</span></div>
-    </h1>
-    <script>
-        // Simple mock of SplitText for the demo
-        document.querySelectorAll('.char-wrap').forEach(el => {
-            const text = el.innerText;
-            el.innerHTML = '';
-            text.split('').forEach(char => {
-                const span = document.createElement('span');
-                span.className = 'char';
-                span.innerText = char === ' ' ? '\u00A0' : char;
-                el.appendChild(span);
-            });
-        });
-
-        gsap.to(".char", {
-            y: "0%",
-            duration: 1,
-            stagger: 0.05,
-            ease: "power4.out",
-            delay: 0.5
-        });
-    </script>
+  <section class="frame" aria-label="Eddie's Oldschool Barbershop brand intro">
+    <div class="inner">
+      <svg class="razor" viewBox="0 0 110 96" aria-hidden="true">
+        <g transform="translate(30,78)">
+          <g transform="rotate(-18)"><rect x="0" y="-6" width="46" height="12" rx="6" fill="#262320"/></g>
+          <g transform="rotate(-62)">
+            <path d="M2 -8 L52 -8 L61 -4 Q63 0 61 4 L52 8 L2 8 Q-5 8 -5 0 Q-5 -8 2 -8 Z" fill="#262320"/>
+            <line x1="3" y1="-4.6" x2="54" y2="-4.6" stroke="#2F6A98" stroke-width="3.4" stroke-linecap="round"/>
+          </g>
+          <circle cx="0" cy="0" r="6" fill="#C23A2C"/>
+        </g>
+      </svg>
+      <h1 class="wordmark" data-text="EDDIE&#8217;S">EDDIE&#8217;S</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="tagline">Where gentlemen still get groomed.</p>
+      <p class="meta">Las Vegas, NV&nbsp;&nbsp;&middot;&nbsp;&nbsp;@eddiesbarber1973</p>
+    </div>
+  </section>
+  <div class="row">
+    <span>Eddie&#8217;s Oldschool Barbershop &middot; brand intro</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./">Visit the site</a>
+  </div>
+<script>
+(function(){
+  var wm = document.querySelector('.wordmark');
+  if(wm){
+    var text = wm.getAttribute('data-text') || wm.textContent;
+    wm.textContent = '';
+    var i = 0;
+    text.split('').forEach(function(ch){
+      var span = document.createElement('span');
+      span.className = 'l'; span.textContent = ch;
+      span.style.setProperty('--i', i++);
+      wm.appendChild(span);
+    });
+  }
+  var frame = document.querySelector('.frame');
+  var btn = document.querySelector('.replay');
+  if(btn && frame){
+    btn.addEventListener('click', function(){
+      frame.classList.add('replaying'); void frame.offsetWidth; frame.classList.remove('replaying');
+    });
+  }
+})();
+</script>
 </body>
-</html>\n
+</html>
