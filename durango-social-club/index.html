@@ -80,12 +80,12 @@
 
   /* ---------- masthead ---------- */
   .mock-banner{background:var(--color-ink);color:var(--color-cream-dim);text-align:center;
-    font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;padding:.55rem .8rem}
+    font-size:.78rem;letter-spacing:.03em;padding:.55rem .8rem}
   .masthead{background:var(--color-ground);border-bottom:1px solid var(--line);
     position:sticky;top:0;z-index:50;backdrop-filter:blur(6px)}
   .masthead .wrap{padding-top:var(--space-4);padding-bottom:var(--space-3)}
   .masthead .toprule{display:flex;align-items:center;gap:var(--space-4);justify-content:center;
-    color:var(--color-brass);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase}
+    color:var(--color-brass);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
   .masthead .toprule::before,.masthead .toprule::after{content:"";height:1px;flex:1;max-width:5rem;
     background:var(--line)}
   .wordmark{display:block;text-align:center;font-family:var(--font-display);font-weight:600;
@@ -136,22 +136,20 @@
 
   /* menu list */
   .menu-group{margin-bottom:var(--space-7)}
-  .menu-group h3{color:var(--color-brass);border-bottom:1px solid var(--line);padding-bottom:.6rem;
-    margin-bottom:var(--space-4)}
+  .menu-group h2{color:var(--color-brass);border-bottom:1px solid var(--line);padding-bottom:.6rem;
+    margin-bottom:var(--space-4);font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:600}
   .menu-item{padding:.7rem 0;border-bottom:1px solid var(--line-soft)}
-  .menu-item .name{font-family:var(--font-display);font-weight:500;letter-spacing:.06em;
+  .menu-item .name{font-family:var(--font-display);font-weight:500;letter-spacing:.03em;
     color:var(--color-cream);font-size:1rem}
   .menu-item .say{color:var(--color-cream-dim);font-size:.92rem;margin:.25rem 0 0;max-width:52ch}
 
   /* placeholder shots */
   .shot{position:relative;overflow:hidden;border:1px solid var(--line);
-    background:
-      repeating-linear-gradient(45deg,color-mix(in oklch,var(--color-cream) 5%,transparent) 0 10px,transparent 10px 20px),
-      var(--color-raised);
+    background:var(--color-raised);
     display:flex;align-items:center;justify-content:center;text-align:center;
-    color:var(--color-cream-dim);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--color-cream-dim);font-size:.8rem;letter-spacing:.02em;
     padding:1rem;min-height:13rem}
-  .shot::after{content:"\25C8  " attr(data-shot);max-width:26ch;line-height:1.5}
+  .shot::after{content:"\25C8  " attr(data-shot);max-width:30ch;line-height:1.55}
   .shot--wide{aspect-ratio:16/10;min-height:0}
   .shot--tall{aspect-ratio:4/5;min-height:0}
   .shot--sq{aspect-ratio:1/1;min-height:0}
@@ -172,7 +170,7 @@
   .film-card:hover{border-color:var(--color-brass)}
   .film-card .txt{padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;gap:var(--space-3);
     justify-content:center}
-  .film-card h3{font-size:clamp(1.15rem,2.6vw,1.6rem);letter-spacing:.06em;color:var(--color-cream)}
+  .film-card h3{font-size:clamp(1.15rem,2.6vw,1.6rem);letter-spacing:.04em;color:var(--color-cream)}
   .film-card p{color:var(--color-cream-dim);margin:0;font-size:.95rem}
   .film-card .go{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brass);
     margin-top:.4rem}
@@ -190,7 +188,7 @@
   .steps li::before{content:counter(s);position:absolute;left:0;top:0;width:2.1rem;height:2.1rem;
     border:1px solid var(--color-brass);border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-family:var(--font-display);font-size:.85rem;color:var(--color-brass)}
-  .steps h3{color:var(--color-cream);letter-spacing:.06em;margin-bottom:.3rem;font-size:1.02rem}
+  .steps h3{color:var(--color-cream);letter-spacing:.04em;margin-bottom:.3rem;font-size:1.02rem}
   .steps p{margin:0;color:var(--color-cream-dim);font-size:.95rem}
 
   .facts{list-style:none;padding:0;margin:var(--space-5) 0 0}
@@ -221,7 +219,7 @@
     text-transform:uppercase}
   footer nav a{color:var(--color-cream-dim);text-decoration:none}
   footer nav a:hover{color:var(--color-cream)}
-  footer .small{font-size:.72rem;letter-spacing:.06em;color:var(--color-cream-dim);text-transform:none}
+  footer .small{font-size:.75rem;letter-spacing:.01em;color:var(--color-cream-dim);text-transform:none;line-height:1.7}
 
   @media (max-width:900px){
     .grid--3{grid-template-columns:repeat(2,1fr)}
@@ -234,7 +232,7 @@
     .facts li{flex-direction:column;gap:.15rem}
     .facts li span{text-align:left}
     .cta-row .btn{flex:1 1 auto;text-align:center}
-    .navrow{gap:.3rem .85rem;font-size:.68rem}
+    .navrow{gap:.3rem .8rem;font-size:.72rem}
   }
 </style>
 </head>
@@ -327,23 +325,23 @@
 
     <div class="wrap block">
       <div class="menu-group">
-        <h3>To start</h3>
+        <h2>To start</h2>
         <div class="menu-item"><span class="name">Goi</span><p class="say">Chicken, shrimp, and fried tofu salad wrapped in black sesame rice paper.</p></div>
         <div class="menu-item"><span class="name">Cha gio</span><p class="say">Crisp shrimp and pork spring rolls.</p></div>
         <div class="menu-item"><span class="name">Banh bot loc</span><p class="say">Tapioca dumplings steamed in banana leaves.</p></div>
       </div>
       <div class="menu-group">
-        <h3>To share</h3>
+        <h2>To share</h2>
         <div class="menu-item"><span class="name">Banh mi</span><p class="say">Fried mortadella, on a light roll.</p></div>
         <div class="menu-item"><span class="name">Bo ne</span><p class="say">Sizzling marinated beef, brought to the table hot.</p></div>
         <div class="menu-item"><span class="name">Com ga roti</span><p class="say">Five spice chicken with jasmine rice.</p></div>
       </div>
       <div class="menu-group">
-        <h3>Sweet</h3>
+        <h2>Sweet</h2>
         <div class="menu-item"><span class="name">Vietnamese egg coffee pie</span><p class="say">The egg coffee, set into a pie.</p></div>
       </div>
       <div class="menu-group">
-        <h3>To drink</h3>
+        <h2>To drink</h2>
         <div class="menu-item"><span class="name">Lychee Cooler</span><p class="say">A house cocktail. The bar also pours a short wine list, beer, zero proof options, and Vietnamese iced coffee.</p></div>
       </div>
 
