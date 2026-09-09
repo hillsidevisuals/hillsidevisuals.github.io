@@ -1,185 +1,579 @@
 <!DOCTYPE html>
+<!--
+  Concept website mockup for Mr. Soon Tofu, by Hillside Visuals.
+  fingerprint: P5 H5 E4 S5 R4 V5
+  Router site: one self-contained file, hash routes, no-JS shows every view as one scroll.
+  Fingerprint row 14: playful · catalogue "the bowls in order" · rice paper + seasoned-clay
+  red-brown · Nanum Myeongjo + Noto Sans KR · edge-aligned row nav · steam motif.
+  All colour / type / space values are named :root tokens (mirrors brand/variables.css). OKLCH only.
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Soon Tofu | Authentic Korean Comfort</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #E63946;
-            --secondary: #F1FAEE;
-            --accent: #457B9D;
-            --bg-dark: #1D3557;
-            --text-main: #111111;
-        }
-        body, html {
-            margin: 0; padding: 0; font-family: 'Inter', sans-serif;
-            background-color: var(--secondary); color: var(--text-main);
-            overflow-x: hidden;
-        }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
-        /* Navigation */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 5%; background: rgba(255,255,255,0.9);
-            position: fixed; top: 0; width: 90%; z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-        .logo { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
-        .nav-links a {
-            margin-left: 2rem; text-decoration: none; color: var(--text-main);
-            font-weight: 400; transition: color 0.3s ease; cursor: pointer;
-        }
-        .nav-links a:hover { color: var(--primary); }
-        
-        /* View Container */
-        #view-container { margin-top: 80px; min-height: 80vh; }
-        .view { display: none; padding: 4rem 5%; opacity: 0; }
-        .view.active { display: block; }
-        
-        /* Layouts (elayadesign style) */
-        .hero {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-            min-height: 70vh;
-        }
-        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; }
-        .hero p { font-size: 1.25rem; margin-bottom: 2rem; color: #555; }
-        .btn {
-            padding: 1rem 2rem; background: var(--primary); color: white;
-            text-decoration: none; border-radius: 4px; font-weight: 600;
-            display: inline-block; cursor: pointer; border: none;
-        }
-        .hero-img {
-            background: var(--accent); height: 500px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center; color: white;
-        }
-        
-        /* Menu Grid */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .menu-item { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .menu-item h3 { margin-top: 0; color: var(--primary); }
-        
-        /* Footer */
-        footer {
-            background: var(--bg-dark); color: white; padding: 4rem 5%;
-            text-align: center; margin-top: 4rem;
-        }
-    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mr. Soon Tofu</title>
+<meta name="description" content="A Spring Mountain soondubu house. Soft tofu stew in a hot stone pot, your spice level, fifteen banchan with every bowl.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --background:oklch(0.958 0.008 92);
+    --foreground:oklch(0.255 0.018 40);
+    --surface:oklch(0.975 0.006 92);
+    --surface-sink:oklch(0.930 0.012 88);
+    --muted:oklch(0.440 0.020 42);
+    --border:oklch(0.860 0.012 70);
+    --accent:oklch(0.455 0.120 38);
+    --accent-hover:oklch(0.410 0.118 36);
+    --accent-active:oklch(0.360 0.100 34);
+    --accent-bg:oklch(0.930 0.035 50);
+    --accent-border:oklch(0.800 0.060 45);
+    --accent-text:oklch(0.360 0.105 37);
+    --accent-ink:oklch(0.980 0.010 92);
+    --broth:oklch(0.900 0.045 75);
+    --brand-accent:var(--accent);
+
+    --font-display:"Nanum Myeongjo", Georgia, "Times New Roman", serif;
+    --font-body:"Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --step--1:clamp(0.80rem, 0.77rem + 0.15vw, 0.88rem);
+    --step-0:clamp(1.00rem, 0.96rem + 0.20vw, 1.10rem);
+    --step-1:clamp(1.20rem, 1.10rem + 0.50vw, 1.45rem);
+    --step-2:clamp(1.55rem, 1.35rem + 1.00vw, 2.10rem);
+    --step-3:clamp(2.10rem, 1.70rem + 2.00vw, 3.20rem);
+    --step-4:clamp(2.80rem, 2.10rem + 3.40vw, 4.60rem);
+
+    --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
+    --space-5:1.5rem; --space-6:2rem; --space-7:3rem; --space-8:4.5rem; --space-9:7rem;
+
+    --measure:64ch;
+    --radius:3px;
+    --edge:clamp(1.15rem, 5vw, 3.5rem);
+    --maxw:1080px;
+    --shadow:0 18px 44px oklch(0.255 0.018 40 / 0.14);
+    --ease-out:cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease-in:cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    --ease-in-out:cubic-bezier(0.65, 0.05, 0.36, 1);
+
+    --img-hero:none; --img-bowl:none; --img-banchan:none; --img-room:none; --img-street:none;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--background);color:var(--foreground);
+    font-family:var(--font-body);font-weight:400;font-size:var(--step-0);line-height:1.62;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:700;font-style:normal;line-height:1.12;
+    margin:0;text-wrap:balance;overflow-wrap:break-word}
+  h1{font-size:var(--step-4);letter-spacing:-0.01em}
+  h2{font-size:var(--step-2)}
+  h3{font-size:var(--step-1);font-weight:700}
+  p{margin:0 0 var(--space-4);max-width:var(--measure)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--edge);padding-right:var(--edge)}
+
+  /* ---- edge-aligned row nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:oklch(0.958 0.008 92 / 0.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);
+    flex-wrap:wrap;padding-top:var(--space-4);padding-bottom:var(--space-4)}
+  .brandmark{display:inline-flex;align-items:center;gap:var(--space-3);text-decoration:none;
+    font-family:var(--font-display);font-weight:700;font-size:var(--step-1);white-space:nowrap}
+  .brandmark svg{width:2rem;height:2rem;flex:none;color:var(--foreground)}
+  .brandmark .s{color:var(--accent)}
+  .nav ul{display:flex;align-items:baseline;gap:clamp(0.9rem,2.4vw,1.6rem);list-style:none;
+    margin:0;padding:0;font-size:var(--step--1);flex-wrap:wrap}
+  .nav a{text-decoration:none;color:var(--muted);letter-spacing:0.02em;
+    padding-bottom:0.15rem;border-bottom:1px solid transparent;transition:color 0.15s var(--ease-out)}
+  .nav a:hover{color:var(--foreground)}
+  .nav a[aria-current="page"]{color:var(--foreground);border-bottom-color:var(--accent)}
+  .nav a.order{color:var(--accent-text);font-weight:500}
+  .nav a.order:hover{color:var(--accent-active)}
+  .nav-intro{color:var(--accent-text)!important;font-weight:500}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--accent);
+    color:var(--accent-ink);padding:0.75em 1.35em;border-radius:var(--radius);
+    text-decoration:none;font-weight:500;font-size:var(--step--1);letter-spacing:0.02em;
+    border:1px solid var(--accent);transition:transform 0.15s var(--ease-out),background 0.15s var(--ease-out)}
+  .btn:hover{transform:translateY(-1px);background:var(--accent-hover)}
+  .btn:active{background:var(--accent-active)}
+  .btn--ghost{background:transparent;color:var(--foreground);border-color:var(--foreground)}
+  .btn--ghost:hover{background:var(--surface)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* ---- router ---- */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin 0.32s var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .section{padding-top:var(--space-8);padding-bottom:var(--space-8);
+    border-top:1px solid var(--border)}
+  .section:first-of-type{border-top:0}
+  .lede{font-size:var(--step-1);color:var(--muted);max-width:44ch;margin-top:var(--space-4)}
+
+  /* ---- home hero (catalogue opening, not hero+cards) ---- */
+  .open{padding-top:var(--space-8);padding-bottom:var(--space-7)}
+  .open .pot{display:flex;align-items:flex-end;gap:var(--space-5);flex-wrap:wrap}
+  .open .pot svg{width:clamp(4.5rem,14vw,8rem);height:auto;color:var(--foreground);flex:none}
+  .open .pot svg .s{color:var(--accent)}
+  .open h1{margin-bottom:var(--space-4)}
+  .open .say{font-size:var(--step-1);max-width:46ch;color:var(--foreground)}
+  .open .cta-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-6)}
+
+  .steam-anim path.s{transform-origin:center bottom;animation:steam 4.5s var(--ease-in-out) infinite}
+  .steam-anim path.s:nth-child(2){animation-delay:-1.5s}
+  .steam-anim path.s:nth-child(3){animation-delay:-3s}
+  @keyframes steam{0%,100%{opacity:0.5;transform:translateY(0.5px)}50%{opacity:1;transform:translateY(-1.5px)}}
+
+  /* ---- the catalogue spine ---- */
+  .catalogue{margin-top:var(--space-6);border-top:1px solid var(--border)}
+  .cat-row{display:grid;grid-template-columns:3.2rem 1fr auto;gap:var(--space-4);
+    align-items:baseline;padding:var(--space-4) 0;border-bottom:1px solid var(--border)}
+  .cat-row .no{font-family:var(--font-display);font-weight:700;font-size:var(--step-1);color:var(--accent)}
+  .cat-row .name{font-family:var(--font-display);font-weight:700;font-size:var(--step-1)}
+  .cat-row .name .rom{display:block;font-family:var(--font-body);font-weight:400;
+    font-size:var(--step--1);color:var(--muted);letter-spacing:0.01em;margin-top:0.15rem}
+  .cat-row .desc{font-size:var(--step--1);color:var(--muted);max-width:34ch;text-align:right}
+  .cat-head{font-family:var(--font-display);font-weight:700;font-size:var(--step-1);
+    letter-spacing:0.01em;color:var(--foreground);
+    padding:var(--space-5) 0 var(--space-3);border-bottom:2px solid var(--foreground)}
+  .cat-head:first-child{padding-top:0}
+
+  /* ---- "with every bowl" strip ---- */
+  .withstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);
+    margin-top:var(--space-6)}
+  .withstrip div h3{margin-bottom:var(--space-2)}
+  .withstrip div p{font-size:var(--step--1);color:var(--muted);margin:0}
+
+  /* ---- placeholder image panel (labelled, no hatch) ---- */
+  .shot{position:relative;background:var(--surface-sink);border:1px solid var(--border);
+    border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:var(--space-3);text-align:center;padding:var(--space-6);
+    color:var(--muted);min-height:220px;background-size:cover;background-position:center}
+  .shot svg{width:2.4rem;height:2.4rem;color:var(--accent);opacity:0.8}
+  .shot span{font-size:var(--step--1);letter-spacing:0.02em}
+  .shot--hero{min-height:min(52vh,440px);background-image:var(--img-hero)}
+  .shot--bowl{background-image:var(--img-bowl)}
+  .shot--banchan{background-image:var(--img-banchan)}
+  .shot--room{background-image:var(--img-room)}
+  .shot--street{aspect-ratio:16/9;min-height:0;background-image:var(--img-street)}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+
+  /* ---- intro card ---- */
+  .introcard{margin-top:var(--space-7);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;display:grid;grid-template-columns:1.1fr 0.9fr;
+    background:var(--foreground);color:var(--background);text-decoration:none}
+  .introcard .txt{padding:clamp(1.4rem,4vw,2.4rem);display:flex;flex-direction:column;
+    gap:var(--space-3);justify-content:center}
+  .introcard h3{color:var(--background)}
+  .introcard p{color:oklch(0.958 0.008 92 / 0.82);margin:0;font-size:var(--step--1)}
+  .introcard .go{margin-top:var(--space-2);font-size:var(--step--1);font-weight:500;
+    color:var(--accent-ink);border-bottom:1px solid var(--accent-border);
+    align-self:flex-start;padding-bottom:0.1rem}
+  .introcard .stage{position:relative;min-height:200px;display:flex;align-items:center;
+    justify-content:center;background:
+      radial-gradient(62% 68% at 50% 46%, oklch(0.455 0.12 38 / 0.35), var(--foreground) 68%)}
+  .introcard .stage svg{width:5rem;height:auto;color:var(--background)}
+  .introcard .stage svg .s{color:var(--accent)}
+  .introcard .stage .cap{position:absolute;left:0;right:0;bottom:var(--space-3);
+    font-size:var(--step--1);letter-spacing:0.14em;text-transform:uppercase;
+    color:oklch(0.958 0.008 92 / 0.6)}
+
+  /* ---- generic ---- */
+  .pagehead{padding-top:var(--space-8);padding-bottom:var(--space-4)}
+  .pagehead h1{margin-bottom:var(--space-3)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,5vw,4rem);align-items:start}
+  .points{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);margin-top:var(--space-6)}
+  .points h3{margin-bottom:var(--space-2)}
+  .points p{font-size:var(--step--1);color:var(--muted);margin:0}
+  .facts{list-style:none;padding:0;margin:var(--space-5) 0 0}
+  .facts li{display:flex;justify-content:space-between;gap:var(--space-4);
+    padding:var(--space-3) 0;border-bottom:1px solid var(--border)}
+  .facts li b{font-weight:500}
+  .facts li span:last-child{color:var(--muted);text-align:right}
+  .facts a{color:var(--accent-text);text-decoration:none}
+  .facts a:hover{text-decoration:underline}
+  .steps{list-style:none;counter-reset:s;padding:0;margin:var(--space-5) 0 0;display:grid;gap:var(--space-4)}
+  .steps li{counter-increment:s;padding-left:3rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-0.15rem;width:2rem;height:2rem;
+    border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;
+    justify-content:center;font-family:var(--font-display);font-size:var(--step--1);color:var(--accent-text)}
+  .steps h3{font-size:var(--step-0);margin-bottom:var(--space-1)}
+  .steps p{font-size:var(--step--1);color:var(--muted);margin:0}
+  .spice{margin-top:var(--space-6);padding:var(--space-5);background:var(--accent-bg);
+    border:1px solid var(--accent-border);border-radius:var(--radius)}
+  .spice h2{font-size:var(--step-1);margin-bottom:var(--space-2)}
+  .spice p{font-size:var(--step--1);color:var(--accent-text);margin:0;max-width:52ch}
+
+  .form{display:grid;gap:var(--space-3);margin-top:var(--space-4);max-width:30rem}
+  .form label{font-size:var(--step--1);letter-spacing:0.04em;color:var(--muted);
+    display:block;margin-bottom:0.3rem}
+  .form input,.form textarea{width:100%;font:inherit;font-size:var(--step--1);
+    padding:0.65em 0.8em;border:1px solid var(--border);border-radius:var(--radius);
+    background:var(--surface);color:var(--foreground)}
+  .form textarea{min-height:5.5rem;resize:vertical}
+  .form .note{font-size:var(--step--1);color:var(--muted)}
+
+  footer{background:var(--foreground);color:oklch(0.958 0.008 92 / 0.82);
+    padding:var(--space-8) 0;margin-top:0}
+  footer .wrap{display:grid;gap:var(--space-4)}
+  footer .sign{font-family:var(--font-display);font-weight:700;font-size:var(--step-2);
+    color:var(--background)}
+  footer .line{font-size:var(--step--1);max-width:52ch}
+  footer nav{display:flex;gap:var(--space-4);flex-wrap:wrap;font-size:var(--step--1)}
+  footer a{color:oklch(0.958 0.008 92 / 0.82);text-decoration:none}
+  footer a:hover{color:var(--background)}
+
+  .mock-banner{background:var(--foreground);color:var(--background);text-align:center;
+    font-size:var(--step--1);letter-spacing:0.02em;padding:0.5rem 0.8rem}
+
+  @media (max-width:900px){
+    .withstrip,.points{grid-template-columns:1fr;gap:var(--space-4)}
+    .grid2{grid-template-columns:1fr}
+    .introcard{grid-template-columns:1fr}
+    .introcard .stage{min-height:170px;padding:var(--space-6)}
+  }
+  @media (max-width:560px){
+    .nav .wrap{gap:var(--space-3)}
+    .nav ul{width:100%;gap:0.85rem 1.1rem}
+    .open .pot{gap:var(--space-4)}
+    .cat-row{grid-template-columns:2.6rem 1fr;row-gap:var(--space-2)}
+    .cat-row .desc{grid-column:1 / -1;text-align:left;max-width:none}
+    .facts li{flex-direction:column;gap:0.15rem}
+    .facts li span:last-child{text-align:left}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:0.01ms!important;animation-duration:0.01ms!important;
+      animation-iteration-count:1!important;scroll-behavior:auto}
+    body.routed .view.is-active{animation:none}
+  }
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">MR. SOON TOFU</div>
-        <div class="nav-links">
-            <a onclick="navigate('home')">Home</a>
-            <a onclick="navigate('menu')">Menu</a>
-            <a onclick="navigate('about')">About Us</a>
-            <a onclick="navigate('location')">Location</a>
-            <a onclick="navigate('contact')">Contact</a>
-        </div>
-    </nav>
+<div class="mock-banner">Concept mockup for Mr. Soon Tofu, built by Hillside Visuals</div>
 
-    <div id="view-container">
-        <!-- Home View -->
-        <div id="home" class="view active">
-            <div class="hero">
-                <div class="hero-text">
-                    <h1>Seoul in Every Bowl.</h1>
-                    <p>Experience the bubbling, soul-warming comfort of authentic Korean soft tofu stew, right in the heart of Las Vegas.</p>
-                    <button class="btn" onclick="navigate('menu')">Explore the Menu</button>
-                </div>
-                <div class="hero-img">
-                    [Hot Stone Bowl Image Placeholder]
-                </div>
-            </div>
-        </div>
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path class="s" d="M24 17c3-2.6 3-5.2 0-7.8M32 15.5c3.4-3 3.4-6 0-9M40 17c3-2.6 3-5.2 0-7.8"/>
+        <path d="M13 27h38l-3.2 17.6A9 9 0 0 1 36.9 52H27.1a9 9 0 0 1-8.9-7.4Z"/>
+        <path d="M10.5 27h43"/><path d="M13 30.5 8 32M51 30.5 56 32"/>
+      </svg>
+      <span>Mr. Soon Tofu</span>
+    </a>
+    <ul>
+      <li><a href="#/bowls">The bowls</a></li>
+      <li><a href="#/stone-bowl">The stone bowl</a></li>
+      <li><a href="#/visit">Visit</a></li>
+      <li><a class="order" href="#/order">Order online</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
+    </ul>
+  </div>
+</header>
 
-        <!-- Menu View -->
-        <div id="menu" class="view">
-            <h2 style="text-align:center; font-size: 3rem; margin-bottom: 3rem;">Our Specialties</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <h3>Seafood Soon Tofu</h3>
-                    <p>Shrimp, clams, and oysters in a spicy, comforting broth.</p>
-                </div>
-                <div class="menu-item">
-                    <h3>Galbi (Short Rib)</h3>
-                    <p>Marinated bone-in short ribs grilled to perfection.</p>
-                </div>
-                <div class="menu-item">
-                    <h3>Vegetable Soon Tofu</h3>
-                    <p>Broccoli, mushrooms, and zucchini in a rich vegetable broth.</p>
-                </div>
-            </div>
-        </div>
+<main>
 
-        <!-- About View -->
-        <div id="about" class="view">
-            <div class="hero">
-                <div class="hero-img" style="background: var(--bg-dark);">[Chef Image]</div>
-                <div class="hero-text">
-                    <h2>Rooted in Tradition.</h2>
-                    <p>Founded on family recipes passed down for generations, Mr. Soon Tofu is dedicated to preserving the authentic flavors of Korea while providing a modern, welcoming dining experience.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Location View -->
-        <div id="location" class="view">
-            <h2 style="text-align:center; font-size: 3rem;">Find Us</h2>
-            <div style="text-align:center; max-width: 600px; margin: 0 auto;">
-                <p style="font-size: 1.25rem;">4215 S SPRING MOUNTAIN RD<br>LAS VEGAS, NV 89102</p>
-                <div style="background: #ccc; height: 300px; border-radius: 8px; margin-top: 2rem; display:flex; align-items:center; justify-content:center;">
-                    [Map Placeholder]
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact View -->
-        <div id="contact" class="view">
-            <h2 style="text-align:center; font-size: 3rem;">Get in Touch</h2>
-            <div style="max-width: 500px; margin: 0 auto; background: white; padding: 3rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                <p><strong>Phone:</strong> 702-555-0105</p>
-                <p><strong>Hours:</strong><br>Mon-Sun: 11:00 AM - 10:00 PM</p>
-                <button class="btn" style="width: 100%; margin-top: 2rem;">Order Online</button>
-            </div>
-        </div>
+  <!-- ============ HOME ============ -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap open">
+      <div class="pot steam-anim">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path class="s" d="M24 17c3-2.6 3-5.2 0-7.8M32 15.5c3.4-3 3.4-6 0-9M40 17c3-2.6 3-5.2 0-7.8"/>
+          <path d="M13 27h38l-3.2 17.6A9 9 0 0 1 36.9 52H27.1a9 9 0 0 1-8.9-7.4Z"/>
+          <path d="M10.5 27h43"/><path d="M13 30.5 8 32M51 30.5 56 32"/>
+        </svg>
+      </div>
+      <h1>Soft tofu, hot stone,<br>fifteen sides.</h1>
+      <p class="say">A soondubu house on Spring Mountain Road. We make the soft tofu stew
+        in house, set the spice to your taste, and bring it to the table still boiling in
+        the stone pot. Every bowl comes with rice and about fifteen banchan, refilled as
+        long as you are hungry.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/bowls">See the bowls</a>
+        <a class="btn btn--ghost" href="#/order">Order online</a>
+      </div>
     </div>
 
-    <footer>
-        <h2>MR. SOON TOFU</h2>
-        <p>&copy; 2026 Mr. Soon Tofu. All rights reserved.</p>
-    </footer>
+    <div class="wrap section">
+      <h2>The bowls, in order</h2>
+      <p style="color:var(--muted);margin-top:var(--space-3)">Pick a bowl, pick a spice
+        level. The combination is the one most tables order first.</p>
+      <div class="catalogue">
+        <div class="cat-row">
+          <span class="no">01</span>
+          <span class="name">Combination<span class="rom">gumo soondubu</span></span>
+          <span class="desc">Beef, pork and seafood in one pot</span>
+        </div>
+        <div class="cat-row">
+          <span class="no">02</span>
+          <span class="name">Beef<span class="rom">bulgogi soondubu</span></span>
+          <span class="desc">Marinated beef, the house default</span>
+        </div>
+        <div class="cat-row">
+          <span class="no">03</span>
+          <span class="name">Seafood<span class="rom">haemul soondubu</span></span>
+          <span class="desc">Clam, shrimp and squid, clean and briny</span>
+        </div>
+      </div>
+      <p style="margin-top:var(--space-5)"><a class="btn btn--ghost" href="#/bowls">The full menu</a></p>
+    </div>
 
-    <script>
-        // GSAP Micro-interactions & Routing
-        function navigate(viewId) {
-            const currentView = document.querySelector('.view.active');
-            const nextView = document.getElementById(viewId);
-            
-            if(currentView === nextView) return;
+    <div class="wrap section">
+      <h2>With every bowl</h2>
+      <div class="withstrip">
+        <div><h3>The stone pot</h3><p>Served boiling. You crack a raw egg into it at the
+          table and stir it through the broth.</p></div>
+        <div><h3>About fifteen banchan</h3><p>Kimchi, seasoned greens, braised potato, fish
+          cake and more, brought out with the meal and refilled.</p></div>
+        <div><h3>A bowl of rice</h3><p>Steamed short-grain rice. Ask for it in a hot stone
+          bowl if you want the crust at the bottom.</p></div>
+      </div>
+    </div>
 
-            gsap.to(currentView, {
-                opacity: 0, y: -20, duration: 0.3, 
-                onComplete: () => {
-                    currentView.classList.remove('active');
-                    nextView.classList.add('active');
-                    gsap.fromTo(nextView, 
-                        {opacity: 0, y: 20}, 
-                        {opacity: 1, y: 0, duration: 0.5, ease: "power2.out"}
-                    );
-                }
-            });
-            window.scrollTo(0,0);
-        }
+    <div class="wrap section">
+      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <h3>Watch the Mr. Soon Tofu intro</h3>
+          <p>A short brand reveal. Steam rises and clears to the stone pot and the name. Drop it on Instagram, a story, or the top of a reel.</p>
+          <span class="go">Play the intro</span>
+        </span>
+        <span class="stage">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="s" d="M24 17c3-2.6 3-5.2 0-7.8M32 15.5c3.4-3 3.4-6 0-9M40 17c3-2.6 3-5.2 0-7.8"/>
+            <path d="M13 27h38l-3.2 17.6A9 9 0 0 1 36.9 52H27.1a9 9 0 0 1-8.9-7.4Z"/>
+            <path d="M10.5 27h43"/><path d="M13 30.5 8 32M51 30.5 56 32"/>
+          </svg>
+          <span class="cap">Steam to wordmark</span>
+        </span>
+      </a>
+    </div>
+  </section>
 
-        // Initial animation
-        gsap.to('#home', {opacity: 1, duration: 1});
-        gsap.from('.hero-text > *', {y: 30, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"});
-    </script>
+  <!-- ============ THE BOWLS (menu) ============ -->
+  <section class="view" data-route="/bowls" id="view-bowls">
+    <div class="wrap pagehead">
+      <h1>The bowls</h1>
+      <p class="lede">Every soon tofu is made here, spiced to order, and served in the
+        stone pot. Prices are on the in-room menu and the delivery apps.</p>
+    </div>
+    <div class="wrap section">
+      <div class="catalogue">
+        <div class="cat-head">Soon tofu</div>
+        <div class="cat-row"><span class="no">01</span><span class="name">Combination<span class="rom">gumo soondubu</span></span><span class="desc">Beef, pork and seafood</span></div>
+        <div class="cat-row"><span class="no">02</span><span class="name">Beef<span class="rom">bulgogi soondubu</span></span><span class="desc">Marinated beef</span></div>
+        <div class="cat-row"><span class="no">03</span><span class="name">Pork<span class="rom">daeji soondubu</span></span><span class="desc">Sliced pork belly</span></div>
+        <div class="cat-row"><span class="no">04</span><span class="name">Seafood<span class="rom">haemul soondubu</span></span><span class="desc">Clam, shrimp, squid</span></div>
+        <div class="cat-row"><span class="no">05</span><span class="name">Oyster<span class="rom">gul soondubu</span></span><span class="desc">Fresh oyster, in season</span></div>
+        <div class="cat-row"><span class="no">06</span><span class="name">Dumpling<span class="rom">mandu soondubu</span></span><span class="desc">House dumplings in the broth</span></div>
+        <div class="cat-row"><span class="no">07</span><span class="name">Mushroom and vegetable<span class="rom">beoseot soondubu</span></span><span class="desc">No meat, no seafood</span></div>
+
+        <div class="cat-head">Combos, with a bowl of soon tofu</div>
+        <div class="cat-row"><span class="no">08</span><span class="name">LA galbi<span class="rom">marinated short rib</span></span><span class="desc">Grilled over the flame</span></div>
+        <div class="cat-row"><span class="no">09</span><span class="name">Bulgogi<span class="rom">marinated beef</span></span><span class="desc">Sweet soy, thin sliced</span></div>
+        <div class="cat-row"><span class="no">10</span><span class="name">Kalbi<span class="rom">bone-in short rib</span></span><span class="desc">Bone-in, charred edges</span></div>
+        <div class="cat-row"><span class="no">11</span><span class="name">Yangnyeom gejang<span class="rom">marinated raw crab</span></span><span class="desc">Spiced, served cold</span></div>
+        <div class="cat-row"><span class="no">12</span><span class="name">Godeungeo gui<span class="rom">grilled mackerel</span></span><span class="desc">Whole, crisp skin</span></div>
+        <div class="cat-row"><span class="no">13</span><span class="name">Jogi gui<span class="rom">grilled yellow croaker</span></span><span class="desc">Whole, lightly salted</span></div>
+
+        <div class="cat-head">Plates and sides</div>
+        <div class="cat-row"><span class="no">14</span><span class="name">Haemul pajeon<span class="rom">seafood scallion pancake</span></span><span class="desc">Crisp at the edge, for the table</span></div>
+        <div class="cat-row"><span class="no">15</span><span class="name">Bibimbap<span class="rom">plain or bulgogi</span></span><span class="desc">In a hot stone bowl</span></div>
+        <div class="cat-row"><span class="no">16</span><span class="name">Galbitang<span class="rom">short rib soup</span></span><span class="desc">Clear beef broth, no chili</span></div>
+        <div class="cat-row"><span class="no">17</span><span class="name">Galbi jjim<span class="rom">braised short rib</span></span><span class="desc">Soy braised, fall apart</span></div>
+        <div class="cat-row"><span class="no">18</span><span class="name">Gyeranjjim<span class="rom">steamed egg</span></span><span class="desc">Soft, in its own pot</span></div>
+      </div>
+
+      <div class="spice">
+        <h2>On spice</h2>
+        <p>Every soon tofu is made to a spice level you choose, from none at all to the
+          hottest the kitchen makes. If it is your first time, mild is a good place to
+          start. You can always ask for a side of the chili oil.</p>
+      </div>
+      <p style="margin-top:var(--space-6)"><a class="btn" href="#/order">Order online</a></p>
+    </div>
+  </section>
+
+  <!-- ============ THE STONE BOWL (about) ============ -->
+  <section class="view" data-route="/stone-bowl" id="view-stone-bowl">
+    <div class="wrap pagehead">
+      <h1>The stone bowl</h1>
+      <p class="lede">What to expect when the pot lands on your table.</p>
+    </div>
+    <div class="wrap section">
+      <div class="grid2">
+        <div>
+          <p>Soondubu is soft tofu stew. Ours is made in the kitchen, not from a base, and
+            it comes to the table in a stone pot still boiling hard enough that it keeps
+            cooking in front of you. A raw egg comes on the side. Slide it in, stir it
+            through, and let the broth set it.</p>
+          <p>Around the pot the table fills up: rice, and roughly fifteen small dishes that
+            change with what the kitchen has that day. They are part of the meal, not an
+            extra, and they come back when they run low. Plan to be here a little while.
+            This is a sit-down, slow-down kind of dinner.</p>
+        </div>
+        <div class="shot shot--bowl">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 27h38l-3.2 17.6A9 9 0 0 1 36.9 52H27.1a9 9 0 0 1-8.9-7.4Z"/><path d="M10.5 27h43"/></svg>
+          <span>Photo: the stone pot, mid-boil</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap section">
+      <h2>Three things to know</h2>
+      <div class="points">
+        <div><h3>The pot keeps cooking</h3><p>It arrives boiling. Give it a minute before
+          the first spoonful so it does not catch you out.</p></div>
+        <div><h3>The banchan are unlimited</h3><p>Ask the server for more of any of them.
+          There is no charge and no limit.</p></div>
+        <div><h3>The egg is yours to add</h3><p>Some people stir it straight in, some
+          poach it whole in the broth. Both are right.</p></div>
+      </div>
+      <p style="margin-top:var(--space-6)"><a class="btn" href="#/visit">Find us on Spring Mountain</a></p>
+    </div>
+  </section>
+
+  <!-- ============ ORDER ============ -->
+  <section class="view" data-route="/order" id="view-order">
+    <div class="wrap pagehead">
+      <h1>Order</h1>
+      <p class="lede">Dine in, pick up, or have it delivered. The stone pot travels
+        better than you would think.</p>
+    </div>
+    <div class="wrap section">
+      <div class="grid2">
+        <div>
+          <h2>Three ways</h2>
+          <ol class="steps">
+            <li><h3>Delivery and pickup</h3><p>Order on DoorDash for delivery across the
+              Spring Mountain and Chinatown area, or set it for pickup.</p></li>
+            <li><h3>Walk in</h3><p>Most nights you can get a table without waiting. Larger
+              parties on the weekend are worth a call ahead.</p></li>
+            <li><h3>Groups of six or more</h3><p>Send the details below and the restaurant
+              will confirm a time and set the room.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Order online</b><span><a href="https://www.doordash.com/store/mr.-soon-tofu-las-vegas-1065260/" target="_blank" rel="noopener">DoorDash</a></span></li>
+            <li><b>Hours</b><span>11:00 AM to 10:00 PM, daily</span></li>
+            <li><b>Call the restaurant</b><span><a href="tel:+17022011234">(702) 201-1234</a></span></li>
+            <li><b>Facebook</b><span><a href="https://www.facebook.com/p/Mr-Tofu-100063691763144/" target="_blank" rel="noopener">Mr Tofu, Las Vegas</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/mrtofu.vegas/" target="_blank" rel="noopener">@mrtofu.vegas</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Large party enquiry</h2>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">How many people, and when</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Send enquiry</button>
+            <p class="note" role="status">This is a concept form on the mockup. It does not
+              send yet. The built site would email the restaurant directly.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section class="view" data-route="/visit" id="view-visit">
+    <div class="wrap pagehead">
+      <h1>Visit</h1>
+      <p class="lede">On Spring Mountain Road, in the middle of the Las Vegas Chinatown
+        restaurant stretch.</p>
+    </div>
+    <div class="wrap section">
+      <div class="grid2">
+        <div>
+          <p>You will find us in the plaza on the north side of Spring Mountain, in the
+            same run of independent restaurants between Valley View and Jones. Look for the
+            steam and the stone pots.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>4355 Spring Mountain Rd, Ste 104<br>Las Vegas, NV 89103</span></li>
+            <li><b>Hours</b><span>11:00 AM to 10:00 PM, daily</span></li>
+            <li><b>Parking</b><span>Free lot in front of the plaza</span></li>
+            <li><b>Getting here</b><span>Off the 15 at Spring Mountain, five minutes west of the Strip</span></li>
+          </ul>
+          <p style="margin-top:var(--space-5)"><a class="btn" href="#/bowls">See the bowls</a></p>
+        </div>
+        <div class="shot shot--room">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 27h38l-3.2 17.6A9 9 0 0 1 36.9 52H27.1a9 9 0 0 1-8.9-7.4Z"/><path d="M10.5 27h43"/></svg>
+          <span>Photo: the dining room</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap section">
+      <div class="shot shot--street">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="s" d="M24 17c3-2.6 3-5.2 0-7.8M32 15.5c3.4-3 3.4-6 0-9M40 17c3-2.6 3-5.2 0-7.8"/><path d="M13 27h38l-3.2 17.6A9 9 0 0 1 36.9 52H27.1a9 9 0 0 1-8.9-7.4Z"/><path d="M10.5 27h43"/></svg>
+        <span>Photo: the storefront on Spring Mountain Road</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="sign">Mr. Soon Tofu</span>
+    <span class="line">A Spring Mountain soondubu house. Soft tofu, hot stone, fifteen sides.</span>
+    <nav>
+      <a href="#/bowls">The bowls</a>
+      <a href="#/stone-bowl">The stone bowl</a>
+      <a href="#/order">Order</a>
+      <a href="#/visit">Visit</a>
+      <a href="https://www.facebook.com/p/Mr-Tofu-100063691763144/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/mrtofu.vegas/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <span class="line">4355 Spring Mountain Rd, Ste 104, Las Vegas, NV 89103 &middot; &copy; <span id="yr"></span> Mr. Soon Tofu</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y = document.getElementById('yr'); if(y) y.textContent = new Date().getFullYear();
+  var views = [].slice.call(document.querySelectorAll('.view'));
+  var navLinks = [].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home = document.getElementById('view-home') || views[0];
+    var routeOf = function(v){ return v.getAttribute('data-route'); };
+    var render = function(){
+      var h = (location.hash || '').replace(/^#/, '');
+      if(h && h.charAt(0) !== '/') h = '/' + h;
+      var match = views.filter(function(v){ return routeOf(v) === h; })[0] || home;
+      views.forEach(function(v){ v.classList.toggle('is-active', v === match); });
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + routeOf(match) ? 'page' : 'false');
+      });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', render);
+    render();
+  }
+  var form = document.querySelector('.form');
+  if(form){
+    var status = form.querySelector('.note');
+    var note = status ? status.textContent : '';
+    form.addEventListener('submit', function(e){ e.preventDefault(); if(status) status.textContent = note; });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Mr. Soon Tofu",
+  "servesCuisine":"Korean",
+  "telephone":"(702) 201-1234",
+  "openingHours":"Mo-Su 11:00-22:00",
+  "address":{"@type":"PostalAddress","streetAddress":"4355 Spring Mountain Rd, Ste 104","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89103"}
+}
+</script>
+
 </body>
 </html>

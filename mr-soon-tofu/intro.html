@@ -1,25 +1,175 @@
 <!DOCTYPE html>
+<!--
+  Mr. Soon Tofu - brand intro. Bespoke per anti-slop-and-design.md section 6.
+  Fingerprint row 14: template-bespoke - steam rises and clears to reveal the stone-bowl
+  wordmark, warm. Rice paper (light band), one seasoned-clay accent, Nanum Myeongjo.
+  Not a palette-swap of brand-intro.html: light ground, steam plumes as the motif, the pot
+  mark drawn in, the wordmark set below it in the myeongjo serif, unhurried pacing.
+  fingerprint: P5 H4 E4 S5 R4 V5
+  transform + opacity only. 3 named easings. prefers-reduced-motion collapses to a crossfade.
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-    <title>Mr. Soon Tofu | Brand Intro</title>
-    <style>
-        body { margin: 0; background: #E63946; color: #F1FAEE; font-family: 'Playfair Display', serif; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
-        .intro-container { text-align: center; }
-        h1 { font-size: 5rem; margin: 0; }
-        p { font-family: 'Inter', sans-serif; font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<title>Mr. Soon Tofu | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --background:oklch(0.958 0.008 92);
+    --surface-sink:oklch(0.930 0.012 88);
+    --foreground:oklch(0.255 0.018 40);
+    --muted:oklch(0.440 0.020 42);
+    --accent:oklch(0.455 0.120 38);
+    --accent-text:oklch(0.360 0.105 37);
+    --accent-ink:oklch(0.980 0.010 92);
+    --steam:oklch(0.985 0.006 92);
+    --border:oklch(0.860 0.012 70);
+    --font-display:"Nanum Myeongjo", Georgia, "Times New Roman", serif;
+    --font-body:"Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --ease-out:cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease-in:cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    --ease-in-out:cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--background)}
+  body{color:var(--foreground);font-family:var(--font-body);-webkit-font-smoothing:antialiased;
+    min-height:100vh}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:clamp(12px,2vw,20px);padding:clamp(14px,4vw,32px)}
+
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    font-size:1cqw;background:
+      radial-gradient(120% 90% at 50% 108%, var(--surface-sink) 0%, var(--background) 58%);
+    overflow:hidden;border:1px solid var(--border)}
+
+  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;padding:0 6cqw;text-align:center}
+
+  /* the pot mark */
+  .mark{width:clamp(48px,13cqw,150px);height:auto;color:var(--foreground);
+    opacity:0;transform:translateY(1.4cqw) scale(0.94);
+    animation:mark-in 0.9s var(--ease-out) 1.9s both}
+  .mark .s{color:var(--accent)}
+
+  .wordmark{font-family:var(--font-display);font-weight:700;
+    font-size:clamp(26px,8.4cqw,104px);line-height:1;color:var(--foreground);
+    margin-top:2.6cqw;white-space:nowrap;min-width:0}
+  .wordmark .l{display:inline-block;opacity:0;transform:translateY(0.7em);
+    animation:char-in 0.55s var(--ease-out) both;
+    animation-delay:calc(2.5s + var(--i) * 0.055s)}
+  .wordmark .sp{display:inline-block;width:0.32em}
+
+  .tagline{margin-top:2.6cqw;font-size:clamp(11px,1.9cqw,26px);color:var(--muted);
+    letter-spacing:0.02em;opacity:0;transform:translateY(0.6em);
+    animation:rise 0.7s var(--ease-out) 3.5s both}
+  .meta{margin-top:3.4cqw;font-size:clamp(9px,1.25cqw,17px);font-weight:600;
+    letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-text);
+    opacity:0;animation:fade 0.7s var(--ease-out) 3.9s both}
+
+  /* steam plumes: rise from below and dissipate, clearing the frame */
+  .steam{position:absolute;left:0;right:0;bottom:-8%;height:120%;z-index:1;pointer-events:none}
+  .plume{position:absolute;bottom:0;border-radius:50%;
+    background:radial-gradient(circle at 50% 60%, var(--steam) 0%,
+      color-mix(in oklch, var(--steam) 40%, transparent) 55%, transparent 72%);
+    filter:blur(2.2cqw);opacity:0;
+    animation:plume 3.1s var(--ease-in-out) both}
+  .p1{left:24%;width:34cqw;height:34cqw;animation-delay:0s}
+  .p2{left:44%;width:44cqw;height:44cqw;animation-delay:0.25s}
+  .p3{left:12%;width:30cqw;height:30cqw;animation-delay:0.55s}
+  .p4{left:60%;width:32cqw;height:32cqw;animation-delay:0.4s}
+
+  @keyframes plume{
+    0%{opacity:0;transform:translateY(14cqw) scale(0.7)}
+    28%{opacity:0.95}
+    62%{opacity:0.7}
+    100%{opacity:0;transform:translateY(-30cqw) scale(1.5)}
+  }
+  @keyframes mark-in{to{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes char-in{to{opacity:1;transform:translateY(0)}}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @keyframes fade{to{opacity:1}}
+
+  @media (prefers-reduced-motion:reduce){
+    .plume{display:none}
+    .mark,.wordmark .l,.tagline,.meta{animation:fade 0.14s linear both}
+  }
+  .replaying .plume,.replaying .mark,.replaying .wordmark .l,
+  .replaying .tagline,.replaying .meta{animation:none}
+  .still .plume{display:none}
+  .still .mark,.still .wordmark .l,.still .tagline,.still .meta{
+    animation:none;opacity:1;transform:none}
+
+  .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center}
+  .page-meta{font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--muted)}
+  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--foreground);background:transparent;
+    border:1px solid var(--border);padding:9px 16px;cursor:pointer}
+  .replay:hover{border-color:var(--foreground)}
+  .replay:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .visit{color:var(--muted);text-decoration:none;font-size:12px;font-weight:600;
+    letter-spacing:0.16em;text-transform:uppercase}
+  .visit:hover{color:var(--foreground)}
+
+  @container (max-width: 440px){
+    .wordmark{font-size:11cqw;white-space:normal}
+  }
+</style>
 </head>
 <body>
-    <div class="intro-container">
-        <h1 id="title">MR. SOON TOFU</h1>
-        <p id="subtitle">Seoul in Every Bowl.</p>
+<main class="wrap">
+  <section class="frame" aria-label="Mr. Soon Tofu brand intro">
+    <div class="steam" aria-hidden="true">
+      <span class="plume p1"></span><span class="plume p2"></span>
+      <span class="plume p3"></span><span class="plume p4"></span>
     </div>
-    <script>
-        gsap.from("#title", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out" });
-        gsap.from("#subtitle", { y: 20, opacity: 0, duration: 1, delay: 0.8, ease: "power3.out" });
-    </script>
+    <div class="inner">
+      <svg class="mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path class="s" d="M24 17c3-2.6 3-5.2 0-7.8M32 15.5c3.4-3 3.4-6 0-9M40 17c3-2.6 3-5.2 0-7.8"/>
+        <path d="M13 27h38l-3.2 17.6A9 9 0 0 1 36.9 52H27.1a9 9 0 0 1-8.9-7.4Z"/>
+        <path d="M10.5 27h43"/><path d="M13 30.5 8 32M51 30.5 56 32"/>
+      </svg>
+      <h1 class="wordmark" data-text="Mr. Soon Tofu">Mr. Soon Tofu</h1>
+      <p class="tagline">Soft tofu, hot stone, fifteen sides.</p>
+      <div class="meta">Las Vegas, NV&nbsp;&nbsp;&middot;&nbsp;&nbsp;@mrtofu.vegas</div>
+    </div>
+  </section>
+  <div class="row">
+    <span class="page-meta">Mr. Soon Tofu &middot; brand intro</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./index.html">Visit the site</a>
+  </div>
+</main>
+<script>
+(function(){
+  if(/still/.test(location.hash + location.search)) document.body.classList.add("still");
+  var wm = document.querySelector(".wordmark");
+  if(wm){
+    var text = wm.getAttribute('data-text') || wm.textContent;
+    wm.textContent = '';
+    var i = 0;
+    text.split('').forEach(function(ch){
+      if(ch === ' '){ var s = document.createElement('span'); s.className = 'sp'; wm.appendChild(s); return; }
+      var span = document.createElement('span');
+      span.className = 'l'; span.textContent = ch; span.style.setProperty('--i', i++);
+      wm.appendChild(span);
+    });
+  }
+  var frame = document.querySelector('.frame');
+  var btn = document.querySelector('.replay');
+  if(btn && frame){
+    btn.addEventListener('click', function(){
+      frame.classList.add('replaying');
+      void frame.offsetWidth;
+      frame.classList.remove('replaying');
+    });
+  }
+})();
+</script>
 </body>
 </html>
