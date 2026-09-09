@@ -97,7 +97,7 @@
   .burst .b{fill:var(--pop)}
 
   /* ---- slab nav ---- */
-  .nav{position:sticky;top:0;z-index:50;background:var(--bg-deep);border-bottom:3px solid var(--accent)}
+  .nav{position:sticky;top:0;z-index:50;background:var(--bg-deep);border-bottom:2px solid var(--accent)}
   .nav .wrap{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;
     padding-top:var(--space-3);padding-bottom:var(--space-3)}
   .brandmark{display:inline-flex;align-items:center;gap:0.55rem;text-decoration:none;
@@ -144,10 +144,9 @@
 
   /* ---- shot placeholders ---- */
   .shot{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius);
-    background:
-      repeating-linear-gradient(45deg, oklch(0.36 0.05 44) 0 14px, oklch(0.38 0.052 46) 14px 28px);
+    background:var(--surface);
     display:flex;align-items:flex-end;padding:var(--space-3);min-height:210px;color:var(--muted);
-    font-size:var(--step--1);letter-spacing:0.06em;text-transform:uppercase}
+    font-size:var(--step--1);letter-spacing:0.04em}
   .shot::before{content:"";position:absolute;inset:0;background:
     radial-gradient(70% 60% at 78% 20%, oklch(0.81 0.155 79 / 0.14), transparent 70%)}
   .shot::after{content:"◈ " attr(data-shot);position:relative;z-index:1;line-height:1.3;max-width:26ch}
@@ -159,8 +158,8 @@
   .grid--3{grid-template-columns:repeat(3,1fr)}
   .grid--2{grid-template-columns:repeat(2,1fr)}
   figure.tile{margin:0}
-  .tile figcaption{margin-top:var(--space-2);font-size:var(--step--1);letter-spacing:0.04em;
-    text-transform:uppercase;color:var(--muted)}
+  .tile figcaption{margin-top:var(--space-2);font-size:var(--step--1);letter-spacing:0.02em;
+    color:var(--muted)}
 
   .split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(1.6rem,5vw,4rem);align-items:start}
 
@@ -169,7 +168,7 @@
   .menu-list li{padding:var(--space-6) 0;border-top:1px solid var(--border);display:grid;
     grid-template-columns:minmax(0,14rem) 1fr;gap:var(--space-3) var(--space-8)}
   .menu-list li:last-child{border-bottom:1px solid var(--border)}
-  .menu-list h3{font-size:var(--step-2);margin:0;color:var(--accent)}
+  .menu-list h2{font-size:var(--step-2);margin:0;color:var(--accent)}
   .menu-list p{margin:0;color:var(--muted)}
   .menu-note{margin-top:var(--space-8);font-weight:600;color:var(--fg)}
 
@@ -179,7 +178,7 @@
   .steps li::before{content:counter(s);position:absolute;left:0;top:-0.15rem;width:2.6rem;height:2.6rem;
     background:var(--accent);color:var(--accent-text);border-radius:var(--radius);
     display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:var(--step-0)}
-  .steps h3{margin:0 0 var(--space-1)}
+  .steps h2{margin:0 0 var(--space-1);font-size:var(--step-1)}
   .steps p{margin:0;color:var(--muted)}
 
   /* ---- facts ---- */
@@ -220,7 +219,7 @@
     font-size:var(--step--1);letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
 
   /* ---- footer ---- */
-  footer{background:var(--bg-deep);border-top:3px solid var(--accent);padding:var(--space-12) 0 var(--space-8)}
+  footer{background:var(--bg-deep);border-top:2px solid var(--accent);padding:var(--space-12) 0 var(--space-8)}
   footer .wrap{display:grid;gap:var(--space-6)}
   .foot-mark{font-family:var(--font-display);text-transform:uppercase;font-size:var(--step-2);letter-spacing:0.02em}
   .foot-mark .bm-boom{color:var(--accent)}
@@ -231,7 +230,7 @@
   .foot-meta{color:var(--muted);font-size:var(--step--1);display:grid;gap:var(--space-1)}
 
   .mock-banner{background:var(--accent);color:var(--accent-text);text-align:center;
-    font-size:var(--step--1);letter-spacing:0.12em;text-transform:uppercase;font-weight:700;padding:0.5rem 0.8rem}
+    font-size:var(--step--1);letter-spacing:0.03em;font-weight:700;padding:0.5rem 0.8rem}
 
   /* ================= TABLET ================= */
   @media (max-width:900px){
@@ -305,10 +304,10 @@
       <h2>What is on the board</h2>
       <p style="color:var(--muted);max-width:52ch">Pick your fillings, build your plate at the self-serve salsa bar, and eat. Prices are on the board at the counter.</p>
       <ul class="menu-list">
-        <li><h3>Tacos</h3><p>Carne asada, tripa, cabeza, pastor, pollo, and capeados. Corn tortillas, onion, cilantro.</p></li>
-        <li><h3>Capeados</h3><p>Battered fish and shrimp, Mexican street style. The thing to try if you have not.</p></li>
-        <li><h3>Burritos &amp; quesadillas</h3><p>The same fillings, wrapped or griddled with cheese.</p></li>
-        <li><h3>Guacamole</h3><p>Made fresh. 100% natural.</p></li>
+        <li><h2>Tacos</h2><p>Carne asada, tripa, cabeza, pastor, pollo, and capeados. Corn tortillas, onion, cilantro.</p></li>
+        <li><h2>Capeados</h2><p>Battered fish and shrimp, Mexican street style. The thing to try if you have not.</p></li>
+        <li><h2>Burritos &amp; quesadillas</h2><p>The same fillings, wrapped or griddled with cheese.</p></li>
+        <li><h2>Guacamole</h2><p>Made fresh. 100% natural.</p></li>
       </ul>
       <p style="margin-top:var(--space-8)"><a class="btn btn--ghost" href="#/menu">Full menu</a></p>
     </div>
@@ -350,14 +349,14 @@
     </div>
     <div class="wrap block">
       <ul class="menu-list">
-        <li><h3>Tacos</h3><p>Carne asada, tripa, cabeza, pastor, pollo, fish, and shrimp. Served on corn tortillas with onion and cilantro.</p></li>
-        <li><h3>Capeados</h3><p>Battered fish and shrimp, Mexican street style. A house specialty.</p></li>
-        <li><h3>Burritos</h3><p>The same fillings, wrapped and handheld.</p></li>
-        <li><h3>Quesadillas</h3><p>Griddled flour tortilla, melted cheese, your choice of filling.</p></li>
-        <li><h3>Guacamole</h3><p>Made fresh in the shop. 100% natural.</p></li>
-        <li><h3>The salsa and sides bar</h3><p>Self-serve and included with every order. Salsas, onion, lime, radish, and pickled jalapenos.</p></li>
-        <li><h3>The Taco Boom</h3><p>The house special the shop is named for. Ask at the counter.</p></li>
-        <li><h3>Drinks</h3><p>Soft drinks and bottled options. Full list at the counter.</p></li>
+        <li><h2>Tacos</h2><p>Carne asada, tripa, cabeza, pastor, pollo, fish, and shrimp. Served on corn tortillas with onion and cilantro.</p></li>
+        <li><h2>Capeados</h2><p>Battered fish and shrimp, Mexican street style. A house specialty.</p></li>
+        <li><h2>Burritos</h2><p>The same fillings, wrapped and handheld.</p></li>
+        <li><h2>Quesadillas</h2><p>Griddled flour tortilla, melted cheese, your choice of filling.</p></li>
+        <li><h2>Guacamole</h2><p>Made fresh in the shop. 100% natural.</p></li>
+        <li><h2>The salsa and sides bar</h2><p>Self-serve and included with every order. Salsas, onion, lime, radish, and pickled jalapenos.</p></li>
+        <li><h2>The Taco Boom</h2><p>The house special the shop is named for. Ask at the counter.</p></li>
+        <li><h2>Drinks</h2><p>Soft drinks and bottled options. Full list at the counter.</p></li>
       </ul>
       <p class="menu-note">Prices are set on the board in the shop and are not listed here.</p>
       <p style="margin-top:var(--space-8)"><a class="btn" href="#/order">How to order</a></p>
@@ -407,9 +406,9 @@
       <div class="split">
         <div>
           <ol class="steps">
-            <li><h3>Order at the counter</h3><p>Walk in, read the board, and build your order. Cash and cards.</p></li>
-            <li><h3>Call ahead</h3><p>Phone your order in and skip the wait. Call or text (702) 466-2871.</p></li>
-            <li><h3>Get it delivered</h3><p>Order on Uber Eats for delivery across the west side of Las Vegas.</p></li>
+            <li><h2>Order at the counter</h2><p>Walk in, read the board, and build your order. Cash and cards.</p></li>
+            <li><h2>Call ahead</h2><p>Phone your order in and skip the wait. Call or text (702) 466-2871.</p></li>
+            <li><h2>Get it delivered</h2><p>Order on Uber Eats for delivery across the west side of Las Vegas.</p></li>
           </ol>
           <ul class="facts">
             <li><b>Hours</b><span>TBC</span></li>
