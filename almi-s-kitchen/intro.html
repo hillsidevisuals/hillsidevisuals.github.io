@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+  Almi's Kitchen — brand intro. Bespoke on the design system: the jebena pour.
+  A green line pours from the coffee pot and settles as the underline of the wordmark;
+  three beans drop (abol, tona, baraka); the Eczar wordmark rises. Warm roast ground.
+  Prospect brand only. Every colour a :root token. transform / opacity / one stroke draw.
+  Timeline resolves by ~1.1s so the held final lockup is what renders and what ships.
+  fingerprint: P5 H4 E4 S5 R4 V4
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Almi's Kitchen | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:oklch(0.27 0.028 58);
+    --raised:oklch(0.33 0.045 92);
+    --paper:oklch(0.90 0.028 82);
+    --muted:oklch(0.78 0.028 80);
+    --faint:oklch(0.72 0.030 78);
+    --line:oklch(0.46 0.030 70);
+    --accent:oklch(0.64 0.120 150);
+    --font-display:"Eczar",Georgia,serif;
+    --font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+    --ease-out:cubic-bezier(0.22,1,0.36,1);
+    --ease-in-out:cubic-bezier(0.65,0,0.35,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg)}
+  body{color:var(--paper);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:16px;padding:clamp(14px,4vw,32px)}
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    font-size:1cqw;background:var(--bg);overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.5)}
+  .frame-bg{position:absolute;inset:0;background:radial-gradient(58% 66% at 50% 47%,var(--raised) 0%,var(--bg) 64%)}
+  .frame::before{content:"";position:absolute;inset:3.2cqw;border:1px solid var(--line);pointer-events:none;z-index:4}
+  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:0 6cqw;text-align:center}
+
+  .jebena{width:clamp(30px,9cqw,120px);margin-bottom:3.4cqw}
+  .jebena path,.jebena circle{fill:none;stroke:var(--accent);stroke-width:clamp(1.5px,.32cqw,4px);
+    stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;
+    stroke-dasharray:300;stroke-dashoffset:300;animation:draw .6s .05s var(--ease-out) both}
+
+  .lockup{position:relative;display:inline-block;max-width:100%;padding-bottom:3cqw}
+  .wordmark{font-family:var(--font-display);font-size:clamp(24px,9.4cqw,146px);font-weight:600;
+    text-transform:none;color:var(--paper);line-height:1;white-space:nowrap}
+  .wordmark .l{display:inline-block;animation:rise .42s var(--ease-out) both;
+    animation-delay:calc(.24s + var(--i) * .026s)}
+  .wordmark .sp{display:inline-block;width:.32em}
+
+  .pour{position:absolute;left:0;right:0;bottom:0;height:5cqw;overflow:visible}
+  .pour path{fill:none;stroke:var(--accent);stroke-width:clamp(2px,.42cqw,6px);stroke-linecap:round;
+    stroke-dasharray:520;stroke-dashoffset:520;animation:draw .5s .5s var(--ease-in-out) both}
+
+  .beans{display:flex;gap:2.4cqw;margin-top:5cqw}
+  .bean{width:clamp(5px,1.05cqw,13px);height:clamp(7px,1.45cqw,18px);background:var(--accent);
+    border-radius:50% 50% 48% 48%/60% 60% 40% 40%;opacity:0;
+    animation:bean .32s var(--ease-out) both}
+  .bean:nth-child(1){animation-delay:.62s}
+  .bean:nth-child(2){animation-delay:.69s}
+  .bean:nth-child(3){animation-delay:.76s}
+
+  .tagline{margin-top:4.6cqw;font-family:var(--font-display);font-size:clamp(13px,2.4cqw,36px);
+    font-weight:500;color:var(--muted);max-width:100%;animation:rise .44s .74s var(--ease-out) both}
+  .meta{display:flex;align-items:center;justify-content:center;gap:1.4cqw;flex-wrap:wrap;margin-top:3.4cqw;
+    font-size:clamp(9px,1.3cqw,20px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--faint);max-width:100%;animation:rise .4s .9s var(--ease-out) both}
+
+  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+  .page-meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--paper);background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer}
+  .replay:hover{border-color:var(--paper)}
+  .visit{color:var(--faint);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+  .visit:hover{color:var(--paper)}
+
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes rise{0%{opacity:0;transform:translateY(.8em)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes bean{0%{opacity:0;transform:translateY(-1.3em)}75%{opacity:1;transform:translateY(.1em)}100%{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){
+    .jebena path,.jebena circle,.pour path,.wordmark .l,.bean,.tagline,.meta{
+      animation-duration:.001s;animation-delay:0s;opacity:1;stroke-dashoffset:0;transform:none}
+  }
+  @media (max-width:600px){
+    .frame{aspect-ratio:3/4}
+    .inner{padding:0 7cqw}
+    .jebena{width:clamp(28px,13cqw,120px);margin-bottom:7cqw}
+    .wordmark{font-size:clamp(22px,12.5cqw,146px)}
+    .beans{margin-top:8cqw}
+    .tagline{margin-top:8cqw;font-size:clamp(13px,4cqw,36px)}
+    .meta{margin-top:6cqw;font-size:clamp(9px,3cqw,20px)}
+  }
+  .replaying .jebena path,.replaying .jebena circle,.replaying .pour path,.replaying .wordmark .l,
+  .replaying .bean,.replaying .tagline,.replaying .meta{animation:none}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="frame" aria-label="Almi's Kitchen brand intro">
+    <div class="frame-bg" aria-hidden="true"></div>
+    <div class="inner">
+      <svg class="jebena" viewBox="0 0 60 76" aria-hidden="true">
+        <path d="M30 8 L30 15" pathLength="300"/>
+        <circle cx="30" cy="5.6" r="2.3" pathLength="300"/>
+        <path d="M20 15.5 h20" pathLength="300"/>
+        <path d="M22 15.5 C 12 30, 10 44, 18 58 C 22 68, 38 68, 42 58 C 50 44, 48 30, 38 15.5 Z" pathLength="300"/>
+        <path d="M41 29 C 52 29, 55 43, 47 51" pathLength="300"/>
+      </svg>
+      <span class="lockup">
+        <h1 class="wordmark" data-text="Almi&#8217;s Kitchen">Almi&#8217;s Kitchen</h1>
+        <svg class="pour" viewBox="0 0 520 40" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 6 26 C 160 12, 360 12, 514 24" pathLength="520"/>
+        </svg>
+      </span>
+      <div class="beans" aria-hidden="true"><span class="bean"></span><span class="bean"></span><span class="bean"></span></div>
+      <p class="tagline">A table set to share</p>
+      <div class="meta">Las Vegas, NV &nbsp;&middot;&nbsp; Arville St</div>
+    </div>
+  </section>
+  <div class="row">
+    <span class="page-meta">Almi&rsquo;s Kitchen &middot; brand intro</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./">Visit the site</a>
+  </div>
+</main>
+<script>
+(function(){
+  var wm=document.querySelector('.wordmark');
+  if(wm){
+    var text=wm.getAttribute('data-text')||wm.textContent;
+    wm.textContent='';
+    var i=0;
+    text.split('').forEach(function(ch){
+      if(ch===' '){var s=document.createElement('span');s.className='sp';wm.appendChild(s);return;}
+      var span=document.createElement('span');
+      span.className='l';span.textContent=ch;span.style.setProperty('--i',i++);
+      wm.appendChild(span);
+    });
+  }
+  var frame=document.querySelector('.frame');
+  var btn=document.querySelector('.replay');
+  if(btn&&frame){
+    btn.addEventListener('click',function(){
+      frame.classList.add('replaying');
+      void frame.offsetWidth;
+      frame.classList.remove('replaying');
+    });
+  }
+})();
+</script>
+</body>
+</html>

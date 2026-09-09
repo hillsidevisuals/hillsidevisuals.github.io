@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!--
+  Almi's Kitchen — concept website mockup by Hillside Visuals. Router site, one self-contained file.
+  Engine: claude (v1.5). new-brand: labelled Hillside-shoot placeholders only, no invented facts.
+  fingerprint: P5 H4 E4 S4 R5 V4
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Almi's Kitchen</title>
+<meta name="description" content="Almi's Kitchen. A warm Ethiopian and American kitchen on Arville St in Las Vegas. One platter, shared. Reserve a table or order online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-bg:oklch(0.81 0.040 74);
+    --color-surface:oklch(0.885 0.030 80);
+    --color-fg:oklch(0.24 0.018 60);
+    --color-muted:oklch(0.36 0.020 62);
+    --color-border:oklch(0.60 0.030 66);
+    --color-accent:oklch(0.47 0.105 150);
+    --accent:oklch(0.47 0.105 150);
+    --accent-hover:oklch(0.42 0.100 150);
+    --accent-active:oklch(0.37 0.090 150);
+    --accent-bg:oklch(0.93 0.030 150);
+    --accent-text:oklch(0.98 0.010 150);
+    --ph:oklch(0.76 0.036 74);
+    --font-display:"Eczar",Georgia,"Times New Roman",serif;
+    --font-body:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --maxw:1080px;
+    --pad:clamp(1.15rem,5vw,3rem);
+    --radius:3px;
+    --shadow:0 1px 2px oklch(0.24 0.018 60 / .10),0 10px 30px oklch(0.24 0.018 60 / .09);
+    --line:1px solid var(--color-border);
+    --ease-out:cubic-bezier(0.22,1,0.36,1);
+    --ease-in:cubic-bezier(0.55,0,1,0.45);
+    --ease-in-out:cubic-bezier(0.65,0,0.35,1);
+    --space-3:0.75rem;--space-4:1rem;--space-5:1.5rem;--space-6:2rem;--space-7:3rem;--space-8:4.5rem;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--font-body);
+    font-size:1.0625rem;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12;margin:0 0 .4em;
+    text-wrap:balance;overflow-wrap:break-word;font-style:normal}
+  h1{font-size:clamp(2.3rem,6vw,4.3rem);letter-spacing:-.005em}
+  h2{font-size:clamp(1.6rem,3.6vw,2.5rem)}
+  h3{font-size:1.12rem}
+  p{margin:0 0 1rem;max-width:64ch}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:.82em 1.55em;
+    border-radius:2px;text-decoration:none;font-weight:600;letter-spacing:.01em;white-space:nowrap;
+    transition:transform .16s var(--ease-out),background-color .16s var(--ease-out)}
+  .btn:hover{transform:translateY(-1px);background:var(--accent-hover)}
+  .btn:active{background:var(--accent-active)}
+  .btn:focus-visible{outline:2px solid var(--accent-active);outline-offset:3px}
+  .btn--ghost{background:transparent;color:var(--color-fg);border:1px solid var(--color-fg)}
+  .btn--ghost:hover{background:var(--color-fg);color:var(--color-bg)}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.12s!important;scroll-behavior:auto}}
+
+  /* placeholders */
+  .shot{position:relative;overflow:hidden;background:var(--ph);border:var(--line);
+    border-radius:var(--radius);display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--color-fg);font-style:italic;font-size:.82rem;letter-spacing:.01em;
+    padding:1.1rem;min-height:200px}
+  .shot::after{content:"Hillside shoot \2014 " attr(data-shot);max-width:30ch;line-height:1.45}
+  .shot--hero{min-height:min(56vh,500px)}
+  .shot--wide{aspect-ratio:16/10;min-height:0}
+  .shot--square{aspect-ratio:1/1;min-height:0}
+
+  /* nav — edge-aligned row */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--color-bg) 92%,transparent);
+    backdrop-filter:blur(8px);border-bottom:var(--line)}
+  .nav .wrap{display:flex;align-items:baseline;gap:.9rem 1.4rem;flex-wrap:wrap;
+    padding-top:1rem;padding-bottom:1rem}
+  .brandmark{font-family:var(--font-display);font-size:clamp(1.15rem,3.4vw,1.4rem);font-weight:600;
+    text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em}
+  .nav ul{display:flex;gap:1rem 1.5rem;list-style:none;margin:0;padding:0;font-size:.9rem;flex-wrap:wrap;align-items:baseline}
+  .nav a{text-decoration:none;color:var(--color-muted);letter-spacing:.02em}
+  .nav a:hover{color:var(--color-fg)}
+  .nav a[aria-current="page"]{color:var(--color-fg);font-weight:600;box-shadow:inset 0 -2px 0 var(--accent)}
+  .nav a.cta{color:var(--accent-text);background:var(--accent);padding:.55em 1.15em;border-radius:2px;font-weight:600;font-size:.86rem}
+  .nav a.cta:hover{background:var(--accent-hover);color:var(--accent-text)}
+  .nav a.nav-intro{color:var(--color-accent);font-weight:600;display:inline-flex;align-items:center;gap:.4em}
+  .nav a.nav-intro::before{content:"\25B6";font-size:.66em}
+
+  /* router */
+  .view{display:block}
+  body.routed .view{display:none}
+  body.routed .view.is-active{display:block;animation:viewin .34s var(--ease-out)}
+  @keyframes viewin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){body.routed .view.is-active{animation:none}}
+
+  .block{padding-top:clamp(2rem,5.5vw,3.6rem);padding-bottom:clamp(2rem,5.5vw,3.6rem);border-top:var(--line)}
+  .view > .wrap:first-child{padding-top:clamp(2.4rem,6vw,4rem);padding-bottom:clamp(.5rem,2vw,1.2rem)}
+  .block:first-child{border-top:0}
+
+  /* nameplate hero */
+  .plate{max-width:none}
+  .plate .rule{width:64px;height:2px;background:var(--accent);margin:0 0 1.5rem;transform-origin:left;
+    animation:draw .6s .1s var(--ease-out) both}
+  @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @media (prefers-reduced-motion:reduce){.plate .rule{animation:none}}
+  .plate .lead{font-size:clamp(1.05rem,2.5vw,1.22rem);color:var(--color-fg);max-width:46ch}
+  .cta-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+  .hero-shot{margin-top:2.4rem}
+
+  /* course list (catalogue) */
+  .course{border-top:2px solid var(--color-fg);padding-top:1.1rem;margin-top:2.4rem}
+  .course:first-of-type{margin-top:1.8rem}
+  .course > h2{margin-bottom:.15em}
+  .course .cnote{color:var(--color-muted);margin:0 0 1rem;font-size:.95rem}
+  .list{list-style:none;padding:0;margin:1rem 0 0}
+  .list li{padding:.85rem 0;border-bottom:var(--line)}
+  .list li h3{margin:0 0 .18rem}
+  .list li p{margin:0;color:var(--color-muted);font-size:.92rem;max-width:52ch}
+
+  .grid{display:grid;gap:1.2rem}
+  .grid--3{grid-template-columns:repeat(3,1fr)}
+  figure.tile{margin:0}
+  .tile figcaption{font-size:.82rem;color:var(--color-muted);margin-top:.5rem}
+
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.4rem,5vw,3.6rem);align-items:start}
+
+  .points{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.6rem}
+  .points h3{margin:0 0 .3rem}
+  .points p{margin:0;color:var(--color-muted);font-size:.92rem}
+
+  .steps{list-style:none;counter-reset:s;padding:0;margin:1.6rem 0 0;display:grid;gap:1.1rem}
+  .steps li{counter-increment:s;padding-left:3rem;position:relative}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:-.15rem;width:2rem;height:2rem;
+    border:1px solid var(--color-fg);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:.9rem}
+  .steps h3{margin:0 0 .2rem}
+  .steps p{margin:0;color:var(--color-muted);font-size:.92rem}
+
+  .facts{list-style:none;padding:0;margin:1.4rem 0 0}
+  .facts li{padding:.6rem 0;border-bottom:var(--line);display:flex;gap:1rem;justify-content:space-between}
+  .facts li b{font-weight:600}
+  .facts li span:last-child{color:var(--color-muted);text-align:right}
+  .facts a{color:var(--color-accent);text-decoration:none}
+  .facts a:hover{text-decoration:underline}
+
+  .form{display:grid;gap:.9rem;margin-top:1.4rem;max-width:32rem}
+  .form label{font-size:.82rem;color:var(--color-muted);display:block;margin-bottom:.3rem}
+  .form input,.form textarea{width:100%;font:inherit;padding:.7em .85em;border:var(--line);
+    border-radius:2px;background:var(--color-surface);color:var(--color-fg)}
+  .form textarea{min-height:6rem;resize:vertical}
+  .form .status{font-size:.86rem;color:var(--color-muted);margin:0}
+
+  /* intro card */
+  .introcard{margin-top:2.6rem;border:var(--line);border-radius:4px;overflow:hidden;
+    display:grid;grid-template-columns:1.1fr .9fr;background:var(--color-fg);color:var(--color-bg);text-decoration:none}
+  .introcard .txt{padding:clamp(1.5rem,4vw,2.4rem);display:flex;flex-direction:column;gap:.55rem;justify-content:center}
+  .introcard h3{font-size:clamp(1.35rem,3vw,1.9rem);margin:0;color:var(--color-bg)}
+  .introcard p{color:color-mix(in srgb,var(--color-bg) 88%,transparent);margin:0;font-size:.95rem}
+  .introcard .k{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--color-bg) 78%,transparent)}
+  .introcard .go{align-self:flex-start;margin-top:.5rem;background:var(--accent);color:var(--accent-text);
+    padding:.6em 1.2em;border-radius:2px;font-weight:600;font-size:.9rem;transition:background-color .16s var(--ease-out)}
+  .introcard:hover .go{background:var(--accent-hover)}
+  .introcard .stage{position:relative;min-height:210px;
+    background:radial-gradient(62% 70% at 50% 42%,color-mix(in srgb,var(--accent) 26%,var(--color-fg)) 0%,var(--color-fg) 66%);
+    display:flex;align-items:center;justify-content:center;padding:1.4rem}
+  .introcard .seal{font-family:var(--font-display);font-weight:700;background:var(--accent);
+    color:var(--accent-text);width:74px;height:74px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:1.7rem}
+  .introcard .cap{position:absolute;bottom:.9rem;left:0;right:0;text-align:center;font-size:.72rem;
+    letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--color-bg) 74%,transparent)}
+
+  footer{background:var(--color-fg);color:color-mix(in srgb,var(--color-bg) 84%,transparent);
+    padding:2.8rem 0;margin-top:0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;font-size:.88rem;align-items:baseline}
+  footer .sign{font-family:var(--font-display);font-size:1.15rem;color:var(--color-bg)}
+  footer nav{display:flex;gap:1.1rem;flex-wrap:wrap}
+  footer a{text-decoration:none;color:color-mix(in srgb,var(--color-bg) 84%,transparent)}
+  footer a:hover{color:var(--color-bg)}
+
+  .mock-banner{background:var(--color-fg);color:var(--color-bg);text-align:center;
+    font-size:clamp(.62rem,2vw,.74rem);letter-spacing:.14em;text-transform:uppercase;padding:.5rem .8rem}
+
+  @media (max-width:900px){
+    .split{grid-template-columns:1fr;gap:1.8rem}
+    .points{grid-template-columns:1fr 1fr}
+    .grid--3{grid-template-columns:1fr 1fr}
+    .introcard{grid-template-columns:1fr}
+    .introcard .stage{min-height:170px}
+  }
+  @media (max-width:600px){
+    body{font-size:1rem}
+    .nav .wrap{gap:.6rem 1rem}
+    .nav ul{width:100%;order:3;gap:.7rem 1.2rem;font-size:.86rem}
+    .points{grid-template-columns:1fr}
+    .grid--3{grid-template-columns:1fr}
+    .cta-row .btn{flex:1 1 auto;text-align:center}
+    .facts li{flex-direction:column;gap:.15rem}
+    .facts li span:last-child{text-align:left}
+    footer .wrap{flex-direction:column;gap:.8rem}
+    .shot--hero{min-height:min(52vh,380px)}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Concept mockup for Almi&rsquo;s Kitchen &mdash; built by Hillside Visuals</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#/">Almi&rsquo;s Kitchen</a>
+    <ul>
+      <li><a href="#/work">Menu</a></li>
+      <li><a href="#/about">Story</a></li>
+      <li><a href="#/booking">Reserve</a></li>
+      <li><a href="#/studio">Visit</a></li>
+      <li><a class="nav-intro" href="intro.html" target="_blank" rel="noopener">Brand intro</a></li>
+    </ul>
+    <a class="cta" href="#/booking">Reserve a table</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="view is-active" data-route="/" id="view-home">
+    <div class="wrap plate">
+      <div class="rule" aria-hidden="true"></div>
+      <h1>A table set to share</h1>
+      <p class="lead">Almi&rsquo;s Kitchen is a warm Ethiopian and American kitchen coming to Arville
+        St. One platter in the middle, injera to tear, wats that took all morning, and buna poured
+        at the end. Open all day.</p>
+      <div class="cta-row">
+        <a class="btn" href="#/booking">Reserve a table</a>
+        <a class="btn btn--ghost" href="#/work">See the menu</a>
+      </div>
+      <div class="shot shot--hero hero-shot" data-shot="the communal platter, overhead, injera and wats"></div>
+
+      <a class="introcard" href="intro.html" target="_blank" rel="noopener">
+        <span class="txt">
+          <span class="k">Brand film</span>
+          <h3>Watch the Almi&rsquo;s Kitchen intro</h3>
+          <p>A short brand reveal built on the identity. Drop it on Instagram, a story, or the top of a reel.</p>
+          <span class="go">Play the intro</span>
+        </span>
+        <span class="stage"><span class="seal">A</span><span class="cap">Six second reveal</span></span>
+      </a>
+    </div>
+
+    <div class="wrap block">
+      <h2>The meal, in courses</h2>
+      <p style="color:var(--color-muted)">How a table at Almi&rsquo;s tends to go. The full menu and
+        prices live in the room and on the ordering app.</p>
+      <div class="grid grid--3" style="margin-top:1.6rem">
+        <figure class="tile"><div class="shot shot--square" data-shot="the vegetarian combination"></div><figcaption>To share</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="awaze tibs on the skillet"></div><figcaption>Off the fire</figcaption></figure>
+        <figure class="tile"><div class="shot shot--square" data-shot="the jebena and cups, buna service"></div><figcaption>Buna to close</figcaption></figure>
+      </div>
+      <p style="margin-top:1.5rem"><a class="btn btn--ghost" href="#/work">Read the whole menu</a></p>
+    </div>
+
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <h2>From a real kitchen</h2>
+          <p>Spices ground in house, wats simmered low, injera fermented on its own time. The name
+            is the promise: <em>almi</em> means nourishing. Whether it is your first Ethiopian meal
+            or your grandmother&rsquo;s recipe, you leave fed.</p>
+          <p><a class="btn btn--ghost" href="#/about">More about Almi&rsquo;s</a></p>
+        </div>
+        <div class="shot shot--wide" data-shot="hands tearing injera at the table"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENU ============ -->
+  <section class="view" data-route="/work" id="view-work">
+    <div class="wrap">
+      <h1>The menu</h1>
+      <p class="lead" style="color:var(--color-muted);max-width:52ch">A sample of what Almi&rsquo;s
+        Kitchen plans to serve. Dishes and prices are the owner&rsquo;s to confirm and will be
+        listed in full in the room and on the ordering app.</p>
+    </div>
+    <div class="wrap block" style="border-top:0;padding-top:0">
+
+      <section class="course">
+        <h2>To share</h2>
+        <p class="cnote">Served on one platter over injera, for the table.</p>
+        <ul class="list">
+          <li><h3>Vegetarian combination</h3><p>Misir wat, kik alicha, gomen, shiro, atkilt and more, arranged together.</p></li>
+          <li><h3>Meat combination</h3><p>Doro wat, key wat and tibs on the same platter, with injera.</p></li>
+          <li><h3>Kitfo</h3><p>Minced beef with nit&rsquo;ir qibe and mitmita, raw, leb leb, or well done.</p></li>
+        </ul>
+      </section>
+
+      <section class="course">
+        <h2>Off the fire</h2>
+        <p class="cnote">Cooked to order on the skillet.</p>
+        <ul class="list">
+          <li><h3>Awaze tibs</h3><p>Cubed beef seared with onion, jalape&ntilde;o and awaze.</p></li>
+          <li><h3>Zilzil tibs</h3><p>Strips of beef, quick and hot, rosemary and garlic.</p></li>
+          <li><h3>Doro wat</h3><p>Chicken simmered low in berbere with a hard boiled egg.</p></li>
+        </ul>
+      </section>
+
+      <section class="course">
+        <h2>All-day breakfast</h2>
+        <p class="cnote">Served open to close, the way the block likes it.</p>
+        <ul class="list">
+          <li><h3>Ful</h3><p>Stewed fava beans with tomato, onion, house spice and an egg.</p></li>
+          <li><h3>Chechebsa</h3><p>Torn flatbread tossed in berbere and spiced butter.</p></li>
+          <li><h3>Enkulal firfir</h3><p>Scrambled eggs with onion, tomato and pepper.</p></li>
+        </ul>
+      </section>
+
+      <section class="course">
+        <h2>Buna</h2>
+        <p class="cnote">The close. Beans roasted, ground and brewed to order.</p>
+        <ul class="list">
+          <li><h3>Traditional coffee service</h3><p>Roasted at the table, poured from the jebena, three rounds.</p></li>
+          <li><h3>Spiced tea</h3><p>Black tea with clove, cardamom and cinnamon.</p></li>
+        </ul>
+      </section>
+
+      <p style="margin-top:2rem"><a class="btn" href="#/booking">Reserve a table</a></p>
+    </div>
+  </section>
+
+  <!-- ============ STORY ============ -->
+  <section class="view" data-route="/about" id="view-about">
+    <div class="wrap">
+      <h1>Story</h1>
+      <p class="lead" style="color:var(--color-muted);max-width:52ch">A neighborhood kitchen on
+        Arville, built to feed people well and slowly.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>Almi&rsquo;s Kitchen is opening in the space on Arville St that most recently held an
+            Ethiopian and American restaurant. The room keeps what worked: a warm dining room, a
+            mezzanine, and a patio for long evenings.</p>
+          <p>The kitchen is from scratch. Berbere and nit&rsquo;ir qibe are made in house, wats are
+            given the hours they need, and the injera ferments on its own schedule. There is an
+            American plate on the menu too, so nobody at the table gets left out.</p>
+        </div>
+        <div class="shot shot--wide" data-shot="the dining room, warm light, set tables"></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <h2>What to expect</h2>
+      <div class="points">
+        <div><h3>One platter</h3><p>Most plates come to share, eaten with injera, no utensils needed.</p></div>
+        <div><h3>All day</h3><p>Breakfast through dinner, so a late lunch or an early dinner both work.</p></div>
+        <div><h3>New to it</h3><p>Tell the server. They will walk you through the platter and pour the first coffee.</p></div>
+      </div>
+      <p style="margin-top:1.8rem"><a class="btn" href="#/booking">Reserve a table</a></p>
+    </div>
+  </section>
+
+  <!-- ============ RESERVE ============ -->
+  <section class="view" data-route="/booking" id="view-booking">
+    <div class="wrap">
+      <h1>Reserve or order</h1>
+      <p class="lead" style="color:var(--color-muted);max-width:52ch">Hold a table for the group, or
+        set up an order to pick up. Details below are being finalised ahead of opening.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <h2>How it works</h2>
+          <ol class="steps">
+            <li><h3>Pick a time</h3><p>Send the date, the time and how many. Larger tables and the mezzanine are worth booking ahead.</p></li>
+            <li><h3>We confirm</h3><p>A text back with the table. No deposit for standard tables.</p></li>
+            <li><h3>Or order to go</h3><p>Once open, order for pickup or delivery through the ordering app linked here.</p></li>
+          </ol>
+          <ul class="facts">
+            <li><b>Opening</b><span>Later in 2026, TBC</span></li>
+            <li><b>Large tables</b><span>Book ahead for 6+</span></li>
+            <li><b>Call or text</b><span><a href="tel:+17023536277">(702) 353-6277</a></span></li>
+            <li><b>Instagram</b><span><a href="https://www.instagram.com/almiskitchenlv/" target="_blank" rel="noopener">@almiskitchenlv</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Request a table</h2>
+          <form class="form" novalidate>
+            <div><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name"></div>
+            <div><label for="f-contact">Email or phone</label><input id="f-contact" type="text"></div>
+            <div><label for="f-brief">Date, time and party size</label><textarea id="f-brief"></textarea></div>
+            <button class="btn" type="submit">Send request</button>
+            <p class="status" role="status">This is a concept form on a mockup. It does not send yet. The built site would text the request to the kitchen.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section class="view" data-route="/studio" id="view-studio">
+    <div class="wrap">
+      <h1>Visit</h1>
+      <p class="lead" style="color:var(--color-muted);max-width:52ch">In the Arville Plaza, off
+        Tropicana, with a full lot.</p>
+    </div>
+    <div class="wrap block">
+      <div class="split">
+        <div>
+          <p>Almi&rsquo;s Kitchen is at 4970 Arville St, Suite 104, on the west side of the valley
+            between Tropicana and the 215. The plaza has its own parking lot, and the patio faces
+            away from the street.</p>
+          <ul class="facts">
+            <li><b>Address</b><span>4970 Arville St, Ste 104, Las Vegas, NV 89118</span></li>
+            <li><b>Hours</b><span>All day, exact hours TBC</span></li>
+            <li><b>Parking</b><span>Free lot in the plaza</span></li>
+            <li><b>Getting here</b><span>Off Arville, just south of Tropicana</span></li>
+          </ul>
+          <p style="margin-top:1.4rem"><a class="btn" href="#/booking">Reserve a table</a></p>
+        </div>
+        <div class="grid" style="gap:1rem">
+          <div class="shot shot--wide" data-shot="the patio at dusk"></div>
+          <div class="grid grid--3" style="grid-template-columns:1fr 1fr;gap:1rem">
+            <div class="shot shot--square" data-shot="the mezzanine seating"></div>
+            <div class="shot shot--square" data-shot="the storefront sign on Arville"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <div class="shot shot--wide" data-shot="map and storefront on Arville St"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="sign">Almi&rsquo;s Kitchen</span>
+    <nav>
+      <a href="#/work">Menu</a>
+      <a href="#/about">Story</a>
+      <a href="#/booking">Reserve</a>
+      <a href="#/studio">Visit</a>
+      <a href="https://www.instagram.com/almiskitchenlv/" target="_blank" rel="noopener">@almiskitchenlv</a>
+    </nav>
+    <span>&copy; <span id="yr"></span> Almi&rsquo;s Kitchen &middot; Las Vegas, NV 89118</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var navLinks=[].slice.call(document.querySelectorAll('a[href^="#/"]'));
+  if(views.length){
+    document.body.classList.add('routed');
+    var home=document.getElementById('view-home')||views[0];
+    var routeOf=function(v){return v.getAttribute('data-route');};
+    var render=function(){
+      var h=(location.hash||'').replace(/^#/,'');
+      if(h&&h.charAt(0)!=='/') h='/'+h;
+      var match=views.filter(function(v){return routeOf(v)===h;})[0]||home;
+      views.forEach(function(v){v.classList.toggle('is-active',v===match);});
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current',a.getAttribute('href')==='#'+routeOf(match)?'page':'false');
+      });
+      window.scrollTo(0,0);
+    };
+    window.addEventListener('hashchange',render);
+    render();
+  }
+  var form=document.querySelector('.form');
+  if(form){
+    var status=form.querySelector('.status');
+    var note=status?status.textContent:'';
+    form.addEventListener('submit',function(e){e.preventDefault();if(status)status.textContent=note;});
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Almi's Kitchen",
+  "servesCuisine":["Ethiopian","American"],
+  "telephone":"(702) 353-6277",
+  "address":{"@type":"PostalAddress","streetAddress":"4970 Arville St Ste 104","addressLocality":"Las Vegas","addressRegion":"NV","postalCode":"89118"}
+}
+</script>
+
+</body>
+</html>
