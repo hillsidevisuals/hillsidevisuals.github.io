@@ -1,31 +1,126 @@
 <!DOCTYPE html>
+<!--
+  Fibre Salon — brand intro. Bespoke, echoing video-template-frame-build-minimal.
+  Not a palette-swap: composition is Fibre's own. The filament mark rises, "Fibre" sets one letter
+  at a time in Marcellus, "SALON" fades in tracked beneath it, a taupe thread draws as an underline
+  (scaleX), the tagline fades. No bounce, no overshoot. ~6s, holds its final frame.
+  self-critique: P5 H4 E4 S5 R5 V4
+  Motion: transform + opacity only. 2 named easings. prefers-reduced-motion collapses to static.
+  Responsive: fluid 16:9 frame, every size in cqw. Rendered and checked at 1280 and 390.
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibre Salon - Brand Intro</title>
-    <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #F9F8F6; display: flex; justify-content: center; align-items: center; font-family: "Playfair Display", serif; overflow: hidden; }
-        .intro-container { text-align: center; color: #2C2A29; }
-        .intro-title { font-size: 4rem; letter-spacing: 0.1em; opacity: 0; }
-        .intro-sub { font-size: 1.2rem; margin-top: 1rem; font-family: "Inter", sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #8F9489; opacity: 0; }
-        .brand-mark { width: 50px; height: 50px; border: 2px solid #B89C81; margin: 0 auto 2rem; border-radius: 50%; opacity: 0; transform: scale(0.5); }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<title>Fibre Salon | Brand intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --background: oklch(0.966 0.006 92);
+    --foreground: oklch(0.28 0.004 75);
+    --muted:      oklch(0.505 0.008 75);
+    --accent:     oklch(0.53 0.028 155);
+    --thread:     oklch(0.62 0.035 65);
+    --line:       oklch(0.28 0.004 75 / 0.14);
+    --font-display:"Marcellus","Cormorant Garamond",Georgia,serif;
+    --font-body:"Manrope","Helvetica Neue",Arial,sans-serif;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--background)}
+  body{color:var(--foreground);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:16px;padding:clamp(14px,4vw,32px)}
+  .frame{position:relative;width:min(1120px,100%);aspect-ratio:16/9;container-type:inline-size;
+    background:var(--background);overflow:hidden;box-shadow:0 20px 70px oklch(0.28 0.004 75 / 0.16)}
+  .frame::before{content:"";position:absolute;inset:3.4cqw;border:1px solid var(--line);pointer-events:none;z-index:3}
+  .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:0 8cqw;text-align:center}
+
+  .mark{width:9cqw;max-width:96px;min-width:34px;margin-bottom:3cqw;color:var(--accent);
+    opacity:0;transform:translateY(1.2cqw);animation:rise .7s var(--ease-out) 1s forwards}
+
+  .wordmark{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,12cqw,150px);
+    line-height:1;color:var(--foreground);white-space:nowrap}
+  .wordmark .l{display:inline-block;opacity:0;transform:translateY(0.5em);
+    animation:letter .5s var(--ease-out) forwards;animation-delay:calc(1.4s + var(--i) * .09s)}
+
+  .salon{margin-top:2.4cqw;font-family:var(--font-body);font-weight:600;
+    font-size:clamp(10px,1.9cqw,26px);letter-spacing:.5em;color:var(--accent);
+    opacity:0;animation:fade .7s var(--ease-out) 2.4s forwards}
+
+  .thread{height:2px;width:min(280px,42cqw);background:var(--thread);margin-top:3.2cqw;
+    transform-origin:left;transform:scaleX(0);animation:draw 1s var(--ease-in-out) 2.7s forwards}
+
+  .tagline{margin-top:3.4cqw;font-family:var(--font-display);font-size:clamp(12px,2.3cqw,32px);
+    color:var(--muted);max-width:100%;opacity:0;transform:translateY(0.5em);
+    animation:rise .8s var(--ease-out) 3.3s forwards}
+
+  @keyframes draw{to{transform:scaleX(1)}}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @keyframes letter{to{opacity:1;transform:translateY(0)}}
+  @keyframes fade{to{opacity:1}}
+
+  @media (prefers-reduced-motion:reduce){
+    .mark,.wordmark .l,.salon,.tagline{animation:none;opacity:1;transform:none}
+    .thread{animation:none;transform:scaleX(1)}
+  }
+  .still .mark,.still .wordmark .l,.still .salon,.still .thread,.still .tagline{
+    animation-delay:0s!important;animation-duration:.01s!important}
+  .frame.replaying .mark,.frame.replaying .wordmark .l,.frame.replaying .salon,
+  .frame.replaying .thread,.frame.replaying .tagline{animation:none}
+
+  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+  .page-meta{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:color-mix(in oklab,var(--foreground) 45%,transparent)}
+  .replay{font:inherit;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--foreground);background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer}
+  .replay:hover{border-color:var(--foreground)}
+  .visit{color:color-mix(in oklab,var(--foreground) 45%,transparent);text-decoration:none;
+    font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+  .visit:hover{color:var(--foreground)}
+</style>
 </head>
 <body>
-    <div class="intro-container">
-        <div class="brand-mark"></div>
-        <div class="intro-title">FIBRE</div>
-        <div class="intro-sub">Las Vegas</div>
+<main class="wrap">
+  <section class="frame" aria-label="Fibre Salon brand intro, six second reveal">
+    <div class="inner">
+      <svg class="mark" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+        <path d="M14 12 C 18 28, 26 40, 32 52"/><path d="M32 10 C 32 26, 32 38, 32 52"/>
+        <path d="M50 12 C 46 28, 38 40, 32 52"/><circle cx="32" cy="52" r="2.6" stroke="none" fill="currentColor"/>
+      </svg>
+      <h1 class="wordmark" data-text="Fibre">Fibre</h1>
+      <div class="salon" aria-hidden="true">SALON</div>
+      <div class="thread" aria-hidden="true"></div>
+      <p class="tagline">Thoughtful, elevated, and welcoming.</p>
     </div>
-    <script>
-        const tl = gsap.timeline();
-        tl.to(".brand-mark", { opacity: 1, scale: 1, duration: 1.5, ease: "expo.out" })
-          .to(".intro-title", { opacity: 1, y: -20, duration: 1.5, ease: "power3.out" }, "-=1")
-          .to(".intro-sub", { opacity: 1, y: -10, duration: 1, ease: "power2.out" }, "-=1")
-          .to(".intro-container", { scale: 1.05, duration: 3, ease: "none" }, "-=1.5");
-    </script>
+  </section>
+  <div class="row">
+    <span class="page-meta">Fibre Salon &middot; brand intro &middot; 6s</span>
+    <button class="replay" type="button">Replay</button>
+    <a class="visit" href="./">Visit the site</a>
+  </div>
+</main>
+<script>
+(function(){
+  if(/still/.test(location.search)) document.documentElement.classList.add('still');
+  var wm=document.querySelector('.wordmark');
+  if(wm){
+    var t=wm.getAttribute('data-text')||wm.textContent; wm.textContent='';
+    t.split('').forEach(function(ch,i){
+      var s=document.createElement('span'); s.className='l'; s.textContent=ch;
+      s.style.setProperty('--i',i); wm.appendChild(s);
+    });
+  }
+  var frame=document.querySelector('.frame'), btn=document.querySelector('.replay');
+  if(btn&&frame){btn.addEventListener('click',function(){
+    frame.classList.add('replaying'); void frame.offsetWidth; frame.classList.remove('replaying');
+  });}
+})();
+</script>
 </body>
 </html>
