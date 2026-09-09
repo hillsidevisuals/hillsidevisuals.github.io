@@ -59,14 +59,13 @@
   p{margin:0 0 1rem;max-width:63ch}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 
-  .btn{display:inline-block;background:var(--rose-deep);color:var(--accent-text);
+  .btn{display:inline-block;background:var(--rose-deep);color:var(--paper);
     padding:.82em 1.5em;border-radius:2px;text-decoration:none;font-weight:600;letter-spacing:.01em;
     white-space:nowrap;transition:transform .16s var(--ease-out),background .16s var(--ease-out)}
-  .btn:hover{transform:translateY(-1px)}
-  .btn:not(.btn--ghost):hover{background:var(--rose-hover)}
+  .btn:hover{transform:translateY(-1px);background:var(--rose-hover);color:var(--paper)}
   .btn:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px}
   .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
-  .btn--ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn--ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-1px)}
 
   /* ---- nav: edge-aligned row ---- */
   .nav{position:sticky;top:0;z-index:50;background:oklch(0.945 0.018 84 / 0.92);
@@ -118,7 +117,7 @@
   .room .rnote{font-size:.85rem;letter-spacing:.01em;line-height:1.5}
   .room--brick .rnote{color:var(--ink)}
   .room--garden .rnote{color:var(--muted-on-dark)}
-  .room .tag{align-self:flex-start;margin-bottom:auto;font-size:.68rem;letter-spacing:.16em;
+  .room .tag{align-self:flex-start;margin-bottom:auto;font-size:.74rem;letter-spacing:.12em;
     text-transform:uppercase;padding:.3em .6em;border:1px solid currentColor;border-radius:2px}
   .room--brick .tag{color:var(--ink)}
   .room--garden .tag{color:var(--paper)}
@@ -126,7 +125,7 @@
   /* ---- placeholder slot ---- */
   .slot{position:relative;overflow:hidden;border:1px dashed var(--line);border-radius:3px;
     background:
-      repeating-linear-gradient(45deg, oklch(0.25 0.006 90 / 0.05) 0 11px, transparent 11px 22px),
+      
       var(--oat);
     display:flex;align-items:center;justify-content:center;text-align:center;color:var(--slot-label);
     font-size:clamp(.64rem,1.4vw,.77rem);letter-spacing:.07em;text-transform:uppercase;
@@ -146,7 +145,7 @@
   /* ---- menu groups ---- */
   .menu-group{padding:1.4rem 0;border-top:1px solid var(--line)}
   .menu-group:first-of-type{border-top:0;padding-top:0}
-  .menu-group h3{font-size:clamp(1.2rem,2.6vw,1.55rem);margin-bottom:.3em}
+  .menu-group h2{font-size:clamp(1.2rem,2.6vw,1.55rem);margin-bottom:.3em}
   .menu-group p{color:var(--muted);margin-bottom:.5rem}
   .menu-group .at-table{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
     color:var(--rose-deep);font-weight:600}
@@ -200,7 +199,7 @@
     background:radial-gradient(62% 68% at 50% 42%, oklch(0.3 0.05 156) 0%, var(--evergreen-deep) 70%)}
   .introcard .stage .seal{width:74px;height:74px}
   .introcard .stage .cap{position:absolute;bottom:.9rem;left:0;right:0;text-align:center;
-    font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-on-dark)}
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-on-dark)}
 
   /* ---- footer ---- */
   footer{background:var(--evergreen-deep);color:var(--muted-on-dark);
@@ -214,7 +213,7 @@
   footer a:hover{color:var(--paper)}
 
   .mock-banner{background:var(--ink);color:var(--paper);text-align:center;
-    font-size:clamp(.62rem,2vw,.72rem);letter-spacing:.16em;text-transform:uppercase;padding:.5rem .8rem}
+    font-size:clamp(.72rem,2vw,.8rem);letter-spacing:.02em;padding:.5rem .8rem}
 
   @media (max-width:900px){
     .rooms,.split-cols,.split-cols--menu,.points,.grid--3{grid-template-columns:1fr}
@@ -237,7 +236,7 @@
 </head>
 <body>
 
-<div class="mock-banner">Concept mockup for Durvo &mdash; built by Hillside Visuals</div>
+<div class="mock-banner">Concept mockup for Durvo. Built by Hillside Visuals</div>
 
 <header class="nav">
   <div class="nav-inner">
@@ -342,17 +341,17 @@
       <div class="split-cols split-cols--menu">
         <div>
           <div class="menu-group">
-            <h3>Breakfast</h3>
+            <h2>Breakfast</h2>
             <p>Served from open. Warm morning plates and house pastries, all plant-based, alongside specialty coffee.</p>
             <span class="at-table">Full list at the table</span>
           </div>
           <div class="menu-group">
-            <h3>Lunch</h3>
+            <h2>Lunch</h2>
             <p>Appetizers, entrees, and dessert. Chef Hanny pulls flavors from Italy, Mexico, India and beyond, and the plates rotate through the season.</p>
             <span class="at-table">Full list at the table</span>
           </div>
           <div class="menu-group">
-            <h3>Coffee and bar</h3>
+            <h2>Coffee and bar</h2>
             <p>Specialty coffee through the day. Wine and beer by the glass for an unhurried brunch.</p>
             <span class="at-table">Ask your server</span>
           </div>
