@@ -1,2 +1,5 @@
 User-agent: *
+Allow: /$
+Allow: /index.html
+Allow: /robots.txt
 Disallow: /
